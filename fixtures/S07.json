@@ -1,0 +1,17 @@
+{
+  "id": "S07",
+  "tests": [
+    "AT22",
+    "AT25",
+    "AT43",
+    "AT61"
+  ],
+  "type": "evidence_lineage",
+  "artifacts": [
+    "D_paper",
+    "D_review",
+    "D_internal_export"
+  ],
+  "same_claim": true,
+  "note": "서로 다른 I를 만들되 D 개수로 독립 evidence를 계산하지 않음"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "S05",
+  "tests": [
+    "AT45",
+    "AT46",
+    "AT47"
+  ],
+  "type": "confirmation_events",
+  "requests": [
+    {
+      "event": "C1",
+      "payload": "choose_A"
+    },
+    {
+      "event": "C1",
+      "payload": "choose_A"
+    },
+    {
+      "event": "C2",
+      "payload": "choose_A"
+    },
+    {
+      "event": "C1",
+      "payload": "choose_B"
+    }
+  ],
+  "expected": [
+    "new",
+    "same_result",
+    "new_event",
+    "conflict"
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "effective_date": "2026-09-09",
+  "approval_evidence": {
+    "kind": "user_message",
+    "text": "일단 GUI 구현은 마지막에 하고, CLI 구현만 우선시하도록 해줘. 그리고 D2I에서 PDF를 파싱할 땐, MinerU를 이용하도록 해줘. 그리고 Horreum, Bibliotheca와 Scriptorium에서, 너무 오래된 말이라 약간 라틴어/그리스어병에 걸린 거 같기도 해. 이름 영어로 적당히 바꿔줘."
+  },
+  "overrides": [
+    {
+      "id": "U01",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "selected_details": {
+        "interface_priority": "cli_first",
+        "gui_stage": "T13",
+        "gui_initial_status": "deferred",
+        "gui_requires": [
+          "T12 completed",
+          "subsequent explicit user GUI-start instruction"
+        ],
+        "cli_bootstrap_task": "T02",
+        "cli_release_task": "T12"
+      }
+    },
+    {
+      "id": "U02",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "selected_details": {
+        "pdf_parser": "MinerU",
+        "non_pdf_parsers": "not_selected_by_this_decision",
+        "version_backend_profile": "pin_after_T00_T01_verification",
+        "silent_parser_fallback": false,
+        "default_deployment_plan": "local",
+        "remote_document_transfer_requires_separate_authorization": true
+      }
+    },
+    {
+      "id": "U03",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "authorization_mode": "user_delegated_appropriate_English_naming",
+      "selected_details": {
+        "Artifact Store": "artifact_store",
+        "Canonical Store": "canonical_store",
+        "Compiler Runtime": "compiler_runtime",
+        "original_artifact_path_field": "artifact_path",
+        "domain_responsibilities_changed": false
+      }
+    },
+    {
+      "id": "U04",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "Embedding/Reranker는 BGE-M3을 기본으로 쓰고, MinerU는 최신 버전을 쓰도록 하자."
+      },
+      "selected_details": {
+        "embedding_model": "BAAI/bge-m3",
+        "embedding_dense_dimensions": 1024,
+        "reranker_family": "BGE-M3",
+        "reranker_model": "BAAI/bge-m3",
+        "reranker_resolution": "selected_by_user",
+        "reranker_scoring": "colbert_late_interaction"
+      },
+      "upstream_references": [
+        "https://huggingface.co/BAAI/bge-m3",
+        "https://huggingface.co/BAAI/bge-reranker-v2-m3"
+      ],
+      "clarification_evidence": {
+        "kind": "user_message",
+        "question": "전용 BAAI/bge-reranker-v2-m3와 bge-m3 자체 다중 벡터 점수 중 Reranker 기본값 선택",
+        "text": "bge-m3 자체의 다중 벡터 점수로 재순위화"
+      },
+      "extension_evidence": {
+        "kind": "user_message",
+        "text": "나중엔 Qwen3-Embedding 4B or 8B, Qwen3-Reranker 4B or 8B도 지원할 수도 있으니까, 교체 가능성을 염두에 둬야 해"
+      },
+      "replacement_policy": {
+        "embedding_and_reranker_independent": true,
+        "embedding_space_isolation": true,
+        "canonical_history_preserved": true,
+        "contract_path": "docs/interfaces/RETRIEVAL_PROFILE.md"
+      },
+      "future_candidates": {
+        "embedding": [
+          "Qwen/Qwen3-Embedding-4B",
+          "Qwen/Qwen3-Embedding-8B"
+        ],
+        "reranker": [
+          "Qwen/Qwen3-Reranker-4B",
+          "Qwen/Qwen3-Reranker-8B"
+        ],
+        "implementation_status": "not_implemented",
+        "active": false
+      }
+    },
+    {
+      "id": "U05",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "Embedding/Reranker는 BGE-M3을 기본으로 쓰고, MinerU는 최신 버전을 쓰도록 하자."
+      },
+      "selected_details": {
+        "pdf_parser": "MinerU",
+        "version_selection": "latest_stable_at_install_or_explicit_upgrade",
+        "resolved_exact_version_required": true,
+        "runtime_profile_verification_required": true
+      },
+      "upstream_observation": {
+        "checked_on": "2026-09-09",
+        "latest_stable_version": "3.4.5",
+        "latest_stable_uploaded_on": "2026-08-14",
+        "prerelease_version": "4.0.0a6",
+        "source": "https://pypi.org/project/mineru/",
+        "installed_or_executed": false
+      }
+    },
+    {
+      "id": "U06",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "각 단계를 모듈식으로 작성해줄래? 그러니까, D I K W P B와 각 단계를 잇는 D2I, I2K 등 역시 모듈화해서, 향후 유지보수가 쉽도록 해줘."
+      },
+      "selected_details": {
+        "deployment_boundary": "single_application",
+        "domain_modules": {
+          "D": "data",
+          "I": "information",
+          "K": "knowledge",
+          "W": "wisdom",
+          "P": "parchment",
+          "B": "book"
+        },
+        "compiler_operation_modules": [
+          "d2i",
+          "i2k",
+          "n2e",
+          "k2k",
+          "k2w",
+          "w2k"
+        ],
+        "publication_modules": [
+          "w2p",
+          "p2b"
+        ],
+        "domain_independent_of_adapters": true,
+        "shared_atomic_commit_boundary": true,
+        "operation_dispatch_through_shared_runtime": true,
+        "independent_module_tests_required": true,
+        "w2k_llm_calls": 0,
+        "publication_adds_compiler_record_types": false,
+        "contract_path": "docs/implementation/MODULE_BOUNDARIES.md"
+      },
+      "implementation_status": "design_only"
+    },
+    {
+      "id": "U07",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "kq2w는 k2w로 이름을 간소화하자. 다른 문서에도 반영해줘."
+      },
+      "selected_details": {
+        "previous_operation_name": "KQ2W",
+        "operation_name": "K2W",
+        "previous_module_name": "kq2w",
+        "module_name": "k2w",
+        "semantics_changed": false,
+        "historical_evidence_preserved": true
+      }
+    },
+    {
+      "id": "U08",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "authorization_mode": "user_delegated_scoped_architecture_repairs",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "각 문제를 해결해주되, 중대해서 내 승인이 필요한 경우 나한테 요청해줘."
+      },
+      "selected_details": {
+        "resolved_review_items": [
+          "R01",
+          "R02",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09"
+        ],
+        "pending_user_choices": [],
+        "contract_path": "docs/decisions/ARCHITECTURE_FIXES.md",
+        "resolution_registry": "docs/decisions/architecture_fixes.json",
+        "proposal_blanket_approval": false,
+        "application_implemented": false
+      },
+      "clarification_evidence": {
+        "R07": {
+          "kind": "user_message",
+          "question": "R07: 같은 범위의 기존 결정을 보고 준비한 두 요청이 동시에 서로 다른 선택을 확정하면 어떻게 처리할까요? 실제 결정의 효력이 달라지는 정책이라 승인이 필요합니다.",
+          "text": "뒤늦은 요청은 새 결정을 저장하지 않고 현재 상태를 보여준 뒤 재확인받기 (권고)"
+        },
+        "R08": {
+          "kind": "user_message",
+          "question": "R08: 기각 후보의 내용을 삭제한 뒤에도 비슷한 기각 내용을 검색하려면 별도 보존이 필요합니다. 어떤 검색·보존 정책을 적용할까요?",
+          "text": "기각 이력은 정확한 fingerprint로만 조회하고, 다른 표현의 후보는 다시 검증하기 (권고)"
+        }
+      }
+    },
+    {
+      "id": "U09",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "1. PostgreSQL은 최신 안정 버전인 18 버전 이상으로 해줘. 아마 곧 PG19가 나올 거긴 한데, 일단 임시로 18 쓰다가 나중에 업그레이드 하자. pgvector도 사용해야 하고.\n2. data\\_id는 content hash로, 나머지는 UUID V7이 나을 거 같아. 같은 Data가 중복되어서 들어오면 이건 거부해야지. 예를 들어 까먹고 같은 논문을 두 번 제공하면 이건 걸러야 하니까.\n3. Data 원본 파일은 직접 폴더에 추가하지 말고, Palimpsest 도구를 이용해서 직접 등록하게 하면 실패 시 복구가 쉬워지지 않을까?\n4. 판정은 Compiler Runtime에서 임시로 저장하고, 반영되면 Canonical Storage에 옮기는 방식으로 하면 되지 않을까?\n\n내 생각 반영해서 작업 계속해줘."
+      },
+      "selected_details": {
+        "database": "PostgreSQL",
+        "minimum_major": 18,
+        "initial_major": 18,
+        "major_upgrade": "explicit_validated_upgrade",
+        "postgresql_minor_policy": "latest_stable_in_selected_major",
+        "extension": "vector",
+        "pgvector_required": true,
+        "exact_runtime_versions_required": true,
+        "shared_database_schemas": [
+          "canonical_store",
+          "compiler_runtime"
+        ],
+        "data_id": "sha256_raw_bytes",
+        "data_id_encoding": "lowercase_hex_64",
+        "new_opaque_ids": "uuidv7",
+        "historical_ids_preserved": true,
+        "duplicate_new_import": "reject_with_existing_data_id",
+        "successful_request_retry": "replay_same_result",
+        "duplicate_auto_acquisition": false,
+        "registration": "tool_managed_copy",
+        "canonical_promotion": "validated_effects_atomic_commit",
+        "durable_record_owner": "compiler_runtime",
+        "terminal_record_deleted": false,
+        "contract_path": "docs/decisions/STORAGE_IDENTITY.md",
+        "schema_draft_path": "docs/schema/T02_storage_draft.sql",
+        "application_implemented": false
+      },
+      "implementation_clarifications": [
+        "SHA-256은 원본 bytes를 식별하며 같은 논문 다른 bytes의 의미 중복 정책은 추가하지 않는다.",
+        "duplicate import는 acquisition을 자동 추가하지 않지만 명시적 독립 acquisition provenance는 보존한다.",
+        "임시 후보·잠정 결과의 검증된 효과를 canonical에 반영하고 영속 Record는 Runtime에 보존한다.",
+        "외부 ID/fingerprint/version/counter/commit token을 UUIDv7로 바꾸지 않는다."
+      ],
+      "observed_upstream": {
+        "observed_on": "2026-09-09",
+        "postgresql": "18.6",
+        "pgvector": "0.8.6",
+        "postgresql_19": "beta3",
+        "installed_profile": null
+      },
+      "unresolved": [
+        "application_language_and_cli",
+        "database_driver_and_migration_runner",
+        "database_execution_environment",
+        "full_retention_backup_policy",
+        "live_parser_and_model_profiles"
+      ]
+    },
+    {
+      "id": "U10",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/USER_OVERRIDES.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "앱 언어는 Python으로 작성해주고, 배포 용이성을 위해 Docker 기반으로 작동하면 좋겠어. Docker 접근 권한 너한테 있나 지금?"
+      },
+      "selected_details": {
+        "application_language": "Python",
+        "deployment_runtime": "Docker",
+        "cli_first": true,
+        "gui_deferred": true,
+        "existing_domain_boundaries_preserved": true,
+        "contract_path": "docs/implementation/ENVIRONMENT.md",
+        "application_implemented": false
+      },
+      "observed_docker": {
+        "observed_on": "2026-09-09",
+        "default_sandbox": "access_denied",
+        "approved_read": "succeeded",
+        "server_version": "29.7.2",
+        "os_type": "linux",
+        "architecture": "x86_64",
+        "compose_version": "5.5.1",
+        "containers_created": false
+      },
+      "unresolved": [
+        "python_exact_version",
+        "cli_library",
+        "dependency_manager",
+        "database_driver",
+        "migration_runner",
+        "image_digests",
+        "service_volume_port_profile",
+        "postgresql_application_tests"
+      ]
+    },
+    {
+      "id": "U11",
+      "status": "accepted",
+      "approval_ref": "docs/decisions/D2I_SOURCE_PRESERVATION.md",
+      "approval_evidence": {
+        "kind": "user_message",
+        "text": "일단 D2I 자체는 PDF등 LLM이 읽기 어려운 파일을 읽기 쉬운 형태로 바꾸는 것에 의의가 있어. 그러니까 D2I는 최대한 D 원본을 보존하면서, 페이지 정보나 위치 정보 등을 포함해야 해. \n\nTerra Medium 등 LLM 부분은 I2K 단계부터 적용하는 방식으로 해야해."
+      },
+      "follow_up_evidence": {
+        "kind": "user_message",
+        "text": "지금 우리가 만드는 건 일종의 LLM wiki인데, 구조화된 출력을 사용해서 최대한 결정론적인 결과가 나오는 거야. Provenance도 보존되어야 하고.\n\n그러니까 D2I는 최대한 스크립트 기반의 결정론적인 작업이어야 해. I2K나 N2E, K2K, K2W는 어쩔 수 없이 LLM이 관여해서 상황에 따라 달라질 수도 있겠지만, 이것도 출력을 최대한 구조화해서 중복 노드 생성이나 주관 개입 등을 피해야 해.\n\n이 부분을 잘 생각해서 작업해주면 좋겠어."
+      },
+      "selected_details": {
+        "d2i_mode": "deterministic_source_preservation",
+        "pdf_parser": "MinerU",
+        "parser_execution": "local",
+        "d2i_llm_calls": 0,
+        "semantic_interpretation_starts_at": "i2k",
+        "source_information_profile": "source-information-v1",
+        "processing_profile": "source-d2i-v1",
+        "source_unit_type_required": true,
+        "source_semantic_type": null,
+        "source_specific_identity": true,
+        "new_opaque_ids": "uuidv7",
+        "arbitrary_summary_or_value_filter": false,
+        "preserve_source_text_and_structure": true,
+        "complete_page_and_block_coverage_required": true,
+        "preserve_figures_panels_captions_continuations": true,
+        "preserve_headers_footers_references": true,
+        "exact_grounding_profiles_hashes_required": true,
+        "structural_acceptance_is_semantic_approval": false,
+        "known_structural_omission_fails": true,
+        "silent_parser_or_llm_fallback": false,
+        "context_chunk_is_projection": true,
+        "model_change_rewrites_information": false,
+        "legacy_semantic_history_preserved": true,
+        "llm_output": "strict_structured_proposals",
+        "application_controls_identity_and_commit": true,
+        "structured_output_guarantees_semantic_determinism": false,
+        "proposal_blanket_approval": false,
+        "contract_path": "docs/decisions/D2I_SOURCE_PRESERVATION.md"
+      },
+      "implementation_clarifications": [
+        "MinerU의 OCR/layout/model inference는 parser 과정이며 application semantic LLM 호출과 구분한다.",
+        "고정된 parser artifacts와 처리 profile의 script 결과를 재현한다. backend 간 parser bitwise 동일성을 보장하지 않는다.",
+        "source-unit physical registry와 additive migration은 구현 slice에서 관리하며 기존 semantic I/Record/설치 migration은 재작성하지 않는다.",
+        "I2K 이후 empty scaffold나 실행 착수는 이번 T03 범위에 포함하지 않는다."
+      ],
+      "implementation_status": "in_progress"
+    }
+  ]
+}

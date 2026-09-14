@@ -1,0 +1,8 @@
+{
+  "project": "palimpsest-multi-checks",
+  "database": "palimpsest_realms",
+  "wikiId": null,
+  "artifactVolume": "palimpsest-knowledge_artifacts",
+  "queryDirectory": null,
+  "image": "palimpsest-ui:0.23.0"
+}

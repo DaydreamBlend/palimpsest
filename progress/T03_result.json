@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-09",
+  "scope": "selected_native_pdf_d_to_i_only",
+  "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+  "execution_id": "01a0853c-03d8-72ff-be35-958d8dae8db5",
+  "profile_id": "01a0853c-03d6-7ae4-a110-8373a41c46f3",
+  "state": "completed",
+  "information": {
+    "text": 23,
+    "image": 5
+  },
+  "dispositions": {
+    "rejected": 1,
+    "accepted": 28
+  },
+  "database": {
+    "data_count": 1,
+    "data_bytes": 3890649,
+    "information_count": 28,
+    "grounding_count": 51,
+    "temporary_candidate_count": 0,
+    "outbox_count": 28,
+    "outbox_pending": 28,
+    "accepted_count": 28,
+    "rejected_count": 1,
+    "needs_human_count": 0,
+    "postgres": "PostgreSQL 18.6 (Debian 18.6-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "pgvector": "0.8.6"
+  },
+  "generator": {
+    "thread_ref": "01a0853c-9b69-77a2-bc4d-950320131694",
+    "profile": {
+      "auth": "chatgpt_oauth",
+      "model": "gpt-5.6-terra",
+      "provider": "codex_cli",
+      "cli_version": "0.153.4",
+      "requested_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "nonfatal_diagnostic_count": 2
+    },
+    "usage": {
+      "input_tokens": 95268,
+      "output_tokens": 3203,
+      "cached_input_tokens": 0,
+      "reasoning_output_tokens": 44
+    }
+  },
+  "validator": {
+    "thread_ref": "01a0853d-ab78-7e70-86a1-81a8399155cb",
+    "profile": {
+      "auth": "chatgpt_oauth",
+      "model": "gpt-5.6-terra",
+      "provider": "codex_cli",
+      "cli_version": "0.153.4",
+      "requested_model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
+      "nonfatal_diagnostic_count": 2
+    },
+    "usage": {
+      "input_tokens": 95389,
+      "output_tokens": 1640,
+      "cached_input_tokens": 0,
+      "reasoning_output_tokens": 412
+    }
+  },
+  "parser": {
+    "version": "3.4.5",
+    "backend": "pipeline",
+    "pages": 14,
+    "blocks": 249,
+    "crops": 63
+  },
+  "coverage": {
+    "referenced_blocks": 44,
+    "unreferenced_blocks": 205,
+    "semantic_exhaustiveness": "not_established_by_input_coverage"
+  },
+  "replay": {
+    "replayed": true,
+    "information_count": 28,
+    "provider_call_count_unchanged": 2
+  },
+  "app_tests": {
+    "command": "docker compose -p palimpsest-t03-verify run --rm --no-deps test",
+    "count": 139,
+    "seconds": 21.421,
+    "exit_code": 0,
+    "skips": 0
+  },
+  "limitations": [
+    "native_pdf_only",
+    "whole_figure_payload_not_implemented",
+    "general_large_document_batching_pending",
+    "semantic_exhaustiveness_unproven",
+    "i2k_not_run",
+    "full_t03_acceptance_not_complete"
+  ],
+  "artifacts": [
+    "output/t03/INFORMATION.md",
+    "output/t03/information.json",
+    "output/t03/job_result.json"
+  ]
+}

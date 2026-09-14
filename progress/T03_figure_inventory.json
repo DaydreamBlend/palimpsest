@@ -1,0 +1,4180 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-09T08:40:24.208454+00:00",
+  "purpose": "Read-only source QA inventory of the six main figures; not canonical Information or an automatic semantic approval",
+  "source": {
+    "path": "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+    "sha256": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+    "byte_size": 3890649,
+    "physical_pages": 14,
+    "unchanged_after_render": true
+  },
+  "parser_evidence": {
+    "execution_id": "01a0853c-03d8-72ff-be35-958d8dae8db5",
+    "middle_path": "output/t03/restored/01a0853c-03d8-72ff-be35-958d8dae8db5/source_middle.json",
+    "middle_sha256": "a62a5255a5d8f793d5a2017eb731c15d9cbf76c0b53e13d87bc55090c3e219a7",
+    "backend": "pipeline",
+    "version": "3.4.5",
+    "block_collection": "preproc_blocks",
+    "receipt_path": "output/t03/job_result.json",
+    "receipt_sha256": "1e501df860c759e493eebaa794d750bb6d77d37523986e73ec8e239661903bea"
+  },
+  "coordinate_system": {
+    "name": "pdf_points_top_left_relative_to_crop_box",
+    "unit": "point",
+    "points_per_inch": 72,
+    "page_numbering": "physical, 1-based; raw /pdf_info indices are 0-based",
+    "renderer_uses_crop_box": true,
+    "parser_integer_page_size": [
+      595,
+      779
+    ],
+    "original_crop_box_size_points": [
+      595.260071,
+      779.520142
+    ],
+    "source_format_note": "The source has duplicate MediaBox keys. Pypdf resolves MediaBox to 595.28 x 779.53 points; Poppler rendering explicitly uses the CropBox, matching the source PDFium visible size. No MediaBox rewrite or coordinate rescaling was applied."
+  },
+  "tools": {
+    "renderer": "Poppler pdftoppm",
+    "renderer_version": "26.07.0",
+    "renderer_executable_sha256": "50e3c5e703e4f9d21b935a40d278becd888cec4bb867e8188afb4651c638a423",
+    "pdfplumber": "0.11.9",
+    "pypdf": "6.10.0",
+    "Pillow": "12.3.0"
+  },
+  "figures": [
+    {
+      "figure_number": 1,
+      "physical_page": 3,
+      "page_index": 2,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          112.63499999999999,
+          70.15414199999998,
+          482.475,
+          543.674142
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R134",
+        "source_xobject_pixel_size": [
+          1541,
+          1973
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          112.63499999999999,
+          235.846,
+          482.475,
+          709.366
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-1.png",
+        "sha256": "e1118c5a81ca3709786cbb6c109ff92ff1cec7688e1c36fcf2c0414b21592b40",
+        "pixel_size": [
+          1542,
+          1974
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          112.63499999999999,
+          70.15414199999998,
+          482.475,
+          543.674142
+        ],
+        "raster_window_pixels_xyxy": [
+          469,
+          292,
+          2011,
+          2266
+        ],
+        "effective_bbox_points_top_left": [
+          112.55999999999999,
+          70.08,
+          482.64,
+          543.8399999999999
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "3",
+          "-l",
+          "3",
+          "-singlefile",
+          "-x",
+          "469",
+          "-y",
+          "292",
+          "-W",
+          "1542",
+          "-H",
+          "1974",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-1"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/0"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/1",
+            "/pdf_info/2/preproc_blocks/2",
+            "/pdf_info/2/preproc_blocks/4"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/3"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "F",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/7"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "G",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/8"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "H",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/9",
+            "/pdf_info/2/preproc_blocks/10",
+            "/pdf_info/2/preproc_blocks/11"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "I",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/12"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "J",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/13"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "K",
+          "raw_block_ids": [
+            "/pdf_info/2/preproc_blocks/13"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/0",
+          "type": "image",
+          "bbox_points": [
+            116,
+            76,
+            239,
+            160
+          ],
+          "raw_block_sha256": "1dc0d578b845feffecf7bca9d8f67272c44940cc6213ea8e51da63009a83db85",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/0/blocks/1/lines/0/spans/0",
+              "path": "images/27e373cd9813d4a1e718efe46e28f906e7fbdff97dfd911e4f6c0cb2f113f782.jpg",
+              "sha256": "eda2c6ee8cf8822506a5a4c5333379071a8db6c961b0739d1dd8fd355042c00d",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 2,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 2,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/0/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                112,
+                69,
+                120,
+                78
+              ],
+              "text": "A"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/1",
+          "type": "image",
+          "bbox_points": [
+            246,
+            82,
+            338,
+            172
+          ],
+          "raw_block_sha256": "b319e647d11f418ad203072ebf13a049196c6f7595154baf9dbf4ffb7f8858df",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/1/blocks/1/lines/0/spans/0",
+              "path": "images/e02aed6c73ba8bd6513efe678a2d81da0d12e1d8b312eef766fee3559dc5cb5a.jpg",
+              "sha256": "5a6447ac29239c3ad65c25569317ae31497fc64af76a1791608615c9cbf576e7",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 3,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 3,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/1/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                244,
+                69,
+                252,
+                78
+              ],
+              "text": "B"
+            },
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/1/blocks/2",
+              "type": "image_caption",
+              "bbox_points": [
+                111,
+                183,
+                120,
+                192
+              ],
+              "text": "C"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/2",
+          "type": "image",
+          "bbox_points": [
+            330,
+            90,
+            405,
+            172
+          ],
+          "raw_block_sha256": "7c7b7b01989449841f33e625ac297c1ca8e7b65e288d2e767e05df1a300125b8",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/2/blocks/0/lines/0/spans/0",
+              "path": "images/8de78335ecf63deb8a535e4bf0fbf463964f2e8727ddf16b540892f0e45711be.jpg",
+              "sha256": "fcead705b53a6d788cda532377fba784f3ee3df59d2e74c2797b92bf472cdcb3",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 4,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 4,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/3",
+          "type": "chart",
+          "bbox_points": [
+            118,
+            195,
+            201,
+            277
+          ],
+          "raw_block_sha256": "eaea488ea6fdff0ac0da4cc670422d1969c703bfa83d01d9b788c3930b180e51",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/3/blocks/0/lines/0/spans/0",
+              "path": "images/2c1bdbde279910a359607d129b6ca561af95d20cf7bd04dfe8af9b68c5f79cd5.jpg",
+              "sha256": "705308d91a3d4ebcd318d35123c3c3a9f5a2a8bc2bfb22929fe9c7e50469f8a5",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 5,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 5,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/3/blocks/1",
+              "type": "chart_caption",
+              "bbox_points": [
+                207,
+                183,
+                216,
+                192
+              ],
+              "text": "D"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/4",
+          "type": "image",
+          "bbox_points": [
+            407,
+            89,
+            473,
+            171
+          ],
+          "raw_block_sha256": "67c0f6a09f2c395ababbcb47ff517e0cde20580af3d48c0388f00f777a5b8575",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/4/blocks/0/lines/0/spans/0",
+              "path": "images/a30b5ccfa5d7ea010a297e79e2d2027ed39819e1a642d1766a3f803ce66e7c5d.jpg",
+              "sha256": "e69a28d5bcc717d25438fb935fc803bff327fece098dc182f4d8e51d8304b592",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 6,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 6,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/5",
+          "type": "chart",
+          "bbox_points": [
+            216,
+            197,
+            299,
+            278
+          ],
+          "raw_block_sha256": "678e0302bde323325858158aac3bb4fe8d580f4dc19fb7329bb9f60d68616e0d",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/5/blocks/1/lines/0/spans/0",
+              "path": "images/77cfc438bd0aa1e513e8a5fdd53059720502889784d042fa8db4364e6e09d211.jpg",
+              "sha256": "75419f0f118d7b16406e35304fcbff2cbf8e2ebe557a705c157e39ce9bcfa827",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 7,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 7,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/5/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                296,
+                183,
+                304,
+                192
+              ],
+              "text": "E"
+            },
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/5/blocks/2",
+              "type": "chart_footnote",
+              "bbox_points": [
+                199,
+                276,
+                281,
+                293
+              ],
+              "text": " +Thio 1 +Thio +SuperMApo"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/6",
+          "type": "chart",
+          "bbox_points": [
+            310,
+            191,
+            364,
+            294
+          ],
+          "raw_block_sha256": "13952340705bade1c0678c3e8b96abdb943e3bb2600ae4dbc6cd2ed1cbc19450",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/6/blocks/1/lines/0/spans/0",
+              "path": "images/cca49ed1a0ba0ed41f818bf3ce917107a90ea9305b4ea1fd7986dfccd31e12ce.jpg",
+              "sha256": "08ea4c7266ee10b542adc0d95c8196cee777b8bf0e12c5f2081334bf75cf2276",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 8,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 8,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/6/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                376,
+                183,
+                384,
+                192
+              ],
+              "text": "F"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/7",
+          "type": "chart",
+          "bbox_points": [
+            384,
+            196,
+            470,
+            276
+          ],
+          "raw_block_sha256": "8d27205be8f0e1c8b3db01bea7a1bbe6f27ab6ca1e2d7e0760cd160575ae8b76",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/7/blocks/0/lines/0/spans/0",
+              "path": "images/565d23011c1c0191974a69826693905acc214abc35788b91695373381100ed78.jpg",
+              "sha256": "54a63d961a706937aedbc98316f08255282ef8fd9043b9496bbf7376ce9579ef",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 9,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 9,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/7/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                387,
+                276,
+                475,
+                306
+              ],
+              "text": "macro + apo cells 中  @+4°℃"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/8",
+          "type": "chart",
+          "bbox_points": [
+            113,
+            309,
+            255,
+            432
+          ],
+          "raw_block_sha256": "7add7f0410a01ad86842283dbd25096aa6dbdff5524737b122b3b3aba991d9ef",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/8/blocks/1/lines/0/spans/0",
+              "path": "images/c6059ba001263d59c89c232c4cf3e5d0dd6a9769be14dd996b662fb918c9d570.jpg",
+              "sha256": "4c93a4e0b8d0867d0397dc9ca129ecc294f4f5bf44f6a003ba9d792113214dd2",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 10,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 10,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/8/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                112,
+                306,
+                120,
+                315
+              ],
+              "text": "G"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/9",
+          "type": "chart",
+          "bbox_points": [
+            271,
+            317,
+            353,
+            424
+          ],
+          "raw_block_sha256": "433ddecf7306a82abc322165997664db6d09c976902dcfca8618a75ca3680dc0",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/9/blocks/1/lines/0/spans/0",
+              "path": "images/f19c9798d65595e70e5dce71a344633b08350366704f33f4bd01e3698207b856.jpg",
+              "sha256": "950542b1c413b2aa4a9bcb366182c211ffd158abe6a90e80ab9700e155a6a9a3",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 11,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 11,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/9/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                268,
+                305,
+                278,
+                315
+              ],
+              "text": "H"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/10",
+          "type": "chart",
+          "bbox_points": [
+            345,
+            317,
+            418,
+            426
+          ],
+          "raw_block_sha256": "2d1d4d1479e171b3592a92c3ab044d354d2e0f941bb729c35ea6c232a19ade5e",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/10/blocks/0/lines/0/spans/0",
+              "path": "images/aeee665ec053855e5db1bebe3264b6547b88f03a2d9359b27906a5bc9a9bc0a9.jpg",
+              "sha256": "3cc848fbd697f4207ab554c749faa64a4909ff77f99fbfa1b37e160ebb3f1274",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 12,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 12,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/11",
+          "type": "chart",
+          "bbox_points": [
+            418,
+            318,
+            481,
+            417
+          ],
+          "raw_block_sha256": "d0028213e014511e9487257469c7c772047f3cc678d614c58798631f8112d823",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/11/blocks/0/lines/0/spans/0",
+              "path": "images/b7103a3cd8144a1887a5e4562beb7cd5ebc7475958f4ed7b989234ef82b2f229.jpg",
+              "sha256": "1c5b865758e0725328f34a689cd7c4cbb5a544d7fafd74943278f13272007936",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 13,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 13,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/12",
+          "type": "chart",
+          "bbox_points": [
+            122,
+            449,
+            286,
+            526
+          ],
+          "raw_block_sha256": "7c03a8479731f4ef3aa130953e113b5e7abab72862aaa28acc48bb62c94216e9",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/12/blocks/2/lines/0/spans/0",
+              "path": "images/0ad5effc8618a3c06ae5b9004d398883a12238807fd2d4906a3cad4b71e490d6.jpg",
+              "sha256": "d70b28a61f837ea0375bf713c1f24277f5eb4618d1f72eb1ace76d9b662e4f26",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 14,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 14,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/12/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                111,
+                439,
+                118,
+                448
+              ],
+              "text": "一"
+            },
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/12/blocks/1",
+              "type": "chart_caption",
+              "bbox_points": [
+                295,
+                439,
+                303,
+                448
+              ],
+              "text": "J"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/2/preproc_blocks/13",
+          "type": "chart",
+          "bbox_points": [
+            303,
+            461,
+            477,
+            542
+          ],
+          "raw_block_sha256": "99bb3c2a1d8e22b34ffb50e986cbe6156bc78bdf0edf48b33c06d0aa084534e0",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/13/blocks/1/lines/0/spans/0",
+              "path": "images/44d2d77b628a8942e94b29321242c7ccaa7b1e6a3d624fd601bf344390eb12e0.jpg",
+              "sha256": "ac72cbc8465052c145821598abf240e9adf46f5af079d43d188aa183b9c8a679",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 15,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 15,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/13/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                387,
+                439,
+                396,
+                448
+              ],
+              "text": "K"
+            },
+            {
+              "raw_locator": "/pdf_info/2/preproc_blocks/13/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                46,
+                555,
+                547,
+                725
+              ],
+              "text": "FIGURE 1 | Macrophages eliminating apoptotic cells produced factors with pro-resolutive properties. (A) Inverted fluorescence microscopy observation of macrophages stained by PE-F4/80 antibody (red), eliminating CFSE-labeled apoptotic cells (green) at 0, 12, and 24 h of culture. Injection (i.p.) of the supernatant from the previous 48 h culture (SuperMApo) increased neutrophil percentage (B) and number (C), not macrophage number (D) in the peritoneal cavity after peritonitis induction. (E) Neutrophil apoptosis 24 h after peritonitis induction in the presence or not of SuperMApo injection 28 h earlier ( n = 3 mice per group; box and whiskers). The gating strategy of peritoneal neutrophils and macrophages is shown in (B), other data are shown as mean ± s.e.m., n = 3 . { } ^ { \\star \\star \\star } P < 0 . 0 0 1 , two-way RM ANOVA with Bonferroni post-tests. (F) The percentage of phagocytosis (mean \\pm \\ : \\mathsf { s . e . m . } , n = 3 ) of apoptotic cells by macrophages was evaluated at various time points in normal culture condition (macro + apo cells) with or without SuperMApo or supernatant from macrophages cultured alone plus the supernatant from apoptotic cells cultured alone (+MacroSup +ApoSup), or at + 4 ^ { \\circ } \\mathsf { C } . \\mathsf { \\Pi } ^ { \\star \\star \\star } P < 0 . 0 0 1 , two-way RM ANOVA with Bonferroni post-tests. (G) Costimulatory (CD86/CD40) and MHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions evaluated in plasmacytoid DC (pDC), conventional DC (cDC) and macrophages (macro) in spleen cell cultures with or without TLR ligands (TLR-L) or SuperMApo, or medium (med). Each cell in the heat map represents a single well; data are from one experiment representative of three. (H) Ovalbumin (OVA) TCR-specific \\mathtt { C D 4 ^ { + } C D 2 5 ^ { - } T } cell polarization (mean ± s.e.m., n = . 3 ) \\mathrm { ~ b y ~ p D C } , cDC and macrophages cultured as in G in the presence of OVA, was assessed by FACS evaluating IFN-γ (Th1), IL-17 (Th17) and Foxp3 (Treg) intracellular content after 4 days of culture. ^ { \\star } P < 0 . 0 5 , ^ { \\star \\star } P < 0 . 0 1 ^ { \\star \\star \\star } P < 0 . 0 0 1 , 1 way ANOVA with Bonferroni’s multiple comparison test. (I) Spleen T cell proliferation in the presence of grading doses of anti-CD3 specific antibody (αCD3) with medium (med) or SuperMApo in different proportions was assessed by BrdU incorporation and counting. ^ { \\star \\star \\star } P < 0 . 0 0 1 , med vs. other conditions (mean ± \\mathsf { S } . \\mathsf { e } . \\mathsf { m } . , \\mathsf { \\Omega } \\eta = 3 ) , two-way RM ANOVA with Tukey’s multiple comparison test. CD4 T cell polarization within spleen cells cultured as in I (J), or from naïve \\mathtt { C D 4 ^ { + } C D 2 5 ^ { - } T } cells cultured with anti-CD3/CD28 antibodies (K) in medium (med) or different proportions of SuperMApo was assessed by FACS. { } ^ { \\star } P < 0 . 0 5 , { } ^ { \\star \\star } P < 0 . 0 1 ^ { \\star \\star \\star } P < 0 . 0 0 1 , unpaired t-test vs. without SuperMApo (mean ± s.e.m., \\begin{array} { r } { n = 3 ) . } \\end{array} . Figure data are issued from representative experiments, repeated at least three times with similar results."
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 3,
+          "parent_block_id": "/pdf_info/2/preproc_blocks/13",
+          "raw_locator": "/pdf_info/2/preproc_blocks/13/blocks/2",
+          "type": "chart_caption",
+          "bbox_points": [
+            46,
+            555,
+            547,
+            725
+          ],
+          "raw_block_sha256": "9c5a65328db1f24f189f39710a45a3985815ee04a5a87b190e45e085ccc286cd",
+          "figure_number_prefix": "FIGURE 1 |",
+          "mineru_text_exact_joined_spans": "FIGURE 1 | Macrophages eliminating apoptotic cells produced factors with pro-resolutive properties. (A) Inverted fluorescence microscopy observation of macrophages stained by PE-F4/80 antibody (red), eliminating CFSE-labeled apoptotic cells (green) at 0, 12, and 24 h of culture. Injection (i.p.) of the supernatant from the previous 48 h culture (SuperMApo) increased neutrophil percentage (B) and number (C), not macrophage number (D) in the peritoneal cavity after peritonitis induction. (E) Neutrophil apoptosis 24 h after peritonitis induction in the presence or not of SuperMApo injection 28 h earlier ( n = 3 mice per group; box and whiskers). The gating strategy of peritoneal neutrophils and macrophages is shown in (B), other data are shown as mean ± s.e.m., n = 3 . { } ^ { \\star \\star \\star } P < 0 . 0 0 1 , two-way RM ANOVA with Bonferroni post-tests. (F) The percentage of phagocytosis (mean \\pm \\ : \\mathsf { s . e . m . } , n = 3 ) of apoptotic cells by macrophages was evaluated at various time points in normal culture condition (macro + apo cells) with or without SuperMApo or supernatant from macrophages cultured alone plus the supernatant from apoptotic cells cultured alone (+MacroSup +ApoSup), or at + 4 ^ { \\circ } \\mathsf { C } . \\mathsf { \\Pi } ^ { \\star \\star \\star } P < 0 . 0 0 1 , two-way RM ANOVA with Bonferroni post-tests. (G) Costimulatory (CD86/CD40) and MHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions evaluated in plasmacytoid DC (pDC), conventional DC (cDC) and macrophages (macro) in spleen cell cultures with or without TLR ligands (TLR-L) or SuperMApo, or medium (med). Each cell in the heat map represents a single well; data are from one experiment representative of three. (H) Ovalbumin (OVA) TCR-specific \\mathtt { C D 4 ^ { + } C D 2 5 ^ { - } T } cell polarization (mean ± s.e.m., n = . 3 ) \\mathrm { ~ b y ~ p D C } , cDC and macrophages cultured as in G in the presence of OVA, was assessed by FACS evaluating IFN-γ (Th1), IL-17 (Th17) and Foxp3 (Treg) intracellular content after 4 days of culture. ^ { \\star } P < 0 . 0 5 , ^ { \\star \\star } P < 0 . 0 1 ^ { \\star \\star \\star } P < 0 . 0 0 1 , 1 way ANOVA with Bonferroni’s multiple comparison test. (I) Spleen T cell proliferation in the presence of grading doses of anti-CD3 specific antibody (αCD3) with medium (med) or SuperMApo in different proportions was assessed by BrdU incorporation and counting. ^ { \\star \\star \\star } P < 0 . 0 0 1 , med vs. other conditions (mean ± \\mathsf { S } . \\mathsf { e } . \\mathsf { m } . , \\mathsf { \\Omega } \\eta = 3 ) , two-way RM ANOVA with Tukey’s multiple comparison test. CD4 T cell polarization within spleen cells cultured as in I (J), or from naïve \\mathtt { C D 4 ^ { + } C D 2 5 ^ { - } T } cells cultured with anti-CD3/CD28 antibodies (K) in medium (med) or different proportions of SuperMApo was assessed by FACS. { } ^ { \\star } P < 0 . 0 5 , { } ^ { \\star \\star } P < 0 . 0 1 ^ { \\star \\star \\star } P < 0 . 0 0 1 , unpaired t-test vs. without SuperMApo (mean ± s.e.m., \\begin{array} { r } { n = 3 ) . } \\end{array} . Figure data are issued from representative experiments, repeated at least three times with similar results.",
+          "mineru_text_sha256": "0d6886616ce5fa4b2a2fcf844a3a6f9dbaa3d9c5227edd07eaf0eb885c7c306b",
+          "native_source_text": "FIGURE 1 | Macrophages eliminating apoptotic cells produced factors with pro-resolutive properties. (A) Inverted fluorescence microscopy observation of\nmacrophages stained by PE-F4/80 antibody (red), eliminating CFSE-labeled apoptotic cells (green) at 0, 12, and 24 h of culture. Injection (i.p.) of the supernatant from\nthe previous 48 h culture (SuperMApo) increased neutrophil percentage (B) and number (C), not macrophage number (D) in the peritoneal cavity after peritonitis\ninduction. (E) Neutrophil apoptosis 24 h after peritonitis induction in the presence or not of SuperMApo injection 28 h earlier (n = 3 mice per group; box and whiskers).\nThe gating strategy of peritoneal neutrophils and macrophages is shown in (B), other data are shown as mean ± s.e.m., n = 3. ***P < 0.001, two-way RM ANOVA\nwith Bonferroni post-tests. (F) The percentage of phagocytosis (mean ± s.e.m., n = 3) of apoptotic cells by macrophages was evaluated at various time points in\nnormal culture condition (macro + apo cells) with or without SuperMApo or supernatant from macrophages cultured alone plus the supernatant from apoptotic cells\ncultured alone (+MacroSup +ApoSup), or at +4 ◦ C. ***P < 0.001, two-way RM ANOVA with Bonferroni post-tests. (G) Costimulatory (CD86/CD40) and MHC-II\nmolecule (IA/IE) mean florescence intensity (MFI) expressions evaluated in plasmacytoid DC (pDC), conventional DC (cDC) and macrophages (macro) in spleen cell\ncultures with or without TLR ligands (TLR-L) or SuperMApo, or medium (med). Each cell in the heat map represents a single well; data are from one experiment\nrepresentative of three. (H) Ovalbumin (OVA) TCR-specific CD4 + CD25 − T cell polarization (mean ± s.e.m., n =.3) by pDC, cDC and macrophages cultured as in G in\nthe presence of OVA, was assessed by FACS evaluating IFN-γ (Th1), IL-17 (Th17) and Foxp3 (Treg) intracellular content after 4 days of culture. *P < 0.05, **P < 0.01,\n***P < 0.001, 1 way ANOVA with Bonferroni’s multiple comparison test. (I) Spleen T cell proliferation in the presence of grading doses of anti-CD3 specific antibody\n(αCD3) with medium (med) or SuperMApo in different proportions was assessed by BrdU incorporation and counting. ***P < 0.001, med vs. other conditions (mean ±\ns.e.m., n = 3), two-way RM ANOVA with Tukey’s multiple comparison test. CD4 T cell polarization within spleen cells cultured as in I (J), or from naïve CD4 + CD25 − T\ncells cultured with anti-CD3/CD28 antibodies (K) in medium (med) or different proportions of SuperMApo was assessed by FACS. *P < 0.05, **P < 0.01,\n***P < 0.001, unpaired t-test vs. without SuperMApo (mean ± s.e.m., n = 3). Figure data are issued from representative experiments, repeated at least three times\nwith similar results.",
+          "native_text_extraction_bbox_points": [
+            43,
+            552,
+            550,
+            728
+          ],
+          "native_source_text_sha256": "bd7082068db390a4797a8a3b4f5edb527c05b52c7d518ff21ffc986a926bff3f",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/2/preproc_blocks/0",
+        "/pdf_info/2/preproc_blocks/1",
+        "/pdf_info/2/preproc_blocks/2",
+        "/pdf_info/2/preproc_blocks/3",
+        "/pdf_info/2/preproc_blocks/4",
+        "/pdf_info/2/preproc_blocks/5",
+        "/pdf_info/2/preproc_blocks/6",
+        "/pdf_info/2/preproc_blocks/7",
+        "/pdf_info/2/preproc_blocks/8",
+        "/pdf_info/2/preproc_blocks/9",
+        "/pdf_info/2/preproc_blocks/10",
+        "/pdf_info/2/preproc_blocks/11",
+        "/pdf_info/2/preproc_blocks/12",
+        "/pdf_info/2/preproc_blocks/13"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/2/preproc_blocks/0",
+        "/pdf_info/2/preproc_blocks/1",
+        "/pdf_info/2/preproc_blocks/2",
+        "/pdf_info/2/preproc_blocks/3",
+        "/pdf_info/2/preproc_blocks/4",
+        "/pdf_info/2/preproc_blocks/5",
+        "/pdf_info/2/preproc_blocks/6",
+        "/pdf_info/2/preproc_blocks/7",
+        "/pdf_info/2/preproc_blocks/8",
+        "/pdf_info/2/preproc_blocks/9",
+        "/pdf_info/2/preproc_blocks/10",
+        "/pdf_info/2/preproc_blocks/11",
+        "/pdf_info/2/preproc_blocks/12",
+        "/pdf_info/2/preproc_blocks/13"
+      ],
+      "raw_visual_block_count": 14,
+      "caption_continuation_pages": [],
+      "caption_standalone_top_level_text": false,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "Macrophages eliminating apoptotic cells produced factors with pro-resolutive properties."
+    },
+    {
+      "figure_number": 2,
+      "physical_page": 4,
+      "page_index": 3,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          126.13499999999999,
+          69.629142,
+          469.095,
+          530.669142
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R150",
+        "source_xobject_pixel_size": [
+          1429,
+          1921
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          126.13499999999999,
+          248.85100000000003,
+          469.095,
+          709.891
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-2.png",
+        "sha256": "a876ea35ca728b54a292a6221f03a5e2c645bb024ff87691eefe8baca5eccc04",
+        "pixel_size": [
+          1430,
+          1922
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          126.13499999999999,
+          69.629142,
+          469.095,
+          530.669142
+        ],
+        "raster_window_pixels_xyxy": [
+          525,
+          290,
+          1955,
+          2212
+        ],
+        "effective_bbox_points_top_left": [
+          125.99999999999999,
+          69.6,
+          469.2,
+          530.88
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "4",
+          "-l",
+          "4",
+          "-singlefile",
+          "-x",
+          "525",
+          "-y",
+          "290",
+          "-W",
+          "1430",
+          "-H",
+          "1922",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-2"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/1",
+            "/pdf_info/3/preproc_blocks/2"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/3"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/4",
+            "/pdf_info/3/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/0",
+            "/pdf_info/3/preproc_blocks/7",
+            "/pdf_info/3/preproc_blocks/8"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "F",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/9"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "G",
+          "raw_block_ids": [
+            "/pdf_info/3/preproc_blocks/10",
+            "/pdf_info/3/preproc_blocks/11"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/0",
+          "type": "image",
+          "bbox_points": [
+            150,
+            249,
+            299,
+            288
+          ],
+          "raw_block_sha256": "fbcbd92821986faed910010043990e70f62147c383f32644fc2aec390c81d95f",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/0/blocks/0/lines/0/spans/0",
+              "path": "images/0043f974666fd0d6a54dbf6e36136f7c8932f8f039749324d8d05cdd55f74bbe.jpg",
+              "sha256": "9c8f3c2114a03701c6cb62796676e165ce102fb6dd62d19eb4b3b294022bcbbe",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 16,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 16,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/1",
+          "type": "image",
+          "bbox_points": [
+            125,
+            67,
+            254,
+            117
+          ],
+          "raw_block_sha256": "60db93289a9cb1a954e497731f8261c3daa55611470567285b0393afcbfceef6",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/1/blocks/0/lines/0/spans/0",
+              "path": "images/d53fc48820dd7c4700f90041107885d84cebe30f4f11e688d98673bd56f3ea66.jpg",
+              "sha256": "09aa3d9484d1f283cc59701effc8b270693569ce66927d4200d8c562ec4a6aa7",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 17,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 17,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/2",
+          "type": "chart",
+          "bbox_points": [
+            127,
+            122,
+            225,
+            197
+          ],
+          "raw_block_sha256": "a31644c22a254d4f48413aa9bc63d6986484257c7ec166b4e04219ad1cb6f544",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/2/blocks/0/lines/0/spans/0",
+              "path": "images/b0133901ef32a6ee33ed18bcaae05e3f93dacde2b1d5a1e387169cdbf2acaf52.jpg",
+              "sha256": "c001177d1caf9ec7885b55880a00ffb6c9b993ae8ebc48abaf29a25cf1561abe",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 18,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 18,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/2/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                138,
+                199,
+                213,
+                231
+              ],
+              "text": "Days post-immunization —○-CIA  + SuperMApo"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/3",
+          "type": "image",
+          "bbox_points": [
+            261,
+            71,
+            345,
+            158
+          ],
+          "raw_block_sha256": "177fbe2c2e54d6ac1066dd3c04790513deeb59471b39742cb6798ed98a1c90bc",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/3/blocks/0/lines/0/spans/0",
+              "path": "images/6915341a180b0a35fa090f9ff6d8ab78b234a8c6e49dee118038583a07489274.jpg",
+              "sha256": "776f3d3a82912af4ac3928695fd8161a5d92ab1b4438bd3fd6d0d671f31e9668",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 19,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 19,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/4",
+          "type": "image",
+          "bbox_points": [
+            239,
+            159,
+            360,
+            204
+          ],
+          "raw_block_sha256": "96ba562b0c80bb3540924cf618e3c3e460491376958048f447362dd6418a751d",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/4/blocks/0/lines/0/spans/0",
+              "path": "images/5828e1942a81d764a6f23e61efefbbb4fb2ee87c34ec055be0744cc82e21f9df.jpg",
+              "sha256": "1c3b00427d1e813d4ef39bf7247df92252fbba167ebf2c0a6f45d4df67edcb02",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 20,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 20,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/5",
+          "type": "chart",
+          "bbox_points": [
+            378,
+            83,
+            464,
+            168
+          ],
+          "raw_block_sha256": "c02945bd44d199ef4253ff7bbf27530f8b1154b4297e8b2b04f770c87b1552c6",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/5/blocks/1/lines/0/spans/0",
+              "path": "images/d4c4e490b178f5ebd4bbdcc44b6a8d513c10c40c189193b708b74a50b0f4bf21.jpg",
+              "sha256": "67c8c810ea36ee89d784058b694978fb5e19629df2d29eed7afd3ffb26998e96",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 21,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 21,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/5/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                371,
+                68,
+                380,
+                78
+              ],
+              "text": "D"
+            },
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/5/blocks/2",
+              "type": "chart_footnote",
+              "bbox_points": [
+                380,
+                171,
+                470,
+                208
+              ],
+              "text": "-O-CIA + Apo Sup + Macro Sup Δ + Macro Sup + Apo Sup"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/6",
+          "type": "image",
+          "bbox_points": [
+            245,
+            204,
+            360,
+            250
+          ],
+          "raw_block_sha256": "8522524347c4ac9781b21969ecfff75ad53c8f6fdbbd28a27b589a102a5c90b4",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/6/blocks/0/lines/0/spans/0",
+              "path": "images/b79f1f94e5ccd1632a89805a3f5ebad43d24b031569906149e3c5ba12c561838.jpg",
+              "sha256": "accaaa9afd86499165816f7fd99c72f6c66ecf15e46e28b8dbdbc384186a3bf6",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 22,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 22,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/6/blocks/1",
+              "type": "image_caption",
+              "bbox_points": [
+                347,
+                246,
+                355,
+                255
+              ],
+              "text": "F"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/7",
+          "type": "chart",
+          "bbox_points": [
+            137,
+            288,
+            237,
+            366
+          ],
+          "raw_block_sha256": "912c84b0e3d478ecd0a73a6f52941b052b4e9e891c5229f383cb29e4e26e58cb",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/7/blocks/1/lines/0/spans/0",
+              "path": "images/eee992d06f75f18c914b0fdb4464c719f832854fab24d6ec6483f528b81c2325.jpg",
+              "sha256": "1154830e3eac4de73bc5500ec041e15fc29dd059539934229ca7a2e86b9ad807",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 23,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 23,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/7/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                126,
+                245,
+                134,
+                255
+              ],
+              "text": "E"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/8",
+          "type": "chart",
+          "bbox_points": [
+            237,
+            287,
+            339,
+            372
+          ],
+          "raw_block_sha256": "9013ca8a798c9c1324f0952964ee545e72f44d74932ec14ac656b0c493055f5f",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/8/blocks/0/lines/0/spans/0",
+              "path": "images/7105455c8de3761616d7b2d02313b80b16e96b6f37dae7c07308dd8fbd9bc6b5.jpg",
+              "sha256": "bee920b4e0f244a789b79002d0b68c840d2d3141efc6f508fe2f17b34bc1a244",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 24,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 24,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/8/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                153,
+                370,
+                313,
+                409
+              ],
+              "text": "-O-CIA -○-CIA + SuperMApo + SuperMApo + SuperMApo lyo + SuperMApo lyo  + SuperMApo lyo 5X"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/9",
+          "type": "chart",
+          "bbox_points": [
+            354,
+            269,
+            453,
+            352
+          ],
+          "raw_block_sha256": "36f4e6f8474f608eedaae8ce1446122679269a77620f0b80ad143225c2548b6b",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/9/blocks/0/lines/0/spans/0",
+              "path": "images/e2ebc6f5801e385da189530cd55419767cdaf6dd538987c70d012314ef0eb303.jpg",
+              "sha256": "1f0da0b1cb5865e8a30f21787e456817a4e28edefb517b5a9436062d5125541b",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 25,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 25,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/9/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                367,
+                353,
+                458,
+                391
+              ],
+              "text": "—O-CIA + B6 SuperMApa + B6 SuperMApo lyo  + B6 SuperMApo lyo 5X"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/10",
+          "type": "chart",
+          "bbox_points": [
+            160,
+            423,
+            261,
+            528
+          ],
+          "raw_block_sha256": "b7e82e97ea30240c510d9d7411e17f0a8823148cd99ce6b840ef347408f114b6",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/10/blocks/1/lines/0/spans/0",
+              "path": "images/fc7c596caed4c1b47d2125bdb23f2a626b37b55154b4e63aaa734bc0b7d1e813.jpg",
+              "sha256": "4e28b7412da514257b7738778af03a825715a72940e41ac921cd120b4a253979",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 26,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 26,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/10/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                125,
+                419,
+                135,
+                429
+              ],
+              "text": "G"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/3/preproc_blocks/11",
+          "type": "chart",
+          "bbox_points": [
+            272,
+            424,
+            356,
+            530
+          ],
+          "raw_block_sha256": "ed8fbea1b866ea59b4df6cd0f2e7c956a390f4c548b3fed4de511ee281e5da4c",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/11/blocks/0/lines/0/spans/0",
+              "path": "images/e45509590f0460191e7e12489e325376cfc95dd10b664166d369d040ecd6d2ae.jpg",
+              "sha256": "fcc4ca4041fe4c32f933d8c2b9953eb3fa0c693db6104f2b416e3db4758ff068",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 27,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 27,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/3/preproc_blocks/11/blocks/1",
+              "type": "chart_caption",
+              "bbox_points": [
+                46,
+                541,
+                547,
+                639
+              ],
+              "text": "FIGURE 2 | Injection of SuperMApo in ongoing CIA induced a rapid termination of the disease. (A) The clinical arthritic score (mean ± \\mathsf { s } . \\mathsf { e } . \\mathsf { m } . , { \\boldsymbol { n } } = 5 per group) after SuperMApo injections was strongly reduced in arthritic mice compared to CIA mice receiving control vehicle injections ( \\mathsf { C l A } ) . \\ ^ { \\star \\star \\star } P < 0 . 0 0 1 , one-way ANOVA with Bonferroni's multiple comparison post-tests. (B) Representative pictures of paw swelling reduction after SuperMApo iniection, (C) HES staining of rear ankle joint sections showing vehicle-(CIA) and SuperMApo-treated arthritic mice conditions. (D) The clinical arthritis score (mean \\pm \\mathsf { s . e . m . } , n = 5 per group) of mice receiving the supernatant from apoptotic cell culture, or from macrophage culture or both the previous together did not demonstrated reduction. (E,F) Arthritic mice treated with lyophilized SuperMApo concentrated (SuperMApo lyo 5X) or not (SuperMApo lyo), demonstrated arthritis clinical score reduction, lasting for more than 60 days, even when issued from a C57Bl/6 (B6) origin. ^ { \\star \\star \\star } P < 0 . 0 0 1 , one-way ANOVA with Bonferroni’s multiple comparison post-tests, vs. CIA (mean ± s.e.m., n = 5 per group). (G) SuperMApo-treated arthritic mice were able to reject an allogeneic skin graft as control mice did (7 mice per group, data pooled from 2 independent experiments), and naive mice receiving SuperMApo or vehicle demonstrated similar survival rate after cecal ligation and puncture-induced sepsis (11 to 12 mice per group, data pooled from 2 independent experiments). Figure data are issued from representative experiments, repeated at least three times with similar results unless otherwise noted."
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 4,
+          "parent_block_id": "/pdf_info/3/preproc_blocks/11",
+          "raw_locator": "/pdf_info/3/preproc_blocks/11/blocks/1",
+          "type": "chart_caption",
+          "bbox_points": [
+            46,
+            541,
+            547,
+            639
+          ],
+          "raw_block_sha256": "254899907fa7656800baa9cea94e96ea992413e0589c432de1847d54ea078e37",
+          "figure_number_prefix": "FIGURE 2 |",
+          "mineru_text_exact_joined_spans": "FIGURE 2 | Injection of SuperMApo in ongoing CIA induced a rapid termination of the disease. (A) The clinical arthritic score (mean ± \\mathsf { s } . \\mathsf { e } . \\mathsf { m } . , { \\boldsymbol { n } } = 5 per group) after SuperMApo injections was strongly reduced in arthritic mice compared to CIA mice receiving control vehicle injections ( \\mathsf { C l A } ) . \\ ^ { \\star \\star \\star } P < 0 . 0 0 1 , one-way ANOVA with Bonferroni's multiple comparison post-tests. (B) Representative pictures of paw swelling reduction after SuperMApo iniection, (C) HES staining of rear ankle joint sections showing vehicle-(CIA) and SuperMApo-treated arthritic mice conditions. (D) The clinical arthritis score (mean \\pm \\mathsf { s . e . m . } , n = 5 per group) of mice receiving the supernatant from apoptotic cell culture, or from macrophage culture or both the previous together did not demonstrated reduction. (E,F) Arthritic mice treated with lyophilized SuperMApo concentrated (SuperMApo lyo 5X) or not (SuperMApo lyo), demonstrated arthritis clinical score reduction, lasting for more than 60 days, even when issued from a C57Bl/6 (B6) origin. ^ { \\star \\star \\star } P < 0 . 0 0 1 , one-way ANOVA with Bonferroni’s multiple comparison post-tests, vs. CIA (mean ± s.e.m., n = 5 per group). (G) SuperMApo-treated arthritic mice were able to reject an allogeneic skin graft as control mice did (7 mice per group, data pooled from 2 independent experiments), and naive mice receiving SuperMApo or vehicle demonstrated similar survival rate after cecal ligation and puncture-induced sepsis (11 to 12 mice per group, data pooled from 2 independent experiments). Figure data are issued from representative experiments, repeated at least three times with similar results unless otherwise noted.",
+          "mineru_text_sha256": "773ffadea984eadc9200a22d6621c6066d0a02e695d549ec970726538c6b251b",
+          "native_source_text": "FIGURE 2 | Injection of SuperMApo in ongoing CIA induced a rapid termination of the disease. (A) The clinical arthritic score (mean ± s.e.m., n = 5 per group) after\nSuperMApo injections was strongly reduced in arthritic mice compared to CIA mice receiving control vehicle injections (CIA). ***P < 0.001, one-way ANOVA with\nBonferroni’s multiple comparison post-tests. (B) Representative pictures of paw swelling reduction after SuperMApo injection. (C) HES staining of rear ankle joint\nsections showing vehicle-(CIA) and SuperMApo-treated arthritic mice conditions. (D) The clinical arthritis score (mean ± s.e.m., n = 5 per group) of mice receiving the\nsupernatant from apoptotic cell culture, or from macrophage culture or both the previous together did not demonstrated reduction. (E,F) Arthritic mice treated with\nlyophilized SuperMApo concentrated (SuperMApo lyo 5X) or not (SuperMApo lyo), demonstrated arthritis clinical score reduction, lasting for more than 60 days, even\nwhen issued from a C57Bl/6 (B6) origin. ***P < 0.001, one-way ANOVA with Bonferroni’s multiple comparison post-tests, vs. CIA (mean ± s.e.m., n = 5 per group). (G)\nSuperMApo-treated arthritic mice were able to reject an allogeneic skin graft as control mice did (7 mice per group, data pooled from 2 independent experiments), and\nnaive mice receiving SuperMApo or vehicle demonstrated similar survival rate after cecal ligation and puncture-induced sepsis (11 to 12 mice per group, data pooled\nfrom 2 independent experiments). Figure data are issued from representative experiments, repeated at least three times with similar results unless otherwise noted.",
+          "native_text_extraction_bbox_points": [
+            43,
+            538,
+            550,
+            642
+          ],
+          "native_source_text_sha256": "fd8d8eb94950706c8b890591a30be7624ab08ccf91933b319cbb8a45fed4218c",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/3/preproc_blocks/0",
+        "/pdf_info/3/preproc_blocks/1",
+        "/pdf_info/3/preproc_blocks/2",
+        "/pdf_info/3/preproc_blocks/3",
+        "/pdf_info/3/preproc_blocks/4",
+        "/pdf_info/3/preproc_blocks/5",
+        "/pdf_info/3/preproc_blocks/6",
+        "/pdf_info/3/preproc_blocks/7",
+        "/pdf_info/3/preproc_blocks/8",
+        "/pdf_info/3/preproc_blocks/9",
+        "/pdf_info/3/preproc_blocks/10",
+        "/pdf_info/3/preproc_blocks/11"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/3/preproc_blocks/0",
+        "/pdf_info/3/preproc_blocks/1",
+        "/pdf_info/3/preproc_blocks/2",
+        "/pdf_info/3/preproc_blocks/3",
+        "/pdf_info/3/preproc_blocks/4",
+        "/pdf_info/3/preproc_blocks/5",
+        "/pdf_info/3/preproc_blocks/6",
+        "/pdf_info/3/preproc_blocks/7",
+        "/pdf_info/3/preproc_blocks/8",
+        "/pdf_info/3/preproc_blocks/9",
+        "/pdf_info/3/preproc_blocks/10",
+        "/pdf_info/3/preproc_blocks/11"
+      ],
+      "raw_visual_block_count": 12,
+      "caption_continuation_pages": [],
+      "caption_standalone_top_level_text": false,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "Injection of SuperMApo in ongoing CIA induced a rapid termination of the disease."
+    },
+    {
+      "figure_number": 3,
+      "physical_page": 6,
+      "page_index": 5,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          125.64000000000001,
+          69.91114199999993,
+          469.56000000000006,
+          555.6711419999999
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R202",
+        "source_xobject_pixel_size": [
+          1433,
+          2024
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          125.64000000000001,
+          223.849,
+          469.56000000000006,
+          709.609
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-3.png",
+        "sha256": "348f26a37a2429c1f5c7f216ff54512fbf43bd49e1aa41d329ad76795c7e1f9a",
+        "pixel_size": [
+          1434,
+          2025
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          125.64000000000001,
+          69.91114199999993,
+          469.56000000000006,
+          555.6711419999999
+        ],
+        "raster_window_pixels_xyxy": [
+          523,
+          291,
+          1957,
+          2316
+        ],
+        "effective_bbox_points_top_left": [
+          125.52,
+          69.83999999999999,
+          469.67999999999995,
+          555.8399999999999
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "6",
+          "-l",
+          "6",
+          "-singlefile",
+          "-x",
+          "523",
+          "-y",
+          "291",
+          "-W",
+          "1434",
+          "-H",
+          "2025",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-3"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/5/preproc_blocks/0"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/5/preproc_blocks/1",
+            "/pdf_info/5/preproc_blocks/2"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/5/preproc_blocks/3",
+            "/pdf_info/5/preproc_blocks/4"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/5/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/5/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/0",
+          "type": "image",
+          "bbox_points": [
+            171,
+            70,
+            448,
+            209
+          ],
+          "raw_block_sha256": "34443cfb6a85153869d880a64ea719b508ac785cc821f86758650e31ee5f932e",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/0/blocks/1/lines/0/spans/0",
+              "path": "images/372238597cb28389936b8fc00b0e20edfebd095cf3b04f44bfd3b86cfb911b58.jpg",
+              "sha256": "52049c432f7ec058a43cd185fc4db152b5380bc8d48075d8873c3807033d12a1",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 28,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 28,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/0/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                155,
+                68,
+                164,
+                78
+              ],
+              "text": "A"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/1",
+          "type": "chart",
+          "bbox_points": [
+            156,
+            215,
+            293,
+            301
+          ],
+          "raw_block_sha256": "9af5417fbde0bde2a8ccde5eebc54d24fd2b8d4a8780e8f560874487705b0233",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/1/blocks/1/lines/0/spans/0",
+              "path": "images/0b14e7f7216b8ec7e2e9876d0f56a9e3a54967003998ba2d1b41231da2f71f3d.jpg",
+              "sha256": "0923a0bf5d53176f76bc4e5a5ddab06f266e72af5483b149687b018c37ba8a9e",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 29,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 29,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/1/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                155,
+                205,
+                164,
+                215
+              ],
+              "text": "B"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/2",
+          "type": "chart",
+          "bbox_points": [
+            290,
+            216,
+            432,
+            301
+          ],
+          "raw_block_sha256": "2c70998f1476a3433093933d8955e0af497fb0c51779ed02c8f741bd124883f8",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/2/blocks/0/lines/0/spans/0",
+              "path": "images/a6f9baba47cd4178b60839b889dad54b93d42531b11089a492e48138348714e1.jpg",
+              "sha256": "e8b412570e07094be6565bfa1afa1f91b4d5f076b33dab7e1d2aa605f22639df",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 30,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 30,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/3",
+          "type": "chart",
+          "bbox_points": [
+            165,
+            318,
+            281,
+            412
+          ],
+          "raw_block_sha256": "220529e25b1af4680ba7e7c2f6c20c719314c0605b38aca3da9a2d7db195c222",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/3/blocks/1/lines/0/spans/0",
+              "path": "images/83f932c3e7166c66d529499d8d03ecddc7d687b1b667d5c0dd7edc78a92dec60.jpg",
+              "sha256": "41183ee6811421757feeeda57e962948798bb94f42ffa7b2e29f02c2314aea0f",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 31,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 31,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/3/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                155,
+                308,
+                164,
+                319
+              ],
+              "text": "C"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/4",
+          "type": "chart",
+          "bbox_points": [
+            284,
+            319,
+            461,
+            412
+          ],
+          "raw_block_sha256": "12f239845fc6e6c4bf1f3a61106e5a1323aea3e22d9fb49b8c4caf09119d9d16",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/4/blocks/0/lines/0/spans/0",
+              "path": "images/7273ca8016ddeaebfec59d3aa7f7a822b7255cd253fc8c51ef9de66e20c6ee6e.jpg",
+              "sha256": "df8173b1c523e33c310394eba067dae780d6fb75e2038dfc8cb364de0c6b9413",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 32,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 32,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/5",
+          "type": "chart",
+          "bbox_points": [
+            124,
+            419,
+            326,
+            524
+          ],
+          "raw_block_sha256": "3811e6484a3a27d4b0dc875176c676b1b3e8b0575713b0b58140073cba369525",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/5/blocks/0/lines/0/spans/0",
+              "path": "images/fdc5fdfac740de8e85947320b263b220cde371e3856a7ed3b5c22258d2375b76.jpg",
+              "sha256": "773aa9ee95f0fa72cc9e25637f356c46a5650321cef4167aa93989af0601c6da",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 33,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 33,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/5/preproc_blocks/6",
+          "type": "chart",
+          "bbox_points": [
+            340,
+            420,
+            442,
+            508
+          ],
+          "raw_block_sha256": "b92de10e4d07de7b9536dc0f4afef9c855340f4958f0f909291b1275b602a7e6",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/1/lines/0/spans/0",
+              "path": "images/a9b5ba3e2b0a5fc1c6d3209b35e61a963a328bfc0b51c1d2cd7c5244951fc33d.jpg",
+              "sha256": "bd3a4818446f4854911bcb6bf3ca48d14befdad8e0fba63b79fc5191919a5d97",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 34,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 34,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                331,
+                419,
+                340,
+                429
+              ],
+              "text": "E"
+            },
+            {
+              "raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                46,
+                567,
+                547,
+                693
+              ],
+              "text": "FIGURE 3 | Resolution of arthritis implicates the generation of antigen-specific regulatory T cells. (A) Numbers of splenocytes ( \\mathsf { L e u k o } ) , \\mathsf { C D 4 ^ { + } } T cells and { \\mathsf { T r e g } } , \\Vdash \\ N - \\gamma ^ { + } Th1 and IL- \\cdot 1 7 A ^ { + } Th17 subsets were decreased early after SuperMApo treatment (72 h) and were observed normalized 10–12 days post-treatment (10–12 days post-ttt), compared to arthritic mice receiving vehicle. Each bar represents means of each group per one experiment with 5 mice per group. ^ { \\star \\star } P < 0 . 0 1 , paired t-test. (B) BrdU counts showing the proliferation of cells from arthritic mice 72 h after receiving SuperMApo or vehicle, in response to increasing doses of collagen or MBT, or to CD3-specific antibody (used as control). Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per 9 \\mathrm { r o u p } , \\mathrm { } ^ { \\star } P < 0 . 0 5 , \\mathrm { } ^ { \\star \\star } P < 0 . 0 1 2-way ANOVA with Bonferroni post-tests. (C) BrdU counts showing collagen-specific suppression of cell proliferation by Treg issued from arthritic mice treated with SuperMApo 72 h earlier compared to Treg from other origins. The suppressive activity of all Treg is also shown as control in CD3-specific antibody-stimulated cultures. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per \\mathsf { g r o u p } , \\star \\star \\mathsf { P } < 0 . 0 0 1 , 2 \\cdot -way ANOVA with Bonferroni post-tests. (D) Arthritis clinical score showing that only Treg issued from arthritic mice treated with SuperMApo ([CIA + SMA] Treg) demonstrated the capacity to reduced arthritis after adoptive transfer compared to Treg from other origins (from CIA mice [CIA], naïve mice receiving SuperMApo [naïve+SMA] or not [naïve]), in a cell number-dependent manner. Five mice per group, mean ± s.e.m., ^ { \\star } P < 0 . 0 5 , ^ { \\star \\star \\star } P < 0 . 0 0 1 vs. CIA group, one-way ANOVA with Bonferroni’s multiple comparison post-tests. (E) Arthritis clinical score showing that CD25-specific depleting antibody injection inhibited SuperMApo-induced arthritis resolution. Five mice per group, mean ± sem, ***P < 0.001 vs. other groups, one-way ANOVA with Bonferroni’s multiple comparison post-tests."
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 6,
+          "parent_block_id": "/pdf_info/5/preproc_blocks/6",
+          "raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/2",
+          "type": "chart_caption",
+          "bbox_points": [
+            46,
+            567,
+            547,
+            693
+          ],
+          "raw_block_sha256": "299c2794a774a367969a733fcbde4aad9ab07f7affdf65c7410fb75ae50e1cc6",
+          "figure_number_prefix": "FIGURE 3 |",
+          "mineru_text_exact_joined_spans": "FIGURE 3 | Resolution of arthritis implicates the generation of antigen-specific regulatory T cells. (A) Numbers of splenocytes ( \\mathsf { L e u k o } ) , \\mathsf { C D 4 ^ { + } } T cells and { \\mathsf { T r e g } } , \\Vdash \\ N - \\gamma ^ { + } Th1 and IL- \\cdot 1 7 A ^ { + } Th17 subsets were decreased early after SuperMApo treatment (72 h) and were observed normalized 10–12 days post-treatment (10–12 days post-ttt), compared to arthritic mice receiving vehicle. Each bar represents means of each group per one experiment with 5 mice per group. ^ { \\star \\star } P < 0 . 0 1 , paired t-test. (B) BrdU counts showing the proliferation of cells from arthritic mice 72 h after receiving SuperMApo or vehicle, in response to increasing doses of collagen or MBT, or to CD3-specific antibody (used as control). Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per 9 \\mathrm { r o u p } , \\mathrm { } ^ { \\star } P < 0 . 0 5 , \\mathrm { } ^ { \\star \\star } P < 0 . 0 1 2-way ANOVA with Bonferroni post-tests. (C) BrdU counts showing collagen-specific suppression of cell proliferation by Treg issued from arthritic mice treated with SuperMApo 72 h earlier compared to Treg from other origins. The suppressive activity of all Treg is also shown as control in CD3-specific antibody-stimulated cultures. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per \\mathsf { g r o u p } , \\star \\star \\mathsf { P } < 0 . 0 0 1 , 2 \\cdot -way ANOVA with Bonferroni post-tests. (D) Arthritis clinical score showing that only Treg issued from arthritic mice treated with SuperMApo ([CIA + SMA] Treg) demonstrated the capacity to reduced arthritis after adoptive transfer compared to Treg from other origins (from CIA mice [CIA], naïve mice receiving SuperMApo [naïve+SMA] or not [naïve]), in a cell number-dependent manner. Five mice per group, mean ± s.e.m., ^ { \\star } P < 0 . 0 5 , ^ { \\star \\star \\star } P < 0 . 0 0 1 vs. CIA group, one-way ANOVA with Bonferroni’s multiple comparison post-tests. (E) Arthritis clinical score showing that CD25-specific depleting antibody injection inhibited SuperMApo-induced arthritis resolution. Five mice per group, mean ± sem, ***P < 0.001 vs. other groups, one-way ANOVA with Bonferroni’s multiple comparison post-tests.",
+          "mineru_text_sha256": "711023ff1171b930e03ee4ccaaca1ddc5f88dfa279946259f320487eb1c0c22f",
+          "native_source_text": "+ +\nFIGURE 3 | Resolution of arthritis implicates the generation of antigen-specific regulatory T cells. (A) Numbers of splenocytes (Leuko), CD4 T cells and Treg, IFN-γ\n+\nTh1 and IL-17A Th17 subsets were decreased early after SuperMApo treatment (72 h) and were observed normalized 10–12 days post-treatment (10–12 days\npost-ttt), compared to arthritic mice receiving vehicle. Each bar represents means of each group per one experiment with 5 mice per group. **P < 0.01, paired t-test.\n(B) BrdU counts showing the proliferation of cells from arthritic mice 72 h after receiving SuperMApo or vehicle, in response to increasing doses of collagen or MBT, or\nto CD3-specific antibody (used as control). Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, *P < 0.05, **P < 0.01,\n2-way ANOVA with Bonferroni post-tests. (C) BrdU counts showing collagen-specific suppression of cell proliferation by Treg issued from arthritic mice treated with\nSuperMApo 72 h earlier compared to Treg from other origins. The suppressive activity of all Treg is also shown as control in CD3-specific antibody-stimulated cultures.\nData are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, ***P < 0.001, 2-way ANOVA with Bonferroni post-tests. (D)\nArthritis clinical score showing that only Treg issued from arthritic mice treated with SuperMApo ([CIA + SMA] Treg) demonstrated the capacity to reduced arthritis\nafter adoptive transfer compared to Treg from other origins (from CIA mice [CIA], naïve mice receiving SuperMApo [naïve+SMA] or not [naïve]), in a cell\nnumber-dependent manner. Five mice per group, mean ± s.e.m., *P < 0.05, ***P < 0.001 vs. CIA group, one-way ANOVA with Bonferroni’s multiple comparison\npost-tests. (E) Arthritis clinical score showing that CD25-specific depleting antibody injection inhibited SuperMApo-induced arthritis resolution. Five mice per group,\nmean ± sem, ***P < 0.001 vs. other groups, one-way ANOVA with Bonferroni’s multiple comparison post-tests.",
+          "native_text_extraction_bbox_points": [
+            43,
+            564,
+            550,
+            696
+          ],
+          "native_source_text_sha256": "78b54f1273e6a1034b7050a34b1f187df5c79e217c8e17391169405bf471b2bc",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/5/preproc_blocks/0",
+        "/pdf_info/5/preproc_blocks/1",
+        "/pdf_info/5/preproc_blocks/2",
+        "/pdf_info/5/preproc_blocks/3",
+        "/pdf_info/5/preproc_blocks/4",
+        "/pdf_info/5/preproc_blocks/5",
+        "/pdf_info/5/preproc_blocks/6"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/5/preproc_blocks/0",
+        "/pdf_info/5/preproc_blocks/1",
+        "/pdf_info/5/preproc_blocks/2",
+        "/pdf_info/5/preproc_blocks/3",
+        "/pdf_info/5/preproc_blocks/4",
+        "/pdf_info/5/preproc_blocks/5",
+        "/pdf_info/5/preproc_blocks/6"
+      ],
+      "raw_visual_block_count": 7,
+      "caption_continuation_pages": [],
+      "caption_standalone_top_level_text": false,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "Resolution of arthritis implicates the generation of antigen-specific regulatory T cells."
+    },
+    {
+      "figure_number": 4,
+      "physical_page": 7,
+      "page_index": 6,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          112.14000000000001,
+          69.71314199999995,
+          483.4200000000001,
+          508.673142
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R214",
+        "source_xobject_pixel_size": [
+          1547,
+          1829
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          112.14000000000001,
+          270.847,
+          483.4200000000001,
+          709.807
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-4.png",
+        "sha256": "de5360af9e70b90977ac8f9524fe27e9655121f7480712de38f70434818bd218",
+        "pixel_size": [
+          1548,
+          1830
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          112.14000000000001,
+          69.71314199999995,
+          483.4200000000001,
+          508.673142
+        ],
+        "raster_window_pixels_xyxy": [
+          467,
+          290,
+          2015,
+          2120
+        ],
+        "effective_bbox_points_top_left": [
+          112.08,
+          69.6,
+          483.59999999999997,
+          508.79999999999995
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "7",
+          "-l",
+          "7",
+          "-singlefile",
+          "-x",
+          "467",
+          "-y",
+          "290",
+          "-W",
+          "1548",
+          "-H",
+          "1830",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-4"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/0",
+            "/pdf_info/6/preproc_blocks/1"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/2",
+            "/pdf_info/6/preproc_blocks/3"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/4"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "F",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/7"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "G",
+          "raw_block_ids": [
+            "/pdf_info/6/preproc_blocks/8",
+            "/pdf_info/6/preproc_blocks/9"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/0",
+          "type": "image",
+          "bbox_points": [
+            111,
+            76,
+            241,
+            205
+          ],
+          "raw_block_sha256": "f7c0b4f3f12b22cb97280988e2d23cd5bcadf5d56d4207b4678d7b22d65d8c97",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/0/blocks/1/lines/0/spans/0",
+              "path": "images/9a8d4bb830e3afd41ba5e6a8f962d0584f3346f3a3d1ec3fb4ff35e6653dd0a9.jpg",
+              "sha256": "0881f15e02a0eb726a328b465ac6412abb3dc5781e0b6715c3c5ef80796b9258",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 35,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 35,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/0/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                112,
+                69,
+                122,
+                79
+              ],
+              "text": "A"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/1",
+          "type": "chart",
+          "bbox_points": [
+            241,
+            80,
+            306,
+            226
+          ],
+          "raw_block_sha256": "3dffd6e412f5efc0a7d3ff8155cc9942dc0b8238c5e1accff502d57e54ccf938",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/1/blocks/1/lines/0/spans/0",
+              "path": "images/d202cb1af1120e3e61c1608308ae1abec34d1bd7e303bfb90dfad1a57ce5b5e1.jpg",
+              "sha256": "c4c4dcc5fe84f4923fdd85b2a3b5af54ebbf9c86661eabd53af058bd9534f4e6",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 36,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 36,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/1/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                303,
+                69,
+                311,
+                79
+              ],
+              "text": "B"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/2",
+          "type": "image",
+          "bbox_points": [
+            313,
+            75,
+            421,
+            205
+          ],
+          "raw_block_sha256": "77acbdc37096dffb797f0214c07143e454794c3052ac1bff414948cf325bdadf",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/2/blocks/0/lines/0/spans/0",
+              "path": "images/0913d01c5903efe78e1d24532d08286f28f1150fcb0c6317ecfd19cb22e0a05d.jpg",
+              "sha256": "dbde66a417992b342fb9da3ba004c6287a31d77df1a324df5f0c21fbb29c822a",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 37,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 37,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/3",
+          "type": "chart",
+          "bbox_points": [
+            420,
+            77,
+            484,
+            226
+          ],
+          "raw_block_sha256": "531a5283165c5174843d4be75a207e23f59830b86982a0959ff04b2935089f6b",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/3/blocks/0/lines/0/spans/0",
+              "path": "images/a20cf1cf973a40d15d45bcff5d7c2dfd3e5b5be100084e29f79d765c2ddf56d6.jpg",
+              "sha256": "7c6226f9b2d9b517364634b7820180fe12bf38f1fb5bc208e5a3a54ec2afb826",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 38,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 38,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/4",
+          "type": "chart",
+          "bbox_points": [
+            133,
+            237,
+            237,
+            329
+          ],
+          "raw_block_sha256": "6dd406b435a24898007d3769707f1b78468ea3922e0ab1e2775417efae22d9af",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/4/blocks/1/lines/0/spans/0",
+              "path": "images/90f6d291aa0ee70e99c03f331d52c60a97fbe558e95fb87da5c4fa353b47f005.jpg",
+              "sha256": "280c6a8ddcccccf7a9069ce64f60a73d247ac18740b0cdb9a50eb3f3bd67a182",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 39,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 39,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/4/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                120,
+                232,
+                129,
+                242
+              ],
+              "text": "C"
+            },
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/4/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                358,
+                232,
+                366,
+                242
+              ],
+              "text": "E"
+            },
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/4/blocks/3",
+              "type": "chart_footnote",
+              "bbox_points": [
+                137,
+                330,
+                220,
+                362
+              ],
+              "text": "—O—CIA  + SuperMApo —0— +CL  + CL + SuperMApo"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/5",
+          "type": "chart",
+          "bbox_points": [
+            250,
+            237,
+            354,
+            329
+          ],
+          "raw_block_sha256": "06e30e255c18bbdbc3a66002fe50f386a7a6f7b59daf73af2d1bb2fb0fea70e7",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/5/blocks/1/lines/0/spans/0",
+              "path": "images/e68e9729f3bdf95a3c1b6a619d85f8e394c61de4ba5304cba24a04587a29eaaa.jpg",
+              "sha256": "5cb2167214b39ec7501ba21528008faec2430abfdf2a038daf08dc03f955d6a9",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 40,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 40,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/5/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                245,
+                232,
+                254,
+                242
+              ],
+              "text": "D"
+            },
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/5/blocks/2",
+              "type": "chart_footnote",
+              "bbox_points": [
+                255,
+                330,
+                337,
+                364
+              ],
+              "text": "—O—CIA + SuperMApo —○- + CL — + CL + SuperMApo"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/6",
+          "type": "chart",
+          "bbox_points": [
+            364,
+            238,
+            465,
+            329
+          ],
+          "raw_block_sha256": "963a5eef50cfa5fc5fc7f826b65eb598994a3e22e3f9b14ab4e13b92af1d80f7",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/6/blocks/0/lines/0/spans/0",
+              "path": "images/bf889cfeb16d891b61fa7ce71deea604311972a94bc276f190db6c457b19462e.jpg",
+              "sha256": "3d46900a4be5701dd15ea890fbd5fca6d0daf41a16a46439b3d9ae81f9558594",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 41,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 41,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/6/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                362,
+                333,
+                466,
+                360
+              ],
+              "text": "+Macro from ClA mice  +Macro from SuperMApo- CIA mice"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/7",
+          "type": "chart",
+          "bbox_points": [
+            133,
+            378,
+            230,
+            464
+          ],
+          "raw_block_sha256": "ebd9be644d7d4a5ce4e015ef4e66f32392d6336df1d1afca14a2e75e0a88edb0",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/7/blocks/1/lines/0/spans/0",
+              "path": "images/f18788cd36dba19be9b864cf80a1407ac97a8c0f74817a025308758863a22852.jpg",
+              "sha256": "943395d6dd02ded99624df7de5445c64e8165aec51bf0f7e9433674c53382443",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 42,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 42,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/7/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                119,
+                376,
+                128,
+                385
+              ],
+              "text": "F"
+            },
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/7/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                245,
+                376,
+                255,
+                385
+              ],
+              "text": "G"
+            },
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/7/blocks/3",
+              "type": "chart_footnote",
+              "bbox_points": [
+                125,
+                465,
+                243,
+                500
+              ],
+              "text": "-O-CIA —0—+ CL + αmPDCA + SuperMApo  + CL + amPDCA + SuperMApo"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/8",
+          "type": "chart",
+          "bbox_points": [
+            258,
+            382,
+            364,
+            461
+          ],
+          "raw_block_sha256": "8db5d15e19a424ba209cd3cad236eb54e4e7b2e2e330322d548a4b4d5f1705d9",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/8/blocks/0/lines/0/spans/0",
+              "path": "images/7891993d7919de86cca19fe5096ba41ac6ee574515aaab65e170cd4dfacf007b.jpg",
+              "sha256": "5adc0976a99910dcda9b39a0147cb64e9cca1d621e54c1b4094355e70a877b4e",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 43,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 43,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/6/preproc_blocks/9",
+          "type": "chart",
+          "bbox_points": [
+            361,
+            390,
+            446,
+            461
+          ],
+          "raw_block_sha256": "71bd3a1b7757b91c62ef38ab1b4b75f9291b08f692529f725e2229e76b4af4cf",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/9/blocks/0/lines/0/spans/0",
+              "path": "images/7f2ec93950a325185225e9df0afd9246d093120ec80172bd1bbbe34d05b40fe7.jpg",
+              "sha256": "7bc86ec905a88f222a216b35ebe15e5a5651b2d5f7614310ef25185159b660df",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 44,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 44,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/6/preproc_blocks/9/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                298,
+                464,
+                417,
+                509
+              ],
+              "text": "Treg:Teff -0-CIA +SuperMApo ○+ CL + αmPDCA + CL + amPDCA + SuperMApo"
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 7,
+          "parent_block_id": "/pdf_info/6/preproc_blocks/10",
+          "raw_locator": "/pdf_info/6/preproc_blocks/10",
+          "type": "text",
+          "bbox_points": [
+            46,
+            519,
+            547,
+            682
+          ],
+          "raw_block_sha256": "27ddfb6a62ce841d04cba90fef786aabb49967b8606542ebffca2b832b101393",
+          "figure_number_prefix": "FIGURE 4 |",
+          "mineru_text_exact_joined_spans": "FIGURE 4 | Antigen-presenting cells demonstrate reprogramming in vivo after SuperMApo treatment of CIA mice. (A,B) Costimulatory (CD80/CD86/CD40) and MHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions, evaluated in spleen plasmacytoid DC (pDC), conventional DC (cDC) and macrophages (macro) 72 h and 10 days after SuperMApo or vehicle treatment of arthritic mice. Data from representative experiments showing cell marker expression from individual mouse (5 mice per group). Th17, Th1 and Treg \\mathrm { C D 4 ^ { + } ~ T } cell polarizations by the same \\mathsf { A P C } are also shown (bars represent mean ± s.e.m. of triplicates of APC isolated from each mouse and cultured with naïve \\mathrm { C D 4 ^ { + } } T cells). (C) Arthritis clinical score of mice receiving SuperMApo treatment or vehicle and clodronate-loaded (CL) or control liposomes ( \\mathsf { m e a n } \\pm \\mathsf { s . e . m . } ., 5 mice per group). ^ { \\star \\star \\star } P < 0 . 0 0 1 vs. respective control groups ( \\mathsf { C l A \\& C l A + C L } ) , one-way ANOVA with Bonferroni’s multiple comparison post-tests. (D) BrdU counts showing the proliferation of cells from arthritic mice 72 h after receiving SuperMApo or vehicle and phagocyte depletion, in response to increasing doses of collagen or to CD3-specific antibody (as control). Data are shown as mean ± s.e.m. of cell triplicates, 5 mice per group, ^ { \\star \\star \\star } P < 0 . 0 0 1 , 2-way ANOVA with Bonferroni post-tests. (E) Evolution of arthritis clinical score (in percentage; 100%=arthritis clinical score the day of injection) in mice with ongoing arthritis (mean arthritis clinical score = 7 . 1 \\pm 0 . 6 the day of cell injection) after receiving macrophages from vehicle- or SuperMApo-treated CIA mice. Percentages of clinical score are shown as mean ± s.e.m., 8 mice per group from 2 independent experiments. ^ { \\star \\star \\star } P < 0 . 0 0 1 , Wilcoxon signed rank test. (F) Arthritis clinical score of mice receiving SuperMApo treatment or vehicle with or without clodronate-loaded liposomes and anti-mPDCA antibody (CL + αmPDCA) (mean ± s.e.m., 5 mice per 9 \\Upsilon 0 \\mathsf { u p } ) . \\mathsf { \\Pi } ^ { \\star \\star } P  { < } < 0.005 for CIA vs. CIA + SuperMApo & CIA vs. \\mathsf { C l A } + \\mathsf { C L } + \\mathsf { a m P D C A } + \\mathsf { S u p e r M A p o } , one-way ANOVA with Bonferroni’s multiple comparison post-tests (G) BrdU counts showing collagen-specific suppression of cell proliferation by Treg issued from arthritic mice from F. The suppressive activity of all Treg is also shown as control in CD3-specific antibody-stimulated cultures. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, \\# \\# P < 0 . 0 0 5 vs. CL+mPDCA and CIA, **P < 0.005 vs. CIA, 2-way ANOVA with Bonferroni post-tests. Figure data are issued from representative experiments, repeated at least three times with similar results unless otherwise noted",
+          "mineru_text_sha256": "6c3d2bfdd1404f82fcf8a599f2246df970dbdfebce6140d20da4cf57c724c2bd",
+          "native_source_text": "FIGURE 4 | Antigen-presenting cells demonstrate reprogramming in vivo after SuperMApo treatment of CIA mice. (A,B) Costimulatory (CD80/CD86/CD40) and\nMHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions, evaluated in spleen plasmacytoid DC (pDC), conventional DC (cDC) and macrophages (macro)\n72 h and 10 days after SuperMApo or vehicle treatment of arthritic mice. Data from representative experiments showing cell marker expression from individual mouse\n(5 mice per group). Th17, Th1 and Treg CD4 + T cell polarizations by the same APC are also shown (bars represent mean ± s.e.m. of triplicates of APC isolated from\n+\neach mouse and cultured with naïve CD4 T cells). (C) Arthritis clinical score of mice receiving SuperMApo treatment or vehicle and clodronate-loaded (CL) or control\nliposomes (mean ± s.e.m., 5 mice per group). ***P < 0.001 vs. respective control groups (CIA & CIA + CL), one-way ANOVA with Bonferroni’s multiple comparison\npost-tests. (D) BrdU counts showing the proliferation of cells from arthritic mice 72 h after receiving SuperMApo or vehicle and phagocyte depletion, in response to\nincreasing doses of collagen or to CD3-specific antibody (as control). Data are shown as mean ± s.e.m. of cell triplicates, 5 mice per group, ***P < 0.001, 2-way\nANOVA with Bonferroni post-tests. (E) Evolution of arthritis clinical score (in percentage; 100%=arthritis clinical score the day of injection) in mice with ongoing arthritis\n(mean arthritis clinical score = 7.1 ± 0.6 the day of cell injection) after receiving macrophages from vehicle- or SuperMApo-treated CIA mice. Percentages of clinical\nscore are shown as mean ± s.e.m., 8 mice per group from 2 independent experiments. ***P < 0.001, Wilcoxon signed rank test. (F) Arthritis clinical score of mice\nreceiving SuperMApo treatment or vehicle with or without clodronate-loaded liposomes and anti-mPDCA antibody (CL + αmPDCA) (mean ± s.e.m., 5 mice per\ngroup). **P < 0.005 for CIA vs. CIA + SuperMApo & CIA vs. CIA + CL + αmPDCA + SuperMApo, one-way ANOVA with Bonferroni’s multiple comparison post-tests.\n(G) BrdU counts showing collagen-specific suppression of cell proliferation by Treg issued from arthritic mice from F. The suppressive activity of all Treg is also shown\nas control in CD3-specific antibody-stimulated cultures. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group,\n##P < 0.005 vs. CL+mPDCA and CIA, **P < 0.005 vs. CIA, 2-way ANOVA with Bonferroni post-tests. Figure data are issued from representative experiments,\nrepeated at least three times with similar results unless otherwise noted.",
+          "native_text_extraction_bbox_points": [
+            43,
+            516,
+            550,
+            685
+          ],
+          "native_source_text_sha256": "705e6a9348ceb2974dafca6daac9ac0cf2947425e3e0c8d57191227f21eb596c",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/6/preproc_blocks/0",
+        "/pdf_info/6/preproc_blocks/1",
+        "/pdf_info/6/preproc_blocks/2",
+        "/pdf_info/6/preproc_blocks/3",
+        "/pdf_info/6/preproc_blocks/4",
+        "/pdf_info/6/preproc_blocks/5",
+        "/pdf_info/6/preproc_blocks/6",
+        "/pdf_info/6/preproc_blocks/7",
+        "/pdf_info/6/preproc_blocks/8",
+        "/pdf_info/6/preproc_blocks/9"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/6/preproc_blocks/0",
+        "/pdf_info/6/preproc_blocks/1",
+        "/pdf_info/6/preproc_blocks/2",
+        "/pdf_info/6/preproc_blocks/3",
+        "/pdf_info/6/preproc_blocks/4",
+        "/pdf_info/6/preproc_blocks/5",
+        "/pdf_info/6/preproc_blocks/6",
+        "/pdf_info/6/preproc_blocks/7",
+        "/pdf_info/6/preproc_blocks/8",
+        "/pdf_info/6/preproc_blocks/9",
+        "/pdf_info/6/preproc_blocks/10"
+      ],
+      "raw_visual_block_count": 10,
+      "caption_continuation_pages": [],
+      "caption_standalone_top_level_text": true,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "Antigen-presenting cells demonstrate reprogramming in vivo after SuperMApo treatment of CIA mice."
+    },
+    {
+      "figure_number": 5,
+      "physical_page": 9,
+      "page_index": 8,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          114.13800000000002,
+          69.4701419999999,
+          481.5780000000001,
+          628.6701419999999
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R261",
+        "source_xobject_pixel_size": [
+          1531,
+          2330
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          114.13800000000002,
+          150.85,
+          481.5780000000001,
+          710.0500000000001
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-5.png",
+        "sha256": "e76d701fdefe02cab25a42042bb726eeb37b715bb92cd418afc459a95ad48103",
+        "pixel_size": [
+          1532,
+          2331
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          114.13800000000002,
+          69.4701419999999,
+          481.5780000000001,
+          628.6701419999999
+        ],
+        "raster_window_pixels_xyxy": [
+          475,
+          289,
+          2007,
+          2620
+        ],
+        "effective_bbox_points_top_left": [
+          113.99999999999999,
+          69.36,
+          481.67999999999995,
+          628.8
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "9",
+          "-l",
+          "9",
+          "-singlefile",
+          "-x",
+          "475",
+          "-y",
+          "289",
+          "-W",
+          "1532",
+          "-H",
+          "2331",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-5"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/0"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/2"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/1"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/3"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/4"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "F",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "G",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "H",
+          "raw_block_ids": [
+            "/pdf_info/8/preproc_blocks/7"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/0",
+          "type": "chart",
+          "bbox_points": [
+            115,
+            67,
+            227,
+            171
+          ],
+          "raw_block_sha256": "5920ecc2215f5848bbd8126fd9c4e373450fd9ffb0ae114a34949f3ccdbd5744",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/0/blocks/1/lines/0/spans/0",
+              "path": "images/515beaf86d1c5ac9068f45f3a3fa0cbd0b15cce30291d6de87d76966acba5a7d.jpg",
+              "sha256": "f1fbc543def9ddb96c77fc35f906107e06e959ff279ed9149013dc568ae9c06b",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 45,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 45,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/0/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                113,
+                68,
+                122,
+                78
+              ],
+              "text": "A"
+            },
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/0/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                247,
+                68,
+                257,
+                78
+              ],
+              "text": "C"
+            },
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/0/blocks/3",
+              "type": "chart_footnote",
+              "bbox_points": [
+                125,
+                161,
+                228,
+                208
+              ],
+              "text": "Days post-immunization —○—CIA +SuperMApo +aTGF-β +SuperMApo+aTGF-β"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/1",
+          "type": "chart",
+          "bbox_points": [
+            245,
+            84,
+            352,
+            164
+          ],
+          "raw_block_sha256": "2c20fa419ffbe9371ab03a3e17c18e3e9684d3f49e67c2bd76011e219e208693",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/1/blocks/0/lines/0/spans/0",
+              "path": "images/c4da22cd3d128289571a1a4744616f6048f7c7c7a33ba90b16bdd263b3d589ef.jpg",
+              "sha256": "584e18b31b54bc8285579b262140817ff3b75c7d0ef0538dd86ca9e840356198",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 46,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 46,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/2",
+          "type": "chart",
+          "bbox_points": [
+            113,
+            208,
+            227,
+            342
+          ],
+          "raw_block_sha256": "ea88c6f6827efe75d86f1fcebc4aa9d06e3874280b338487a709b87a74117187",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/2/blocks/0/lines/0/spans/0",
+              "path": "images/03ad996c26daa7db09e7545f07a3177c52e3ce0029628600cc3716835ea1fad3.jpg",
+              "sha256": "cedb9c6f164c12045d710a45d972f85611d5a5f627a14b030e7ee848e00a086f",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 47,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 47,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/2/blocks/1",
+              "type": "chart_footnote",
+              "bbox_points": [
+                247,
+                165,
+                351,
+                204
+              ],
+              "text": "CIA +SuperMApo +αTGF-β +SuperMApo+αTGF-β"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/3",
+          "type": "chart",
+          "bbox_points": [
+            245,
+            223,
+            364,
+            343
+          ],
+          "raw_block_sha256": "1bfdf160b783afcb1a8417fe6c9107589005a37dc09f93e416dd18a56e84a9c6",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/3/blocks/1/lines/0/spans/0",
+              "path": "images/f81ecabc3b0740fc5eb3c45ddabb64d3ef0e5991c85851674259be018023797f.jpg",
+              "sha256": "70ae96b8929855a34ca4e78ac8c3a22f4a63fe8705c3432eeafc842a7d473ebd",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 48,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 48,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/3/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                247,
+                206,
+                257,
+                216
+              ],
+              "text": "D"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/4",
+          "type": "chart",
+          "bbox_points": [
+            376,
+            108,
+            484,
+            336
+          ],
+          "raw_block_sha256": "ede4be4369f7f31051a7462bab0ae03eeaf847200ceef679ef5918b8dc7d5fd5",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/4/blocks/0/lines/0/spans/0",
+              "path": "images/9ec5833d09f123004b703050402bc948d0d59953ef4d0c58c8fffb3b6a17e0a1.jpg",
+              "sha256": "18dbff3ee0d7d1df70ffb03833259edd6428086943b90a67d964101589b20b8e",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 49,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 49,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/5",
+          "type": "image",
+          "bbox_points": [
+            120,
+            352,
+            440,
+            469
+          ],
+          "raw_block_sha256": "558ccf54bd26bc06ccbdd629e13ea9e316da541b51f9e231c1ea42d12010c851",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/5/blocks/1/lines/0/spans/0",
+              "path": "images/a7624279b8b3c646ee96bfd6e53d83078d4fcd73a99e9305bcca394b61443a2f.jpg",
+              "sha256": "cbed809df78dbc12cad6c1d5ee257a93bad9da079e66a713cc5ee8dfadf10218",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 50,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 50,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/5/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                113,
+                350,
+                122,
+                360
+              ],
+              "text": "F"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/6",
+          "type": "chart",
+          "bbox_points": [
+            127,
+            476,
+            255,
+            627
+          ],
+          "raw_block_sha256": "351aed4b4c070c11fb3b2c538327856a7c48c08cb143113143445f38bc0306b2",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/6/blocks/1/lines/0/spans/0",
+              "path": "images/9b8e8c720016883b3f600ede6f42ee9c852847870fa775ea8b3f5673bb5d01af.jpg",
+              "sha256": "3f221eddd19ffbe6d9c5dbf868b5838e0e3a0f96a334f55f31635e91f2f30d88",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 51,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 51,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/6/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                113,
+                474,
+                123,
+                484
+              ],
+              "text": "G"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/8/preproc_blocks/7",
+          "type": "chart",
+          "bbox_points": [
+            288,
+            480,
+            401,
+            587
+          ],
+          "raw_block_sha256": "d1dfa748242f0695dd9f175d4d7f518af9e34be985b4593a80b666e85926028e",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/1/lines/0/spans/0",
+              "path": "images/67c93085ece2555bc55013b081da6b7cd86c26506d7c7129ff65809becaa706a.jpg",
+              "sha256": "2f6fbfefee1bcec1a528259704c679052eac959b00fce7cc03e53be89a10a0c3",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 52,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 52,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                274,
+                474,
+                283,
+                484
+              ],
+              "text": "H"
+            },
+            {
+              "raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/2",
+              "type": "chart_caption",
+              "bbox_points": [
+                46,
+                640,
+                547,
+                698
+              ],
+              "text": "FIGURE 5 | TGF-β associated with soluble factors within SuperMApo demonstrates pro-resolutive properties. (A,B) Arthitis clinical scores showing the role of TGF-β within SuperMApo on arthritis evolution through TGF-β neutralization ( + \\alpha \\mathsf { T G F - } \\beta ) or depletion ( - \\mathsf { T G F } - \\mathsf { \\beta } ) from SuperMApo. ^ { \\star \\star \\star } P < 0 . 0 0 1 vs. CIA (5 mice per group, mean ± s.e.m.), one-way ANOVA with Bonferroni’s multiple comparison post-tests. (C,D) BrdU counts showing the proliferation of cells from arthritic mice from panels A,B. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, ^ { \\star \\star \\star } P < 0 . 0 0 1 , 2-way ANOVA with Bonferroni post-tests. (E) 1 L - 1 7 A ^ { + } + 7 h + 7 , 1 F N - \\gamma ^ { + } + 7 h 1 and Treg \\mathrm { C D 4 ^ { + } ~ T } cell polarization by pDC or macrophages isolated from mice from B and/or G (bars represent mean ± s.e.m. of triplicate (Continued)"
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 9,
+          "parent_block_id": "/pdf_info/8/preproc_blocks/7",
+          "raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/2",
+          "type": "chart_caption",
+          "bbox_points": [
+            46,
+            640,
+            547,
+            698
+          ],
+          "raw_block_sha256": "70a3ff6a34fbe255b77f41691656f56f9220ac3b9abd8636f5e8645f2fceca70",
+          "figure_number_prefix": "FIGURE 5 |",
+          "mineru_text_exact_joined_spans": "FIGURE 5 | TGF-β associated with soluble factors within SuperMApo demonstrates pro-resolutive properties. (A,B) Arthitis clinical scores showing the role of TGF-β within SuperMApo on arthritis evolution through TGF-β neutralization ( + \\alpha \\mathsf { T G F - } \\beta ) or depletion ( - \\mathsf { T G F } - \\mathsf { \\beta } ) from SuperMApo. ^ { \\star \\star \\star } P < 0 . 0 0 1 vs. CIA (5 mice per group, mean ± s.e.m.), one-way ANOVA with Bonferroni’s multiple comparison post-tests. (C,D) BrdU counts showing the proliferation of cells from arthritic mice from panels A,B. Data are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, ^ { \\star \\star \\star } P < 0 . 0 0 1 , 2-way ANOVA with Bonferroni post-tests. (E) 1 L - 1 7 A ^ { + } + 7 h + 7 , 1 F N - \\gamma ^ { + } + 7 h 1 and Treg \\mathrm { C D 4 ^ { + } ~ T } cell polarization by pDC or macrophages isolated from mice from B and/or G (bars represent mean ± s.e.m. of triplicate (Continued)",
+          "mineru_text_sha256": "f5b9ec87c8d2853687a25feb7cbcc443397597e3fef89b479425d9a059b9d026",
+          "native_source_text": "FIGURE 5 | TGF-β associated with soluble factors within SuperMApo demonstrates pro-resolutive properties. (A,B) Arthitis clinical scores showing the role of TGF-β\nwithin SuperMApo on arthritis evolution through TGF-β neutralization (+αTGF-β) or depletion (-TGF-β) from SuperMApo. ***P < 0.001 vs. CIA (5 mice per group, mean\n± s.e.m.), one-way ANOVA with Bonferroni’s multiple comparison post-tests. (C,D) BrdU counts showing the proliferation of cells from arthritic mice from panels A,B.\nData are shown as mean ± s.e.m. of mouse spleen cells performed in triplicates, 5 mice per group, ***P < 0.001, 2-way ANOVA with Bonferroni post-tests. (E)\nIL-17A + Th17, IFN-γ + Th1 and Treg CD4 + T cell polarization by pDC or macrophages isolated from mice from B and/or G (bars represent mean ± s.e.m. of triplicate\n(Continued)",
+          "native_text_extraction_bbox_points": [
+            43,
+            637,
+            550,
+            701
+          ],
+          "native_source_text_sha256": "60550a6a88d5a1173a6560fd73e54ca1430767fd6ebc2b4dc7bf5dc9ca82d841",
+          "continues_on_next_page": true
+        },
+        {
+          "part": "continuation",
+          "sequence": 1,
+          "physical_page": 10,
+          "parent_block_id": "/pdf_info/9/preproc_blocks/0",
+          "raw_locator": "/pdf_info/9/preproc_blocks/0",
+          "type": "text",
+          "bbox_points": [
+            46,
+            68,
+            548,
+            156
+          ],
+          "raw_block_sha256": "c516c9f86bf6c88a6e3a3e82f6baba850b35a21a8d0e2b88417ce0e36bdd98b4",
+          "figure_number_prefix": "FIGURE 5 |",
+          "mineru_text_exact_joined_spans": "FIGURE 5 | of APC isolated from each mouse and cultured with naïve CD4<sup>+</sup> T cells). *P < 0.05, **P < 0.01, ***P < 0.001, 1way ANOVA with Bonferroni’s multiple comparison test. (F) Costimulatory (CD80/CD86/CD40) and MHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions, evaluated in pDC and macrophages (macro) from spleens from mice from B and/or G (-T = SuperMApo depleted for TGF-β; -T+T = -T plus recombinant TGF-β). Data from a representative experiment showing cell marker expression from individual mouse (5 mice per group). (G) Arthritis clinical score showing no arthritis reduction with SuperMApo depleted from TGF-β (+SuperMApo-TGF-β) compared to SuperMApo treatment, and a partial effect of recombinant TGF-β injection on arthritis resolution when injected with SuperMApo depleted from TGF-β (+SuperMApo-TGF-β+rTGF-β). **P < 0.01, ***P < 0.001 vs. control groups (5 mice per group, mean ± s.e.m.), one-way ANOVA with Bonferroni’s multiple comparison post-tests. (H) Arthritis clinical score showing that injection of recombinant TGF-β in addition to recombinant cofactors MMP2, ApoE, C1q, Ttr and Thbs1 (+rTGF-β+rCoF), does not favor resolution when compared to SuperMApo injection. **P < 0.01, vs. control and +rTGF-β+rCoF groups (5 mice per group, mean ± s.e.m.), one-way ANOVA with Sidak’s multiple comparisons test; representative from 2 independent experiments.",
+          "mineru_text_sha256": "f846d06d4bc514cf9bb468a99fdbac7b06de729f8710c75cf055b0929d4389af",
+          "native_source_text": "+\nFIGURE 5 | of APC isolated from each mouse and cultured with naïve CD4 T cells). *P < 0.05, **P < 0.01, ***P < 0.001, 1way ANOVA with Bonferroni’s multiple\ncomparison test. (F) Costimulatory (CD80/CD86/CD40) and MHC-II molecule (IA/IE) mean florescence intensity (MFI) expressions, evaluated in pDC and\nmacrophages (macro) from spleens from mice from B and/or G (-T = SuperMApo depleted for TGF-β; -T+T = -T plus recombinant TGF-β). Data from a\nrepresentative experiment showing cell marker expression from individual mouse (5 mice per group). (G) Arthritis clinical score showing no arthritis reduction with\nSuperMApo depleted from TGF-β (+SuperMApo-TGF-β) compared to SuperMApo treatment, and a partial effect of recombinant TGF-β injection on arthritis resolution\nwhen injected with SuperMApo depleted from TGF-β (+SuperMApo-TGF-β+rTGF-β). **P < 0.01, ***P < 0.001 vs. control groups (5 mice per group, mean ± s.e.m.),\none-way ANOVA with Bonferroni’s multiple comparison post-tests. (H) Arthritis clinical score showing that injection of recombinant TGF-β in addition to recombinant\ncofactors MMP2, ApoE, C1q, Ttr and Thbs1 (+rTGF-β+rCoF), does not favor resolution when compared to SuperMApo injection. **P < 0.01, vs. control and\n+rTGF-β+rCoF groups (5 mice per group, mean ± s.e.m.), one-way ANOVA with Sidak’s multiple comparisons test; representative from 2 independent experiments.",
+          "native_text_extraction_bbox_points": [
+            43,
+            65,
+            551,
+            159
+          ],
+          "native_source_text_sha256": "b2e53e75b426d7bca31496b1f7f7705769611f174e9b98899c52cacaba24db03",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/8/preproc_blocks/0",
+        "/pdf_info/8/preproc_blocks/1",
+        "/pdf_info/8/preproc_blocks/2",
+        "/pdf_info/8/preproc_blocks/3",
+        "/pdf_info/8/preproc_blocks/4",
+        "/pdf_info/8/preproc_blocks/5",
+        "/pdf_info/8/preproc_blocks/6",
+        "/pdf_info/8/preproc_blocks/7"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/8/preproc_blocks/0",
+        "/pdf_info/8/preproc_blocks/1",
+        "/pdf_info/8/preproc_blocks/2",
+        "/pdf_info/8/preproc_blocks/3",
+        "/pdf_info/8/preproc_blocks/4",
+        "/pdf_info/8/preproc_blocks/5",
+        "/pdf_info/8/preproc_blocks/6",
+        "/pdf_info/8/preproc_blocks/7",
+        "/pdf_info/9/preproc_blocks/0"
+      ],
+      "raw_visual_block_count": 8,
+      "caption_continuation_pages": [
+        10
+      ],
+      "caption_standalone_top_level_text": true,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "TGF-β associated with soluble factors within SuperMApo demonstrates pro-resolutive properties."
+    },
+    {
+      "figure_number": 6,
+      "physical_page": 11,
+      "page_index": 10,
+      "main_figures_on_graphical_page": 1,
+      "source_page_geometry": {
+        "media_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.28,
+          779.53
+        ],
+        "crop_box_pdf_bottom_left_points": [
+          0.0,
+          0.0,
+          595.260071,
+          779.520142
+        ],
+        "rotation_degrees": 0,
+        "user_unit": 1.0,
+        "visible_size_points": [
+          595.260071,
+          779.520142
+        ]
+      },
+      "whole_figure_graphical_body": {
+        "bbox_points_top_left": [
+          83.637,
+          69.50914199999988,
+          511.7970000000001,
+          647.669142
+        ],
+        "basis": "single original PDF image XObject, visually verified to contain every panel, embedded panel letter and legend of this main figure",
+        "source_xobject_name": "R293",
+        "source_xobject_pixel_size": [
+          1784,
+          2409
+        ],
+        "source_image_bbox_pdf_bottom_left_points": [
+          83.637,
+          131.851,
+          511.7970000000001,
+          710.0110000000001
+        ]
+      },
+      "crop": {
+        "path": "output/t03/figures-source/Figure-6.png",
+        "sha256": "f18d0b23ca29806a620378b51212063db14b452b61750d72fc7af9646838b63c",
+        "pixel_size": [
+          1785,
+          2410
+        ],
+        "dpi": 300,
+        "source_bbox_points": [
+          83.637,
+          69.50914199999988,
+          511.7970000000001,
+          647.669142
+        ],
+        "raster_window_pixels_xyxy": [
+          348,
+          289,
+          2133,
+          2699
+        ],
+        "effective_bbox_points_top_left": [
+          83.52,
+          69.36,
+          511.91999999999996,
+          647.76
+        ],
+        "rounding": "floor left/top and ceil right/bottom, no panel-only crop, no content edit",
+        "scope": "complete graphical body including embedded labels and legends; caption is separately preserved below",
+        "renderer_command": [
+          "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+          "-png",
+          "-cropbox",
+          "-r",
+          "300",
+          "-f",
+          "11",
+          "-l",
+          "11",
+          "-singlefile",
+          "-x",
+          "348",
+          "-y",
+          "289",
+          "-W",
+          "1785",
+          "-H",
+          "2410",
+          "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+          "output\\t03\\figures-source\\Figure-6"
+        ],
+        "renderer_exit_code": 0,
+        "visually_verified": true,
+        "visual_verification": "Compared final 300-dpi crop with original full-page render. Every lettered panel and embedded legend is visible, without another figure or body paragraph."
+      },
+      "panels": [
+        {
+          "label": "A",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/1"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "B",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/2"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "C",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/3"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "D",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/4"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "E",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/5"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "F",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/6"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "G",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/7"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        },
+        {
+          "label": "H",
+          "raw_block_ids": [
+            "/pdf_info/10/preproc_blocks/8",
+            "/pdf_info/10/preproc_blocks/9",
+            "/pdf_info/10/preproc_blocks/10",
+            "/pdf_info/10/preproc_blocks/11"
+          ],
+          "assignment_evidence": "visually checked against original PDF full-page render; upstream caption-child ownership was not treated as panel ownership"
+        }
+      ],
+      "raw_visual_blocks": [
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/1",
+          "type": "image",
+          "bbox_points": [
+            97,
+            74,
+            240,
+            216
+          ],
+          "raw_block_sha256": "42bce18a521a451e1ba0bbc6732e9e0dbfe01f25354806905c11691fa5f8c15c",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/1/blocks/1/lines/0/spans/0",
+              "path": "images/67b38a64bb28a029675a0b9c45d9d15f68bf8ddfc9c5494ec071036e6f436ca4.jpg",
+              "sha256": "599dc681d07bf31ae791fb36d82bf39daf75386b07ba0d496274188a63525d42",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 53,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 53,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/1/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                84,
+                70,
+                94,
+                81
+              ],
+              "text": "A"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/2",
+          "type": "chart",
+          "bbox_points": [
+            270,
+            81,
+            368,
+            170
+          ],
+          "raw_block_sha256": "ea9a25d54d0535dea2b944def9318a033f2dac476772ecbfa0d28f60d9398a49",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/2/blocks/1/lines/0/spans/0",
+              "path": "images/4c25a0ec66ad1c5505c240adb8ee2692625a1d7c32c7ca9e3774b039415192da.jpg",
+              "sha256": "0041f8c9799187794e01c2060d6bd19c2c7171957a0226a279eb3cf1d81dc5f5",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 54,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 54,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/2/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                261,
+                70,
+                270,
+                80
+              ],
+              "text": "B"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/3",
+          "type": "chart",
+          "bbox_points": [
+            403,
+            81,
+            498,
+            207
+          ],
+          "raw_block_sha256": "a35be7fe17df1ae4ac15468e53210b449ad4d760b7ffc3d0bde62a228e7dba51",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/3/blocks/1/lines/0/spans/0",
+              "path": "images/47640899e9e927055f3ca7cb790a23b5b24639af37eabd22f979f179ff56a126.jpg",
+              "sha256": "cb5f7de2c3e07c86f1f7d012c3535b17818f765e45b8f074111f1b7ae35774a5",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 55,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 55,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/3/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                388,
+                70,
+                397,
+                80
+              ],
+              "text": "C"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/4",
+          "type": "image",
+          "bbox_points": [
+            82,
+            232,
+            325,
+            341
+          ],
+          "raw_block_sha256": "ea6ec8e67d70a2adc92f1f008054fc10ec43dedcad7c18160b6c64a9b2d88f31",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/4/blocks/1/lines/0/spans/0",
+              "path": "images/0a9fff2c8edee2db5e07ae0556e7989b562519bbc5f698702a44e9440c80ea59.jpg",
+              "sha256": "3b56813a7615d455b74fe8d8a091ab5b32bbf2938dbe2b5ccc7b48f0896b92fb",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 56,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 56,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/4/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                84,
+                229,
+                94,
+                239
+              ],
+              "text": "D"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/5",
+          "type": "image",
+          "bbox_points": [
+            344,
+            231,
+            497,
+            337
+          ],
+          "raw_block_sha256": "6dde96821661a37737e6526ad2feca16e440a269888ea75762bbdcec3a017e52",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/5/blocks/1/lines/0/spans/0",
+              "path": "images/78a513848df4cca6bc6051ad9996a7de76793004f589918955a3eab414555dfc.jpg",
+              "sha256": "52347d6c780e6afff9c9ded292c3ec807d942072a9269d85433a00949bea98a3",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 57,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 57,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/5/blocks/0",
+              "type": "image_caption",
+              "bbox_points": [
+                344,
+                229,
+                353,
+                239
+              ],
+              "text": "E"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/6",
+          "type": "chart",
+          "bbox_points": [
+            119,
+            365,
+            272,
+            498
+          ],
+          "raw_block_sha256": "512de0f65242cc2ebc382c06307d6126bd3b96e18cef2834575a82555bf6728c",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/6/blocks/1/lines/0/spans/0",
+              "path": "images/9dc2fa707c3711e8c51afe925a3e649d335efc6477f0bb8a5106052235268f6a.jpg",
+              "sha256": "46b5505107bc4a1440fe3cdf236838f44f8ece56c0e3d2615a2f1d205b03677d",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 58,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 58,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/6/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                84,
+                354,
+                93,
+                365
+              ],
+              "text": "F"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/7",
+          "type": "chart",
+          "bbox_points": [
+            332,
+            368,
+            472,
+            501
+          ],
+          "raw_block_sha256": "f4c1eed17126fffeaec1231e91364ee2758d851c1c7047c2634f0336aacff261",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/7/blocks/1/lines/0/spans/0",
+              "path": "images/64095c3222a07b504042cb0c535179c884faa36bc61b2b79352a614bed64f09f.jpg",
+              "sha256": "c1af4d6529c1c533e6a674adae3862897047f574a70d782f1e2f220f76e9f287",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 59,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 59,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/7/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                310,
+                354,
+                320,
+                365
+              ],
+              "text": "G"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/8",
+          "type": "chart",
+          "bbox_points": [
+            91,
+            502,
+            232,
+            648
+          ],
+          "raw_block_sha256": "9ca59c82643cf5cefc4994c15210a59764560a28617e2130b51291987c895492",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/8/blocks/1/lines/0/spans/0",
+              "path": "images/b516d376b26a52b2220f8c2549a36599872dba29a13771a8150632415c11bcdc.jpg",
+              "sha256": "aa5ffb0ab95d3647be11c895c39ec503e903d97d95d2112b7d35a35e241ee42c",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 60,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 60,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/8/blocks/0",
+              "type": "chart_caption",
+              "bbox_points": [
+                84,
+                505,
+                94,
+                515
+              ],
+              "text": "H"
+            }
+          ]
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/9",
+          "type": "chart",
+          "bbox_points": [
+            200,
+            515,
+            298,
+            612
+          ],
+          "raw_block_sha256": "3099fb101562bd1ad121879dc5615fa8f2eadf6b73c46dd5d6730f6d518df8e3",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/9/blocks/0/lines/0/spans/0",
+              "path": "images/13ae4bae9cd92ea9f93f5a301a555233add232d6d3234e7e35fb6e101f5f8ef5.jpg",
+              "sha256": "7f684a073d1f6b9e0141991e374f811eda6852ff0702326759abde649000e03d",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 61,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 61,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/10",
+          "type": "chart",
+          "bbox_points": [
+            303,
+            513,
+            403,
+            612
+          ],
+          "raw_block_sha256": "31dab09f28925db48a44c8c05afe5c528b6583f50f21af42f3f2ef38f9e697b7",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/10/blocks/0/lines/0/spans/0",
+              "path": "images/49f6523c39293d6ff1ad8163a4060354c7e68b143c36da103e4bce83f8a4a01c.jpg",
+              "sha256": "0527f6a562a98d4c223f989b5dc4d6b9a3374fdb505e5f8dd66634aad7636a64",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 62,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 62,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": []
+        },
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/11",
+          "type": "chart",
+          "bbox_points": [
+            407,
+            512,
+            512,
+            612
+          ],
+          "raw_block_sha256": "01330257f5d28348e591a5f1ab99df7b84a091766c022819a6a809911fba0d64",
+          "images": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/11/blocks/0/lines/0/spans/0",
+              "path": "images/e362fadaebfe1936b684ce323cc4196a99075a7b038cd33537b0c9b526f684f2.jpg",
+              "sha256": "8fac05f27d5a5bd309c5e6ea39c0dfc74957d8dc4783fb9689d43985c1be0f1d",
+              "receipt_matches": {
+                "generator": {
+                  "attachment_number": 63,
+                  "sha256_matches": true
+                },
+                "validator": {
+                  "attachment_number": 63,
+                  "sha256_matches": true
+                }
+              }
+            }
+          ],
+          "caption_or_footnote_children": [
+            {
+              "raw_locator": "/pdf_info/10/preproc_blocks/11/blocks/1",
+              "type": "chart_caption",
+              "bbox_points": [
+                46,
+                658,
+                545,
+                708
+              ],
+              "text": "FIGURE 6 | Efferocytosis factors issued from monocyte-derived macrophages demonstrate pro-resolutive properties in vitro and in vivo. (A) Monocyte-derived macrophages were cultured with CFSE-labeled apoptotic PBMC (green) and observed after DAPI staining by inverted fluorescence microscopy at 0, 24, and 48 h of culture. (B) Injection (i.p.) of the supernatant from the previous 48 h culture (SuperMApo) increased neutrophil number (mean ± s.e.m., n = 2 \\cdot 9 mice per group), 12 h after thioglycollate mobilization ( \\mathsf { T h i o } + \\mathsf { S u p e r M A p o } ) and control PBMC/neutrophils-reconstituted NSG mice (SuperMApo). { } ^ { \\star } P < 0 . 0 5 , , Kruskal-Wallis test with Dunn’s (Continued)"
+            }
+          ]
+        }
+      ],
+      "additional_graphical_text_blocks": [
+        {
+          "block_id": "/pdf_info/10/preproc_blocks/0",
+          "bbox_points": [
+            273,
+            166,
+            369,
+            219
+          ],
+          "text": "-O-: med - : Thio + med --: SuperMApo : Thio + SuperMApo",
+          "role": "panel B legend inside the original image XObject; separated as top-level text by MinerU"
+        }
+      ],
+      "caption_fragments": [
+        {
+          "part": "start",
+          "sequence": 0,
+          "physical_page": 11,
+          "parent_block_id": "/pdf_info/10/preproc_blocks/11",
+          "raw_locator": "/pdf_info/10/preproc_blocks/11/blocks/1",
+          "type": "chart_caption",
+          "bbox_points": [
+            46,
+            658,
+            545,
+            708
+          ],
+          "raw_block_sha256": "2b31eed4682aab4e0b4e2aa37f34b20fa354ff838ab52bfcf63587fc5dbf0ee3",
+          "figure_number_prefix": "FIGURE 6 |",
+          "mineru_text_exact_joined_spans": "FIGURE 6 | Efferocytosis factors issued from monocyte-derived macrophages demonstrate pro-resolutive properties in vitro and in vivo. (A) Monocyte-derived macrophages were cultured with CFSE-labeled apoptotic PBMC (green) and observed after DAPI staining by inverted fluorescence microscopy at 0, 24, and 48 h of culture. (B) Injection (i.p.) of the supernatant from the previous 48 h culture (SuperMApo) increased neutrophil number (mean ± s.e.m., n = 2 \\cdot 9 mice per group), 12 h after thioglycollate mobilization ( \\mathsf { T h i o } + \\mathsf { S u p e r M A p o } ) and control PBMC/neutrophils-reconstituted NSG mice (SuperMApo). { } ^ { \\star } P < 0 . 0 5 , , Kruskal-Wallis test with Dunn’s (Continued)",
+          "mineru_text_sha256": "cf38ab8a03df8ee442bc59016159427b1c7347461fe6df3fc4cc0940b73b18b3",
+          "native_source_text": "FIGURE 6 | Efferocytosis factors issued from monocyte-derived macrophages demonstrate pro-resolutive properties in vitro and in vivo. (A) Monocyte-derived\nmacrophages were cultured with CFSE-labeled apoptotic PBMC (green) and observed after DAPI staining by inverted fluorescence microscopy at 0, 24, and 48 h of\nculture. (B) Injection (i.p.) of the supernatant from the previous 48 h culture (SuperMApo) increased neutrophil number (mean ± s.e.m., n = 2-9 mice per group), 12 h\nafter thioglycollate mobilization (Thio + SuperMApo) and control PBMC/neutrophils-reconstituted NSG mice (SuperMApo). *P < 0.05, Kruskal-Wallis test with Dunn’s\n(Continued)",
+          "native_text_extraction_bbox_points": [
+            43,
+            655,
+            548,
+            711
+          ],
+          "native_source_text_sha256": "d2efcaa6b2e8479fc565842e4676c7f353e9962c631b33015fc2adf2df2615fa",
+          "continues_on_next_page": true
+        },
+        {
+          "part": "continuation",
+          "sequence": 1,
+          "physical_page": 12,
+          "parent_block_id": "/pdf_info/11/preproc_blocks/0",
+          "raw_locator": "/pdf_info/11/preproc_blocks/0",
+          "type": "text",
+          "bbox_points": [
+            46,
+            68,
+            547,
+            185
+          ],
+          "raw_block_sha256": "6dfe938e50c2ccb368ebaef15fba7a00c0ab7c20cdf6a29e95b24ab5b60873b8",
+          "figure_number_prefix": "FIGURE 6 |",
+          "mineru_text_exact_joined_spans": "FIGURE 6 | MCT. (C) Monocyte-derived macrophages demonstrated increased capacity to phagocytose apoptotic cells in the presence of SuperMApo compared to medium (med). Data from 4 individual healthy volunteers. ***P < 0.001, paired t test. (D) Costimulatory (CD40/CD80/CD86) and HLA-DR molecule mean florescence intensity (MFI) expressions evaluated in sorted myeloid DC (mDC) and pDC in culture with or without TLR ligands (TLR-L) or SuperMApo, or medium (med). (E) Intracellular cytokine percentages evaluated in sorted myeloid DC (mDC) and pDC as in D. One square represents the mean of duplicate obtain for cells from one healthy volunteer (n=4 to 7), several SuperMApo batches have been used. (F) SuperMApo inhibition of TNF-α production was evaluated intracellularly by flow cytometry in PBMC monocytes stimulated by PHA as well as T cell proliferation within PHA-stimulated PBMC also evaluated by flow cytometry on CFSE<sup>+</sup>CD3<sup>+</sup> T cells. PBMC were issued from different healthy volunteers (n = 3) and SuperMApo from different batches. Bars represent means ± s.e.m. of duplicate. (G) Foxp3<sup>+</sup>CD25<sup>high</sup>CD45RA<sup>−</sup> activated and Foxp3<sup>int</sup>CD25<sup>int</sup>CD45RA<sup>+</sup> resting Treg in CD4<sup>+</sup>CD127<sup>−</sup> T cells were evaluated in PBMC cultured with CD3-specific antibody with or without SuperMApo. Bars represent means ± s.e.m. of triplicate. Dash lines represent Treg levels obtained in medium condition. (H) SuperMApo was injected in PBMC-reconstituted NOG mice receiving DSS (PBMC+DSS+SuperMApo) and then, the weight was evaluated in these mice and controls (PBMC; PBMC+DSS), as well as colonic lesion by video-colonoscopy, the clinical score was determined as well as survival. The data are shown as mean ± s.e.m. for each group, with 3–4 mice per group. *P < 0.05, **P < 0.01, ***P < 0.001, vs. DSS, 2-way RM ANOVA with Bonferroni post-tests.",
+          "mineru_text_sha256": "699a415899e4ea98fb8c8b84f5888b5be5cbc6f0cc493185d3ff85771d4f245b",
+          "native_source_text": "FIGURE 6 | MCT. (C) Monocyte-derived macrophages demonstrated increased capacity to phagocytose apoptotic cells in the presence of SuperMApo compared to\nmedium (med). Data from 4 individual healthy volunteers. ***P < 0.001, paired t test. (D) Costimulatory (CD40/CD80/CD86) and HLA-DR molecule mean florescence\nintensity (MFI) expressions evaluated in sorted myeloid DC (mDC) and pDC in culture with or without TLR ligands (TLR-L) or SuperMApo, or medium (med). (E)\nIntracellular cytokine percentages evaluated in sorted myeloid DC (mDC) and pDC as in D. One square represents the mean of duplicate obtain for cells from one\nhealthy volunteer (n=4 to 7), several SuperMApo batches have been used. (F) SuperMApo inhibition of TNF-α production was evaluated intracellularly by flow\n+ +\ncytometry in PBMC monocytes stimulated by PHA as well as T cell proliferation within PHA-stimulated PBMC also evaluated by flow cytometry on CFSE CD3 T\ncells. PBMC were issued from different healthy volunteers (n = 3) and SuperMApo from different batches. Bars represent means ± s.e.m. of duplicate. (G)\nFoxp3 + CD25highCD45RA − activated and Foxp3intCD25intCD45RA + resting Treg in CD4 + CD127 − T cells were evaluated in PBMC cultured with CD3-specific\nantibody with or without SuperMApo. Bars represent means ± s.e.m. of triplicate. Dash lines represent Treg levels obtained in medium condition. (H) SuperMApo was\ninjected in PBMC-reconstituted NOG mice receiving DSS (PBMC+DSS+SuperMApo) and then, the weight was evaluated in these mice and controls (PBMC;\nPBMC+DSS), as well as colonic lesion by video-colonoscopy, the clinical score was determined as well as survival. The data are shown as mean ± s.e.m. for each\ngroup, with 3–4 mice per group. *P < 0.05, **P < 0.01, ***P < 0.001, vs. DSS, 2-way RM ANOVA with Bonferroni post-tests.",
+          "native_text_extraction_bbox_points": [
+            43,
+            65,
+            550,
+            188
+          ],
+          "native_source_text_sha256": "81ac3f66eb5368a4a5de04cb0639ade0be311d927ae90d25f98bd2ea74092502",
+          "continues_on_next_page": false
+        }
+      ],
+      "all_graphical_member_block_ids": [
+        "/pdf_info/10/preproc_blocks/1",
+        "/pdf_info/10/preproc_blocks/2",
+        "/pdf_info/10/preproc_blocks/3",
+        "/pdf_info/10/preproc_blocks/4",
+        "/pdf_info/10/preproc_blocks/5",
+        "/pdf_info/10/preproc_blocks/6",
+        "/pdf_info/10/preproc_blocks/7",
+        "/pdf_info/10/preproc_blocks/8",
+        "/pdf_info/10/preproc_blocks/9",
+        "/pdf_info/10/preproc_blocks/10",
+        "/pdf_info/10/preproc_blocks/11",
+        "/pdf_info/10/preproc_blocks/0"
+      ],
+      "all_required_source_block_ids": [
+        "/pdf_info/10/preproc_blocks/1",
+        "/pdf_info/10/preproc_blocks/2",
+        "/pdf_info/10/preproc_blocks/3",
+        "/pdf_info/10/preproc_blocks/4",
+        "/pdf_info/10/preproc_blocks/5",
+        "/pdf_info/10/preproc_blocks/6",
+        "/pdf_info/10/preproc_blocks/7",
+        "/pdf_info/10/preproc_blocks/8",
+        "/pdf_info/10/preproc_blocks/9",
+        "/pdf_info/10/preproc_blocks/10",
+        "/pdf_info/10/preproc_blocks/11",
+        "/pdf_info/10/preproc_blocks/0",
+        "/pdf_info/11/preproc_blocks/0"
+      ],
+      "raw_visual_block_count": 11,
+      "caption_continuation_pages": [
+        12
+      ],
+      "caption_standalone_top_level_text": true,
+      "raw_block_grouping_note": "A raw block may split one lettered panel or span multiple panels. Figure 1 block 13 contains both J and K. Raw caption-child placement can attach the next panel letter to a previous panel and does not establish semantic membership.",
+      "source_caption_title_visually_checked": "Efferocytosis factors issued from monocyte-derived macrophages demonstrate pro-resolutive properties in vitro and in vivo."
+    }
+  ],
+  "page_inventory": [
+    {
+      "physical_page": 1,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 2,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 3,
+      "main_figure_numbers": [
+        1
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 4,
+      "main_figure_numbers": [
+        2
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 5,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 6,
+      "main_figure_numbers": [
+        3
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 7,
+      "main_figure_numbers": [
+        4
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 8,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 9,
+      "main_figure_numbers": [
+        5
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 10,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [
+        5
+      ],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 11,
+      "main_figure_numbers": [
+        6
+      ],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 1
+    },
+    {
+      "physical_page": 12,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [
+        6
+      ],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 13,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    },
+    {
+      "physical_page": 14,
+      "main_figure_numbers": [],
+      "caption_continuation_numbers": [],
+      "source_raster_image_xobject_count": 0
+    }
+  ],
+  "figure4_delivery_evidence": {
+    "source_page": 7,
+    "visual_panel_letters": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "raw_panel_image_count": 10,
+    "caption_block_id": "/pdf_info/6/preproc_blocks/10",
+    "roles": {
+      "generator": {
+        "model": "gpt-5.6-terra",
+        "reasoning_effort": "medium",
+        "thread_ref": "01a0853c-9b69-77a2-bc4d-950320131694",
+        "prompt_version": "d2i-generator-v2",
+        "source_bundle_sha256": "5e38b1b5312f886f84116e9453709bc0ef7d9899bf8903687ea304b1a01aa00b",
+        "proposal_set_sha256": "573186e53730a3edce078ecc0dd2f9cc435187006ef9b3d5ca014168ec266eec",
+        "all_figure4_blocks_provided": true,
+        "unreferenced_figure4_block_ids": [
+          "/pdf_info/6/preproc_blocks/0",
+          "/pdf_info/6/preproc_blocks/1",
+          "/pdf_info/6/preproc_blocks/2",
+          "/pdf_info/6/preproc_blocks/3",
+          "/pdf_info/6/preproc_blocks/4",
+          "/pdf_info/6/preproc_blocks/5",
+          "/pdf_info/6/preproc_blocks/6",
+          "/pdf_info/6/preproc_blocks/7",
+          "/pdf_info/6/preproc_blocks/8",
+          "/pdf_info/6/preproc_blocks/9",
+          "/pdf_info/6/preproc_blocks/10"
+        ],
+        "referenced_figure4_block_ids": [],
+        "image_attachment_numbers": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        "all_image_sha256_matches": true
+      },
+      "validator": {
+        "model": "gpt-5.6-terra",
+        "reasoning_effort": "medium",
+        "thread_ref": "01a0853d-ab78-7e70-86a1-81a8399155cb",
+        "prompt_version": "d2i-validator-v3",
+        "source_bundle_sha256": "5e38b1b5312f886f84116e9453709bc0ef7d9899bf8903687ea304b1a01aa00b",
+        "proposal_set_sha256": "573186e53730a3edce078ecc0dd2f9cc435187006ef9b3d5ca014168ec266eec",
+        "all_figure4_blocks_provided": true,
+        "unreferenced_figure4_block_ids": [
+          "/pdf_info/6/preproc_blocks/0",
+          "/pdf_info/6/preproc_blocks/1",
+          "/pdf_info/6/preproc_blocks/2",
+          "/pdf_info/6/preproc_blocks/3",
+          "/pdf_info/6/preproc_blocks/4",
+          "/pdf_info/6/preproc_blocks/5",
+          "/pdf_info/6/preproc_blocks/6",
+          "/pdf_info/6/preproc_blocks/7",
+          "/pdf_info/6/preproc_blocks/8",
+          "/pdf_info/6/preproc_blocks/9",
+          "/pdf_info/6/preproc_blocks/10"
+        ],
+        "referenced_figure4_block_ids": [],
+        "image_attachment_numbers": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        "all_image_sha256_matches": true
+      }
+    },
+    "conclusion": "MinerU produced Figure 4 visual crops and its caption, and both model calls received matching crop bytes and source blocks. The Generator proposal grounding referenced none of these Figure 4 blocks. Input coverage did not force output completeness.",
+    "limits": [
+      "Receipt attachment and block delivery does not prove which visual details the remote model attended to.",
+      "The rejected candidate body was deleted; missing_grounding alone cannot identify that candidate as Figure 4.",
+      "Figure 4 standalone text caption differs from the other figures start captions; this is a structural factor, not proof of the model internal reason."
+    ]
+  },
+  "grouping_observations": {
+    "main_figure_count": 6,
+    "graphical_pages": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      11
+    ],
+    "caption_only_continuation_pages": [
+      10,
+      12
+    ],
+    "main_visual_block_count": 62,
+    "nonfigure_image_blocks": [
+      {
+        "block_id": "/pdf_info/0/preproc_blocks/0",
+        "reason": "publisher/front-matter logo; no main-figure caption or full-figure region"
+      }
+    ],
+    "document_specific_evidence": [
+      "Exactly one original raster image XObject per main-figure graphical page contains all figure panels and embedded legends.",
+      "The nearby caption explicitly starts FIGURE 1 through FIGURE 6; body citations and Supplementary Figure references are not caption anchors.",
+      "Figures 5 and 6 start captions end with (Continued); the next-page same-number FIGURE prefix resumes the caption and is not a new graphical figure."
+    ],
+    "generic_rule_candidates": [
+      "Identify main-figure caption anchors by anchored figure label and page layout, independent of MinerU image/chart/text classification.",
+      "Bind all visual members and embedded graphical text within a verified whole-figure source region, including split chart blocks and shared panel blocks.",
+      "Use original PDF object geometry as supporting evidence when a complete figure is encoded as one object; do not assume this for arbitrary PDFs.",
+      "Preserve separate caption fragments with their physical-page provenance; same-number next-page continuation must not become a new figure.",
+      "Require every explicit figure inventory entry to have an output disposition and complete required-member grounding; any uncovered figure remains an unresolved coverage failure."
+    ],
+    "ambiguities_to_reject_or_review": [
+      "Multiple figures on one page or one figure spread over multiple pages require explicit boundaries; page proximity alone is insufficient.",
+      "Original figures may be vector artwork or many raster objects, so single-XObject grouping is not universal.",
+      "Upstream panel-letter caption ownership is unreliable: some letters belong to a neighboring panel.",
+      "Integer MinerU boxes can overshoot original object edges by a few points; no exact containment claim should ignore renderer geometry and tolerance.",
+      "A complete full-figure crop preserves legends and panel labels that may be absent from individual MinerU body crops."
+    ]
+  },
+  "method_boundary": "This source-PDF rendering supplements the existing MinerU evidence with each verified whole-figure region. It is linked by exact Data SHA-256, MinerU middle SHA-256, page geometry and raw block locators. It is not a parser fallback, a replacement extraction, a canonical Information write, or a semantic approval.",
+  "visual_qa": {
+    "source_full_pages_reviewed": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "all_six_final_crops_reviewed": true,
+    "all_panel_labels_and_legends_visible": true,
+    "other_main_figures_in_crops": false,
+    "source_pdf_unchanged": true,
+    "llm_provider_calls": 0
+  },
+  "text_extraction_note": "MinerU text fields preserve joined original span contents, including OCR/math markup errors. Native PDF text fields preserve the pdfplumber extraction result, which can place superscript glyphs on separate lines; full source-page visual review established the caption identity and continuation."
+}

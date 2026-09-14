@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "handoff document integrity; NOT application/runtime/LLM tests",
+  "counts": {
+    "markdown_files": 80,
+    "table_occurrences": 168,
+    "table_cells": 3380,
+    "relative_links": 328,
+    "source_lines": 2331,
+    "source_parts": 13,
+    "proposals": 12,
+    "acceptance_specs": 105,
+    "findings": 26,
+    "tasks": 14,
+    "baseline_invariants": 45,
+    "current_canonical_lines": 2360,
+    "current_canonical_parts": 13,
+    "accepted_user_overrides": 3,
+    "root_agents_bytes": 5576
+  },
+  "errors": []
+}

@@ -1,0 +1,1431 @@
+{
+  "schema_version": "image-transcription-experiment-result-v1",
+  "state": "complete",
+  "completed_at_utc": "2026-09-10T04:49:55.320748+00:00",
+  "scope": {
+    "papers": 17,
+    "sampled_pages": 51,
+    "baseline_full_document_pages": 243,
+    "transcription_samples": 51,
+    "heading_gold": 74,
+    "figure_gold": 19,
+    "canonical_writes": 0,
+    "application_semantic_llm_calls": 0,
+    "production_default_changed": false,
+    "task_status": "T03 remains in_progress; T04+ not executed"
+  },
+  "runtime": {
+    "model": "opendatalab/MinerU2.5-Pro-2605-1.2B",
+    "mineru": "3.4.5",
+    "backend": "hybrid-engine",
+    "effort": "high",
+    "engine": "transformers",
+    "method": "auto",
+    "actual_ocr_enable_all": true,
+    "image_analysis": false,
+    "dpi": 200,
+    "render_seconds": 21.722615,
+    "batch_wall_seconds": 1429.734000000004,
+    "parser_seconds_sum": 2683.251897596003,
+    "parser_seconds_median": 161.97061489099906,
+    "parser_seconds_range": [
+      108.97122682000008,
+      217.42286606200105
+    ],
+    "timing_comparison_note": "The old 243-page batch and this 51-page batch have different input sizes and are not a paired speed comparison."
+  },
+  "source_verification": {
+    "passed_documents": 17,
+    "pages": 51,
+    "proposal_count": 631,
+    "kinds": {
+      "text": 586,
+      "image": 45
+    },
+    "raw_reference_checks": {
+      "raw_nodes_checked": 4184,
+      "raw_leaf_nodes_checked": 2033,
+      "raw_payload_segments_checked": 2033,
+      "raw_blocks_checked": 631,
+      "raw_page_references_checked": 51
+    },
+    "retained_files_rehashed": 358,
+    "frozen_file_checks": 137,
+    "repeat_assembly_equal_documents": 17,
+    "repeat_gpu_inference_tested": false,
+    "postgresql_tested": false
+  },
+  "paired_metrics": {
+    "transcription_samples": 51,
+    "gold_characters": 7812,
+    "baseline_exact": 32,
+    "image_only_exact": 41,
+    "baseline_distance": 49,
+    "image_only_distance": 43,
+    "transitions": {
+      "nonexact->nonexact": 8,
+      "exact->exact": 30,
+      "nonexact->exact": 11,
+      "exact->nonexact": 2
+    },
+    "baseline_heading_exact": 48,
+    "image_only_heading_exact": 50,
+    "baseline_heading_contains": 50,
+    "image_only_heading_contains": 52,
+    "image_region_geometric_screen": 15
+  },
+  "transcription_review": {
+    "samples": 51,
+    "baseline_exact": 32,
+    "image_only_exact": 41,
+    "exact_to_nonexact_regressions": 2,
+    "nonexact_reviewed": 10,
+    "literal_hyphen_loss_cases": 1,
+    "review_categories": {
+      "citation_markup_and_dash_notation": 1,
+      "subscript_math_notation": 1,
+      "greek_math_notation": 2,
+      "greek_and_superscript_math_notation": 1,
+      "superscript_math_notation": 4,
+      "literal_hyphen_loss": 1
+    },
+    "recomputed_semantic_accuracy": false
+  },
+  "greek_targets": {
+    "targets": 5,
+    "baseline_target_literal_matches": 0,
+    "image_only_target_literal_matches": 2,
+    "image_only_explicit_latex_target_matches": 3,
+    "target_representation_matches_source_context": 5,
+    "baseline_whole_sample_exact": 0,
+    "image_only_whole_sample_exact": 2,
+    "baseline_minimum_distance_sum": 5,
+    "image_only_minimum_distance_sum": 15,
+    "corrected_semantic_success_rate_computed": false
+  },
+  "targeted_micro_units": {
+    "body_and_caption": {
+      "occurrences": 16,
+      "baseline": {
+        "categories": {
+          "unit_difference": 15,
+          "format_encoded_equivalent": 1
+        },
+        "strict_expression_equal": 0,
+        "display_expression_equal": 1,
+        "parser_image_preserved_geometrically": 0
+      },
+      "image_only": {
+        "categories": {
+          "strict_unit_expression": 4,
+          "format_encoded_equivalent": 12
+        },
+        "strict_expression_equal": 4,
+        "display_expression_equal": 16,
+        "parser_image_preserved_geometrically": 0
+      }
+    },
+    "image_internal_outside_text_denominator": {
+      "occurrences": 5,
+      "baseline": {
+        "categories": {
+          "not_transcribed_as_image": 5
+        },
+        "strict_expression_equal": 0,
+        "display_expression_equal": 0,
+        "parser_image_preserved_geometrically": 5
+      },
+      "image_only": {
+        "categories": {
+          "not_transcribed_as_image": 5
+        },
+        "strict_expression_equal": 0,
+        "display_expression_equal": 0,
+        "parser_image_preserved_geometrically": 5
+      }
+    }
+  },
+  "raw_figure_crops": {
+    "single_crop": {
+      "complete": 15,
+      "partial": 4
+    },
+    "crop_set": {
+      "complete": 16,
+      "partial": 3
+    },
+    "not_same_as_old_projection_metric": true
+  },
+  "additional_figure_text_error": {
+    "id": "paper10",
+    "source_page_number": 8,
+    "figure_number": "5",
+    "panel": "I",
+    "expected": "I",
+    "observed": "|",
+    "raw_model_locator": "/1/18",
+    "outside_frozen_sentence_samples": true,
+    "crop_metrics_changed": false
+  },
+  "headings_review": {
+    "schema_version": "heading-regression-review-v1",
+    "state": "complete",
+    "reviewed_at_utc": "2026-09-10T04:40:23.511675+00:00",
+    "source_score": "output/t03-image-transcription/runtime/paired-final.json",
+    "scope": "Exhaustive selection of old exact/new nonexact among frozen 74 clear headings, followed by retained-raw review of the three selected cases only.",
+    "fixed_summary": {
+      "heading_denominator": 74,
+      "baseline_exact": 48,
+      "image_only_exact": 50,
+      "baseline_contains": 50,
+      "image_only_contains": 52,
+      "exact_regressions": 3,
+      "exact_gains": 5,
+      "stable_exact": 45,
+      "stable_nonexact": 21,
+      "balance": "48 - 3 + 5 = 50"
+    },
+    "regression_classification_counts": {
+      "title_preserved_latex_and_spacing_representation": 3,
+      "text_retained_but_title_classification_lost": 0,
+      "merged_title_boundary": 0,
+      "content_loss_confirmed": 0,
+      "uncertain": 0
+    },
+    "counts_are_explanatory_not_corrected_semantic_score": true,
+    "input_sha256": {
+      "output/t03-image-transcription/runtime/paired-final.json": "6edd288ac3b3fe55e66f0968b20c77897e6b2e539a093c73bbf3e36b3fca8ddd",
+      "output/t03-expanded-papers/runtime/quality-final-a1.json": "ae0ed489e2e5bb0a7100da9d9d287131ec37c635398a740ae522de92f6d95f26",
+      "output/t03-image-transcription/runtime/heading-regression-preparation.json": "f88613b518f88da2e8db223dc7918d0f9cb1793603a6f912fdd599aec7b62be0",
+      "output/t03-image-transcription/runs/paper01/execution.json": "fffa98bf3b62b82c54edbccfce7bd9755cac1b2806149642ae13d5fa28e37ba0",
+      "output/t03-image-transcription/inputs-a2/paper01/manifest.json": "173927553d6f5f28cd53d3295c3062efb276e633c144190ffd0302093bcfeea0",
+      "output/t03-image-transcription/runs/paper01/verify/summary.json": "5d5ac7f45f5da942ffe08c51adbe869dbeb803fc36a1c5de8a8f92b59263f680",
+      "output/t03-image-transcription/runs/paper01/verify/bundle.json": "25c46c855d44e70f3566f2d8cc7ff534715fd195f042aebabca9f4c876763835",
+      "output/t03-image-transcription/runs/paper01/parse/parse_result.json": "2e89a10b7009d7e6c0622fcb0210b8cbe0724a6a3c140f6a101201b66cc5b0b6",
+      "output/t03-image-transcription/runs/paper01/parse/parser/source/hybrid_auto/source_middle.json": "28f6d3a8224fbd89d934942007de3fb655899b278e0997306df241ccdbf3b167",
+      "output/t03-expanded-papers/runs/paper01/verify/bundle.json": "97ff3a9709b3ab5dc39f800b213522158b71578626c5ac63185c27ed6dc5403b",
+      "output/t03-expanded-papers/runs/paper01/verify/summary.json": "5d402f7266e87d004478adca71b2ca8669169b588dd5db4fdea1b423578329f5",
+      "output/t03-expanded-papers/runs/paper01/parse/parse_result.json": "9767933165350a9f2f6b496421af756af23e92062640b57aa4f75d2399ed1a6d",
+      "output/t03-expanded-papers/runs/paper01/parse/parser/source/hybrid_auto/source_middle.json": "6a316c3539b9d388e346aeb89a69cfb2ac1f09f71da6b7a76e3a49cc7cb46578",
+      "output/t03-image-transcription/runs/paper05/execution.json": "383cca5d37f5c8459fa08f78ba209a0601f9bcf4f42e067acec17ea802757c2f",
+      "output/t03-image-transcription/inputs-a2/paper05/manifest.json": "a6b50b7b555ec0400013dc328042b99d28692e889ff688076d754460d4c05651",
+      "output/t03-image-transcription/runs/paper05/verify/summary.json": "ad6b5b161462dd85c270f9b8f47e7ebfd658194eaa6d6253b35633aecbd9c651",
+      "output/t03-image-transcription/runs/paper05/verify/bundle.json": "22c715ab5f7e85f69932b338e723208a2424ca417f26d135dce1fd759ca24adb",
+      "output/t03-image-transcription/runs/paper05/parse/parse_result.json": "b7938ffb4cebaedd9559009cc7482bea78fcef948f111fb78a5046529f9b47b6",
+      "output/t03-image-transcription/runs/paper05/parse/parser/source/hybrid_auto/source_middle.json": "2c644bc2be4f800074f4bdefb630f4dc4da4ea32abfc9a8711b3709dae31b1b3",
+      "output/t03-expanded-papers/runs/paper05/verify/bundle.json": "8a7d52fa8521e540e9b2baa54bd8140a419f95e19b39b6fb235a87ffb34ac833",
+      "output/t03-expanded-papers/runs/paper05/verify/summary.json": "962e1270839be6927288f37c08be103bbd5163293e2af82a954ef9310c731d89",
+      "output/t03-expanded-papers/runs/paper05/parse/parse_result.json": "0170ec9ad64fce3c365405650c80c1f59612bada8523414a1813413e9f866522",
+      "output/t03-expanded-papers/runs/paper05/parse/parser/source/hybrid_auto/source_middle.json": "4e7d0dbc83b1c40bb8878b9e578375e605339eb01502f8d5dedff34ebb107c9f",
+      "output/t03-image-transcription/runs/paper20/execution.json": "062b0809002863cf8f43c1515d89d69c21f0adfa90f7fa11ef061d198b7325b5",
+      "output/t03-image-transcription/inputs-a2/paper20/manifest.json": "b42c7ffb3676e97649c5a6d0699b78150f942f8e37a73b2270b4f53c4ce007ca",
+      "output/t03-image-transcription/runs/paper20/verify/summary.json": "39b0fdf361a5f95b9473d7161703c0aac24aba2e87def456e95e85208f5fd741",
+      "output/t03-image-transcription/runs/paper20/verify/bundle.json": "c4769439f91e3ce9502e73deda92d6b94942158cd3274cc7f3c112688f8023ef",
+      "output/t03-image-transcription/runs/paper20/parse/parse_result.json": "5cb729b7c2fd281ff9b807eeb8ccdb7a3757e9accf95bae2e2fd6a6a60918e0b",
+      "output/t03-image-transcription/runs/paper20/parse/parser/source/hybrid_auto/source_middle.json": "b12ba26914b69050efb925f8d53ca011ab5be411a53a425c5956e435b108e915",
+      "output/t03-expanded-papers/runs/paper20/verify/bundle.json": "f8f1af40f1dd8c3a769da5451d3823ab31b1a594e6594a98806edead63673b56",
+      "output/t03-expanded-papers/runs/paper20/verify/summary.json": "2253a9cb20655f49812d0751382b1317a23bfc7d2b9a2142b2941ab38901326d",
+      "output/t03-expanded-papers/runs/paper20/parse/parse_result.json": "787a23b80d393e2d7d104232e39aa7f5b38e1f007b63a526036054b82e797cf1",
+      "output/t03-expanded-papers/runs/paper20/parse/parser/source/hybrid_auto/source_middle.json": "525a886f9904147ba4dc612402d702759668a02bddc5c2f1e6a6736cf58d4054",
+      "output/t03-image-transcription/runtime/heading_regression.py": "eb198f1cb66f21d0e79173a52281c7469201fead79a6c8f5f5c675d1c86ccf05",
+      "output/t03-expanded-papers/runtime/score_quality.py": "e3832e22cdf9f628ece60b0754adf08e9311466da4a9942f0da169cf2ce24bc6",
+      "src/palimpsest/pdf_text_evidence.py": "e65fe2dc8651505658c7581e5af5c2ed138eb2a5720730f719edbbb22b4a3700",
+      "src/palimpsest/mineru_adapter.py": "bbf568b09e8bf0a4dad98bbcf1f349bbb9e435523ddd06aa4aa7fb422bb3ceb7"
+    },
+    "all_input_hashes_unchanged": true,
+    "source_derived_mapping_and_verification_chain_checked": true,
+    "selected_original_and_derived_raw_block_and_span_hashes_checked": true,
+    "production_changes": false,
+    "gold_or_fixed_metric_changes": false,
+    "new_model_calls": 0,
+    "canonical_writes": 0,
+    "cases": [
+      {
+        "paper": "paper01",
+        "source_page_number": 1,
+        "source_data_id": "56609cb3d3f6bafc5c523da5728cbb3e6c5b29cbf4b563a8ec08d061825fd823",
+        "derived_data_id": "a30e330598a13994ac441257944d2423dda787c48b13a6bf9b62e75fe644c770",
+        "derived_page_index": 0,
+        "frozen_heading": {
+          "text": "Apoptosis in response to microbial infection induces autoreactive TH17 cells",
+          "kind": "document_title",
+          "bbox": [
+            42,
+            157,
+            551,
+            202
+          ],
+          "certainty": "clear",
+          "notes": "H is visibly subscript in TH17; plain-text representation linearizes it.",
+          "normalized_gold": "Apoptosis in response to microbial infection induces autoreactive TH17 cells",
+          "native": {
+            "exact": [
+              "pdf-heading:0:4575:4653"
+            ],
+            "contains": [
+              "pdf-heading:0:4575:4653"
+            ]
+          },
+          "parser_title": {
+            "exact": [
+              "/pdf_info/0/preproc_blocks/0"
+            ],
+            "contains": [
+              "/pdf_info/0/preproc_blocks/0"
+            ]
+          }
+        },
+        "unchanged_paired_heading_row": {
+          "paper": "paper01",
+          "source_page_number": 1,
+          "text": "Apoptosis in response to microbial infection induces autoreactive TH17 cells",
+          "baseline_exact": true,
+          "baseline_contains": true,
+          "image_only_exact": [],
+          "image_only_contains": []
+        },
+        "source_visual_bbox": [
+          42,
+          157,
+          551,
+          202
+        ],
+        "source_visual_bbox_note": "Missing when not provided by frozen annotation; no model bbox is substituted as visual gold.",
+        "source_to_derived_affine": [
+          1.0,
+          0,
+          0,
+          1.0,
+          0,
+          0
+        ],
+        "classification": "title_preserved_latex_and_spacing_representation",
+        "note": "H의 subscript 수식과 뒤 text의 17이 남아 있다. 원문 annotation은 TH17로 선형화했다.",
+        "review_only_readout": "Apoptosis in response to microbial infection induces autoreactive TH17 cells",
+        "review_only_readout_matches_frozen_gold": true,
+        "review_readout_used_for_scoring": false,
+        "all_same_page_exact_blocks": [],
+        "all_same_page_contains_blocks": [],
+        "same_page_blocks_inspected": 18,
+        "title_type_lost": false,
+        "title_boundary_merge_observed": false,
+        "content_loss_confirmed": false,
+        "unchanged_metric_result": "nonexact_and_not_contains",
+        "diagnostic_same_page_best_substring": {
+          "exact": false,
+          "distance": 4,
+          "gold_characters": 76,
+          "difference_ratio": 0.05263157894736842,
+          "matched_excerpt": "Apoptosis in response to microbial infection induces autoreactive T_{H} 17 cells",
+          "normalized_range": [
+            0,
+            80
+          ],
+          "reference": "/pdf_info/0/preproc_blocks/0",
+          "channel": "verified_same_original_page_all_blocks",
+          "output_available": true,
+          "alignment_note": "Minimum edit distance to one normalized same-page substring; reviewable, not an automatic OCR-error diagnosis."
+        },
+        "baseline": {
+          "raw_middle_path": "output/t03-expanded-papers/runs/paper01/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": false,
+          "exact_title_blocks": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0",
+              "raw_block_sha256": "37295610f59e77874779f117b030e3af526bbdcf1c5ad47e67402fb7d0fc9b7a",
+              "type": "title",
+              "text": "Apoptosis in response to microbial infection induces\nautoreactive T<sub>H</sub>17 cells",
+              "raw_block": {
+                "bbox": [
+                  40,
+                  155,
+                  545,
+                  205
+                ],
+                "type": "title",
+                "angle": 0,
+                "index": 4,
+                "lines": [
+                  {
+                    "bbox": [
+                      40,
+                      156,
+                      544,
+                      178
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          40,
+                          156,
+                          544,
+                          178
+                        ],
+                        "type": "text",
+                        "content": "Apoptosis in response to microbial infection induces",
+                        "score": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "bbox": [
+                      40,
+                      180,
+                      267,
+                      204
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          40,
+                          180,
+                          267,
+                          204
+                        ],
+                        "type": "text",
+                        "content": "autoreactive T<sub>H</sub>17 cells",
+                        "score": 1.0
+                      }
+                    ]
+                  }
+                ],
+                "level": 1
+              }
+            }
+          ]
+        },
+        "image_only": {
+          "raw_middle_path": "output/t03-image-transcription/runs/paper01/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": true,
+          "raw_effort": "high",
+          "raw_block_locator": "/pdf_info/0/preproc_blocks/0",
+          "raw_block_sha256": "4f6db225de106caee87f6b864c1cbae4e4b783fc73ca3efed2d9e4116c523de0",
+          "raw_block": {
+            "bbox": [
+              40,
+              155,
+              545,
+              205
+            ],
+            "type": "title",
+            "angle": 0,
+            "lines": [
+              {
+                "bbox": [
+                  40,
+                  155,
+                  545,
+                  205
+                ],
+                "spans": [
+                  {
+                    "bbox": [
+                      40,
+                      155,
+                      545,
+                      205
+                    ],
+                    "type": "text",
+                    "content": "Apoptosis in response to microbial infection induces autoreactive  "
+                  },
+                  {
+                    "bbox": [
+                      40,
+                      155,
+                      545,
+                      205
+                    ],
+                    "type": "inline_equation",
+                    "content": "T_{H}"
+                  },
+                  {
+                    "bbox": [
+                      40,
+                      155,
+                      545,
+                      205
+                    ],
+                    "type": "text",
+                    "content": " 17 cells"
+                  }
+                ]
+              }
+            ],
+            "index": 4,
+            "level": 1
+          },
+          "type": "title",
+          "text": "Apoptosis in response to microbial infection induces autoreactive   T_{H}  17 cells",
+          "bbox": [
+            40,
+            155,
+            545,
+            205
+          ],
+          "supporting_raw_segments": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/0",
+              "raw_node": {
+                "bbox": [
+                  40,
+                  155,
+                  545,
+                  205
+                ],
+                "type": "text",
+                "content": "Apoptosis in response to microbial infection induces autoreactive  "
+              },
+              "raw_node_sha256": "085bb30ebe429ccd3ada0558f3955c0f7b3951b8886f1f0d9f86e33ac5915d0e"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/1",
+              "raw_node": {
+                "bbox": [
+                  40,
+                  155,
+                  545,
+                  205
+                ],
+                "type": "inline_equation",
+                "content": "T_{H}"
+              },
+              "raw_node_sha256": "b44dac21a1edb0f55d50a5b1e0600dbc7e24412fc7ddf3b13e2586c9246cecd5"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/2",
+              "raw_node": {
+                "bbox": [
+                  40,
+                  155,
+                  545,
+                  205
+                ],
+                "type": "text",
+                "content": " 17 cells"
+              },
+              "raw_node_sha256": "a852eec1f366105c64f17289ef80ec8cdc5872b75ab7e3b94780b1f4aea23af1"
+            }
+          ]
+        }
+      },
+      {
+        "paper": "paper05",
+        "source_page_number": 1,
+        "source_data_id": "59e86294dcd441f3b2332be14bc906ed3ac35afa4cfb4c45319bb68d53c75367",
+        "derived_data_id": "6e614b5f26548732ff034e5e2b64d47f7910cdff92e05e639cde811029395ddc",
+        "derived_page_index": 0,
+        "frozen_heading": {
+          "text": "Intestinal host defense outcome is dictated by PGE2 production during efferocytosis of infected cells",
+          "kind": "document_title",
+          "bbox": [
+            38,
+            51,
+            526,
+            95
+          ],
+          "certainty": "clear",
+          "notes": "2 is visibly subscript in PGE2; plain-text title linearizes it.",
+          "normalized_gold": "Intestinal host defense outcome is dictated by PGE2 production during efferocytosis of infected cells",
+          "native": {
+            "exact": [],
+            "contains": [
+              "pdf-heading:0:0:152"
+            ]
+          },
+          "parser_title": {
+            "exact": [
+              "/pdf_info/0/preproc_blocks/0"
+            ],
+            "contains": [
+              "/pdf_info/0/preproc_blocks/0"
+            ]
+          }
+        },
+        "unchanged_paired_heading_row": {
+          "paper": "paper05",
+          "source_page_number": 1,
+          "text": "Intestinal host defense outcome is dictated by PGE2 production during efferocytosis of infected cells",
+          "baseline_exact": true,
+          "baseline_contains": true,
+          "image_only_exact": [],
+          "image_only_contains": []
+        },
+        "source_visual_bbox": [
+          38,
+          51,
+          526,
+          95
+        ],
+        "source_visual_bbox_note": "Missing when not provided by frozen annotation; no model bbox is substituted as visual gold.",
+        "source_to_derived_affine": [
+          1.000073560599065,
+          0,
+          0,
+          1.0000178509582185,
+          0,
+          0
+        ],
+        "classification": "title_preserved_latex_and_spacing_representation",
+        "note": "PGE와 subscript 2가 inline_equation에 남아 있고 제목 앞뒤 text도 보존된다.",
+        "review_only_readout": "Intestinal host defense outcome is dictated by PGE2 production during efferocytosis of infected cells",
+        "review_only_readout_matches_frozen_gold": true,
+        "review_readout_used_for_scoring": false,
+        "all_same_page_exact_blocks": [],
+        "all_same_page_contains_blocks": [],
+        "same_page_blocks_inspected": 23,
+        "title_type_lost": false,
+        "title_boundary_merge_observed": false,
+        "content_loss_confirmed": false,
+        "unchanged_metric_result": "nonexact_and_not_contains",
+        "diagnostic_same_page_best_substring": {
+          "exact": false,
+          "distance": 3,
+          "gold_characters": 101,
+          "difference_ratio": 0.0297029702970297,
+          "matched_excerpt": "Intestinal host defense outcome is dictated by PGE_{2} production during efferocytosis of infected cells",
+          "normalized_range": [
+            0,
+            104
+          ],
+          "reference": "/pdf_info/0/preproc_blocks/0",
+          "channel": "verified_same_original_page_all_blocks",
+          "output_available": true,
+          "alignment_note": "Minimum edit distance to one normalized same-page substring; reviewable, not an automatic OCR-error diagnosis."
+        },
+        "baseline": {
+          "raw_middle_path": "output/t03-expanded-papers/runs/paper05/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": false,
+          "exact_title_blocks": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0",
+              "raw_block_sha256": "f86c2efe5fc00668332da28ba4f29640dbf3f19392c0f9a342c7f2e0da63bc3b",
+              "type": "title",
+              "text": "Intestinal host defense outcome is dictated by PGE<sub>2</sub>\nproduction during efferocytosis of infected cells",
+              "raw_block": {
+                "bbox": [
+                  36,
+                  47,
+                  522,
+                  98
+                ],
+                "type": "title",
+                "angle": 0,
+                "index": 1,
+                "lines": [
+                  {
+                    "bbox": [
+                      36,
+                      46,
+                      525,
+                      73
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          36,
+                          46,
+                          525,
+                          73
+                        ],
+                        "type": "text",
+                        "content": "Intestinal host defense outcome is dictated by PGE<sub>2</sub>",
+                        "score": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "bbox": [
+                      36,
+                      73,
+                      484,
+                      96
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          36,
+                          73,
+                          484,
+                          96
+                        ],
+                        "type": "text",
+                        "content": "production during efferocytosis of infected cells",
+                        "score": 1.0
+                      }
+                    ]
+                  }
+                ],
+                "level": 1
+              }
+            }
+          ]
+        },
+        "image_only": {
+          "raw_middle_path": "output/t03-image-transcription/runs/paper05/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": true,
+          "raw_effort": "high",
+          "raw_block_locator": "/pdf_info/0/preproc_blocks/0",
+          "raw_block_sha256": "2587965f3e734a4a9797585eb728e091fd5c3e713ad255ae89f2aa207d3bdc66",
+          "raw_block": {
+            "bbox": [
+              36,
+              47,
+              523,
+              98
+            ],
+            "type": "title",
+            "angle": 0,
+            "lines": [
+              {
+                "bbox": [
+                  36,
+                  47,
+                  523,
+                  98
+                ],
+                "spans": [
+                  {
+                    "bbox": [
+                      36,
+                      47,
+                      523,
+                      98
+                    ],
+                    "type": "text",
+                    "content": "Intestinal host defense outcome is dictated by  "
+                  },
+                  {
+                    "bbox": [
+                      36,
+                      47,
+                      523,
+                      98
+                    ],
+                    "type": "inline_equation",
+                    "content": "PGE_{2}"
+                  },
+                  {
+                    "bbox": [
+                      36,
+                      47,
+                      523,
+                      98
+                    ],
+                    "type": "text",
+                    "content": "  production during efferocytosis of infected cells"
+                  }
+                ]
+              }
+            ],
+            "index": 1,
+            "level": 1
+          },
+          "type": "title",
+          "text": "Intestinal host defense outcome is dictated by   PGE_{2}   production during efferocytosis of infected cells",
+          "bbox": [
+            36,
+            47,
+            523,
+            98
+          ],
+          "supporting_raw_segments": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/0",
+              "raw_node": {
+                "bbox": [
+                  36,
+                  47,
+                  523,
+                  98
+                ],
+                "type": "text",
+                "content": "Intestinal host defense outcome is dictated by  "
+              },
+              "raw_node_sha256": "1e2deef8d1a9fbad0448b2f8e6a490d75f91e3fff33657e78ef8ead04af94f4b"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/1",
+              "raw_node": {
+                "bbox": [
+                  36,
+                  47,
+                  523,
+                  98
+                ],
+                "type": "inline_equation",
+                "content": "PGE_{2}"
+              },
+              "raw_node_sha256": "c283fcf1112c371ff9f3fcd6e1a7462ac20480793005ef563aeb72843d27a2ae"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/0/lines/0/spans/2",
+              "raw_node": {
+                "bbox": [
+                  36,
+                  47,
+                  523,
+                  98
+                ],
+                "type": "text",
+                "content": "  production during efferocytosis of infected cells"
+              },
+              "raw_node_sha256": "3004b36bafd228c4cd2d41839667f91ca65e48c86a3f793604661be84167aa27"
+            }
+          ]
+        }
+      },
+      {
+        "paper": "paper20",
+        "source_page_number": 1,
+        "source_data_id": "174c856514fbf95ac74fd3e2d3dbd4dd5d03ec91f8754e9d1f26eeb5e4b7d468",
+        "derived_data_id": "3420f769b812b2660fe0039b315c990dd799d15d23df94e532bc81cd9e985066",
+        "derived_page_index": 0,
+        "frozen_heading": {
+          "text": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4+ T-cell responses",
+          "kind": "article_title",
+          "certainty": "clear",
+          "visible_gold": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4+ T-cell responses",
+          "native_text": "Apoptotic cell capture by DCs induces unexpectedly\r\nrobust autologous CD4+ T-cell responses",
+          "native_source_locator": {
+            "file": "output/t03-expanded-papers/source-review/paper20/source-pages.json",
+            "page_index": 0,
+            "character_start": 93,
+            "character_end": 184
+          },
+          "normalized_gold": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4+ T-cell responses",
+          "native": {
+            "exact": [
+              "pdf-heading:0:93:184"
+            ],
+            "contains": [
+              "pdf-heading:0:93:184"
+            ]
+          },
+          "parser_title": {
+            "exact": [
+              "/pdf_info/0/preproc_blocks/1"
+            ],
+            "contains": [
+              "/pdf_info/0/preproc_blocks/1"
+            ]
+          }
+        },
+        "unchanged_paired_heading_row": {
+          "paper": "paper20",
+          "source_page_number": 1,
+          "text": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4+ T-cell responses",
+          "baseline_exact": true,
+          "baseline_contains": true,
+          "image_only_exact": [],
+          "image_only_contains": []
+        },
+        "source_visual_bbox": null,
+        "source_visual_bbox_note": "Missing when not provided by frozen annotation; no model bbox is substituted as visual gold.",
+        "source_to_derived_affine": [
+          1.0,
+          0,
+          0,
+          1.0,
+          0,
+          0
+        ],
+        "classification": "title_preserved_latex_and_spacing_representation",
+        "note": "앞 text의 CD4와 inline_equation의 +, 다음 text의 T-cell responses가 연속된다.",
+        "review_only_readout": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4+ T-cell responses",
+        "review_only_readout_matches_frozen_gold": true,
+        "review_readout_used_for_scoring": false,
+        "all_same_page_exact_blocks": [],
+        "all_same_page_contains_blocks": [],
+        "same_page_blocks_inspected": 20,
+        "title_type_lost": false,
+        "title_boundary_merge_observed": false,
+        "content_loss_confirmed": false,
+        "unchanged_metric_result": "nonexact_and_not_contains",
+        "diagnostic_same_page_best_substring": {
+          "exact": false,
+          "distance": 4,
+          "gold_characters": 90,
+          "difference_ratio": 0.044444444444444446,
+          "matched_excerpt": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4 ^{+} T-cell responses",
+          "normalized_range": [
+            0,
+            94
+          ],
+          "reference": "/pdf_info/0/preproc_blocks/1",
+          "channel": "verified_same_original_page_all_blocks",
+          "output_available": true,
+          "alignment_note": "Minimum edit distance to one normalized same-page substring; reviewable, not an automatic OCR-error diagnosis."
+        },
+        "baseline": {
+          "raw_middle_path": "output/t03-expanded-papers/runs/paper20/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": false,
+          "exact_title_blocks": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/1",
+              "raw_block_sha256": "4ea177135c5f3f6d7ebcdec45c28b9191c420a561785e75cede80f6fb5e3f57a",
+              "type": "title",
+              "text": "Apoptotic cell capture by DCs induces unexpectedly\nrobust autologous CD4+ T-cell responses",
+              "raw_block": {
+                "bbox": [
+                  52,
+                  119,
+                  517,
+                  164
+                ],
+                "type": "title",
+                "angle": 0,
+                "index": 5,
+                "lines": [
+                  {
+                    "bbox": [
+                      55,
+                      121,
+                      516,
+                      141
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          55,
+                          121,
+                          516,
+                          141
+                        ],
+                        "type": "text",
+                        "content": "Apoptotic cell capture by DCs induces unexpectedly",
+                        "score": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "bbox": [
+                      54,
+                      144,
+                      421,
+                      162
+                    ],
+                    "spans": [
+                      {
+                        "bbox": [
+                          54,
+                          144,
+                          421,
+                          162
+                        ],
+                        "type": "text",
+                        "content": "robust autologous CD4+ T-cell responses",
+                        "score": 1.0
+                      }
+                    ]
+                  }
+                ],
+                "level": 1
+              }
+            }
+          ]
+        },
+        "image_only": {
+          "raw_middle_path": "output/t03-image-transcription/runs/paper20/parse/parser/source/hybrid_auto/source_middle.json",
+          "raw_ocr_enable": true,
+          "raw_effort": "high",
+          "raw_block_locator": "/pdf_info/0/preproc_blocks/1",
+          "raw_block_sha256": "51887a755c3bff3e54249e175111bb764964be9d11f9172fe3e00e9e8677f380",
+          "raw_block": {
+            "bbox": [
+              52,
+              119,
+              517,
+              164
+            ],
+            "type": "title",
+            "angle": 0,
+            "lines": [
+              {
+                "bbox": [
+                  52,
+                  119,
+                  517,
+                  164
+                ],
+                "spans": [
+                  {
+                    "bbox": [
+                      52,
+                      119,
+                      517,
+                      164
+                    ],
+                    "type": "text",
+                    "content": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4 "
+                  },
+                  {
+                    "bbox": [
+                      52,
+                      119,
+                      517,
+                      164
+                    ],
+                    "type": "inline_equation",
+                    "content": "^{+}"
+                  },
+                  {
+                    "bbox": [
+                      52,
+                      119,
+                      517,
+                      164
+                    ],
+                    "type": "text",
+                    "content": " T-cell responses"
+                  }
+                ]
+              }
+            ],
+            "index": 5,
+            "level": 1
+          },
+          "type": "title",
+          "text": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4  ^{+}  T-cell responses",
+          "bbox": [
+            52,
+            119,
+            517,
+            164
+          ],
+          "supporting_raw_segments": [
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/1/lines/0/spans/0",
+              "raw_node": {
+                "bbox": [
+                  52,
+                  119,
+                  517,
+                  164
+                ],
+                "type": "text",
+                "content": "Apoptotic cell capture by DCs induces unexpectedly robust autologous CD4 "
+              },
+              "raw_node_sha256": "fa463e07ee17e07b271dfdeec7133d2527ce133ee179200daeffcd8a03cae967"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/1/lines/0/spans/1",
+              "raw_node": {
+                "bbox": [
+                  52,
+                  119,
+                  517,
+                  164
+                ],
+                "type": "inline_equation",
+                "content": "^{+}"
+              },
+              "raw_node_sha256": "9c87b95ba636028635ce63ef8df8e7d225fe13ac3cf69033bb0e4ec225746892"
+            },
+            {
+              "raw_locator": "/pdf_info/0/preproc_blocks/1/lines/0/spans/2",
+              "raw_node": {
+                "bbox": [
+                  52,
+                  119,
+                  517,
+                  164
+                ],
+                "type": "text",
+                "content": " T-cell responses"
+              },
+              "raw_node_sha256": "7d2c28868589628d2c84080dad1ac1be883b0037ad28cad7bbbf4d8cda801bc1"
+            }
+          ]
+        }
+      }
+    ],
+    "gained_heading_rows_for_count_balance_only": [
+      {
+        "paper": "paper03",
+        "source_page_number": 1,
+        "text": "Regulation of dendritic cells and macrophages by an anti-apoptotic-cell natural antibody that suppresses TLR responses and inhibits inflammatory arthritis",
+        "baseline_exact": false,
+        "baseline_contains": false,
+        "image_only_exact": [
+          "/pdf_info/0/preproc_blocks/2"
+        ],
+        "image_only_contains": [
+          "/pdf_info/0/preproc_blocks/2"
+        ]
+      },
+      {
+        "paper": "paper04",
+        "source_page_number": 7,
+        "text": "C1q-polarized Mφ conditioned media suppresses inflammatory T cell subsets in an autologous MLR",
+        "baseline_exact": false,
+        "baseline_contains": false,
+        "image_only_exact": [
+          "/pdf_info/1/preproc_blocks/3"
+        ],
+        "image_only_contains": [
+          "/pdf_info/1/preproc_blocks/3"
+        ]
+      },
+      {
+        "paper": "paper08",
+        "source_page_number": 4,
+        "text": "Macrophage phagocytosis of IC-opsonized apoptotic neutrophils leads to release of proinflammatory cytokines",
+        "baseline_exact": false,
+        "baseline_contains": false,
+        "image_only_exact": [
+          "/pdf_info/1/preproc_blocks/8"
+        ],
+        "image_only_contains": [
+          "/pdf_info/1/preproc_blocks/8"
+        ]
+      },
+      {
+        "paper": "paper15",
+        "source_page_number": 4,
+        "text": "Natural IgM is not required for the induction of Ag-induced arthritis",
+        "baseline_exact": false,
+        "baseline_contains": false,
+        "image_only_exact": [
+          "/pdf_info/1/preproc_blocks/3"
+        ],
+        "image_only_contains": [
+          "/pdf_info/1/preproc_blocks/3"
+        ]
+      },
+      {
+        "paper": "paper15",
+        "source_page_number": 4,
+        "text": "Natural IgM is required for the induction of B and T cell IL-10 production by AC",
+        "baseline_exact": false,
+        "baseline_contains": false,
+        "image_only_exact": [
+          "/pdf_info/1/preproc_blocks/9"
+        ],
+        "image_only_contains": [
+          "/pdf_info/1/preproc_blocks/9"
+        ]
+      }
+    ],
+    "limitations": [
+      "The three regressions keep their strict metric failure; no generic LaTeX normalizer was added.",
+      "Local interpretation of retained notation is not a new semantic truth judgment.",
+      "No confirmed loss among these three does not certify all headings or full documents.",
+      "Source-only Codex annotations are not independent human/expert gold.",
+      "OCR spans reference heading regions, not tight glyph boxes."
+    ]
+  },
+  "docker_resource_counts": {
+    "containers": 7,
+    "images": 13,
+    "volumes": 27
+  },
+  "document_validation": {
+    "exit_code": 1,
+    "status": "failed",
+    "errors": [
+      "output/t03-image-transcription/runs/paper10/parse/parser/source/hybrid_auto/source.md: table missing valid delimiter at line 60"
+    ]
+  },
+  "documents": [
+    {
+      "id": "paper01",
+      "original_data_id": "56609cb3d3f6bafc5c523da5728cbb3e6c5b29cbf4b563a8ec08d061825fd823",
+      "derived_data_id": "a30e330598a13994ac441257944d2423dda787c48b13a6bf9b62e75fe644c770",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper01/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper01/parse/parse_result.json",
+      "parser_seconds": 161.97061489099906,
+      "parser_wall_seconds": 162.98500000000058,
+      "total_wall_seconds": 167.54699999999866
+    },
+    {
+      "id": "paper02",
+      "original_data_id": "99cd017e2ea2ac4451fef23231e8c98b9238c27f1694609c026872a589f65251",
+      "derived_data_id": "b9555c1a0bf303e8d0f04fe9218e0206a964be807a88c32465648b8d2c067a4a",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper02/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper02/parse/parse_result.json",
+      "parser_seconds": 108.97122682000008,
+      "parser_wall_seconds": 110.25,
+      "total_wall_seconds": 114.9690000000046
+    },
+    {
+      "id": "paper03",
+      "original_data_id": "45487d9cef00871db46354aa3370115f1cee8a18a9ce886c8da5661e3e5815a8",
+      "derived_data_id": "0e8a9cfd8eee4ab2dc11b63d706f8b2189c67b5d445f53411740b81c5cb39ffe",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper03/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper03/parse/parse_result.json",
+      "parser_seconds": 141.6501472609998,
+      "parser_wall_seconds": 142.82800000000134,
+      "total_wall_seconds": 147.31199999999808
+    },
+    {
+      "id": "paper04",
+      "original_data_id": "be0564eeb21ab7c74d9fd51a9759d71d066438808eb20eea6f44970f046cd967",
+      "derived_data_id": "db12b1276a44a41dbf8795f40a526840fa19b99d7cb04f630d21986df56d46e0",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper04/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper04/parse/parse_result.json",
+      "parser_seconds": 163.44545088300038,
+      "parser_wall_seconds": 164.5460000000021,
+      "total_wall_seconds": 170.57800000000134
+    },
+    {
+      "id": "paper05",
+      "original_data_id": "59e86294dcd441f3b2332be14bc906ed3ac35afa4cfb4c45319bb68d53c75367",
+      "derived_data_id": "6e614b5f26548732ff034e5e2b64d47f7910cdff92e05e639cde811029395ddc",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper05/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper05/parse/parse_result.json",
+      "parser_seconds": 217.42286606200105,
+      "parser_wall_seconds": 218.56200000000536,
+      "total_wall_seconds": 224.06200000000536
+    },
+    {
+      "id": "paper06",
+      "original_data_id": "ae20942f584c11c074df96ba7c416b83ff64f91aa1007957cdf5b1009a2b9ad5",
+      "derived_data_id": "37094f75e58a8d9b967e728ea4d18f770bd6a30f2c25c14f785b5bc65e0109c2",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper06/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper06/parse/parse_result.json",
+      "parser_seconds": 184.50163375099874,
+      "parser_wall_seconds": 185.53199999999924,
+      "total_wall_seconds": 191.21899999999732
+    },
+    {
+      "id": "paper07",
+      "original_data_id": "aa070dc8726bc08311cd9308b092ed76056705b9d67cc8125afbcc8167a5bada",
+      "derived_data_id": "19d8d2ac6e5956ff7dd1c58706c068561d62083efbb41932edafd4ac99006cd3",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper07/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper07/parse/parse_result.json",
+      "parser_seconds": 150.88302745500005,
+      "parser_wall_seconds": 152.09300000000076,
+      "total_wall_seconds": 157.26499999999942
+    },
+    {
+      "id": "paper08",
+      "original_data_id": "671c345b967b1f7f96afb6fb6540307c0e4d95781ac1ce26182a22e6805cabe5",
+      "derived_data_id": "044cc39f2debaa6b4d4895025b9a5bdec6772abc13f98e632f7baefd5939e759",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper08/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper08/parse/parse_result.json",
+      "parser_seconds": 135.3607793150004,
+      "parser_wall_seconds": 136.53100000000268,
+      "total_wall_seconds": 142.0940000000046
+    },
+    {
+      "id": "paper09",
+      "original_data_id": "ce2eeb4e5a8356d6f201ce08683b50c16728cb3d6403e86de61068b4999d6c25",
+      "derived_data_id": "cc49794cc9fecc71eb66241e1ad18aec334a63784abe01947e733182e578a3ab",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper09/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper09/parse/parse_result.json",
+      "parser_seconds": 165.11585849199946,
+      "parser_wall_seconds": 166.18800000000192,
+      "total_wall_seconds": 171.625
+    },
+    {
+      "id": "paper10",
+      "original_data_id": "26233462e97947bc16e6d2de72776600c776829a3210e23f4efe09f8a0830810",
+      "derived_data_id": "020e9df4fefbbe97ec8b27586f610662558a46b19b0bcc190d6094b4405f20c5",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper10/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper10/parse/parse_result.json",
+      "parser_seconds": 150.93592813900068,
+      "parser_wall_seconds": 151.90600000000268,
+      "total_wall_seconds": 157.84399999999732
+    },
+    {
+      "id": "paper12",
+      "original_data_id": "3a3316391a73c20fb17fee8f09b8b84b2faf54c4867a3567853dd5abdcf41179",
+      "derived_data_id": "2678039ff3383cfe93fcdac0a05b485074d3314ab96058ebedb8fdd28726d185",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper12/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper12/parse/parse_result.json",
+      "parser_seconds": 172.4168510340005,
+      "parser_wall_seconds": 173.45300000000134,
+      "total_wall_seconds": 177.5
+    },
+    {
+      "id": "paper13",
+      "original_data_id": "274d48a21ef3287cfb6d3855eb88debb072cf742fa05d38b79f2bbaf20544e1b",
+      "derived_data_id": "8f72aaf08f7ccad81ad0549803c031d917c1d674c2cdce951bf6eb2663f5c7dc",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper13/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper13/parse/parse_result.json",
+      "parser_seconds": 136.44933991200014,
+      "parser_wall_seconds": 137.73399999999674,
+      "total_wall_seconds": 142.06199999999808
+    },
+    {
+      "id": "paper15",
+      "original_data_id": "35a48a9c6cb63a53059f34a852f1ab317763de0231ff8759e4192802ec3f32df",
+      "derived_data_id": "4c32531e0a76b2f0c2fa7def94cba84840512fd75dec54c070bf9d200eadfb13",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper15/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper15/parse/parse_result.json",
+      "parser_seconds": 182.54771052200158,
+      "parser_wall_seconds": 183.5,
+      "total_wall_seconds": 187.93800000000192
+    },
+    {
+      "id": "paper16",
+      "original_data_id": "2d8531530e747f265153b4e666f2fe445cba28cfdb91a9f4c4cd8e1cadb5b975",
+      "derived_data_id": "b5bf79a7a9588561b62b568624f7ae2ecb84414988308614f7a62d7d0ce97e1c",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper16/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper16/parse/parse_result.json",
+      "parser_seconds": 166.8789151960009,
+      "parser_wall_seconds": 168.5,
+      "total_wall_seconds": 173.375
+    },
+    {
+      "id": "paper17",
+      "original_data_id": "e19a32a96175521004febfe9f7ccd2f4473802d607c0be329c12d13617713bc7",
+      "derived_data_id": "2298e4d4be542a7260f036b6ff7ec52c2ba61348db1323e17a978c2386bf5941",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper17/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper17/parse/parse_result.json",
+      "parser_seconds": 151.29350642399913,
+      "parser_wall_seconds": 152.28100000000268,
+      "total_wall_seconds": 157.14100000000326
+    },
+    {
+      "id": "paper18",
+      "original_data_id": "a62b068a7e0514f3bb24f7d340a4cb07aadb9078ebbab871413989e5e1efdc7f",
+      "derived_data_id": "35a8dbd54f83dc0d2fdb141c62cbd0e5fe8023c511452f9739d10c721f4cf69e",
+      "gpu_index": 1,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper18/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+      "parse_result": "output/t03-image-transcription/runs/paper18/parse/parse_result.json",
+      "parser_seconds": 166.46048067999982,
+      "parser_wall_seconds": 167.46899999999732,
+      "total_wall_seconds": 172.04699999999866
+    },
+    {
+      "id": "paper20",
+      "original_data_id": "174c856514fbf95ac74fd3e2d3dbd4dd5d03ec91f8754e9d1f26eeb5e4b7d468",
+      "derived_data_id": "3420f769b812b2660fe0039b315c990dd799d15d23df94e532bc81cd9e985066",
+      "gpu_index": 0,
+      "mapping_path": "output/t03-image-transcription/inputs-a2/paper20/manifest.json",
+      "profile_path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+      "parse_result": "output/t03-image-transcription/runs/paper20/parse/parse_result.json",
+      "parser_seconds": 126.94756075900114,
+      "parser_wall_seconds": 127.88999999999942,
+      "total_wall_seconds": 131.81199999999808
+    }
+  ],
+  "limitations": [
+    "Source-only Codex visual gold, not independent human expert gold.",
+    "Strict exact/substring edit distance is not OCR accuracy or a count of lost characters.",
+    "Baseline full documents; image-only selected three pages per paper; paragraph joins not evaluated.",
+    "Raster rendering removes text/native objects and may affect classification/layout; this is a route comparison.",
+    "No canonical or PostgreSQL writes; derived identities are not original Data identities.",
+    "Source-only Codex annotation and retained-field review are not independent human/expert gold.",
+    "Greek and micro-unit diagnostic pages were selected because of known errors; not a corpus frequency estimate.",
+    "Raw OCR span bboxes may equal an entire paragraph/caption; original native text/font/span evidence remains useful.",
+    "All original PDFs and full-page PNGs are retained; raw image crop completeness is a separate property.",
+    "No production parser switch, original canonical I rewrite, PostgreSQL commit or later transformation was performed."
+  ],
+  "artifact_sha256": {
+    "output/t03-image-transcription/runtime/parser-results.json": "5b0f72672c46a650a85ec14903f804dfbbaf8961c522082dc5142e0514988556",
+    "output/t03-image-transcription/runtime/paired-final.json": "6edd288ac3b3fe55e66f0968b20c77897e6b2e539a093c73bbf3e36b3fca8ddd",
+    "output/t03-image-transcription/runtime/transcription-paired-review.json": "6e255964d6a1a2b26419ee8ac0369a7b260b9648cadc526212a0fad2d383056c",
+    "output/t03-image-transcription/runtime/greek-five-review.json": "fc04679ce9c26822c9ac5f3d61351366e0d5aa7e783f5b141cc3a0b5b6e26535",
+    "output/t03-image-transcription/runtime/units-paired.json": "307280212cea95517e965d77f2d179fddb6e2ebed66c055a4c4ead6c887b39d7",
+    "output/t03-image-transcription/runtime/units-paired-review.json": "1cebad54f388808935425e492d96d34fb5be77ddcb145b12e97edbaa6c853dcb",
+    "output/t03-image-transcription/runtime/figure-raw-review.json": "9701117a235aca825e9f6c327edfa6964016de494ad55f4231c4c01b4cb601eb",
+    "output/t03-image-transcription/runtime/figure-text-appendix.json": "238ec8c49e96d2d642749435f1a03b18934a6561a0be282f25768561f2806437",
+    "output/t03-image-transcription/runtime/heading-regression-review.json": "4c57b68503b8abbe6e595a70e812267a82bd79a6e25dc53c5c2ac6629a3d2bb0",
+    "output/t03-image-transcription/runtime/render-verification.json": "6dd1f9ebc295479c8c5613ab6928b415fb9d3b464e98f8e4499ec9584a5b9753",
+    "output/t03-image-transcription/runtime/final-audit.json": "236dd7ad82674a1f344e91d85079ea2d21a2e1ed6974ac7ec754ccd608723c88",
+    "output/t03-image-transcription/runtime/document-validation-final.json": "2ff2dc515bdc9b5e3a2a9ccc110ede814df132870f68da15f2bb95644d33b2dd",
+    "output/t03-image-transcription/runtime/baseline-freeze.json": "74db13f3f54fcf059711662bc05cfad0f02437c3b41b2647c45e5f5cce22a221",
+    "output/t03-image-transcription/runtime/experiment-freeze.json": "1e594d552bc03d8a7a99510da512ca92a22a523447b9d8daea61d98f4c3b64ac",
+    "output/t03-image-transcription/runs/paper01/execution.json": "fffa98bf3b62b82c54edbccfce7bd9755cac1b2806149642ae13d5fa28e37ba0",
+    "output/t03-image-transcription/inputs-a2/paper01/manifest.json": "173927553d6f5f28cd53d3295c3062efb276e633c144190ffd0302093bcfeea0",
+    "output/t03-image-transcription/runs/paper01/parse/parse_result.json": "2e89a10b7009d7e6c0622fcb0210b8cbe0724a6a3c140f6a101201b66cc5b0b6",
+    "output/t03-image-transcription/runs/paper01/verify/summary.json": "5d5ac7f45f5da942ffe08c51adbe869dbeb803fc36a1c5de8a8f92b59263f680",
+    "output/t03-image-transcription/runs/paper02/execution.json": "57a50a9b0a6e8b0380ce7802423779a0bb9f9ef2b5564b4ce16b2f97fc5dd302",
+    "output/t03-image-transcription/inputs-a2/paper02/manifest.json": "cfcdd6c5214930d94d99a3f848b2feee718fb360c0ef9b8824f2fc169be6dfe3",
+    "output/t03-image-transcription/runs/paper02/parse/parse_result.json": "3937a2fb935cc88470e28d0e1ccc4747ac6d4531c8ef04ba1a8324a9ea544b9e",
+    "output/t03-image-transcription/runs/paper02/verify/summary.json": "0d4b7364c96415821126e5f93070fb37b82b7d6339624d2e1003975d6184ae88",
+    "output/t03-image-transcription/runs/paper03/execution.json": "144002a58b2f45149694c380805ab4b9c7958af4a3811e6ac3a81d4f82f50730",
+    "output/t03-image-transcription/inputs-a2/paper03/manifest.json": "4e460027a4b26007046cf4079de1fcd43a11f1c6501ebc281407dd7c849e3f0b",
+    "output/t03-image-transcription/runs/paper03/parse/parse_result.json": "534dcbe7fcfc0ec1c0699db210d239575227619772c11301b786abcd8db23ba1",
+    "output/t03-image-transcription/runs/paper03/verify/summary.json": "3c16e9773e203398372c75a7cd4e36650e4d02f0e41f32e0c55bfb45f56baa12",
+    "output/t03-image-transcription/runs/paper04/execution.json": "cae785119fce1ba9c3ebdc9c9c6c2391ae83e16468f29467fe0032f06ea090cf",
+    "output/t03-image-transcription/inputs-a2/paper04/manifest.json": "15c4daf4927c38bb5af4e8bf2e27b83628bc91a7a3bd27c280f87c4afa0d48f6",
+    "output/t03-image-transcription/runs/paper04/parse/parse_result.json": "0b2869e45465a93947396a964ecb4aa3ec82c1e933e28f686c43b3f08bf10a45",
+    "output/t03-image-transcription/runs/paper04/verify/summary.json": "2ba605e7bdf6e25deccc126d42851863322f316e98857a372b4f7a30636aba15",
+    "output/t03-image-transcription/runs/paper05/execution.json": "383cca5d37f5c8459fa08f78ba209a0601f9bcf4f42e067acec17ea802757c2f",
+    "output/t03-image-transcription/inputs-a2/paper05/manifest.json": "a6b50b7b555ec0400013dc328042b99d28692e889ff688076d754460d4c05651",
+    "output/t03-image-transcription/runs/paper05/parse/parse_result.json": "b7938ffb4cebaedd9559009cc7482bea78fcef948f111fb78a5046529f9b47b6",
+    "output/t03-image-transcription/runs/paper05/verify/summary.json": "ad6b5b161462dd85c270f9b8f47e7ebfd658194eaa6d6253b35633aecbd9c651",
+    "output/t03-image-transcription/runs/paper06/execution.json": "24bfcfbe243e2d80c846d3f6ee4f966abc7a3ca416302089ef1563da448d491f",
+    "output/t03-image-transcription/inputs-a2/paper06/manifest.json": "9d909605fe42e31d8e6992f0084d2646e61c3563f4b71df0c7919583d955e3c0",
+    "output/t03-image-transcription/runs/paper06/parse/parse_result.json": "c436b79a4de1ab0d7ddb2132bd396bd15344edcaf49e6dbd93ccf4e3d240d52b",
+    "output/t03-image-transcription/runs/paper06/verify/summary.json": "20b45fd20bbf9e60e0023d8c3d9a0fd71c33d10962d4626f739be6273601c6f4",
+    "output/t03-image-transcription/runs/paper07/execution.json": "180a8d216770517dd327990ae3fdf10ba4c0bf07aad1e2bca673d988f9216b6b",
+    "output/t03-image-transcription/inputs-a2/paper07/manifest.json": "ef9987c5fbc0ebe740f8e5d3d76dc0fc73e5a62917d2517cd75ac7629a1fef35",
+    "output/t03-image-transcription/runs/paper07/parse/parse_result.json": "85fbdabf1a48023b45d470b7333dc3287a95523fe4d1fe621f67611c0b611563",
+    "output/t03-image-transcription/runs/paper07/verify/summary.json": "cd039ea666b71dfe1ee3105b8cb5cac7570991226f6159ae13f09cd2aae11f43",
+    "output/t03-image-transcription/runs/paper08/execution.json": "105c517b274da6cfc6a25bc85ede19fa24764554ff0898a3ab7988129bc0ebb7",
+    "output/t03-image-transcription/inputs-a2/paper08/manifest.json": "e0cc40f1f6b887f06bbd86269f8f45c5d4799ca40dd26eb14392f285c836afee",
+    "output/t03-image-transcription/runs/paper08/parse/parse_result.json": "637ae5feed38cf60ec827c96a2bac39e6505dc796810568039e846625b424317",
+    "output/t03-image-transcription/runs/paper08/verify/summary.json": "26f1ff574950a822e031f8102ce24e3e65c2f11f6ecea9cce3612216956b43b3",
+    "output/t03-image-transcription/runs/paper09/execution.json": "5d058eea36d89cd259a5f97567696a3218afcf8cbe4ab68a2893ff4f57989427",
+    "output/t03-image-transcription/inputs-a2/paper09/manifest.json": "8770aa0282ecf02c0facfb752efbfe7fe01b548b817a5423b218baca5be309fb",
+    "output/t03-image-transcription/runs/paper09/parse/parse_result.json": "ff750956dce3c55c48f774f4cac1ef11252943b4992041d49576dc7a70c48869",
+    "output/t03-image-transcription/runs/paper09/verify/summary.json": "0159d0ddf9f07e0fea737f408e8ac702983c0fd13c41d5ac36324a9d84d37fe1",
+    "output/t03-image-transcription/runs/paper10/execution.json": "c37440dedeccc8bed90bea1122834a24546c8833513b07c4b8e2ebe6aee472a8",
+    "output/t03-image-transcription/inputs-a2/paper10/manifest.json": "b2faa890d48405a4e614b7bc8273986b73ecd2223270cacab90c0b163f6c7c04",
+    "output/t03-image-transcription/runs/paper10/parse/parse_result.json": "65798bccccaa1d33273074f8ba24286133551ba2bb7e2fc2ebcde3e59a6ba0c2",
+    "output/t03-image-transcription/runs/paper10/verify/summary.json": "78be499fa8d623792484c53d21eeee1e79cc36488fa07975890ad6206aed657b",
+    "output/t03-image-transcription/runs/paper12/execution.json": "6d3e5f3ce97de6b88527210afecfc9c47adaf8ac4080f83e55ea8a347c82180b",
+    "output/t03-image-transcription/inputs-a2/paper12/manifest.json": "32161d052a185e2dd5112117dcfb3377752b035631187b6c401c23d6ea40ca00",
+    "output/t03-image-transcription/runs/paper12/parse/parse_result.json": "815c7462a54d4d268692fe07008617c81caa46545acff3f0019989568fed46de",
+    "output/t03-image-transcription/runs/paper12/verify/summary.json": "e8c05000c6c7c4617ac7164fd8230bf9a8301ada15609df0b4f42e39deab4a5c",
+    "output/t03-image-transcription/runs/paper13/execution.json": "7680a7e98bfbe04095d720ea219cfc3c314d9bfd4fd31cc42f44c0f2b29a3568",
+    "output/t03-image-transcription/inputs-a2/paper13/manifest.json": "c14454dfdab6e96b5866dde4df41e6dba5226c2ada232a3719025b33804d1e05",
+    "output/t03-image-transcription/runs/paper13/parse/parse_result.json": "bdd2a1a9a79018142ef3063698b409f8fb1cdd35f3fb723fd4681e08a613fc1b",
+    "output/t03-image-transcription/runs/paper13/verify/summary.json": "676075ed832b51182f4b852b6b6f657dca86bd60055afc95c4b3cabc50feec52",
+    "output/t03-image-transcription/runs/paper15/execution.json": "551e3761cc055a52944eaf81f8d7660039042a7a558e7f05a4abb4be38e11c33",
+    "output/t03-image-transcription/inputs-a2/paper15/manifest.json": "394c2d6c1a4cf025a5e43f7ede49419f4ae9d12118e4ef0c52ac290743c17675",
+    "output/t03-image-transcription/runs/paper15/parse/parse_result.json": "8247462ca89cec5e651ae5b70a0d28c2d924ef8cc3a36643653da9c0b96dd335",
+    "output/t03-image-transcription/runs/paper15/verify/summary.json": "16fd063a59b2474f172cee52b524d204aecda1d3872b640bb716900949f75541",
+    "output/t03-image-transcription/runs/paper16/execution.json": "f6483d7cb12412b3d9fc67890db527b759591ad44a5243fd1d67d5e8f3b626fc",
+    "output/t03-image-transcription/inputs-a2/paper16/manifest.json": "a367ced55285b22002f05c0a2dfa6e7c4c2acd07668adf576ae19abfcb9f72f2",
+    "output/t03-image-transcription/runs/paper16/parse/parse_result.json": "0a4ded5c5282e646706e99b9e5847db97aabf3c23f02cbbe066bd3bf1f716063",
+    "output/t03-image-transcription/runs/paper16/verify/summary.json": "2448407c76d5739f72587c05aa70beebb3a915c1ca7825913e9ab184403563c9",
+    "output/t03-image-transcription/runs/paper17/execution.json": "1eb80d3153fd2e2dc093c440341c8c2c95182bb175c9c0d71573c30af2cc2358",
+    "output/t03-image-transcription/inputs-a2/paper17/manifest.json": "534e6b199d0209eef8e54bd69d545ae69f21254c1db24e13fe6973a4213522aa",
+    "output/t03-image-transcription/runs/paper17/parse/parse_result.json": "a5c39a24640078b905d2282a883cd1c7fa933cf585e2690b370b7da75665b8fa",
+    "output/t03-image-transcription/runs/paper17/verify/summary.json": "4e5ab2476fa0ccc2d6180eeffce78c32ab5204e43cfe34b6681f6b244175072b",
+    "output/t03-image-transcription/runs/paper18/execution.json": "5399dab8d55017a3b7068d94bc9f9477620485e173c237ee929b54df60666e3c",
+    "output/t03-image-transcription/inputs-a2/paper18/manifest.json": "882eab721f78fe50c3c1cec1fd183b580b4fc2022b995bb84bc8d4a3820d9453",
+    "output/t03-image-transcription/runs/paper18/parse/parse_result.json": "6e7fc8bfe17b6d09c5f723df503a6d3f21fb98fcee6c206b94ea621e810dade0",
+    "output/t03-image-transcription/runs/paper18/verify/summary.json": "2ca30b0c8161b3ee3ae8104ef8193c3f53d72ff3bdfd33e17590993caab834b2",
+    "output/t03-image-transcription/runs/paper20/execution.json": "062b0809002863cf8f43c1515d89d69c21f0adfa90f7fa11ef061d198b7325b5",
+    "output/t03-image-transcription/inputs-a2/paper20/manifest.json": "b42c7ffb3676e97649c5a6d0699b78150f942f8e37a73b2270b4f53c4ce007ca",
+    "output/t03-image-transcription/runs/paper20/parse/parse_result.json": "5cb729b7c2fd281ff9b807eeb8ccdb7a3757e9accf95bae2e2fd6a6a60918e0b",
+    "output/t03-image-transcription/runs/paper20/verify/summary.json": "39b0fdf361a5f95b9473d7161703c0aac24aba2e87def456e95e85208f5fd741"
+  }
+}

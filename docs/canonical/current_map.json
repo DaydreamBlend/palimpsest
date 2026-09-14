@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "edition": "2026-09-09-d2i-source-preservation",
+  "source_path": "docs/canonical/PALIMPSEST_CANONICAL_MODEL.md",
+  "source_sha256": "0ac74b32daa6b4f05f031dc647d765c7e3c755271d35aa4c9e510db0b86abb02",
+  "source_lines": 2267,
+  "baseline_path": "docs/source/PALIMPSEST_CANONICAL_MODEL_INTEGRATED.md",
+  "baseline_sha256": "2cd3e2a6111b713663f2655917a26aa07d0faee66510aeccbb7b5296d1a5cba9",
+  "effective_user_overrides": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11"
+  ],
+  "parts": [
+    {
+      "path": "docs/canonical/00_foundation.md",
+      "start_line": 1,
+      "end_line": 150,
+      "label": "문서 권위·정의·책임 영역·계층 (§0–3)",
+      "sha256": "447c3a6e562c0397c410d82e01a2da2226f86d9fe5630cb9c09d75e5e6e1ff3f"
+    },
+    {
+      "path": "docs/canonical/01_data_d2i.md",
+      "start_line": 151,
+      "end_line": 304,
+      "label": "Data·수집 이력·D2I (§4–5)",
+      "sha256": "6217cdf34c22cf3d264c89817e9d2db0b416c3a698bfc195b16d8e41e1dbdfee"
+    },
+    {
+      "path": "docs/canonical/02_information.md",
+      "start_line": 305,
+      "end_line": 441,
+      "label": "Information·교정·재검증 (§6)",
+      "sha256": "fb0d09e327659ee2ce43f65fd0fe0af418047e91acaf147469022186798f06c6"
+    },
+    {
+      "path": "docs/canonical/03_knowledge_graph.md",
+      "start_line": 442,
+      "end_line": 686,
+      "label": "KNode·KEdge·Revision·Applicability (§7)",
+      "sha256": "bafc2994e2de182935d9bf0142db27fe9c2c14403676cdc76eab82041d0189a1"
+    },
+    {
+      "path": "docs/canonical/04_compiler_records.md",
+      "start_line": 687,
+      "end_line": 997,
+      "label": "Compiler·Record·Candidate (§8–10)",
+      "sha256": "31cf409a31020deb2944d4ecb07ea6b15bd321b93f7e16cedb0416e2a0f2a53d"
+    },
+    {
+      "path": "docs/canonical/05_identity_materiality.md",
+      "start_line": 998,
+      "end_line": 1155,
+      "label": "Fingerprint·Material delta (§11–12)",
+      "sha256": "b069d99b7d5b08ef2fbb5309fe500e119b9cf14f9cee20379954f890eb6bea1b"
+    },
+    {
+      "path": "docs/canonical/06_knowledge_operations.md",
+      "start_line": 1156,
+      "end_line": 1387,
+      "label": "I2K·N2E·K2K·반박 (§13–16)",
+      "sha256": "cf3e47532a497899e76a88578e4e180432bfafcad411454936e4266488f2f5bf"
+    },
+    {
+      "path": "docs/canonical/07_propagation.md",
+      "start_line": 1388,
+      "end_line": 1511,
+      "label": "Convergent propagation (§17)",
+      "sha256": "5a899ee524dbac45d9a1e1f08897deeca61d5236f2b17692c9cc2fb323306cb1"
+    },
+    {
+      "path": "docs/canonical/08_wisdom_decisions.md",
+      "start_line": 1512,
+      "end_line": 1861,
+      "label": "Wisdom·Decision·W2K·Trace (§18–22)",
+      "sha256": "1c14542e00a22060d4e8165005cce4838b69fc0e503b7cd80287c570cf6aa388"
+    },
+    {
+      "path": "docs/canonical/09_publication_retrieval.md",
+      "start_line": 1862,
+      "end_line": 1965,
+      "label": "Parchment·Book·RAG (§23–24)",
+      "sha256": "1d938bfe77a565f9715543c363c23ddc8237c1dd532620d1115d10b2a59ba1d9"
+    },
+    {
+      "path": "docs/canonical/10_relational_vocabulary.md",
+      "start_line": 1966,
+      "end_line": 2108,
+      "label": "Relational skeleton·용어 (§25–26)",
+      "sha256": "b00b4be8028953288961a1d26e6999b8c49029adde858f8e68a87359ee0a45ea"
+    },
+    {
+      "path": "docs/canonical/11_invariants_decisions.md",
+      "start_line": 2109,
+      "end_line": 2205,
+      "label": "불변조건 45개·A1–A40 (§27–28)",
+      "sha256": "68f0c42ff40e88ccb6d3bde7b47f0da3cea40d232d0a4b9d8cfac84f41955c8e"
+    },
+    {
+      "path": "docs/canonical/12_open_implementation.md",
+      "start_line": 2206,
+      "end_line": 2267,
+      "label": "미정값·구현 순서·결론 (§29–30)",
+      "sha256": "f104e5721a8bac3f432ddb383d0dcfba2765bbdac43e73e002ec23f9b4e85e19"
+    }
+  ],
+  "previous_snapshot": {
+    "path": "docs/history/2026-09-09_pre_d2i_source_preservation.md",
+    "sha256": "3bce40b044222f1e82e3e3d0e787a64107e8896fcc0775653e743f0cc7df59b5"
+  },
+  "history_snapshots": [
+    {
+      "path": "docs/history/2026-09-09_pre_architecture_fixes.md",
+      "sha256": "d22dddeabb21b222c3b81c00deebdb7141715223c53fed7be806527cb849f2fb"
+    },
+    {
+      "path": "docs/history/2026-09-09_pre_storage_identity.md",
+      "sha256": "85c0886655c2b765e9ee461c58779273d64bbc73c7025aa4245baae1de10141b"
+    },
+    {
+      "path": "docs/history/2026-09-09_pre_python_docker.md",
+      "sha256": "bef554affeab9ddb20166eb023e0afa65591a85f274b690d788e297cdb441a92"
+    }
+  ]
+}

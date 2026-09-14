@@ -1,0 +1,15 @@
+{
+  "id": "S03",
+  "tests": [
+    "AT18",
+    "AT19"
+  ],
+  "type": "support_replacement",
+  "events": [
+    "I1 supports K1",
+    "I2 supersedes I1",
+    "K1 no_material_delta with I2",
+    "I2 invalidated"
+  ],
+  "expected": "K1의 새 semantic Revision 없이 I2 dependency가 남고 마지막 invalidation이 K1을 예약"
+}

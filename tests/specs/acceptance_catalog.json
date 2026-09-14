@@ -1,0 +1,2027 @@
+{
+  "schema_version": 1,
+  "notice": "Given/When/Then specifications with separately recorded execution evidence; passing one scenario is not full application or semantic evaluation completion.",
+  "tests": [
+    {
+      "id": "AT01",
+      "title": "깊이·크기 cap 없는 material chain",
+      "given": "128단계 material chain과 100001 fanout을 생성 가능한 synthetic fixture",
+      "when": "worker를 충분한 batch로 진행",
+      "then": "depth/record 수 때문에 정상 완료로 잘리지 않고 모든 필수 target의 처리 여부가 receipt에 남음",
+      "proposal_dependencies": [
+        "P03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT02",
+      "title": "no-material branch barrier",
+      "given": "A→B→C에서 A는 material, B는 동일 semantic/validity",
+      "when": "B 재검증 commit",
+      "then": "B Revision 없음; B에서 새 C semantic job 없음; 다른 parent obligation은 보존",
+      "proposal_dependencies": [
+        "P03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT03",
+      "title": "RAG 밖의 필수 dependency",
+      "given": "B가 exact dependent이나 retrieval top-K 밖",
+      "when": "A가 material 변경",
+      "then": "paged dependency enumeration으로 B를 예약; discovery 결과가 B를 누락시켜도 의무 검증은 실행",
+      "proposal_dependencies": [
+        "P03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT04",
+      "title": "거짓 quiescence 방지",
+      "given": "ready queue는 비었지만 outbox/lease/human/dependency obligation 중 하나 존재",
+      "when": "completion 계산",
+      "then": "quiescent가 아니며 미완료 이유와 refs를 반환",
+      "proposal_dependencies": [
+        "P03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT05",
+      "title": "비수렴은 성공이 아님",
+      "given": "stable input에서 A→B→A oscillation 또는 반복 provider failure",
+      "when": "anomaly 조건 충족",
+      "then": "suspended_anomaly/명시적 failure; 남은 obligation 보존; resume 후 freshness 확인",
+      "proposal_dependencies": [
+        "P03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT06",
+      "title": "누적 작은 변화",
+      "given": "accepted 수치 1.0, 연속 작은 delta 후보들",
+      "when": "각 candidate 판정",
+      "then": "직전 rejected candidate가 아니라 accepted 1.0 기준 비교; policy 경계 이후 material 판정 가능",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT07",
+      "title": "중요 필드 변화",
+      "given": "polarity/quantifier/scope/action/step order가 달라진 후보",
+      "when": "materiality 검증",
+      "then": "문자열 유사도가 높아도 중요 차이를 보존; 임의 epsilon으로 무시하지 않음",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT08",
+      "title": "paraphrase revision 금지",
+      "given": "semantic payload가 같은 문체만 다른 후보",
+      "when": "compiler 완료",
+      "then": "semantic Revision 없음; non-material/none; 필요한 Record는 남음",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT09",
+      "title": "EffectiveEdgeRef exact replay",
+      "given": "E1의 original=A1/B1, applicable=A2/B1",
+      "when": "C와 W가 E1을 사용",
+      "then": "실제 A2/B1과 applicability basis ref를 저장; replay에 A1로 치환하지 않음",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT10",
+      "title": "재검증 후 projection key",
+      "given": "E1 semantic은 같지만 A1→A2",
+      "when": "embedding projection 준비",
+      "then": "effective pair/profile별 새 projection; E1 semantic Revision은 추가되지 않음",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT11",
+      "title": "historical endpoint 불변",
+      "given": "E1 original A1/B1과 새 applicability event",
+      "when": "current/history read",
+      "then": "original endpoint는 A1/B1 그대로; current effective read만 A2/B1",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT12",
+      "title": "endpoint 값 소비 dependency",
+      "given": "C가 E1을 통해 A1의 값 5를 소비",
+      "when": "A2 값 10, supports 관계 유지",
+      "then": "C가 A material change의 direct obligation에 포함; edge unchanged만으로 C 검증 취소 금지",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT13",
+      "title": "관계만 소비한 branch",
+      "given": "consumer가 검증된 동일 relation projection만 소비",
+      "when": "valid→valid endpoint rebasing",
+      "then": "새 semantic cascade/Revision 없음; maintenance receipt는 허용",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT14",
+      "title": "최신 negative 우선",
+      "given": "current pair가 initial pair와 같고 최신 exact-pair 판정은 not_applicable",
+      "when": "current edge read",
+      "then": "initial endpoint equality로 edge를 부활시키지 않음",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT15",
+      "title": "endpoint lifecycle 검사",
+      "given": "edge lifecycle usable지만 endpoint 하나 invalidated",
+      "when": "current graph 조회",
+      "then": "기본 reasoning edge 제외; history 조회는 명시적으로 원래 snapshot 제공",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT16",
+      "title": "pending은 false가 아님",
+      "given": "E pending_revalidation, consumer가 해당 edge 필요",
+      "when": "consumer 실행 후 E applicable",
+      "then": "consumer는 blocked 후 release; pending 부재를 근거로 invalidation하지 않음",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT17",
+      "title": "반복 negative impact",
+      "given": "이미 confirmed false인 exact pair",
+      "when": "같은 not_applicable 재전달",
+      "then": "새 material delta 없음; 중복 downstream enqueue 없음",
+      "proposal_dependencies": [
+        "P02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT18",
+      "title": "no-material support 교체",
+      "given": "I1→K1; I2 supersedes I1; K1 의미 유지",
+      "when": "I2로 재검증",
+      "then": "K Revision 없음; origin I1 보존; current receipt/dependency는 I2 보존",
+      "proposal_dependencies": [
+        "P04"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT19",
+      "title": "교체 근거의 다음 invalidation",
+      "given": "AT18 완료 상태",
+      "when": "I2 invalidated",
+      "then": "K1이 직접 영향 대상에 포함; origin I1만 조회해 누락하지 않음",
+      "proposal_dependencies": [
+        "P04"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT20",
+      "title": "grounding-only 변화",
+      "given": "current K와 동일 의미의 새 검증된 I",
+      "when": "support 추가",
+      "then": "grounding append+projection maintenance; semantic Revision과 불필요한 cascade 없음",
+      "proposal_dependencies": [
+        "P04"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT21",
+      "title": "문장 불변·support 상실",
+      "given": "유일한 usable support가 사라짐",
+      "when": "K 재검증",
+      "then": "지원 상태/lifecycle 효과를 검증; 실제 상태 변화가 material이면 dependent 재검증",
+      "proposal_dependencies": [
+        "P04"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT22",
+      "title": "cross-Data I 동문 중복",
+      "given": "D1/D2에서 같은 원문 text 또는 표현 단위",
+      "when": "각 D2I commit",
+      "then": "I1/I2 별도 canonical ID와 Data grounding; K 통합은 별도",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08",
+        "U11"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "다른 Data의 identity/context FP 구분과 cross-Data FK 거부를 검증했다. 같은 문장을 두 Data에서 각각 승인하는 DB 시나리오는 미실행이다.",
+      "pre_U11_contract": {
+        "given": "D1/D2에서 같은 semantic 문장",
+        "when": "각 D2I commit",
+        "then": "I1/I2 별도 canonical ID와 Data grounding; K 통합은 별도"
+      }
+    },
+    {
+      "id": "AT23",
+      "title": "동일 D/locus I reuse",
+      "given": "같은 D와 stable anchor 및 exact source payload",
+      "when": "retry 또는 같은 generation candidate",
+      "then": "동일 I reuse; 횟수만큼 새 I 생성 금지",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08",
+        "U11"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py"
+      ],
+      "execution_notes": "동일 작업의 start/propose/decide 재생과 동시 요청의 canonical effect 한 번만 반영을 검증했다. 같은 generation의 별도 동등 후보에 대한 I reuse는 미검증이다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "pre_U11_contract": {
+        "given": "같은 D와 stable anchor 및 semantic payload",
+        "when": "retry 또는 같은 generation candidate",
+        "then": "동일 I reuse; 횟수만큼 새 I 생성 금지"
+      }
+    },
+    {
+      "id": "AT24",
+      "title": "historical duplicate",
+      "given": "current K=A2, candidate content는 historical A1 또는 invalidated K",
+      "when": "FP lookup",
+      "then": "current eligibility 확인 없이 재활성/current pointer 이동 금지",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT25",
+      "title": "corrected grounding 재검증",
+      "given": "bad locator 후보를 기각한 뒤 같은 문장에 good locator",
+      "when": "suppression precheck",
+      "then": "bad locator의 content-only global key가 good candidate를 막지 않음",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py"
+      ],
+      "execution_notes": "corrected anchor가 identity/context FP를 바꾸는 단언을 실행했다. 실제 suppression precheck와 corrected locator 재검증 흐름은 미실행이다."
+    },
+    {
+      "id": "AT26",
+      "title": "validation context 변경",
+      "given": "same candidate이나 relevant counterevidence/state token 변경",
+      "when": "precheck",
+      "then": "새 frozen context로 재검증; unrelated timestamp만 바뀌면 동일 work 유지",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT27",
+      "title": "provider 오류는 지식 기각 아님",
+      "given": "provider timeout/response decoding failure",
+      "when": "실행 결과 저장",
+      "then": "execution failed/retry state; rejected semantic suppression 기록을 만들지 않음",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_codex_provider.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "mock timeout/response decoding 오류, D2I 기술 실패 전파와 실제 PG의 미판정 Record·후보 보존·같은 작업 재시도를 검증했다. 실제 host worker의 provider 실패부터 durable 실패 기록까지 연결한 장애 시험은 미실행이다. 실제 실행의 초기 parser/runtime 및 invalid_candidate 기술 실패도 failed 이력으로 보존했고 그 시점 I/semantic rejected Record를 만들지 않았다. 이후 별도 수정 profile의 성공과 구분한다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT28",
+      "title": "target CAS 경쟁",
+      "given": "두 worker가 같은 base에서 서로 다른 Revision 후보",
+      "when": "concurrent commit",
+      "then": "하나만 current CAS 성공; 다른 것은 새 base로 재검증; lost update 없음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "id": "AT29",
+      "title": "input freshness 경쟁",
+      "given": "Validator 실행 중 input I가 invalidated; target base 불변",
+      "when": "commit",
+      "then": "target CAS만으로 승인 금지; stale read-set 감지 후 재검증; freshness 검사 이후 commit 이전의 동시 input 변경도 충돌 검출",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "id": "AT30",
+      "title": "canonical commit 원자성",
+      "given": "revision/provenance/Record/outbox/candidate 각 단계 failpoint",
+      "when": "각 failpoint crash",
+      "then": "부분 canonical effect 없음; retry 결과와 기존 accepted state 일관",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "id": "AT31",
+      "title": "outbox redelivery",
+      "given": "producer commit 후 ACK 전 crash",
+      "when": "event 재전달",
+      "then": "canonical effect/downstream work의 duplicate 없음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT32",
+      "title": "lease 복구",
+      "given": "worker가 lease 획득 후 crash",
+      "when": "lease 만료와 새 worker claim",
+      "then": "작업 유실 없음; stale worker의 뒤늦은 ACK가 새 결과를 덮지 않음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT33",
+      "title": "multi-proposal/zero-output",
+      "given": "한 호출에서 3 proposals 또는 0 proposal",
+      "when": "execution fan-out",
+      "then": "3개 Record가 same batch 공유; zero-output은 execution log에 정상 보존; FP unique 충돌 없음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "다중 후보 판정 coverage, 같은 execution 내 Record 처리, zero-output의 로그 보존 및 Record/I 미생성을 검증했다. 실제 한 Generator 호출에서 29 proposals를 같은 execution의 29 Records로 처리하여 28 accepted/1 rejected를 남겼다. zero-output 근거는 합성 회귀이다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT34",
+      "title": "multi-root fan-in",
+      "given": "서로 다른 root가 같은 effective-input job을 요청",
+      "when": "작업 coalesce",
+      "then": "실행 공유 가능; 두 root의 원인과 completion obligation 모두 보존",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT35",
+      "title": "split replacement 실패",
+      "given": "I1을 I2+I3으로 분리, I3 실패",
+      "when": "I2 결과 처리",
+      "then": "I1을 불완전 replacement로 조기 retire하지 않음; partial 활성화 규칙 준수",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT36",
+      "title": "merge/generation 재시도",
+      "given": "명시적 새 generation의 merge 또는 zero-output",
+      "when": "retry/commit",
+      "then": "같은 generation idempotent; 새 generation 구분; zero-output으로 기존 I 전량 폐기 금지",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U08"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "동일 generation 작업 재생, 다른 generation의 별도 parser execution, zero-output의 명시적 상태를 검증했다. merge와 새 generation zero-output 후 기존 I 보존 시나리오는 미실행이다."
+    },
+    {
+      "id": "AT37",
+      "title": "effect-only 승인 저장",
+      "given": "N2E explicit no_longer_valid와 info K revalidation",
+      "when": "Record 저장",
+      "then": "approved effect와 rejected candidate 구분; 합법 enum/mode 조합만 저장",
+      "proposal_dependencies": [
+        "P06"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT38",
+      "title": "no-material의 nonsemantic 효과",
+      "given": "unchanged relation에서 applicability event 필요",
+      "when": "terminal 처리",
+      "then": "no_material_delta와 event append 공존; 새 semantic Revision 없음",
+      "proposal_dependencies": [
+        "P06"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT39",
+      "title": "predicate identity 변경",
+      "given": "A supports B에서 A qualifies B로 변경",
+      "when": "승인된 relation effect commit",
+      "then": "supports edge ID에 predicate overwrite 금지; new logical edge+old 처리",
+      "proposal_dependencies": [
+        "P06"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT40",
+      "title": "DAG 범위",
+      "given": "Information/Decision supersession cycle과 일반 semantic cycle",
+      "when": "각 관계 검증",
+      "then": "supersession/self-cycle 거부; 일반 관계 cycle은 registry에 따라 처리하며 blanket DAG 강제 금지",
+      "proposal_dependencies": [
+        "P06"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT41",
+      "title": "공존하는 조건별 주장",
+      "given": "adult X와 pediatric not X",
+      "when": "identity 판정",
+      "then": "정정 근거 없이 둘을 같은 current revision으로 소거하지 않음",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT42",
+      "title": "동명이인·alias",
+      "given": "동일 이름의 다른 entity 및 한 entity의 다른 alias",
+      "when": "identity resolver",
+      "then": "이름만으로 merge하지 않음; approved identifier/alias 정책 사용",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT43",
+      "title": "독립 evidence 수",
+      "given": "한 실험의 preprint/final/review/요약",
+      "when": "support aggregation",
+      "then": "Data 수를 독립 실험 수로 그대로 세지 않음; lineage unknown은 unknown",
+      "proposal_dependencies": [
+        "P07"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT44",
+      "title": "derivation 순환 double count",
+      "given": "같은 leaf evidence에서 파생한 K들이 서로 지지",
+      "when": "support projection 계산",
+      "then": "leaf support 집합 dedup; circular derivation이 새 독립 evidence를 만들지 않음",
+      "proposal_dependencies": [
+        "P07"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT45",
+      "title": "confirmation retry",
+      "given": "동일 승인 event의 같은 payload가 두 번 도착",
+      "when": "ConfirmDecision",
+      "then": "동일 W/K result; W 생성 전 idempotency 유지",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT46",
+      "title": "진짜 재결정",
+      "given": "서로 다른 승인 event가 같은 option 선택",
+      "when": "각 ConfirmDecision",
+      "then": "별도 W/K event; semantic duplicate reuse 금지",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT47",
+      "title": "authority payload binding",
+      "given": "same key different payload 또는 위조된 confirmation_ref",
+      "when": "ConfirmDecision",
+      "then": "명시적 conflict/authority rejection; canonical W/K partial 생성 없음",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT48",
+      "title": "decision action schema",
+      "given": "select/defer/decline의 필수·금지 필드 조합",
+      "when": "schema/mapping validation",
+      "then": "부적절 조합 거부; defer condition/time 정보 유실 없음",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT49",
+      "title": "미래 효력·부분 supersession",
+      "given": "D2는 미래 효력이고 D1 일부 scope만 대체",
+      "when": "as-of status 조회",
+      "then": "즉시 전면 D1 inactive 금지; 승인된 시간/scope 규칙 적용",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT50",
+      "title": "decision 정정과 재결정",
+      "given": "typo 또는 material record correction 또는 실제 선택 변경",
+      "when": "변경 요청 처리",
+      "then": "presentation/authority correction/new event 경계를 구분; immutable W와 provenance 유지",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT51",
+      "title": "retrieval 두 축",
+      "given": "decision_trace에서 K와 direct I 필요",
+      "when": "Wisdom 저장",
+      "then": "evidence surface와 strategy 모두 재현 가능; 충돌하는 single enum 강제 없음",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT52",
+      "title": "reported decision trace",
+      "given": "I2K reported decision에 origin W 없음",
+      "when": "explain_decision",
+      "then": "I/D로 추적; 사용자 confirmation이나 이유를 만들어내지 않음",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT53",
+      "title": "stale RAG hit",
+      "given": "index는 A1, authoritative current는 A2 또는 invalid",
+      "when": "retrieval hit 반환",
+      "then": "exact current filtering과 lag 표시; stale를 현재 근거로 조용히 사용하지 않음",
+      "proposal_dependencies": [
+        "P09"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT54",
+      "title": "as-of graph receipt",
+      "given": "나중 grounding/lifecycle/applicability event가 추가됨",
+      "when": "과거 W/graph 재현",
+      "then": "당시 event/read receipt 사용; 최신 상태를 과거에 주입하지 않음",
+      "proposal_dependencies": [
+        "P09"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT55",
+      "title": "replay 한계",
+      "given": "provider unavailable 또는 raw rejected payload retention 만료",
+      "when": "historical replay/재실행 요청",
+      "then": "복원 가능한 accepted evidence와 재실행 불가 범위 구분; 동일 모델 출력 보장 주장 금지",
+      "proposal_dependencies": [
+        "P09"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT56",
+      "title": "artifact/DB crash",
+      "given": "staging/write/publish/DB commit 각 failpoint",
+      "when": "recovery",
+      "then": "unreadable D ready 상태 금지; orphan reconcile; hash 검증",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_artifact_store.py",
+        "tests/app/test_data_integration.py"
+      ]
+    },
+    {
+      "id": "AT57",
+      "title": "backup restore",
+      "given": "DB snapshot과 artifact manifest 및 outbox backup",
+      "when": "빈 환경에서 restore",
+      "then": "exact IDs/hashes/provenance 복원, redelivery 안전, missing artifact 명시",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT58",
+      "title": "문서 prompt injection",
+      "given": "D 내용에 시스템 명령/승인문/내부 URL 존재",
+      "when": "D2I와 K2W",
+      "then": "자료로만 해석; unauthorized tool/confirmation/fetch/파일 접근 없음",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT59",
+      "title": "secret와 외부 전송",
+      "given": "API key env와 민감 원본, 외부 provider 비허용",
+      "when": "로그/fixture/실행 검토",
+      "then": "secret 미출력/미커밋; 허가 없는 live transmission 없음",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT60",
+      "title": "사용자 중단과 부분 상태",
+      "given": "큰 정상 propagation 실행 중 사용자 pause/cancel",
+      "when": "중단 및 resume",
+      "then": "미완료 obligation/사유 표시; success/quiescent로 위장하지 않음",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT61",
+      "title": "자체 생성물 재수입",
+      "given": "P/B를 export 후 D로 import",
+      "when": "I2K/support 평가",
+      "then": "derived origin lineage 유지; 새 독립 evidence 또는 authority로 세탁되지 않음",
+      "proposal_dependencies": [
+        "P07"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT62",
+      "title": "출판 편집의 새 주장",
+      "given": "W composition 중 출처 없는 새 문장 추가",
+      "when": "Parchment 생성",
+      "then": "citation 재검증 또는 author-added/ungrounded 표시; W와 동일 근거라고 날조하지 않음",
+      "proposal_dependencies": [
+        "P07"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT63",
+      "title": "명세 정합성",
+      "given": "baseline와 승인 addenda/registry",
+      "when": "schema/doc validation",
+      "then": "D당 lifetime 1회, mode/effect 충돌 등 승인된 errata를 다시 구현하지 않음",
+      "proposal_dependencies": [
+        "P11"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT64",
+      "title": "미확인 repo·명령 방지",
+      "given": "기존 repo 또는 빈 폴더, 실행 도구 미확인",
+      "when": "T00/T01",
+      "then": "관찰한 stack/commands만 보고; repo 미검사 상태를 구현 완료라고 주장하지 않음",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U04",
+        "U05",
+        "U06",
+        "U10"
+      ]
+    },
+    {
+      "id": "AT65",
+      "title": "평가 게이트 분리",
+      "given": "mock/unit 통과하지만 DB 또는 live eval 미실행",
+      "when": "마일스톤 보고",
+      "then": "실행하지 않은 suite는 not run; mock 통과를 LLM 정확성/e2e 통과로 기록하지 않음",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT66",
+      "title": "deterministic W2K",
+      "given": "authority-confirmed structured W",
+      "when": "W2K 생성과 retry",
+      "then": "LLM call count 0; W/K/Record/provenance/outbox atomic; 확인된 supersedes 관계/effect도 같은 W2KRecord와 transaction에 포함하며 관계 저장 실패 시 전체 rollback",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null,
+      "user_override_dependencies": [
+        "U08"
+      ]
+    },
+    {
+      "id": "AT67",
+      "title": "원본 payload 불변",
+      "given": "등록된 D의 bytes",
+      "when": "payload 변경 요청",
+      "then": "기존 D 수정 거부; 달라진 bytes는 새 D",
+      "proposal_dependencies": [],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_data_integration.py",
+        "docs/schema/T02_storage_checks.sql"
+      ]
+    },
+    {
+      "id": "AT68",
+      "title": "Candidate 경계와 cleanup",
+      "given": "pending/needs_human/accepted/rejected/suppressed 후보",
+      "when": "canonical 검색 및 terminal 처리",
+      "then": "미승인 payload canonical corpus 제외; needs_human 유지; terminal cleanup/audit 정책 적용",
+      "proposal_dependencies": [],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "미승인 후보의 canonical 제외, accepted/rejected cleanup, needs_human 후보 및 미완료 상태 보존을 실제 PG에서 검증했다. suppressed 후보와 canonical 검색 전체는 미구현 범위이다. 실제 결과에서 승인된 I 28개만 조회되고 기각 Record 1개가 남았다. 실제 needs_human/suppressed 사례는 이번 PDF에서 나오지 않았다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT69",
+      "title": "I immutable 교정",
+      "given": "Information 오추출 정정",
+      "when": "repair",
+      "then": "InformationRevision/기존 row overwrite 없음; 새 I+supersession/invalidation",
+      "proposal_dependencies": [],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "확정 Information UPDATE와 grounding 추가 거부를 검증했다. 교정용 새 I와 supersession/invalidation 흐름은 미실행이다."
+    },
+    {
+      "id": "AT70",
+      "title": "acquisition 다중성",
+      "given": "같은 D bytes에 실제 독립 origin 두 개와 평범한 duplicate import 요청",
+      "when": "두 번째 origin을 명시적 acquisition 기록으로 추가하고 평범한 duplicate를 별도로 요청",
+      "then": "Data는 하나이며 명시적 독립 acquisition 두 개는 보존한다. 평범한 duplicate는 거부하고 acquisition/D2I를 자동 추가하지 않는다. Source 계층은 없다.",
+      "proposal_dependencies": [],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_data_integration.py",
+        "docs/schema/T02_storage_checks.sql"
+      ]
+    },
+    {
+      "id": "AT71",
+      "title": "usable I 검색 경계",
+      "given": "superseded/invalidated I와 historical provenance 존재",
+      "when": "current RAG/I2K vs history",
+      "then": "current에서 제외, history에서 exact old I 유지; 입력 ref 자동 치환 금지",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT72",
+      "title": "immutable publication",
+      "given": "P/B 구성·문장 변경",
+      "when": "save/publish",
+      "then": "새 P/B snapshot+supersedes; 기존 artifact/포함 parchment refs 보존",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT73",
+      "title": "근거 append provenance",
+      "given": "기존 K에 새로운 독립 support accepted",
+      "when": "grounding commit",
+      "then": "semantic Revision 없음; old origin refs 보존; 새 grounded ref/effect 기록",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT74",
+      "title": "Operation×kind",
+      "given": "K2K가 observation/authority decision 제안 또는 I2K가 edge 제안",
+      "when": "structural validation",
+      "then": "금지 조합 거부; W2K decision, N2E edge 경계 유지",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT75",
+      "title": "반박과 수정 분리",
+      "given": "A1과 양립 어려운 B1",
+      "when": "N2E contradiction 승인",
+      "then": "A1 자동 수정/삭제 없음; contested projection 후 별도 K2K 평가",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT76",
+      "title": "canonicalization version",
+      "given": "동등 payload key order/Unicode/unit representation 및 다른 schema",
+      "when": "fingerprint 생성",
+      "then": "versioned envelope 유지; 승인된 normalization만 equality; 미승인 표현 합치기 금지",
+      "proposal_dependencies": [],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py"
+      ],
+      "execution_notes": "Unicode/개행 정규화, 내부 공백 보존, 좌표 숫자 표현 및 opaque parser ref에 대한 FP 단언, 정규화 출력 digest를 검증했다. schema version 교체와 단위 표현 정규화는 미검증이다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "user_override_dependencies": [
+        "U11"
+      ]
+    },
+    {
+      "id": "AT77",
+      "title": "traceable Record와 이유",
+      "given": "approval/rejection/suppression/reuse",
+      "when": "audit 조회",
+      "then": "input/profile/disposition/effects/canonical refs/reason 추적; private chain-of-thought 저장 요구 없음",
+      "proposal_dependencies": [],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_codex_provider.py"
+      ],
+      "execution_notes": "accepted/rejected/needs_human Record, source/profile/receipt와 canonical grounding/effect 참조, 분류형 reason code, private reasoning 비반환을 검증했다. suppression/reuse audit 전체는 미실행이다. 실제 Generator v2/Validator v3는 서로 다른 thread에서 같은 source_bundle/proposal_set digest를 소비했고, 29 Records와 28 I/51 groundings의 결과 참조를 남겼다. 실제 live 결과와 mock quality 단언을 구분한다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ],
+      "user_override_dependencies": [
+        "U11"
+      ]
+    },
+    {
+      "id": "AT78",
+      "title": "자동 W2K/질의 재실행 제한",
+      "given": "explanation/recommendation/decision_trace W와 graph 변화",
+      "when": "event dispatch",
+      "then": "일반 W→K 자동 승격 없음; 과거 K2W 자동 재실행 없음",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT79",
+      "title": "depth는 metadata",
+      "given": "여러 causal root를 거친 K2K derivation",
+      "when": "projection/acceptance",
+      "then": "derivation 누적; 숫자만으로 reject/cutoff 금지; causal chain과 구분",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT80",
+      "title": "QueryContextGraph 경계",
+      "given": "사용자 Query/session memory가 포함된 K2W",
+      "when": "답 생성",
+      "then": "context snapshot으로 보존하되 canonical K 자동 insert 없음",
+      "proposal_dependencies": [],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT81",
+      "title": "grounding source fidelity",
+      "given": "D가 틀린 주장을 실제로 포함한 경우",
+      "when": "D2I 구조·충실도 검사 및 후속 I2K 의미 검증",
+      "then": "D2I는 정확한 원문 표현·위치·누락/무결성을 검사하고 semantic_checked=false로 저장; 세계의 참이나 의미 승인을 위조하지 않음",
+      "proposal_dependencies": [],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py"
+      ],
+      "execution_notes": "구조 적합성이 source fidelity 승인이 아니라는 단언과 원문 주장을 world truth로 인증하지 않는 prompt 계약을 mock으로 검증했다. 실제 의미 판정 품질은 평가하지 않았다. 실제 별도 Validator 추론을 수행했지만 문서 속 거짓 주장을 world truth와 구분하는 별도 평가셋이나 전체 I의 독립적 정답 평가는 수행하지 않았다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ],
+      "pre_U11_contract": {
+        "given": "D가 틀린 주장을 실제로 포함한 경우",
+        "when": "D2I validation",
+        "then": "출처가 말한 내용과 위치 검증; I acceptance를 세계에서 참이라고 표현하지 않음"
+      },
+      "user_override_dependencies": [
+        "U11"
+      ]
+    },
+    {
+      "id": "AT82",
+      "title": "T02부터 headless CLI",
+      "given": "display/browser/GUI가 없는 test environment",
+      "when": "help/version/data import/show/verify를 실행",
+      "then": "application services와 실제 파일/DB로 동작하며 GUI package를 요구하지 않음",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01",
+        "U10"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_cli_integration.py"
+      ]
+    },
+    {
+      "id": "AT83",
+      "title": "기계 출력과 로그 분리",
+      "given": "CLI --json mode와 progress/error 발생",
+      "when": "stdout/stderr를 각각 capture",
+      "then": "stdout은 versioned JSON만 포함하고 logs/progress는 stderr; error에도 machine-readable result",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_cli_integration.py",
+        "tests/app/test_cli_unit.py"
+      ],
+      "prior_execution_reports": [
+        "progress/T02_execplan.md"
+      ],
+      "execution_notes": "기존 T02 공통 CLI JSON/stdout/stderr/오류·progress 분리 근거를 보존하며 최종 앱 이미지 전체 회귀에서 재검증했다."
+    },
+    {
+      "id": "AT84",
+      "title": "비TTY 확인 입력 누락",
+      "given": "stdin이 pipe/EOF이고 승인 정보가 없음",
+      "when": "review/decision consequence command 실행",
+      "then": "무한 prompt나 자동 승인 없이 needs_confirmation/권한 오류와 명시적 nonzero 결과",
+      "proposal_dependencies": [
+        "P08",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT85",
+      "title": "명령 성공과 workflow 완료 구분",
+      "given": "비동기 compilation request가 접수됨",
+      "when": "CLI result와 jobs show 조회",
+      "then": "request 접수를 propagation completed로 표시하지 않으며 실제 pending/partial/blocked와 job ref 반환",
+      "proposal_dependencies": [
+        "P03",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "prepared/proposed/failed/needs_human/zero_output/completed 구분과 pending 작업 재시도를 검증했다. 실제 CLI worker의 prepared→parsed→proposed→completed 상태와 최종 jobs 결과를 확인했다. pending I2K 이후 전파 완료를 의미하지 않으며 부분·blocked 전체 경로는 별도이다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT86",
+      "title": "관찰 종료와 durable job 상태",
+      "given": "watch 실행 중 durable job이 running",
+      "when": "사용자가 Ctrl-C로 watch를 중단한 뒤 resume 조회",
+      "then": "관찰 종료만으로 job 삭제/성공/취소를 위조하지 않고 실제 lifecycle 보존",
+      "proposal_dependencies": [
+        "P03",
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT87",
+      "title": "CLI authority와 payload binding",
+      "given": "LLM recommendation과 새 decision payload, --yes 옵션",
+      "when": "decision confirm/retry 수행",
+      "then": "실제 actor/payload-bound evidence 없이 commitment 생성 금지; 같은 승인 event retry는 idempotent",
+      "proposal_dependencies": [
+        "P08"
+      ],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT88",
+      "title": "현재 구성요소·Operation naming",
+      "given": "현재 canonical/tasks/code contracts",
+      "when": "구성요소 label/module/schema examples 검사",
+      "then": "Artifact Store/artifact_store, Canonical Store/canonical_store, Compiler Runtime/compiler_runtime 및 K2W/k2w 사용; 과거 이름은 archive/원본 인용/변경 근거/migration에서 보존",
+      "proposal_dependencies": [],
+      "user_override_dependencies": [
+        "U03",
+        "U07"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tools/test_validate_bundle.py"
+      ]
+    },
+    {
+      "id": "AT89",
+      "title": "이름 migration과 identity 보존",
+      "given": "기존 schema/파일/ID/hash/fingerprint가 있는 fixture",
+      "when": "U03 mapping migration rehearsal",
+      "then": "accepted bytes/IDs/history digest 불변; 새 이름 때문에 duplicate canonical object나 destructive rename 없음",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U03"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT90",
+      "title": "PDF routing은 MinerU",
+      "given": "media_type application/pdf의 immutable D",
+      "when": "CLI compile data로 parser 선택",
+      "then": "MinerU adapter가 선택되고 다른 parser가 조용히 대신 실행되지 않음",
+      "proposal_dependencies": [],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "test_paths": [
+        "tools/run_d2i.py",
+        "deploy/mineru/run_parser.py"
+      ],
+      "execution_notes": "실제 immutable PDF Data를 compile data CLI로 시작하고 MinerU 3.4.5/pipeline/adapter v2로 14/14페이지 처리하여 completed에 도달했다. 해당 native-text PDF 1건의 MinerU routing과 별도 의미 검증 연결을 확인했으며 다른 PDF 유형의 parsing 품질까지 뜻하지 않는다.",
+      "execution_report": "progress/T03_execplan.md",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT91",
+      "title": "Parser success와 I acceptance 분리",
+      "given": "MinerU가 성공했으나 block 누락·구조 불일치 또는 인식 오류가 존재",
+      "when": "스크립트 D2I 검사와 후속 의미 검증",
+      "then": "block 누락·구조 불일치는 canonical commit을 막음; 인식된 문자열과 원본 provenance는 보존하며 parser 정확성·세계의 참·의미 승인으로 표시하지 않음; 의미 해석/교정은 I2K 이후 별도 검증",
+      "proposal_dependencies": [
+        "P01"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_information_integration.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py"
+      ],
+      "execution_notes": "합성 parser artifact 보존과 mocked rejected/needs_human의 canonical I 미생성, 구조 검증과 의미 승인 분리를 검증했다. 실제 오추출을 모델이 기각하는 품질 평가는 미실행이다. 실제 parser 성공 뒤 29개 제안에 독립 Validator를 실행하여 28개만 canonical I로 반영하고 1개를 기각했다. 이 단일 모델 판정을 오추출 탐지 품질이나 모든 I의 정확성 확증으로 취급하지 않는다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ],
+      "pre_U11_contract": {
+        "given": "MinerU는 성공했지만 추출이 원문 의미와 불일치",
+        "when": "D2I 검증",
+        "then": "parse artifact는 유지 가능하나 잘못된 I는 승인되지 않음; parser exit code로 canonical truth 확정 금지"
+      }
+    },
+    {
+      "id": "AT92",
+      "title": "Parse artifact와 grounding 보존",
+      "given": "MinerU structured output/Markdown/이미지와 원본 PDF",
+      "when": "I anchor 생성 후 provenance 조회",
+      "then": "원본 D hash/page/region과 parser output hash/profile/raw locator를 연결; Markdown offset을 PDF offset으로 사용하지 않음",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_mineru_adapter.py",
+        "tests/app/test_information_integration.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py",
+        "tests/app/test_page_projection.py"
+      ],
+      "execution_notes": "합성 structured text/image/table/formula의 raw locator 및 Data/page/bbox/anchor와 parser manifest hash/profile 연결, durable 파일 복구를 검증했다. 실제 14페이지 PDF의 parse manifest와 Data hash, page/region/raw locator, 63개 crop hash를 연결하고 28개 I의 grounding 51개를 조회했다. Fig5H bbox는 upstream raw parent와 구분되는 explicit envelope이며 exact grounding_regions를 별도로 보존한다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT93",
+      "title": "페이지·좌표 normalization",
+      "given": "부분 page range/rotation/crop과 backend별 다른 좌표를 포함한 출력",
+      "when": "adapter가 original PDF anchor를 생성",
+      "then": "0/1-based와 page offset/coordinate system을 검증해 mapping; 근거 없는 bbox 추정 금지",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_mineru_adapter.py",
+        "tests/app/test_information.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "정확한 원본 page index 범위, finite bbox, page 경계, cross-page preproc 보존과 잘못된 grounding 거부를 검증했다. 단일 실제 PDF에서 원본과 MinerU origin의 MediaBox/CropBox/rotation, 정수 page-size 반올림, 14개 원문 page index를 대조했다. 부모 밖 caption을 개별 관측 영역 union으로 포함했으며 다른 rotation/backend/page-window fixture는 여전히 미검증이다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT94",
+      "title": "미지원 MinerU output schema",
+      "given": "선택한 parser가 adapter가 모르는 구조를 반환",
+      "when": "decode/normalize",
+      "then": "명시적 unsupported schema로 중단; 빈 내용이나 fabricated anchors로 성공하지 않음",
+      "proposal_dependencies": [],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_mineru_adapter.py",
+        "tests/app/test_d2i.py"
+      ],
+      "execution_notes": "structural contract passed: 합성 unknown parser type을 supported=False로 보존하고 D2I가 unsupported_parser_output으로 중단함을 검증했다. 누락 visual payload도 실패하며 빈 내용이나 추정 anchor로 성공하지 않는다. 실제 MinerU 품질 평가를 뜻하지 않는다."
+    },
+    {
+      "id": "AT95",
+      "title": "MinerU 미설치와 silent fallback 금지",
+      "given": "MinerU executable 또는 모델이 없고 다른 parser는 설치됨",
+      "when": "doctor/compile data 실행",
+      "then": "readiness/error 원인 보고; 다른 parser로 성공 대체하지 않음",
+      "proposal_dependencies": [],
+      "user_override_dependencies": [
+        "U02"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_cli_unit.py",
+        "tests/app/test_data_integration.py"
+      ],
+      "execution_notes": "미설정 MinerU의 readiness 경고와 doctor의 구조화 응답을 검증했다. 실제 executable/model 부재 시 compile 실패 및 대체 parser 미호출은 미실행이다."
+    },
+    {
+      "id": "AT96",
+      "title": "로컬 parser와 문서 전송 권한",
+      "given": "remote document transfer 권한 없음",
+      "when": "기본 PDF D2I 실행",
+      "then": "local/loopback profile만 사용; hosted API 전송 요청은 별도 승인 전 차단",
+      "proposal_dependencies": [
+        "P10"
+      ],
+      "user_override_dependencies": [
+        "U02"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "test_paths": [
+        "tools/run_d2i.py",
+        "deploy/mineru/run_parser.py"
+      ],
+      "execution_notes": "실제 parser는 Docker network=none, 로컬 모델 및 읽기 전용 Data로 실행했다. 후속 Codex 원문 전달에는 이 PDF에 대한 사용자 승인이 있었다. 전송 권한이 없는 경우 hosted API 요청을 차단하는 부정 시나리오는 실행하지 않아 전체 권한 계약 통과가 아니다.",
+      "execution_report": "progress/T03_execplan.md",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT97",
+      "title": "Parser artifact retry idempotency",
+      "given": "동일 D/profile/generation의 검증된 parse artifact가 존재",
+      "when": "실패한 downstream attempt를 retry",
+      "then": "artifact 무결성 확인 후 재사용 가능; 원본/parse outputs 덮어쓰기나 duplicate canonical effects 없음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py",
+        "tests/app/test_source_units.py",
+        "tests/app/test_source_runtime_integration.py",
+        "tests/app/test_page_projection.py"
+      ],
+      "execution_notes": "동일 parser artifact 재생, durable CAS hash/size 복구, 다른 bytes의 export 충돌 거부, downstream 실패 후 같은 작업 재시도와 중복 effect 방지를 검증했다. 실제 parser/host worker crash 복구를 연결한 시험은 별도이다. 실제 retained parser artifacts를 CAS에서 별도 host 폴더로 복원하여 모델 입력에 제공했고 completed 작업의 CLI replay를 확인했다. source/profile을 바꾼 실행은 동일 retry와 구분한다. U11: source 전용 14 unit/7 PG 통합 검사를 전체190 suite에서 통과했고 실물189 source I·249/249 원문·255 grounding·재실행 동일ID를 확인했다. 의미 품질 검증 또는 전체 AT 완료로 승격하지 않는다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT98",
+      "title": "MinerU version/profile 변경",
+      "given": "과거 parser output과 I가 보존됨",
+      "when": "명시적 새 parser profile로 recompile",
+      "then": "새 parse execution/generation 관계를 기록; D hash/old I provenance 불변; 자동 과거 전량 재실행 없음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "test_paths": [
+        "tools/run_d2i.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "이전 실패 execution/parse artifact를 보존하고 명시적으로 달라진 parser image·adapter v2·prompt profile을 새 execution으로 실행했다. Data hash는 동일하고 과거 오류를 성공으로 재기록하지 않았다. 이전 실행에는 canonical I가 없어 old I provenance를 유지하는 profile 교체 시나리오는 미검증이다.",
+      "execution_report": "progress/T03_execplan.md",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT99",
+      "title": "전체 PDF page coverage",
+      "given": "큰 PDF 요청을 여러 page window로 처리 중 한 window 실패",
+      "when": "job completion 판정",
+      "then": "누락 page와 partial/retry 상태 표시; 처리 창 크기를 총 페이지 성공 cap으로 사용하지 않음",
+      "proposal_dependencies": [
+        "P03",
+        "P05"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_mineru_adapter.py",
+        "tests/app/test_d2i.py"
+      ],
+      "execution_notes": "정확한 전체 page index range와 누락/중복 page 거부, 입력 coverage와 의미적 완전성 구분을 합성 fixture로 검증했다. page window 중간 실패와 durable partial/retry 시나리오는 미실행이다. 실제 두 모델 receipt는 각 14페이지·249 blocks·63 images, 제외 input block 0개를 기록했다. 미참조 source block 205개이며 입력 coverage는 의미적 완전성을 입증하지 않는다. page window 실패 시험은 미실행이다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT100",
+      "title": "손상·암호화·timeout의 기술 실패",
+      "given": "corrupt/encrypted PDF 또는 parser timeout",
+      "when": "D2I 실행",
+      "then": "실패 원인/원본을 보존하고 epistemic rejected와 구분; provider/parser 교체로 오류 은폐하지 않음",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "user_override_dependencies": [
+        "U02"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_codex_provider.py",
+        "tests/app/test_d2i.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "기술 오류를 semantic rejection으로 바꾸지 않고 후보를 보존하는 mock/실제 PG 경계를 검증했다. 실제 corrupt/encrypted PDF와 MinerU timeout 시나리오는 미실행이다. 실제 초기 parser의 누락 runtime dependency 및 wrapper 오류가 기술 실패로 남고 canonical I나 의미적 rejection으로 처리되지 않았음을 실행 기록에서 확인했다. corrupt/encrypted PDF와 MinerU timeout은 미실행이다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT101",
+      "title": "실제 MinerU PDF integration",
+      "given": "선택한 버전/backend와 합법적 native/scanned/mixed PDF test set",
+      "when": "실제 parser를 실행하고 원문과 page/table/formula anchors 대조",
+      "then": "버전/profile/coverage/assertions와 결과를 남김; synthetic fixture만으로 real parser 통과 주장 금지",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U02",
+        "U11"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "test_paths": [
+        "tools/run_d2i.py",
+        "deploy/mineru/run_parser.py",
+        "tests/app/test_mineru_adapter.py"
+      ],
+      "execution_notes": "사용자 제공 native-text/figure PDF 1건을 실제 MinerU 3.4.5/pipeline으로 처리했다. 14/14페이지, 249 blocks, 63 JPEG crop과 원본 geometry를 확인했고 대표 figure/caption을 시각 대조하여 Fig5 부모 밖 caption을 explicit envelope로 수정·재검증했다. scanned/mixed OCR·한국어·표/수식 test set 전체 및 의미적 완전성은 미검증이다.",
+      "execution_report": "progress/T03_execplan.md",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json",
+        "progress/T03_source_preflight.json",
+        "progress/T03_parser_observations.json"
+      ]
+    },
+    {
+      "id": "AT102",
+      "title": "doctor는 진단만 수행",
+      "given": "MinerU runtime/model readiness 또는 endpoint가 미설정",
+      "when": "CLI doctor 실행",
+      "then": "secret 없이 구체 readiness 보고; 자동 다운로드/문서 업로드/환경 변경을 수행하지 않음",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01",
+        "U02",
+        "U09"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_cli_integration.py",
+        "tests/app/test_artifact_store.py",
+        "tests/app/test_cli_unit.py",
+        "tests/app/test_data_integration.py"
+      ],
+      "prior_execution_reports": [
+        "progress/T02_execplan.md"
+      ],
+      "execution_notes": "기존 T02 doctor 통과 근거와 상태를 보존하고 진단 응답·비변경 동작을 전체 회귀에서 재검증했다. 이번 T03 회귀는 실제 MinerU 모델 준비나 다운로드 경로의 통과를 추가 주장하지 않는다."
+    },
+    {
+      "id": "AT103",
+      "title": "GUI는 release 뒤 deferred",
+      "given": "T00–T12 CLI 구현/평가 진행 중",
+      "when": "task scheduling/build dependency 확인",
+      "then": "T13은 deferred이며 T12와 이후 착수 지시 전 시작 금지; CLI release는 GUI에 의존하지 않음",
+      "proposal_dependencies": [],
+      "user_override_dependencies": [
+        "U01"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT104",
+      "title": "한국어 경로·인자·terminal safety",
+      "given": "공백/quote/한국어/escape sequence 포함 filename",
+      "when": "CLI import와 MinerU subprocess 실행",
+      "then": "argument array/안전 경로 검증; UTF-8 보존 및 terminal escape 처리; shell injection 없음",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U01",
+        "U02",
+        "U09"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_cli_integration.py",
+        "tests/app/test_artifact_store.py",
+        "tests/app/test_cli_unit.py"
+      ],
+      "prior_execution_reports": [
+        "progress/T02_execplan.md"
+      ],
+      "execution_notes": "기존 T02 한국어/공백/quote/terminal escape 경로와 안전한 출력 근거를 보존하고 재검증했다. 해당 경로의 실제 MinerU subprocess 실행은 미실행이다."
+    },
+    {
+      "id": "AT105",
+      "title": "실효 parser config와 원격 endpoint",
+      "given": "환경 변수/config가 요청 backend 또는 endpoint를 덮어쓸 수 있음",
+      "when": "local profile로 실행 준비",
+      "then": "resolved config를 기록/검증하고 미승인 remote egress를 차단; secret을 fingerprint/log에 넣지 않음",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U02"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT106",
+      "title": "같은 Decision 범위의 병렬 대체 정책",
+      "given": "같은 배타적 subject/scope와 head에서 준비된 서로 다른 confirmation event 2개",
+      "when": "동시에 confirm commit을 시도",
+      "then": "R07 reconfirm_stale: head/state 검사와 commit을 한 충돌 경계로 보호한다. 늦은 요청은 새 canonical W/K/대체 관계를 저장하지 않고 현재 상태와 재확인 필요를 반환한다. 확인 시도 이력은 남기며 같은 성공 event/payload의 retry는 기존 결과다.",
+      "proposal_dependencies": [
+        "P05",
+        "P08"
+      ],
+      "user_override_dependencies": [
+        "U08"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    },
+    {
+      "id": "AT107",
+      "title": "기각 payload cleanup 뒤 후보 조회",
+      "given": "기각 후 payload/임시 index를 정리한 과거 후보와 다른 FP의 paraphrase 또는 corrected locator 후보",
+      "when": "다시 lookup/validation",
+      "then": "R08 exact_scoped_only: rejected Record는 정확한 rejection scope/FP로만 조회한다. 다른 FP의 표현과 corrected locator는 필요한 새 validation으로 처리한다. accepted semantic similarity는 유지하며 audit/raw payload를 기각 검색 데이터원으로 쓰지 않는다.",
+      "proposal_dependencies": [
+        "P01",
+        "P09"
+      ],
+      "user_override_dependencies": [
+        "U08",
+        "U09"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information.py",
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "corrected grounding의 FP 구분과 기각 본문 cleanup 뒤 Record 보존을 검증했다. exact scoped rejected-FP lookup 및 다른 FP의 새 validation 흐름은 미실행이다."
+    },
+    {
+      "id": "AT108",
+      "title": "PostgreSQL 18·pgvector와 신규 ID 규칙",
+      "given": "독립 PG18 test DB와 vector extension, 원본 bytes 및 신규 객체/Record/acquisition ID",
+      "when": "실제 server/extension profile과 schema 제약을 검사",
+      "then": "최초 major는 18이고 실제 minor/extversion이 기록된다. Data ID=raw-byte SHA-256이며 UUIDv7/variant 위반·ID/hash 불일치를 거부한다. UUID를 commit ordering으로 사용하지 않고 PG19 자동 전환도 하지 않는다.",
+      "proposal_dependencies": [
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U09",
+        "U10"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_data_integration.py",
+        "docs/schema/T02_storage_checks.sql",
+        "tests/app/test_information_integration.py"
+      ],
+      "prior_execution_reports": [
+        "progress/T02_execplan.md"
+      ],
+      "execution_notes": "T03 실제 PG18/vector 존재와 신규 I UUIDv7, opaque ID 보유 8개 테이블의 비 RFC variant 거부 및 정확한 CHECK constraint를 검증했다. 기존 T02 SQL/ID 근거와 부분 상태를 보존한다."
+    },
+    {
+      "id": "AT109",
+      "title": "중복 Data·성공 retry·병렬 import",
+      "given": "동일 bytes의 새 요청 둘과 commit 후 응답 유실된 기존 성공 request",
+      "when": "새 요청 import, 동일 request replay, 동일 key의 다른 payload, 병렬 동일 bytes 등록을 실행",
+      "then": "Data와 최초 acquisition은 하나다. 새 중복 요청은 duplicate_data+기존 ID와 nonzero 결과이며 D2I/자동 acquisition을 추가하지 않는다. 동일 성공 request/입력은 원래 성공을 반환하고 다른 입력은 conflict다.",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "implementation_status": "passed",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_data_integration.py",
+        "tests/app/test_cli_integration.py"
+      ]
+    },
+    {
+      "id": "AT110",
+      "title": "도구 관리 등록·staging 경쟁·파일/DB 복구",
+      "given": "독립 임시 Artifact Store·DB와 copy/publish/commit failpoint, 같은 request 동시 실행 및 object만 존재하는 상태",
+      "when": "도구 import·중단·reconcile·직접 관리 폴더 복사를 수행",
+      "then": "staging은 request별 배타 소유이고 덮어쓰지 않는다. 보존 bytes를 해시하고 shared object 존재만으로 duplicate 처리하지 않는다. prepared journal만 검증 재개하며 수동 파일을 자동 등록하지 않는다. 원본/공유 object를 실패 cleanup으로 삭제하지 않고 Data/acquisition/성공 receipt는 atomic하다.",
+      "proposal_dependencies": [
+        "P10",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U09"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T02_execplan.md",
+      "test_paths": [
+        "tests/app/test_data_integration.py",
+        "tests/app/test_artifact_store.py"
+      ]
+    },
+    {
+      "id": "AT111",
+      "title": "잠정 판정 승격과 영속 Runtime Record",
+      "given": "잠정 accepted/rejected/no-material/needs-human 후보와 canonical commit failpoint",
+      "when": "같은 PG transaction에서 효과·Record·provenance·cleanup·outbox를 반영하고 retry",
+      "then": "검증된 효과만 canonical에 반영되며 최종 판정·FP·reason·exact refs는 Runtime Record에 남는다. 실패 시 잠정 결과를 canonical 승인으로 노출하지 않고 원자적으로 rollback한다. 기각 본문 정리 후에도 exact scoped FP는 조회 가능하다.",
+      "proposal_dependencies": [
+        "P05"
+      ],
+      "user_override_dependencies": [
+        "U08",
+        "U09"
+      ],
+      "implementation_status": "partially_tested",
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "test_paths": [
+        "tests/app/test_information_integration.py"
+      ],
+      "execution_notes": "I/grounding/accepted Record/cleanup/outbox의 실제 PG 원자성, 구성요소 누락 commit 거부, before_commit rollback과 retry, terminal 불변 및 needs_human 보존을 검증했다. no-material과 기각 후 exact scoped lookup은 미실행이다. 실제 최종 결과는 accepted 28/rejected 1의 영속 Records, text I 23/image I 5 및 grounding 51개다. 원자성·failpoint는 별도 실제 PG 합성 회귀로 검증했고 전체 I2K 전파 gate와 no-material/scoped lookup까지 완료한 것은 아니다.",
+      "evidence_paths": [
+        "output/t03/job_result.json",
+        "output/t03/information.json"
+      ]
+    },
+    {
+      "id": "AT112",
+      "title": "pgvector profile 교체와 ANN 차원 경계",
+      "given": "BGE-M3 1024 profile과 차원/정밀도/거리함수가 다른 향후 embedding profile",
+      "when": "projection 저장·검색/index 호환성 검증과 Reranker 단독 교체",
+      "then": "pgvector dense 검색과 BGE multi-vector reranking을 구분한다. profile/source별 typed refs·차원을 검증하며 미지원 ANN 차원을 자동 절삭/half precision으로 바꾸지 않는다. 새 profile 검증 뒤 파생 projection만 전환하고 canonical ID/history를 보존한다.",
+      "proposal_dependencies": [
+        "P09",
+        "P12"
+      ],
+      "user_override_dependencies": [
+        "U04",
+        "U09"
+      ],
+      "implementation_status": "spec_only",
+      "last_executed": null
+    }
+  ],
+  "historical_t03_evidence": [
+    {
+      "last_executed": "2026-09-09",
+      "execution_report": "progress/T03_execplan.md",
+      "application_regression": {
+        "tests": 139,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 21.421,
+        "command": "docker compose -p palimpsest-t03-verify run --rm --no-deps test",
+        "image_id": "sha256:12c60b40b5b15d82d40dd009e4419fcdc87a8243c1edb84a716ec0c09f051a5a"
+      },
+      "live_pdf": {
+        "execution_id": "01a0853c-03d8-72ff-be35-958d8dae8db5",
+        "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+        "state": "completed",
+        "pdf_scope": "one native-text PDF with figures; scanned/OCR test set not exercised",
+        "pages": 14,
+        "normalized_blocks": 249,
+        "image_crops": 63,
+        "records": {
+          "accepted": 28,
+          "rejected": 1
+        },
+        "information": {
+          "total": 28,
+          "text": 23,
+          "image": 5
+        },
+        "groundings": 51,
+        "parser": {
+          "provider": "mineru",
+          "version": "3.4.5",
+          "backend": "pipeline",
+          "network": "none",
+          "adapter_version": "mineru-middle-v2"
+        },
+        "model": "gpt-5.6-terra",
+        "reasoning_effort": "medium",
+        "auth": "chatgpt_oauth",
+        "generator_prompt": "d2i-generator-v2",
+        "validator_prompt": "d2i-validator-v3",
+        "generator_thread_ref": "01a0853c-9b69-77a2-bc4d-950320131694",
+        "validator_thread_ref": "01a0853d-ab78-7e70-86a1-81a8399155cb",
+        "source_bundle_sha256": "5e38b1b5312f886f84116e9453709bc0ef7d9899bf8903687ea304b1a01aa00b",
+        "proposal_set_sha256": "573186e53730a3edce078ecc0dd2f9cc435187006ef9b3d5ca014168ec266eec",
+        "unreferenced_source_blocks": 205,
+        "semantic_exhaustiveness": "not_established_by_input_coverage",
+        "evidence_paths": [
+          "output/t03/job_result.json",
+          "output/t03/information.json",
+          "progress/T03_source_preflight.json",
+          "progress/T03_parser_observations.json"
+        ]
+      },
+      "task_gate": "T03 remains incomplete; successful live slice and regression do not cover every acceptance scenario"
+    }
+  ],
+  "latest_t03_evidence": {
+    "last_executed": "2026-09-09",
+    "user_override": "U11",
+    "execution_report": "progress/T03_execplan.md",
+    "application_regression": {
+      "tests": 190,
+      "elapsed_seconds": 27.582,
+      "exit_code": 0,
+      "skipped": 0,
+      "command": "docker compose -p palimpsest-t03-verify run --rm --no-deps test",
+      "app_image_id": "sha256:4f6dc7e177db23d21344b5de24e7a8d64e4073fa163a1592bdcedbd851604cb6"
+    },
+    "source_pdf_result": "progress/T03_source_result.json",
+    "information": {
+      "total": 189,
+      "text": 182,
+      "whole_figure": 6,
+      "logo_image": 1,
+      "image_total": 7
+    },
+    "original_block_coverage": 249,
+    "llm_calls": 0,
+    "semantic_checked": false,
+    "task_gate": "T03 in_progress; source preserving native PDF slice complete; later semantic/operational gates remain"
+  },
+  "page_projection_evidence": {
+    "report": "progress/T03_page_result.json",
+    "tests": 202,
+    "new_page_unit_tests": 12,
+    "read_only": true,
+    "canonical_rows_added": 0,
+    "llm_calls": 0
+  }
+}

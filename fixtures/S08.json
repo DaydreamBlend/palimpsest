@@ -1,0 +1,29 @@
+{
+  "id": "S08",
+  "tests": [
+    "AT07",
+    "AT08",
+    "AT41",
+    "AT76"
+  ],
+  "type": "materiality_pairs",
+  "pairs": [
+    [
+      "positive",
+      "negative"
+    ],
+    [
+      "adult",
+      "pediatric"
+    ],
+    [
+      "same_semantics_style_A",
+      "same_semantics_style_B"
+    ],
+    [
+      "procedure_step_1_2",
+      "procedure_step_2_1"
+    ]
+  ],
+  "note": "expected materiality는 승인된 kind registry와 gold labels로 구체화하며 NLP 문자열만으로 판정하지 않음"
+}

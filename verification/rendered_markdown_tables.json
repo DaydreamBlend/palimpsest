@@ -1,0 +1,493 @@
+{
+  "tool": "Pandoc GFM JSON AST",
+  "scope": "Markdown table structure only; not app/PDF execution",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "CHANGELOG_CLI_MINERU.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "PACKAGE_VERIFICATION.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "PLANS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "README.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "codex/CODE_REVIEW.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "codex/PROMPTS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "codex/REFERENCES.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "codex/START_HERE.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/AGENTS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/INDEX.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/00_foundation.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/01_data_d2i.md",
+      "tables": 4,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/02_information.md",
+      "tables": 3,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/03_knowledge_graph.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/04_compiler_records.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/05_identity_materiality.md",
+      "tables": 5,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/06_knowledge_operations.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/07_propagation.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/08_wisdom_decisions.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/09_publication_retrieval.md",
+      "tables": 2,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/10_relational_vocabulary.md",
+      "tables": 4,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/11_invariants_decisions.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/12_open_implementation.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/canonical/PALIMPSEST_CANONICAL_MODEL.md",
+      "tables": 42,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/01_identity_materiality.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/02_effective_relations_dependencies.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/03_propagation_completion.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/04_transactions_execution.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/05_compiler_validation_evidence.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/06_decision_wisdom_publication.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/07_storage_retrieval_security.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/contracts/08_interfaces_schema_plan.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/decisions/DECISION_REGISTER.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/decisions/USER_OVERRIDES.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/implementation/ENVIRONMENT.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/implementation/EVALUATION.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/implementation/MIGRATION.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/implementation/MODULE_BOUNDARIES.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/implementation/ROADMAP.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/interfaces/CLI_CONTRACT.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/interfaces/MINERU_ADAPTER.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/interfaces/MINERU_REFERENCES.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/review/ERRATA.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/review/REVIEW.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/PALIMPSEST_CANONICAL_MODEL_INTEGRATED.md",
+      "tables": 42,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/00_foundation.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/01_data_d2i.md",
+      "tables": 4,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/02_information.md",
+      "tables": 3,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/03_knowledge_graph.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/04_compiler_records.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/05_identity_materiality.md",
+      "tables": 5,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/06_knowledge_operations.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/07_propagation.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/08_wisdom_decisions.md",
+      "tables": 7,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/09_publication_retrieval.md",
+      "tables": 2,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/10_relational_vocabulary.md",
+      "tables": 4,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/11_invariants_decisions.md",
+      "tables": 1,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "docs/source/baseline_parts/12_open_implementation.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "fixtures/README.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "progress/STATUS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "progress/repository_inventory.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/README.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T00.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T01.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T02.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T03.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T04.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T05.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T06.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T07.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T08.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T09.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T10.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T11.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T12.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tasks/T13.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tests/AGENTS.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tests/specs/ACCEPTANCE.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    },
+    {
+      "path": "tests/specs/TRACEABILITY.md",
+      "tables": 0,
+      "empty_cells": 0,
+      "column_mismatches": 0
+    }
+  ],
+  "errors": [],
+  "totals": {
+    "tables": 168,
+    "empty_cells": 0,
+    "column_mismatches": 0
+  },
+  "status": "passed"
+}

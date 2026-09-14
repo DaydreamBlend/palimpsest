@@ -1,0 +1,1397 @@
+{
+  "schema_version": 1,
+  "review_scope": "read_only_existing_parser_artifacts_and_representative_visual_comparison_no_model_calls",
+  "execution_id": "01a08530-b03f-76bf-9f8e-13f135f9aa78",
+  "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+  "source_files": {
+    "source_middle.json": {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/source_middle.json",
+      "sha256": "a62a5255a5d8f793d5a2017eb731c15d9cbf76c0b53e13d87bc55090c3e219a7"
+    },
+    "palimpsest_source_check.json": {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/palimpsest_source_check.json",
+      "sha256": "9fe9f20579958e255cb8ec40adf358f888728ca17e21680edd31b268fc404b07"
+    }
+  },
+  "upstream_middle_version": "3.4.5",
+  "upstream_middle_backend": "pipeline",
+  "page_count": 14,
+  "page_indices_complete": true,
+  "normalizer_selection_evaluation": {
+    "expected_collection_from_current_rule": "preproc_blocks",
+    "selection_reason": "preserve_original_pages_before_upstream_cross_page_merge",
+    "para_cross_page_or_lines_deleted_nodes": 60,
+    "para_pages_with_flags_1based": [
+      2,
+      4,
+      5,
+      12,
+      13
+    ],
+    "preproc_cross_page_or_lines_deleted_nodes": 0,
+    "assessment": "Preproc preserves page-local source locations; this does not validate upstream caption/panel association."
+  },
+  "geometry": {
+    "original_and_parser_origin_pages_equal": true,
+    "parser_page_sizes": [
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ],
+      [
+        595,
+        779
+      ]
+    ],
+    "declared_geometry_tolerance_points": 1.0,
+    "max_size_delta_points": 0.5201416015625
+  },
+  "block_count": 249,
+  "block_type_counts": {
+    "abstract": 1,
+    "chart": 46,
+    "footer": 28,
+    "header": 28,
+    "image": 17,
+    "page_number": 14,
+    "ref_text": 34,
+    "text": 54,
+    "title": 27
+  },
+  "per_page": [
+    {
+      "page_number_1based": 1,
+      "raw_page_index": 0,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 19,
+      "discarded_block_count": 5,
+      "types": {
+        "abstract": 1,
+        "footer": 2,
+        "header": 2,
+        "image": 1,
+        "page_number": 1,
+        "text": 11,
+        "title": 6
+      },
+      "unique_image_count": 1
+    },
+    {
+      "page_number_1based": 2,
+      "raw_page_index": 1,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 10,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 6,
+        "title": 4
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 3,
+      "raw_page_index": 2,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 14,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 10,
+        "footer": 2,
+        "header": 2,
+        "image": 4,
+        "page_number": 1
+      },
+      "unique_image_count": 14
+    },
+    {
+      "page_number_1based": 4,
+      "raw_page_index": 3,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 14,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 7,
+        "footer": 2,
+        "header": 2,
+        "image": 5,
+        "page_number": 1,
+        "text": 2
+      },
+      "unique_image_count": 12
+    },
+    {
+      "page_number_1based": 5,
+      "raw_page_index": 4,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 8,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 5,
+        "title": 3
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 6,
+      "raw_page_index": 5,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 7,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 6,
+        "footer": 2,
+        "header": 2,
+        "image": 1,
+        "page_number": 1
+      },
+      "unique_image_count": 7
+    },
+    {
+      "page_number_1based": 7,
+      "raw_page_index": 6,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 11,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 8,
+        "footer": 2,
+        "header": 2,
+        "image": 2,
+        "page_number": 1,
+        "text": 1
+      },
+      "unique_image_count": 10
+    },
+    {
+      "page_number_1based": 8,
+      "raw_page_index": 7,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 7,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 5,
+        "title": 2
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 9,
+      "raw_page_index": 8,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 8,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 7,
+        "footer": 2,
+        "header": 2,
+        "image": 1,
+        "page_number": 1
+      },
+      "unique_image_count": 8
+    },
+    {
+      "page_number_1based": 10,
+      "raw_page_index": 9,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 10,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 7,
+        "title": 3
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 11,
+      "raw_page_index": 10,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 12,
+      "discarded_block_count": 5,
+      "types": {
+        "chart": 8,
+        "footer": 2,
+        "header": 2,
+        "image": 3,
+        "page_number": 1,
+        "text": 1
+      },
+      "unique_image_count": 11
+    },
+    {
+      "page_number_1based": 12,
+      "raw_page_index": 11,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 7,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 5,
+        "title": 2
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 13,
+      "raw_page_index": 12,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 14,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "text": 8,
+        "title": 6
+      },
+      "unique_image_count": 0
+    },
+    {
+      "page_number_1based": 14,
+      "raw_page_index": 13,
+      "parser_page_size": [
+        595,
+        779
+      ],
+      "preproc_block_count": 38,
+      "discarded_block_count": 5,
+      "types": {
+        "footer": 2,
+        "header": 2,
+        "page_number": 1,
+        "ref_text": 34,
+        "text": 3,
+        "title": 1
+      },
+      "unique_image_count": 0
+    }
+  ],
+  "image_coverage": {
+    "file_count": 63,
+    "reference_count": 63,
+    "unique_reference_count": 63,
+    "all_jpegs_decoded": true,
+    "missing_files": [],
+    "unreferenced_files": [],
+    "all_restored_files_match_parser_originals": true,
+    "scientific_figure_pages_1based": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      11
+    ],
+    "scientific_panel_crop_count": 62,
+    "first_page_non_scientific_icon_count": 1,
+    "visually_checked_crop_count": 5
+  },
+  "figure5": {
+    "caption_start": {
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/7",
+      "parent_type": "chart",
+      "parent_bbox": [
+        288,
+        480,
+        401,
+        587
+      ],
+      "exact_child_locator": "/pdf_info/8/preproc_blocks/7/blocks/2",
+      "child_type": "chart_caption",
+      "caption_bbox": [
+        46,
+        640,
+        547,
+        698
+      ],
+      "page_number_1based": 9
+    },
+    "caption_continuation": {
+      "locator": "/pdf_info/9/preproc_blocks/0",
+      "type": "text",
+      "bbox": [
+        46,
+        68,
+        548,
+        156
+      ],
+      "page_number_1based": 10
+    }
+  },
+  "findings_at_review_time": [
+    {
+      "id": "T03-QA-IMAGE-TYPE",
+      "severity": "needs_implementation_correction",
+      "observation": "46 of 63 retained crop-bearing blocks are type=chart; image proposals originally accepted only type=image. Charts are visual source evidence and need a supported representation."
+    },
+    {
+      "id": "T03-QA-GROUNDING-REGION",
+      "severity": "needs_implementation_correction",
+      "observation": "Figure 5 caption begins outside its chart parent bbox. Persisting only the parent plot bbox cannot locate this caption. Preserve exact child/line source regions.",
+      "parents_with_any_child_or_line_outside_parent_bbox": 59,
+      "outside_child_or_line_node_count": 434
+    },
+    {
+      "id": "T03-QA-UPSTREAM-ASSOCIATION",
+      "severity": "semantic_validation_attention",
+      "observation": "Page 9 chart A also carries a C label; page 3 flow-cytometry B image also carries C. Upstream grouping is not authority for panel semantics; inspect actual pixels and child locations."
+    },
+    {
+      "id": "T03-QA-CROP-CONTEXT",
+      "severity": "semantic_validation_attention",
+      "observation": "Representative plots A/H match original pixels but omit external legends/captions. Crop existence and count do not establish complete visual context."
+    }
+  ],
+  "visual_checks": [
+    {
+      "path": "tmp/pdfs/t03/source-page-03.png",
+      "sha256": "43a143c410e1c489c6a33a5c4ec1a1d87deb49291f9b250f9b064e772a8be1cd",
+      "kind": "existing_original_pdf_render",
+      "page_number_1based": 3,
+      "visual_inspection": "performed",
+      "observation": "Figure 1 panels and long caption are visible; representative microscopy crop matches panel A."
+    },
+    {
+      "path": "tmp/pdfs/t03/source-page-09.png",
+      "sha256": "4bec49d866e8eb1b48eeef44717bed70b0f6b483749335362332c5b2f7c4aa97",
+      "kind": "existing_original_pdf_render",
+      "page_number_1based": 9,
+      "visual_inspection": "performed",
+      "observation": "Figure 5 contains panels A-H and a caption ending with a continuation marker. Representative A, F and H crops match their source panels; A and H crops exclude external legend/caption regions."
+    },
+    {
+      "path": "tmp/pdfs/t03/source-page-10.png",
+      "sha256": "9c66776b7b4b83ec13a9f7c12eb6596d542dcfccf90ef5455083b908b60af35b",
+      "kind": "existing_original_pdf_render",
+      "page_number_1based": 10,
+      "visual_inspection": "performed",
+      "observation": "Figure 5 caption continues across the full upper page width, above separate two-column text and Online Methods."
+    },
+    {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/27e373cd9813d4a1e718efe46e28f906e7fbdff97dfd911e4f6c0cb2f113f782.jpg",
+      "sha256": "eda2c6ee8cf8822506a5a4c5333379071a8db6c961b0739d1dd8fd355042c00d",
+      "kind": "retained_mineru_crop",
+      "visual_inspection": "performed",
+      "observation": "Page 3 Figure 1 panel A microscopy grid; six microscopy views and time labels match original render."
+    },
+    {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/515beaf86d1c5ac9068f45f3a3fa0cbd0b15cce30291d6de87d76966acba5a7d.jpg",
+      "sha256": "f1fbc543def9ddb96c77fc35f906107e06e959ff279ed9149013dc568ae9c06b",
+      "kind": "retained_mineru_crop",
+      "visual_inspection": "performed",
+      "observation": "Page 9 Figure 5 panel A plot; matching curves/axes but the legend is outside this crop."
+    },
+    {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a7624279b8b3c646ee96bfd6e53d83078d4fcd73a99e9305bcca394b61443a2f.jpg",
+      "sha256": "cbed809df78dbc12cad6c1d5ee257a93bad9da079e66a713cc5ee8dfadf10218",
+      "kind": "retained_mineru_crop",
+      "visual_inspection": "performed",
+      "observation": "Page 9 Figure 5 panel F heatmap; matching groups, marker rows and color scale."
+    },
+    {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/67c93085ece2555bc55013b081da6b7cd86c26506d7c7129ff65809becaa706a.jpg",
+      "sha256": "2f6fbfefee1bcec1a528259704c679052eac959b00fce7cc03e53be89a10a0c3",
+      "kind": "retained_mineru_crop",
+      "visual_inspection": "performed",
+      "observation": "Page 9 Figure 5 panel H plot; matching curves/axes, without external legend or figure caption."
+    },
+    {
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/3126bd3feba48a6064b643192d6431e2cd1351232016ca1d41f028bf70e6c7c6.jpg",
+      "sha256": "fa13402e0f17680733895553742e1e1b3ccbb881478e8580dd9b19af0c0eba91",
+      "kind": "retained_mineru_crop",
+      "visual_inspection": "performed",
+      "observation": "First-page Check for updates icon, not a scientific figure panel."
+    }
+  ],
+  "image_inventory": [
+    {
+      "page_number_1based": 1,
+      "parent_block_locator": "/pdf_info/0/preproc_blocks/0",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/0/preproc_blocks/0/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/3126bd3feba48a6064b643192d6431e2cd1351232016ca1d41f028bf70e6c7c6.jpg",
+      "sha256": "fa13402e0f17680733895553742e1e1b3ccbb881478e8580dd9b19af0c0eba91",
+      "byte_size": 2071,
+      "pixel_dimensions": [
+        78,
+        78
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/0",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/0/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/27e373cd9813d4a1e718efe46e28f906e7fbdff97dfd911e4f6c0cb2f113f782.jpg",
+      "sha256": "eda2c6ee8cf8822506a5a4c5333379071a8db6c961b0739d1dd8fd355042c00d",
+      "byte_size": 19346,
+      "pixel_dimensions": [
+        342,
+        234
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/1",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/1/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/e02aed6c73ba8bd6513efe678a2d81da0d12e1d8b312eef766fee3559dc5cb5a.jpg",
+      "sha256": "5a6447ac29239c3ad65c25569317ae31497fc64af76a1791608615c9cbf576e7",
+      "byte_size": 13432,
+      "pixel_dimensions": [
+        256,
+        251
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/2",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/2/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/8de78335ecf63deb8a535e4bf0fbf463964f2e8727ddf16b540892f0e45711be.jpg",
+      "sha256": "fcead705b53a6d788cda532377fba784f3ee3df59d2e74c2797b92bf472cdcb3",
+      "byte_size": 13628,
+      "pixel_dimensions": [
+        209,
+        228
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/3",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/3/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/2c1bdbde279910a359607d129b6ca561af95d20cf7bd04dfe8af9b68c5f79cd5.jpg",
+      "sha256": "705308d91a3d4ebcd318d35123c3c3a9f5a2a8bc2bfb22929fe9c7e50469f8a5",
+      "byte_size": 9108,
+      "pixel_dimensions": [
+        232,
+        229
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/4",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/4/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a30b5ccfa5d7ea010a297e79e2d2027ed39819e1a642d1766a3f803ce66e7c5d.jpg",
+      "sha256": "e69a28d5bcc717d25438fb935fc803bff327fece098dc182f4d8e51d8304b592",
+      "byte_size": 12077,
+      "pixel_dimensions": [
+        184,
+        228
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/5",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/5/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/77cfc438bd0aa1e513e8a5fdd53059720502889784d042fa8db4364e6e09d211.jpg",
+      "sha256": "75419f0f118d7b16406e35304fcbff2cbf8e2ebe557a705c157e39ce9bcfa827",
+      "byte_size": 8273,
+      "pixel_dimensions": [
+        231,
+        226
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/6",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/6/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/cca49ed1a0ba0ed41f818bf3ce917107a90ea9305b4ea1fd7986dfccd31e12ce.jpg",
+      "sha256": "08ea4c7266ee10b542adc0d95c8196cee777b8bf0e12c5f2081334bf75cf2276",
+      "byte_size": 7170,
+      "pixel_dimensions": [
+        151,
+        287
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/7",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/7/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/565d23011c1c0191974a69826693905acc214abc35788b91695373381100ed78.jpg",
+      "sha256": "54a63d961a706937aedbc98316f08255282ef8fd9043b9496bbf7376ce9579ef",
+      "byte_size": 11045,
+      "pixel_dimensions": [
+        240,
+        223
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/8",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/8/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/c6059ba001263d59c89c232c4cf3e5d0dd6a9769be14dd996b662fb918c9d570.jpg",
+      "sha256": "4c93a4e0b8d0867d0397dc9ca129ecc294f4f5bf44f6a003ba9d792113214dd2",
+      "byte_size": 21865,
+      "pixel_dimensions": [
+        396,
+        342
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/9",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/9/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/f19c9798d65595e70e5dce71a344633b08350366704f33f4bd01e3698207b856.jpg",
+      "sha256": "950542b1c413b2aa4a9bcb366182c211ffd158abe6a90e80ab9700e155a6a9a3",
+      "byte_size": 11766,
+      "pixel_dimensions": [
+        229,
+        298
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/10",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/10/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/aeee665ec053855e5db1bebe3264b6547b88f03a2d9359b27906a5bc9a9bc0a9.jpg",
+      "sha256": "3cc848fbd697f4207ab554c749faa64a4909ff77f99fbfa1b37e160ebb3f1274",
+      "byte_size": 11690,
+      "pixel_dimensions": [
+        204,
+        304
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/11",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/11/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/b7103a3cd8144a1887a5e4562beb7cd5ebc7475958f4ed7b989234ef82b2f229.jpg",
+      "sha256": "1c5b865758e0725328f34a689cd7c4cbb5a544d7fafd74943278f13272007936",
+      "byte_size": 9860,
+      "pixel_dimensions": [
+        176,
+        276
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/12",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/12/blocks/2/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/0ad5effc8618a3c06ae5b9004d398883a12238807fd2d4906a3cad4b71e490d6.jpg",
+      "sha256": "d70b28a61f837ea0375bf713c1f24277f5eb4618d1f72eb1ace76d9b662e4f26",
+      "byte_size": 15222,
+      "pixel_dimensions": [
+        457,
+        215
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 3,
+      "parent_block_locator": "/pdf_info/2/preproc_blocks/13",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/2/preproc_blocks/13/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/44d2d77b628a8942e94b29321242c7ccaa7b1e6a3d624fd601bf344390eb12e0.jpg",
+      "sha256": "ac72cbc8465052c145821598abf240e9adf46f5af079d43d188aa183b9c8a679",
+      "byte_size": 20261,
+      "pixel_dimensions": [
+        484,
+        226
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/0",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/0/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/0043f974666fd0d6a54dbf6e36136f7c8932f8f039749324d8d05cdd55f74bbe.jpg",
+      "sha256": "9c8f3c2114a03701c6cb62796676e165ce102fb6dd62d19eb4b3b294022bcbbe",
+      "byte_size": 6886,
+      "pixel_dimensions": [
+        415,
+        109
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/1",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/1/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/d53fc48820dd7c4700f90041107885d84cebe30f4f11e688d98673bd56f3ea66.jpg",
+      "sha256": "09aa3d9484d1f283cc59701effc8b270693569ce66927d4200d8c562ec4a6aa7",
+      "byte_size": 7065,
+      "pixel_dimensions": [
+        359,
+        139
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/2",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/2/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/b0133901ef32a6ee33ed18bcaae05e3f93dacde2b1d5a1e387169cdbf2acaf52.jpg",
+      "sha256": "c001177d1caf9ec7885b55880a00ffb6c9b993ae8ebc48abaf29a25cf1561abe",
+      "byte_size": 9845,
+      "pixel_dimensions": [
+        273,
+        210
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/3",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/3/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/6915341a180b0a35fa090f9ff6d8ab78b234a8c6e49dee118038583a07489274.jpg",
+      "sha256": "776f3d3a82912af4ac3928695fd8161a5d92ab1b4438bd3fd6d0d671f31e9668",
+      "byte_size": 9677,
+      "pixel_dimensions": [
+        234,
+        242
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/4",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/4/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/5828e1942a81d764a6f23e61efefbbb4fb2ee87c34ec055be0744cc82e21f9df.jpg",
+      "sha256": "1c3b00427d1e813d4ef39bf7247df92252fbba167ebf2c0a6f45d4df67edcb02",
+      "byte_size": 8637,
+      "pixel_dimensions": [
+        337,
+        126
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/5",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/5/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/d4c4e490b178f5ebd4bbdcc44b6a8d513c10c40c189193b708b74a50b0f4bf21.jpg",
+      "sha256": "67c8c810ea36ee89d784058b694978fb5e19629df2d29eed7afd3ffb26998e96",
+      "byte_size": 9657,
+      "pixel_dimensions": [
+        239,
+        237
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/6",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/6/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/b79f1f94e5ccd1632a89805a3f5ebad43d24b031569906149e3c5ba12c561838.jpg",
+      "sha256": "accaaa9afd86499165816f7fd99c72f6c66ecf15e46e28b8dbdbc384186a3bf6",
+      "byte_size": 8483,
+      "pixel_dimensions": [
+        320,
+        129
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/7",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/7/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/eee992d06f75f18c914b0fdb4464c719f832854fab24d6ec6483f528b81c2325.jpg",
+      "sha256": "1154830e3eac4de73bc5500ec041e15fc29dd059539934229ca7a2e86b9ad807",
+      "byte_size": 11035,
+      "pixel_dimensions": [
+        279,
+        217
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/8",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/8/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/7105455c8de3761616d7b2d02313b80b16e96b6f37dae7c07308dd8fbd9bc6b5.jpg",
+      "sha256": "bee920b4e0f244a789b79002d0b68c840d2d3141efc6f508fe2f17b34bc1a244",
+      "byte_size": 13761,
+      "pixel_dimensions": [
+        284,
+        237
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/9",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/9/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/e2ebc6f5801e385da189530cd55419767cdaf6dd538987c70d012314ef0eb303.jpg",
+      "sha256": "1f0da0b1cb5865e8a30f21787e456817a4e28edefb517b5a9436062d5125541b",
+      "byte_size": 12051,
+      "pixel_dimensions": [
+        276,
+        231
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/10",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/10/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/fc7c596caed4c1b47d2125bdb23f2a626b37b55154b4e63aaa734bc0b7d1e813.jpg",
+      "sha256": "4e28b7412da514257b7738778af03a825715a72940e41ac921cd120b4a253979",
+      "byte_size": 12036,
+      "pixel_dimensions": [
+        281,
+        292
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 4,
+      "parent_block_locator": "/pdf_info/3/preproc_blocks/11",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/3/preproc_blocks/11/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/e45509590f0460191e7e12489e325376cfc95dd10b664166d369d040ecd6d2ae.jpg",
+      "sha256": "fcc4ca4041fe4c32f933d8c2b9953eb3fa0c693db6104f2b416e3db4758ff068",
+      "byte_size": 10604,
+      "pixel_dimensions": [
+        234,
+        296
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/0",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/0/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/372238597cb28389936b8fc00b0e20edfebd095cf3b04f44bfd3b86cfb911b58.jpg",
+      "sha256": "52049c432f7ec058a43cd185fc4db152b5380bc8d48075d8873c3807033d12a1",
+      "byte_size": 41273,
+      "pixel_dimensions": [
+        770,
+        387
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/1",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/1/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/0b14e7f7216b8ec7e2e9876d0f56a9e3a54967003998ba2d1b41231da2f71f3d.jpg",
+      "sha256": "0923a0bf5d53176f76bc4e5a5ddab06f266e72af5483b149687b018c37ba8a9e",
+      "byte_size": 11715,
+      "pixel_dimensions": [
+        381,
+        240
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/2",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/2/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a6f9baba47cd4178b60839b889dad54b93d42531b11089a492e48138348714e1.jpg",
+      "sha256": "e8b412570e07094be6565bfa1afa1f91b4d5f076b33dab7e1d2aa605f22639df",
+      "byte_size": 9737,
+      "pixel_dimensions": [
+        395,
+        237
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/3",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/3/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/83f932c3e7166c66d529499d8d03ecddc7d687b1b667d5c0dd7edc78a92dec60.jpg",
+      "sha256": "41183ee6811421757feeeda57e962948798bb94f42ffa7b2e29f02c2314aea0f",
+      "byte_size": 14901,
+      "pixel_dimensions": [
+        323,
+        262
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/4",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/4/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/7273ca8016ddeaebfec59d3aa7f7a822b7255cd253fc8c51ef9de66e20c6ee6e.jpg",
+      "sha256": "df8173b1c523e33c310394eba067dae780d6fb75e2038dfc8cb364de0c6b9413",
+      "byte_size": 17279,
+      "pixel_dimensions": [
+        493,
+        259
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/5",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/5/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/fdc5fdfac740de8e85947320b263b220cde371e3856a7ed3b5c22258d2375b76.jpg",
+      "sha256": "773aa9ee95f0fa72cc9e25637f356c46a5650321cef4167aa93989af0601c6da",
+      "byte_size": 26800,
+      "pixel_dimensions": [
+        562,
+        293
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 6,
+      "parent_block_locator": "/pdf_info/5/preproc_blocks/6",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/5/preproc_blocks/6/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a9b5ba3e2b0a5fc1c6d3209b35e61a963a328bfc0b51c1d2cd7c5244951fc33d.jpg",
+      "sha256": "bd3a4818446f4854911bcb6bf3ca48d14befdad8e0fba63b79fc5191919a5d97",
+      "byte_size": 10642,
+      "pixel_dimensions": [
+        284,
+        246
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/0",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/0/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/9a8d4bb830e3afd41ba5e6a8f962d0584f3346f3a3d1ec3fb4ff35e6653dd0a9.jpg",
+      "sha256": "0881f15e02a0eb726a328b465ac6412abb3dc5781e0b6715c3c5ef80796b9258",
+      "byte_size": 21194,
+      "pixel_dimensions": [
+        362,
+        359
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/1",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/1/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/d202cb1af1120e3e61c1608308ae1abec34d1bd7e303bfb90dfad1a57ce5b5e1.jpg",
+      "sha256": "c4c4dcc5fe84f4923fdd85b2a3b5af54ebbf9c86661eabd53af058bd9534f4e6",
+      "byte_size": 12950,
+      "pixel_dimensions": [
+        181,
+        406
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/2",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/2/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/0913d01c5903efe78e1d24532d08286f28f1150fcb0c6317ecfd19cb22e0a05d.jpg",
+      "sha256": "dbde66a417992b342fb9da3ba004c6287a31d77df1a324df5f0c21fbb29c822a",
+      "byte_size": 19471,
+      "pixel_dimensions": [
+        301,
+        362
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/3",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/3/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a20cf1cf973a40d15d45bcff5d7c2dfd3e5b5be100084e29f79d765c2ddf56d6.jpg",
+      "sha256": "7c6226f9b2d9b517364634b7820180fe12bf38f1fb5bc208e5a3a54ec2afb826",
+      "byte_size": 13014,
+      "pixel_dimensions": [
+        179,
+        415
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/4",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/4/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/90f6d291aa0ee70e99c03f331d52c60a97fbe558e95fb87da5c4fa353b47f005.jpg",
+      "sha256": "280c6a8ddcccccf7a9069ce64f60a73d247ac18740b0cdb9a50eb3f3bd67a182",
+      "byte_size": 16147,
+      "pixel_dimensions": [
+        290,
+        256
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/5",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/5/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/e68e9729f3bdf95a3c1b6a619d85f8e394c61de4ba5304cba24a04587a29eaaa.jpg",
+      "sha256": "5cb2167214b39ec7501ba21528008faec2430abfdf2a038daf08dc03f955d6a9",
+      "byte_size": 11894,
+      "pixel_dimensions": [
+        290,
+        256
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/6",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/6/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/bf889cfeb16d891b61fa7ce71deea604311972a94bc276f190db6c457b19462e.jpg",
+      "sha256": "3d46900a4be5701dd15ea890fbd5fca6d0daf41a16a46439b3d9ae81f9558594",
+      "byte_size": 12334,
+      "pixel_dimensions": [
+        281,
+        253
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/7",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/7/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/f18788cd36dba19be9b864cf80a1407ac97a8c0f74817a025308758863a22852.jpg",
+      "sha256": "943395d6dd02ded99624df7de5445c64e8165aec51bf0f7e9433674c53382443",
+      "byte_size": 13694,
+      "pixel_dimensions": [
+        270,
+        239
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/8",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/8/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/7891993d7919de86cca19fe5096ba41ac6ee574515aaab65e170cd4dfacf007b.jpg",
+      "sha256": "5adc0976a99910dcda9b39a0147cb64e9cca1d621e54c1b4094355e70a877b4e",
+      "byte_size": 12009,
+      "pixel_dimensions": [
+        296,
+        220
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 7,
+      "parent_block_locator": "/pdf_info/6/preproc_blocks/9",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/6/preproc_blocks/9/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/7f2ec93950a325185225e9df0afd9246d093120ec80172bd1bbbe34d05b40fe7.jpg",
+      "sha256": "7bc86ec905a88f222a216b35ebe15e5a5651b2d5f7614310ef25185159b660df",
+      "byte_size": 8408,
+      "pixel_dimensions": [
+        237,
+        198
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/0",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/0/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/515beaf86d1c5ac9068f45f3a3fa0cbd0b15cce30291d6de87d76966acba5a7d.jpg",
+      "sha256": "f1fbc543def9ddb96c77fc35f906107e06e959ff279ed9149013dc568ae9c06b",
+      "byte_size": 14844,
+      "pixel_dimensions": [
+        312,
+        289
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/1",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/1/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/c4da22cd3d128289571a1a4744616f6048f7c7c7a33ba90b16bdd263b3d589ef.jpg",
+      "sha256": "584e18b31b54bc8285579b262140817ff3b75c7d0ef0538dd86ca9e840356198",
+      "byte_size": 12443,
+      "pixel_dimensions": [
+        298,
+        223
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/2",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/2/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/03ad996c26daa7db09e7545f07a3177c52e3ce0029628600cc3716835ea1fad3.jpg",
+      "sha256": "cedb9c6f164c12045d710a45d972f85611d5a5f627a14b030e7ee848e00a086f",
+      "byte_size": 19586,
+      "pixel_dimensions": [
+        318,
+        373
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/3",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/3/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/f81ecabc3b0740fc5eb3c45ddabb64d3ef0e5991c85851674259be018023797f.jpg",
+      "sha256": "70ae96b8929855a34ca4e78ac8c3a22f4a63fe8705c3432eeafc842a7d473ebd",
+      "byte_size": 17388,
+      "pixel_dimensions": [
+        332,
+        334
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/4",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/4/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/9ec5833d09f123004b703050402bc948d0d59953ef4d0c58c8fffb3b6a17e0a1.jpg",
+      "sha256": "18dbff3ee0d7d1df70ffb03833259edd6428086943b90a67d964101589b20b8e",
+      "byte_size": 26469,
+      "pixel_dimensions": [
+        301,
+        634
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/5",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/5/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/a7624279b8b3c646ee96bfd6e53d83078d4fcd73a99e9305bcca394b61443a2f.jpg",
+      "sha256": "cbed809df78dbc12cad6c1d5ee257a93bad9da079e66a713cc5ee8dfadf10218",
+      "byte_size": 38721,
+      "pixel_dimensions": [
+        890,
+        326
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/6",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/6/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/9b8e8c720016883b3f600ede6f42ee9c852847870fa775ea8b3f5673bb5d01af.jpg",
+      "sha256": "3f221eddd19ffbe6d9c5dbf868b5838e0e3a0f96a334f55f31635e91f2f30d88",
+      "byte_size": 25516,
+      "pixel_dimensions": [
+        357,
+        420
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 9,
+      "parent_block_locator": "/pdf_info/8/preproc_blocks/7",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/8/preproc_blocks/7/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/67c93085ece2555bc55013b081da6b7cd86c26506d7c7129ff65809becaa706a.jpg",
+      "sha256": "2f6fbfefee1bcec1a528259704c679052eac959b00fce7cc03e53be89a10a0c3",
+      "byte_size": 14704,
+      "pixel_dimensions": [
+        314,
+        298
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/1",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/1/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/67b38a64bb28a029675a0b9c45d9d15f68bf8ddfc9c5494ec071036e6f436ca4.jpg",
+      "sha256": "599dc681d07bf31ae791fb36d82bf39daf75386b07ba0d496274188a63525d42",
+      "byte_size": 27235,
+      "pixel_dimensions": [
+        398,
+        395
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/2",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/2/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/4c25a0ec66ad1c5505c240adb8ee2692625a1d7c32c7ca9e3774b039415192da.jpg",
+      "sha256": "0041f8c9799187794e01c2060d6bd19c2c7171957a0226a279eb3cf1d81dc5f5",
+      "byte_size": 11730,
+      "pixel_dimensions": [
+        273,
+        248
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/3",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/3/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/47640899e9e927055f3ca7cb790a23b5b24639af37eabd22f979f179ff56a126.jpg",
+      "sha256": "cb5f7de2c3e07c86f1f7d012c3535b17818f765e45b8f074111f1b7ae35774a5",
+      "byte_size": 17875,
+      "pixel_dimensions": [
+        265,
+        350
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/4",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/4/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/0a9fff2c8edee2db5e07ae0556e7989b562519bbc5f698702a44e9440c80ea59.jpg",
+      "sha256": "3b56813a7615d455b74fe8d8a091ab5b32bbf2938dbe2b5ccc7b48f0896b92fb",
+      "byte_size": 28187,
+      "pixel_dimensions": [
+        676,
+        304
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/5",
+      "parent_type": "image",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/5/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/78a513848df4cca6bc6051ad9996a7de76793004f589918955a3eab414555dfc.jpg",
+      "sha256": "52347d6c780e6afff9c9ded292c3ec807d942072a9269d85433a00949bea98a3",
+      "byte_size": 19069,
+      "pixel_dimensions": [
+        426,
+        296
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/6",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/6/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/9dc2fa707c3711e8c51afe925a3e649d335efc6477f0bb8a5106052235268f6a.jpg",
+      "sha256": "46b5505107bc4a1440fe3cdf236838f44f8ece56c0e3d2615a2f1d205b03677d",
+      "byte_size": 28767,
+      "pixel_dimensions": [
+        426,
+        371
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/7",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/7/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/64095c3222a07b504042cb0c535179c884faa36bc61b2b79352a614bed64f09f.jpg",
+      "sha256": "c1af4d6529c1c533e6a674adae3862897047f574a70d782f1e2f220f76e9f287",
+      "byte_size": 26044,
+      "pixel_dimensions": [
+        390,
+        370
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/8",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/8/blocks/1/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/b516d376b26a52b2220f8c2549a36599872dba29a13771a8150632415c11bcdc.jpg",
+      "sha256": "aa5ffb0ab95d3647be11c895c39ec503e903d97d95d2112b7d35a35e241ee42c",
+      "byte_size": 25548,
+      "pixel_dimensions": [
+        393,
+        406
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/9",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/9/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/13ae4bae9cd92ea9f93f5a301a555233add232d6d3234e7e35fb6e101f5f8ef5.jpg",
+      "sha256": "7f684a073d1f6b9e0141991e374f811eda6852ff0702326759abde649000e03d",
+      "byte_size": 13407,
+      "pixel_dimensions": [
+        273,
+        270
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/10",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/10/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/49f6523c39293d6ff1ad8163a4060354c7e68b143c36da103e4bce83f8a4a01c.jpg",
+      "sha256": "0527f6a562a98d4c223f989b5dc4d6b9a3374fdb505e5f8dd66634aad7636a64",
+      "byte_size": 13792,
+      "pixel_dimensions": [
+        279,
+        275
+      ],
+      "restored_matches_original_parser_file": true
+    },
+    {
+      "page_number_1based": 11,
+      "parent_block_locator": "/pdf_info/10/preproc_blocks/11",
+      "parent_type": "chart",
+      "image_span_locator": "/pdf_info/10/preproc_blocks/11/blocks/0/lines/0/spans/0",
+      "path": "output/t03/restored/01a08530-b03f-76bf-9f8e-13f135f9aa78/images/e362fadaebfe1936b684ce323cc4196a99075a7b038cd33537b0c9b526f684f2.jpg",
+      "sha256": "8fac05f27d5a5bd309c5e6ea39c0dfc74957d8dc4783fb9689d43985c1be0f1d",
+      "byte_size": 9663,
+      "pixel_dimensions": [
+        293,
+        278
+      ],
+      "restored_matches_original_parser_file": true
+    }
+  ],
+  "limitations": [
+    "No new PDF render or image edit performed.",
+    "Only three representative original page renders and five existing crops visually inspected; remaining crops decoded and hashed but not individually visually reviewed.",
+    "No live Generator/Validator calls, DB changes or canonical acceptance performed in this QA.",
+    "Counts/locators derive from retained middle JSON under the inspected normalization rule, not a fresh DB query.",
+    "Findings describe the inspected implementation before any subsequent root corrections; follow-up verification is separate."
+  ]
+}

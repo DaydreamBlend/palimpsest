@@ -1,0 +1,17 @@
+{
+  "id": "S06",
+  "tests": [
+    "AT04",
+    "AT31",
+    "AT32",
+    "AT34"
+  ],
+  "type": "runtime_failpoints",
+  "failpoints": [
+    "after_canonical_commit_before_ack",
+    "after_lease_claim",
+    "before_completion_fence",
+    "coalesced_two_roots"
+  ],
+  "expected": "미완료 obligation을 유실하거나 성공으로 위장하지 않음"
+}

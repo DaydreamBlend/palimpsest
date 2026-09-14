@@ -1,0 +1,677 @@
+{
+  "purpose": "read_only_source_preflight_and_visual_reference_only",
+  "not_mineru_output": true,
+  "not_canonical_information": true,
+  "observed_at": "2026-09-09T07:19:49.940110+00:00",
+  "source": "C:\\Users\\DaydreamBlend\\Desktop\\Test_Paper.pdf",
+  "byte_size": 3890649,
+  "sha256": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+  "expected_sha256_matches": true,
+  "encrypted": false,
+  "metadata": {
+    "/CreationDate": "D:20181109211838+05'30'",
+    "/Subject": "Unresolved inflammation is a common feature in the pathogenesis of chronic inflammatory/autoimmune diseases.",
+    "/Author": "Sylvain Perruche",
+    "/Creator": "LaTeX with hyperref package + hypdvips",
+    "/Keywords": "efferocytosis, apoptotic cells, resolution of inflammation, macrophages, phagocytosis, tolerance induction",
+    "/Producer": "dvips + MiKTeX GPL Ghostscript  9.0",
+    "/ModDate": "D:20181109212215+05'30'",
+    "/Title": "Factors Produced by Macrophages Eliminating Apoptotic Cells Demonstrate Pro-Resolutive Properties and Terminate Ongoing Inflammation"
+  },
+  "tools": {
+    "pypdf": "6.10.0",
+    "poppler_pdfinfo": "C:\\Users\\DaydreamBlend\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdfinfo.exe",
+    "pdfplumber": "0.11.9",
+    "pypdfium2": "5.13.0"
+  },
+  "pages": [
+    {
+      "page_number_1based": 1,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 3977,
+      "native_text_nonspace_characters": 3464,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 2,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 6256,
+      "native_text_nonspace_characters": 5357,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [
+        "Figure 1",
+        "Figure 2"
+      ],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 3,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 2908,
+      "native_text_nonspace_characters": 2426,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R134",
+          "width": 1541,
+          "height": 1973,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 112.63499999999999,
+          "top": 70.15414199999998,
+          "x1": 482.475,
+          "bottom": 543.674142,
+          "width": 369.84000000000003,
+          "height": 473.52
+        }
+      ]
+    },
+    {
+      "page_number_1based": 4,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 2430,
+      "native_text_nonspace_characters": 2054,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R150",
+          "width": 1429,
+          "height": 1921,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [
+        "Figure 2"
+      ],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 126.13499999999999,
+          "top": 69.629142,
+          "x1": 469.095,
+          "bottom": 530.669142,
+          "width": 342.96000000000004,
+          "height": 461.03999999999996
+        }
+      ]
+    },
+    {
+      "page_number_1based": 5,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 6285,
+      "native_text_nonspace_characters": 5391,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [
+        "Figure 2",
+        "Figure 3",
+        "Figure 4",
+        "Figure 5"
+      ],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 6,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 2216,
+      "native_text_nonspace_characters": 1855,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R202",
+          "width": 1433,
+          "height": 2024,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 125.64000000000001,
+          "top": 69.91114199999993,
+          "x1": 469.56000000000006,
+          "bottom": 555.6711419999999,
+          "width": 343.9200000000001,
+          "height": 485.76000000000005
+        }
+      ]
+    },
+    {
+      "page_number_1based": 7,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 2814,
+      "native_text_nonspace_characters": 2355,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R214",
+          "width": 1547,
+          "height": 1829,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 112.14000000000001,
+          "top": 69.71314199999995,
+          "x1": 483.4200000000001,
+          "bottom": 508.673142,
+          "width": 371.2800000000001,
+          "height": 438.96000000000004
+        }
+      ]
+    },
+    {
+      "page_number_1based": 8,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 6571,
+      "native_text_nonspace_characters": 5641,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [
+        "Figure 5",
+        "Figure 6"
+      ],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 9,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 975,
+      "native_text_nonspace_characters": 818,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R261",
+          "width": 1531,
+          "height": 2330,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 114.13800000000002,
+          "top": 69.4701419999999,
+          "x1": 481.5780000000001,
+          "bottom": 628.6701419999999,
+          "width": 367.44000000000005,
+          "height": 559.2
+        }
+      ]
+    },
+    {
+      "page_number_1based": 10,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 6931,
+      "native_text_nonspace_characters": 5891,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 11,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 804,
+      "native_text_nonspace_characters": 686,
+      "image_xobject_count": 1,
+      "image_xobjects": [
+        {
+          "name": "/R293",
+          "width": 1784,
+          "height": 2409,
+          "bits_per_component": 8,
+          "color_space": "['/ICCBased', IndirectObject(135, 0, 3177345033344)]"
+        }
+      ],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": [
+        {
+          "x0": 83.637,
+          "top": 69.50914199999988,
+          "x1": 511.7970000000001,
+          "bottom": 647.669142,
+          "width": 428.1600000000001,
+          "height": 578.1600000000001
+        }
+      ]
+    },
+    {
+      "page_number_1based": 12,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 7151,
+      "native_text_nonspace_characters": 6005,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 13,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 5811,
+      "native_text_nonspace_characters": 4915,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    },
+    {
+      "page_number_1based": 14,
+      "media_box_points": [
+        0.0,
+        0.0,
+        595.28,
+        779.53
+      ],
+      "crop_box_points": [
+        0.0,
+        0.0,
+        595.260071,
+        779.520142
+      ],
+      "rotation_degrees": 0,
+      "user_unit": 1.0,
+      "native_text_characters": 7813,
+      "native_text_nonspace_characters": 6690,
+      "image_xobject_count": 0,
+      "image_xobjects": [],
+      "figure_labels": [],
+      "table_labels": [],
+      "pdfium_page_size_points": [
+        595.2600708007812,
+        779.5201416015625
+      ],
+      "pdfplumber_image_regions": []
+    }
+  ],
+  "rendered_pages": [
+    {
+      "page_number_1based": 1,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-01.png",
+      "sha256": "5159b98394d8ecf312754213669fd8a65e1ac3ae29330970351dbecc8e494403",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Title, abstract, left editorial sidebar and publication metadata are legible; mixed-width opening layout.",
+      "visible_render_errors_observed": false
+    },
+    {
+      "page_number_1based": 2,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-02.png",
+      "sha256": "913ede23815d438aefdd023b46f6a081e421f95fa4b9c1d38c35cd528be9b17a",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Two-column native-text body with heading hierarchy, citations, superscript cell markers and Greek letters.",
+      "visible_render_errors_observed": false
+    },
+    {
+      "page_number_1based": 3,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-03.png",
+      "sha256": "43a143c410e1c489c6a33a5c4ec1a1d87deb49291f9b250f9b064e772a8be1cd",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Figure 1: a single raster composite containing microscopy, flow-cytometry plots, charts and heatmaps (panels A-K), followed by native-text caption with sample sizes and statistical qualifiers.",
+      "visible_render_errors_observed": false
+    },
+    {
+      "page_number_1based": 9,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-09.png",
+      "sha256": "4bec49d866e8eb1b48eeef44717bed70b0f6b483749335362332c5b2f7c4aa97",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Figure 5: multi-panel chart/heatmap raster, with native-text caption explicitly continuing on the next page.",
+      "visible_render_errors_observed": false
+    },
+    {
+      "page_number_1based": 10,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-10.png",
+      "sha256": "9c66776b7b4b83ec13a9f7c12eb6596d542dcfccf90ef5455083b908b60af35b",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Figure 5 caption continuation at top; two-column body and Online Methods below. Caption linkage must span pages 9-10.",
+      "visible_render_errors_observed": false
+    },
+    {
+      "page_number_1based": 14,
+      "path": "C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\tmp\\pdfs\\t03\\source-page-14.png",
+      "sha256": "dbfb5013338ee22e0481356cfbef81a51abba4193542ff997a00b8e05bfce0ce",
+      "pixel_dimensions": [
+        1241,
+        1625
+      ],
+      "renderer": "Poppler pdftoppm 26.07.0",
+      "dpi": 150,
+      "visual_inspection": "completed",
+      "observation": "Two-column references, conflict-of-interest statement and CC BY notice; these should remain distinct from experimental result blocks.",
+      "visible_render_errors_observed": false
+    }
+  ],
+  "page_count": 14,
+  "native_text_pages": 14,
+  "pages_with_image_xobjects": [
+    3,
+    4,
+    6,
+    7,
+    9,
+    11
+  ],
+  "pdfinfo_exit_code": 0,
+  "pypdf_warnings": [
+    "Multiple definitions in dictionary at byte 0x2501c for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x25242 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x253c8 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x2556e for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x25797 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x2591d for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x25aa3 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x25cc4 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x25e4a for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x26003 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x26189 for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x2630a for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x2646b for key /MediaBox",
+    "Multiple definitions in dictionary at byte 0x266f4 for key /MediaBox"
+  ],
+  "source_unchanged": true,
+  "summary": {
+    "document_title": "Factors Produced by Macrophages Eliminating Apoptotic Cells Demonstrate Pro-Resolutive Properties and Terminate Ongoing Inflammation",
+    "publication": "Frontiers in Immunology, Volume 9, Article 2586, 13 November 2018",
+    "doi_visually_verified": "10.3389/fimmu.2018.02586",
+    "document_class": "native_text_with_raster_scientific_figures",
+    "page_rotations_degrees": [
+      0
+    ],
+    "native_text_characters_total": 62942,
+    "parser_blocked_by_encryption": false,
+    "parse_or_information_acceptance_performed": false
+  },
+  "mineru_validation_attention": [
+    "Source has duplicate /MediaBox dictionary keys on all 14 pages. pypdf reports MediaBox 595.28 x 779.53 points; CropBox is 595.260071 x 779.520142. Poppler reports 595.26 x 779.52 and PDFium dimensions are stored separately. Record MinerU's resolved page geometry and map coordinates without rewriting source bytes.",
+    "Native text exists on every page, but scientific figure panel labels/axes/data are raster content; native text availability does not demonstrate figure coverage.",
+    "Preserve the first-page sidebar/body separation and the main two-column reading order; running headers/footers are not body claims.",
+    "Associate Figure 5 on page 9 with its caption continuation on page 10 using original page/region refs.",
+    "Preserve sample sizes, statistical tests, units, Greek letters, ligatures and superscripts; prose captions and image content are distinct grounding surfaces.",
+    "Bibliographic references, supplementary-figure mentions and external links do not mean those external sources/supplements are present in this PDF."
+  ],
+  "execution_notes": [
+    "First preflight attempt failed decoding Poppler's localized stdout as UTF-8; output is now decoded as CP949 on this Windows host.",
+    "PDFium geometry probe initially used an unsupported PdfPage context manager; corrected to explicit page.close() before successful final probe.",
+    "Successful source_preflight.py run exited 0; six Poppler page render commands exited 0; each of those PNGs was visually inspected.",
+    "No PDF edit, re-export, canonical Data registration, MinerU execution, model inference or external upload occurred in this preflight subtask."
+  ],
+  "final_source_sha256": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe"
+}

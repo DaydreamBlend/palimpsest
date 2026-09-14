@@ -1,0 +1,408 @@
+{
+  "source_path": "docs/source/PALIMPSEST_CANONICAL_MODEL_INTEGRATED.md",
+  "source_sha256": "2cd3e2a6111b713663f2655917a26aa07d0faee66510aeccbb7b5296d1a5cba9",
+  "invariants": [
+    {
+      "id": "I01",
+      "source_line": 2179,
+      "text": "D payload는 수정하지 않는다.",
+      "test_ids": [
+        "AT67"
+      ]
+    },
+    {
+      "id": "I02",
+      "source_line": 2180,
+      "text": "동일 D bytes의 여러 수집 경로는 DataAcquisition으로 append-only 보존하며 별도 Source 계층을 만들지 않는다.",
+      "test_ids": [
+        "AT70"
+      ]
+    },
+    {
+      "id": "I03",
+      "source_line": 2181,
+      "text": "D2I의 exactly-once 단위는 D 전체 수명이 아니라 `data_id + extraction_profile_family + compilation_generation` logical compilation이다.",
+      "test_ids": [
+        "AT36"
+      ]
+    },
+    {
+      "id": "I04",
+      "source_line": 2182,
+      "text": "평범한 retry는 같은 compilation generation을 재사용하고, 명시적 recompile/repair만 새 generation을 시작한다.",
+      "test_ids": [
+        "AT36"
+      ]
+    },
+    {
+      "id": "I05",
+      "source_line": 2183,
+      "text": "D2I proposal 한 건마다 D2IRecord 하나를 만들고 호출 묶음은 `batch_id`로 표현한다.",
+      "test_ids": [
+        "AT33"
+      ]
+    },
+    {
+      "id": "I06",
+      "source_line": 2184,
+      "text": "canonical I는 validated immutable Information뿐이며 `InformationRevision`을 두지 않는다.",
+      "test_ids": [
+        "AT68",
+        "AT69"
+      ]
+    },
+    {
+      "id": "I07",
+      "source_line": 2185,
+      "text": "Information identity는 exact originating Data와 grounding에 종속된다. 서로 다른 D의 동일 semantic content를 하나의 Information으로 병합하지 않는다.",
+      "test_ids": [
+        "AT22",
+        "AT23"
+      ]
+    },
+    {
+      "id": "I08",
+      "source_line": 2186,
+      "text": "Information grounding은 extractor/parser profile/version과 stable anchor를 보존해 locator 재현성을 확보한다.",
+      "test_ids": [
+        "AT25",
+        "AT56"
+      ]
+    },
+    {
+      "id": "I09",
+      "source_line": 2187,
+      "text": "Information 교정은 새 I와 append-only supersession/invalidation 관계로 표현한다.",
+      "test_ids": [
+        "AT69"
+      ]
+    },
+    {
+      "id": "I10",
+      "source_line": 2188,
+      "text": "Information supersession graph는 DAG이며 self-edge/cycle을 허용하지 않는다.",
+      "test_ids": [
+        "AT40"
+      ]
+    },
+    {
+      "id": "I11",
+      "source_line": 2189,
+      "text": "superseded/invalidated I는 삭제하지 않고 기본 RAG와 새 I2K 입력에서 제외한다.",
+      "test_ids": [
+        "AT71"
+      ]
+    },
+    {
+      "id": "I12",
+      "source_line": 2190,
+      "text": "새 I가 기존 I를 supersede하면 기존 I를 직접 사용한 K를 재검증 대상으로 등록한다.",
+      "test_ids": [
+        "AT18",
+        "AT19"
+      ]
+    },
+    {
+      "id": "I13",
+      "source_line": 2191,
+      "text": "I supersession은 기존 K를 자동 수정하지 않으며 과거 K provenance는 exact old information_id를 유지한다.",
+      "test_ids": [
+        "AT18",
+        "AT71"
+      ]
+    },
+    {
+      "id": "I14",
+      "source_line": 2192,
+      "text": "직접 K에서 material graph delta가 발생한 경우에만 간접 downstream K를 재검증하며, non-material/no-material 결과에서는 해당 propagation branch를 종료한다.",
+      "test_ids": [
+        "AT02",
+        "AT12"
+      ]
+    },
+    {
+      "id": "I15",
+      "source_line": 2193,
+      "text": "I2K/K2K는 허용된 KNode kind만 제안하며 K2K는 새 observation 또는 authority-confirmed decision을 만들 수 없다.",
+      "test_ids": [
+        "AT74"
+      ]
+    },
+    {
+      "id": "I16",
+      "source_line": 2194,
+      "text": "N2E는 KEdge semantic relation과 명시적 edge revalidation/lifecycle effect만 다룬다.",
+      "test_ids": [
+        "AT37",
+        "AT39",
+        "AT74"
+      ]
+    },
+    {
+      "id": "I17",
+      "source_line": 2195,
+      "text": "I/K 후보는 terminal acceptance 전까지 Bibliotheca canonical 객체가 아니다.",
+      "test_ids": [
+        "AT68"
+      ]
+    },
+    {
+      "id": "I18",
+      "source_line": 2196,
+      "text": "accepted/rejected/suppressed FP는 해당 D2IRecord 또는 KCompilationRecord에 남는다.",
+      "test_ids": [
+        "AT77"
+      ]
+    },
+    {
+      "id": "I19",
+      "source_line": 2197,
+      "text": "terminal Candidate semantic payload는 accepted canonical 객체로 이동하거나 삭제한다. 선택적 audit 보존은 비canonical bounded-retention이다.",
+      "test_ids": [
+        "AT68",
+        "AT55"
+      ]
+    },
+    {
+      "id": "I20",
+      "source_line": 2198,
+      "text": "exact accepted semantic duplicate는 새 K semantic Revision을 만들지 않는다. 다만 새 독립 evidence는 grounding_added effect를 가질 수 있다.",
+      "test_ids": [
+        "AT08",
+        "AT73"
+      ]
+    },
+    {
+      "id": "I21",
+      "source_line": 2199,
+      "text": "disposition과 canonical effect는 분리한다. `reused`는 `grounding_added` 같은 side effect와 공존할 수 있다.",
+      "test_ids": [
+        "AT20",
+        "AT38",
+        "AT73"
+      ]
+    },
+    {
+      "id": "I22",
+      "source_line": 2200,
+      "text": "style-only 또는 paraphrase-only 변화는 K Revision을 만들지 않는다.",
+      "test_ids": [
+        "AT08"
+      ]
+    },
+    {
+      "id": "I23",
+      "source_line": 2201,
+      "text": "KNode/KEdge Revision과 과거 endpoint는 수정·삭제하지 않는다.",
+      "test_ids": [
+        "AT11",
+        "AT54"
+      ]
+    },
+    {
+      "id": "I24",
+      "source_line": 2202,
+      "text": "K current revision 변경은 expected base revision을 검사하는 atomic concurrency guard를 사용한다.",
+      "test_ids": [
+        "AT28",
+        "AT29"
+      ]
+    },
+    {
+      "id": "I25",
+      "source_line": 2203,
+      "text": "K lifecycle과 epistemic/decision status는 immutable semantic payload와 분리된 append-only event/projection이다.",
+      "test_ids": [
+        "AT21",
+        "AT50",
+        "AT54"
+      ]
+    },
+    {
+      "id": "I26",
+      "source_line": 2204,
+      "text": "반박은 먼저 semantic KEdge로 표현하며 자동으로 상대 Node를 수정하지 않는다.",
+      "test_ids": [
+        "AT75"
+      ]
+    },
+    {
+      "id": "I27",
+      "source_line": 2205,
+      "text": "KNode Revision이 바뀌면 과거 incident edge는 historical provenance를 유지하고 새 current endpoint pair에 대해 applicability를 재검증한다.",
+      "test_ids": [
+        "AT09",
+        "AT16"
+      ]
+    },
+    {
+      "id": "I28",
+      "source_line": 2206,
+      "text": "endpoint만 바뀌고 relation semantic이 materially 동일하면 새 KEdgeRevision을 만들지 않고 KEdgeApplicabilityEvent(applicable)만 append하며 그 branch를 종료한다.",
+      "test_ids": [
+        "AT10",
+        "AT13",
+        "AT38"
+      ]
+    },
+    {
+      "id": "I29",
+      "source_line": 2207,
+      "text": "기존 edge의 current applicability 상실은 “새 edge가 제안되지 않음”만으로 추론하지 않고 KEdgeApplicabilityEvent(not_applicable) 같은 명시적 revalidation decision을 요구한다. 이 material graph delta는 dependent downstream K 재검증을 유발한다.",
+      "test_ids": [
+        "AT17",
+        "AT37"
+      ]
+    },
+    {
+      "id": "I30",
+      "source_line": 2208,
+      "text": "모든 propagation과 K revalidation은 causal root, propagation depth metadata, exact-input/context fingerprint와 visited guard를 가지며, size/depth/Record/token/cost hard cap을 정상 semantic completion 조건으로 사용하지 않는다.",
+      "test_ids": [
+        "AT01",
+        "AT03",
+        "AT04",
+        "AT60"
+      ]
+    },
+    {
+      "id": "I31",
+      "source_line": 2209,
+      "text": "K2K-derived K는 causal root와 독립적인 derivation_depth/evidence distance를 누적해 provenance와 uncertainty에 사용한다.",
+      "test_ids": [
+        "AT44",
+        "AT79"
+      ]
+    },
+    {
+      "id": "I32",
+      "source_line": 2210,
+      "text": "derivation_depth 값 자체는 K2K result의 자동 rejection 또는 propagation cutoff가 아니다. propagation은 material-delta frontier가 사라진 fixed point에서 종료한다.",
+      "test_ids": [
+        "AT01",
+        "AT04",
+        "AT79"
+      ]
+    },
+    {
+      "id": "I33",
+      "source_line": 2211,
+      "text": "Query와 Context/Memory는 KQ2W의 임시 overlay이지 canonical K가 아니다.",
+      "test_ids": [
+        "AT80"
+      ]
+    },
+    {
+      "id": "I34",
+      "source_line": 2212,
+      "text": "KQ2W가 direct Information을 사용하면 Wisdom에 retrieval_mode와 epistemic_basis를 남겨 accepted K와 구분한다.",
+      "test_ids": [
+        "AT51",
+        "AT81"
+      ]
+    },
+    {
+      "id": "I35",
+      "source_line": 2213,
+      "text": "Recommendation은 LLM의 제안이며 자동 W2K하지 않는다.",
+      "test_ids": [
+        "AT78"
+      ]
+    },
+    {
+      "id": "I36",
+      "source_line": 2214,
+      "text": "Decision W는 권한 있는 actor의 authority-confirmed event이며 deterministic W2K에 필요한 subject/scope/constraints/effective_at을 자체 보존한다.",
+      "test_ids": [
+        "AT45",
+        "AT47",
+        "AT66"
+      ]
+    },
+    {
+      "id": "I37",
+      "source_line": 2215,
+      "text": "외부 Data가 보고한 decision event는 I2K의 `origin_type=reported` decision KNode로 표현하며 authority-confirmed W2K decision과 구분한다.",
+      "test_ids": [
+        "AT52",
+        "AT74"
+      ]
+    },
+    {
+      "id": "I38",
+      "source_line": 2216,
+      "text": "Decision W와 authority-confirmed decision KNode/W2KRecord는 원자적으로 일치해야 한다.",
+      "test_ids": [
+        "AT30",
+        "AT66"
+      ]
+    },
+    {
+      "id": "I39",
+      "source_line": 2217,
+      "text": "Decision event identity는 origin_wisdom_id에 고정되며 서로 다른 Wisdom은 semantic content가 같아도 같은 decision KNode로 병합하지 않는다.",
+      "test_ids": [
+        "AT45",
+        "AT46"
+      ]
+    },
+    {
+      "id": "I40",
+      "source_line": 2218,
+      "text": "Decision의 active/superseded/expired 상태는 semantic payload가 아니라 current projection이다.",
+      "test_ids": [
+        "AT49",
+        "AT50"
+      ]
+    },
+    {
+      "id": "I41",
+      "source_line": 2219,
+      "text": "Decision supersession graph는 DAG이며 실제 재결정은 새 decision event로 남긴다.",
+      "test_ids": [
+        "AT40",
+        "AT46",
+        "AT49"
+      ]
+    },
+    {
+      "id": "I42",
+      "source_line": 2220,
+      "text": "과거 결정 이유는 Decision trace를 사용하는 Explanation W로 생성한다.",
+      "test_ids": [
+        "AT52",
+        "AT54"
+      ]
+    },
+    {
+      "id": "I43",
+      "source_line": 2221,
+      "text": "embedding과 retrieval hit는 canonical truth가 아니다.",
+      "test_ids": [
+        "AT53",
+        "AT76"
+      ]
+    },
+    {
+      "id": "I44",
+      "source_line": 2222,
+      "text": "global hard-rejection suppression은 invariant-hard reason에만 사용하고 contextual/policy rejection은 context fingerprint 범위에서만 억제한다.",
+      "test_ids": [
+        "AT25",
+        "AT26",
+        "AT27"
+      ]
+    },
+    {
+      "id": "I45",
+      "source_line": 2223,
+      "text": "모든 파생 결과는 exact input Information/K revision, origin Record, 필요한 lifecycle/effect까지 추적할 수 있어야 한다.",
+      "test_ids": [
+        "AT09",
+        "AT18",
+        "AT54",
+        "AT77"
+      ]
+    }
+  ]
+}

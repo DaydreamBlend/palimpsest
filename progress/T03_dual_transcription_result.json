@@ -1,0 +1,135 @@
+{
+  "state": "passed",
+  "stage": "complete",
+  "application_semantic_llm_calls": 0,
+  "execution_id": "01a08a0e-79a9-7fb4-b638-6707f5356683",
+  "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+  "postgres": "18.6 (Debian 18.6-1.pgdg12+2)",
+  "pgvector": "0.8.6",
+  "source_pages": 14,
+  "information_count": 229,
+  "unit_types": {
+    "text": 193,
+    "image": 36
+  },
+  "source_bundle_sha256": "c782d5907e338b4e8862a5eb2b3c2fc5cb1a31aba49c3d7c653c679697394e23",
+  "selected_blocks": 8,
+  "selected_changes": 8,
+  "selection_status": "needs_review",
+  "review_blocks": 14,
+  "replay_same_ids": true,
+  "canonical_scope": "isolated palimpsest-t03-dual-verify database only",
+  "selection_version": "native-ordinary-ocr-special-v3",
+  "parser_version": "3.4.5",
+  "backend": "hybrid-engine",
+  "model": "opendatalab/MinerU2.5-Pro-2605-1.2B",
+  "application_tests": {
+    "run": 296,
+    "skipped": 16,
+    "failures": 0,
+    "exit_code": 0
+  },
+  "native_pdf_tests": {
+    "run": 22,
+    "skipped": 0,
+    "failures": 0,
+    "exit_code": 0
+  },
+  "t03_overall_acceptance": "in_progress",
+  "evidence_status": "verified_against_canonical_bundle",
+  "cleanup_status": "complete",
+  "evidence": {
+    "state": "passed",
+    "source_bundle_sha256": "c782d5907e338b4e8862a5eb2b3c2fc5cb1a31aba49c3d7c653c679697394e23",
+    "matches_canonical_bundle": true,
+    "pages": 14,
+    "whole_figure_companions": 6,
+    "beta_correct_in_source_and_paragraph": true,
+    "context_pages": [
+      9,
+      10,
+      11
+    ],
+    "canonical_writes": 0,
+    "semantic_llm_calls": 0,
+    "heading_candidates": 35,
+    "discrepancy_candidates": 72
+  },
+  "final_app_image": "sha256:39cbae7d6af683cd84dfd805266ce62956d0976cdb3a3e3837e95ebaf239cc18",
+  "parser_wall_seconds": 597.7969999999987,
+  "cleanup": {
+    "baseline_resources_preserved": true,
+    "no_experiment_containers": true,
+    "comparison": {
+      "containers": {
+        "before_count": 7,
+        "after_count": 7,
+        "missing": [],
+        "added": []
+      },
+      "images": {
+        "before_count": 13,
+        "after_count": 14,
+        "missing": [],
+        "added": [
+          "sha256:39cbae7d6af683cd84dfd805266ce62956d0976cdb3a3e3837e95ebaf239cc18"
+        ]
+      },
+      "volumes": {
+        "before_count": 27,
+        "after_count": 31,
+        "missing": [],
+        "added": [
+          "palimpsest-t03-dual-verify_app_credentials",
+          "palimpsest-t03-dual-verify_artifacts",
+          "palimpsest-t03-dual-verify_db_credentials",
+          "palimpsest-t03-dual-verify_postgres"
+        ]
+      }
+    },
+    "volumes_removed": 0,
+    "global_prune_used": false,
+    "receipt": "output/t03-dual-transcription/runtime/final-resource-audit.json"
+  },
+  "document_checks": {
+    "original_repository_validator": {
+      "exit_code": 1,
+      "errors": 9,
+      "all_errors_preserved_raw_standalone_pipe": true,
+      "authored_document_or_contract_errors": 0,
+      "receipt": "output/t03-dual-transcription/runtime/document-validation-final.json"
+    },
+    "linux_local_fixture_suite": {
+      "scope": "unchanged suite on a Linux local fixture; not a completed original-repository suite",
+      "test_count": 44,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "runtime_seconds": 56.453,
+      "exit_code": 1,
+      "validation_equal": true,
+      "receipt": "output/t03-dual-transcription/runtime/bundle-tests-linux-fixture.receipt.json"
+    },
+    "windows_suite": {
+      "test_count": 44,
+      "failures": 1,
+      "errors": 70,
+      "exit_code": 1,
+      "error_cause": "Windows fixture clone long paths"
+    },
+    "direct_linux_suite": {
+      "status": "interrupted",
+      "exit_code": 137,
+      "reason": "controlled_stop_for_bind_mount_latency"
+    }
+  },
+  "visual_verification": {
+    "state": "passed",
+    "changes_verified": 8,
+    "page_pngs_identical": 14,
+    "source": "output/t03-dual-transcription/visual-review/v3-verification.json"
+  },
+  "unmatched_ocr_blocks": 8,
+  "verification_scope": "D2I dual transcription default and isolated PostgreSQL storage/evidence slice; source comparison still needs_review",
+  "approval_blockers": []
+}

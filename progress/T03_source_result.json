@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-09",
+  "scope": "U11_source_preserving_native_pdf_d_to_i_only",
+  "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+  "execution_id": "01a0856e-5610-70bd-9858-e03684a995b0",
+  "profile_id": "01a0856e-560e-76f6-9385-57afd5128ac3",
+  "generation": 3,
+  "state": "completed",
+  "information": {
+    "total": 189,
+    "text": 182,
+    "whole_figure": 6,
+    "logo_image": 1,
+    "image_total": 7
+  },
+  "parser": {
+    "table": true,
+    "device": "cuda",
+    "method": "auto",
+    "backend": "pipeline",
+    "formula": true,
+    "network": "none",
+    "version": "3.4.5",
+    "gpu_uuid": "GPU-9fbbd689-092e-9dc9-cf2e-a6b51f66dcf8",
+    "language": "ch",
+    "provider": "mineru",
+    "image_digest": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854",
+    "model_manifest": {
+      "files": [
+        {
+          "path": "models/Layout/PP-DocLayoutV2/config.json",
+          "bytes": 3787,
+          "sha256": "18a696b54c64c4fa582afcd3a41407c4b65a99dc7ab187ad2fed8af8e4128ad8",
+          "upstream_blob_id": "7230af57153401df3bc53ecc8752c941e8e62e00"
+        },
+        {
+          "path": "models/Layout/PP-DocLayoutV2/model.safetensors",
+          "bytes": 214798436,
+          "sha256": "e60f3725aeedc88fd319416ef166bda79171a41516a301c27cab9132dc2739d2",
+          "upstream_blob_id": "4820d0f20bca17c83b4215e01f1188dc1e5cf9f3"
+        },
+        {
+          "path": "models/Layout/PP-DocLayoutV2/preprocessor_config.json",
+          "bytes": 575,
+          "sha256": "56281a70c931a291dcaf653605fb4df713fd823f65e939aecd6005c26346a103",
+          "upstream_blob_id": "82232d9b2f5b4b7c4198008d687d3ac54a232a60"
+        },
+        {
+          "path": "models/MFR/pp_formulanet_plus_m/PP-FormulaNet_plus-M.pth",
+          "bytes": 617338934,
+          "sha256": "034efee70ef56d8ab7cf3b9b945865cdaf22461ad03b0f6e68bf9234f167f035",
+          "upstream_blob_id": "04b6d61a1f749bb4ce751a1398965f8273f27a81"
+        },
+        {
+          "path": "models/MFR/pp_formulanet_plus_m/PP-FormulaNet_plus-M_inference.yml",
+          "bytes": 2244564,
+          "sha256": "87b5f3d7f2b2fe553627d77b37f496608ca150ebd0ef62d362591edca47b5538",
+          "upstream_blob_id": "88ab97b97b97567d5b71d418115f49e449c7c07c"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/README.md",
+          "bytes": 1657,
+          "sha256": "96574f3857e919353024edc423b9165dbf46e902cfe97b5b7ec552283bd744f6",
+          "upstream_blob_id": "822f27f20b8db4475cd004a96adcf59a3ec1cdb4"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/config.json",
+          "bytes": 5094,
+          "sha256": "64c02e9897410658f7668c6a334a8b306276e4697656cbe06f86d8c4f01fc040",
+          "upstream_blob_id": "ac850a4c0b3f9ad6bd3e1dea90cc354a74721171"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/generation_config.json",
+          "bytes": 191,
+          "sha256": "d56ca9d5c5efa4283a2565ae42771bafd02910b56ef9c53e9b441c9c4c896d09",
+          "upstream_blob_id": "018a339659fba42e55f0e30df0af9ab61e7909eb"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/model.safetensors",
+          "bytes": 810036696,
+          "sha256": "9244e2565585c0f89bc3a6eeeea080ef3c588375fc0d536074fe88e80b917cda",
+          "upstream_blob_id": "ca6b62a2d372f6f7840cdd91565353073fd89605"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/special_tokens_map.json",
+          "bytes": 552,
+          "sha256": "358c249e2fb29060c6b73157d428853b0c48710deffc8ee670ab1013880946c9",
+          "upstream_blob_id": "a782b2f1cdab4d0bacb2dc0f85d02c4b1e31f0bd"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/tokenizer.json",
+          "bytes": 3581950,
+          "sha256": "f8e29e3c3a8017f067b62a3d2d9211bb4cebc08a25afe58d3a6069981e3684d6",
+          "upstream_blob_id": "b436540373e1ca87d0f1cc503fe0f78078079846"
+        },
+        {
+          "path": "models/MFR/unimernet_hf_small_2503/tokenizer_config.json",
+          "bytes": 4522,
+          "sha256": "28b99e33895e06389c26c139b1333b82b7f5d8ed5f4fd14998acfd7c20989338",
+          "upstream_blob_id": "e339ed30e8a32f8131da033216f04a053ab80947"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/Multilingual_PP-OCRv3_det_infer.pth",
+          "bytes": 2540826,
+          "sha256": "05eb1c89030b269b830ba7f2d424a4ac80c7593ea1795fef9777fedbc18e383f",
+          "upstream_blob_id": "ab478e6e0f97bb198289a759a257dd63aa58e782"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/arabic_PP-OCRv5_rec_infer.pth",
+          "bytes": 24079925,
+          "sha256": "2ae0a5e1e8151105eb864c4784a8a435821dd1aeddcd4c3018041b0aa897add0",
+          "upstream_blob_id": "0fb52e6e2df53f843da8d3ec6b6019c79d5862b9"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv4_rec_infer.pth",
+          "bytes": 26919769,
+          "sha256": "cb4265bb4300a2487e93e82ccfa1924bf9cd1194c1a202ab17a96b4911c27e0b",
+          "upstream_blob_id": "add292ac8f620c0bea8e9db8755037e1579d8921"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv4_rec_server_doc_infer.pth",
+          "bytes": 101167457,
+          "sha256": "f65e699f4ca792fbce0e92d1df4c9bbdefe3e21bbdb01c3075cc49470b9bc1cc",
+          "upstream_blob_id": "9b499c6ef9e5ef59c386b71ea5c89301f2743fed"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv4_rec_server_infer.pth",
+          "bytes": 96808553,
+          "sha256": "2c0c9f5180ae3e4d8ea9d3830116ac49900abbb2af3985db02c2bbf484bb0bf9",
+          "upstream_blob_id": "c509a4312eefa4ea18613aa5a41a662d15995357"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv5_det_infer.pth",
+          "bytes": 14506268,
+          "sha256": "df848ed5060bac4d0f6e58572aea97d92e909a8a87cf292849237b0e84f6ffdb",
+          "upstream_blob_id": "c593de2488087433ab1ac171fbfb1e7104c1108c"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv5_rec_infer.pth",
+          "bytes": 32611609,
+          "sha256": "d20ee8dac2ca63e2d1989b02ecc42595c71d61bf8dd8c8ddc5ad2ee68e7b5be2",
+          "upstream_blob_id": "96f01b5c3a5273ab133d1bab756fcdbc70d1e700"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv5_rec_server_infer.pth",
+          "bytes": 134640672,
+          "sha256": "4767ddc90c1532ec01d881a980dae0a0b92679f4f82f88c4e9f92563de69e740",
+          "upstream_blob_id": "bf29ea4f5c7476af0cc16340ae349837d0fae961"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv6_medium_rec_infer.safetensors",
+          "bytes": 76741720,
+          "sha256": "5f43c16f2a684b1d2284662178bdb604febd3d6bfdb5ca73828d08d0f7c0c3e9",
+          "upstream_blob_id": "dc981c3285642829f6e24d2f6b7b2e650b5d53ea"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv6_small_det_infer.safetensors",
+          "bytes": 9938124,
+          "sha256": "89a96a8adc4e9cd0c994098edc76022e496d35844392562b4694c8fbc583f2da",
+          "upstream_blob_id": "b3194287b04fb490cd73807412da5bf7d2dff64a"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_PP-OCRv6_small_rec_infer.safetensors",
+          "bytes": 21204736,
+          "sha256": "f65a332afe5aa663f0b9d5706f4ae8457b5b4058a842d5c1eb22df505c27d642",
+          "upstream_blob_id": "38368890ef48e4662ecc26bf6b3f4e4ff59651ec"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ch_ptocr_mobile_v2.0_cls_infer.pth",
+          "bytes": 588638,
+          "sha256": "bfe13860824b3365c0c7f7ccfcddc8ff11645c60051739ff18bc9913f60c98e1",
+          "upstream_blob_id": "437066c9b0454dbd48b677ca501bf84c9048139e"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/cyrillic_PP-OCRv5_rec_infer.pth",
+          "bytes": 24129777,
+          "sha256": "ddca2b729846e418b62c557ce7af3a8d2e1ba335e9b3c79d7462640e649b72f7",
+          "upstream_blob_id": "0b60537e0e8113910650bf65af44a5edc5f25288"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/devanagari_PP-OCRv5_rec_infer.pth",
+          "bytes": 23991219,
+          "sha256": "69eb4ce12aa71366a03bb391cb653e48ae7330e4ef08d3a6948d32dccc4d67f4",
+          "upstream_blob_id": "7cd79ba334c69a45ed8188d82689dfffd92f1661"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/el_PP-OCRv5_rec_infer.pth",
+          "bytes": 23889711,
+          "sha256": "2ed368d4d02a6733d0be2b982b8ed2d205603c0395e6c4994158527dca637644",
+          "upstream_blob_id": "f69dc1026abaecab219debcca3c02d8896e0f787"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/en_PP-OCRv5_rec_infer.pth",
+          "bytes": 23929399,
+          "sha256": "259a277836bf0e094910949ef4635927ad3f82c20b37f4010749af968967e282",
+          "upstream_blob_id": "6c39f435f29fa3cc5ee8479d1b8efbf7059fee06"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/eslav_PP-OCRv5_rec_infer.pth",
+          "bytes": 23964463,
+          "sha256": "8dbe3608918ff5444befe155ae6299dd9655273ac02fb862c65dd1304df54b93",
+          "upstream_blob_id": "9aad457d94b79c2bc850a29e7c5451534de94881"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ka_PP-OCRv3_rec_infer.pth",
+          "bytes": 8979659,
+          "sha256": "4a537f8aa90afb4f3bb63d0950c2d408b18d586509956b4f56652ef0829764f3",
+          "upstream_blob_id": "b6feab5d85887e5e0a6df15dd16d9b714e7ac481"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/korean_PP-OCRv5_rec_infer.pth",
+          "bytes": 29495617,
+          "sha256": "405b72b79a652a87c49d92700d5677e82375c5f6e242b6f54e5faf2264f8aeb5",
+          "upstream_blob_id": "37ca9a5c0fcab6f9b8fa747146443b937b345f9d"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/latin_PP-OCRv5_rec_infer.pth",
+          "bytes": 24118861,
+          "sha256": "eeb50a7998a44ac6f3a03855774d5c12aeca93e2209412679879d2bf604a8fd6",
+          "upstream_blob_id": "7a0ee480b3dd487cd20029cbdbf33799d7909277"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/seal_PP-OCRv4_det_infer.pth",
+          "bytes": 14506268,
+          "sha256": "a7777ca66448ab90948ce5a3257e4c959d6eacf0489fbadd5133dbe8f89662ae",
+          "upstream_blob_id": "067239d75bdafe0dee43126e620b6055f22d3e52"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/seal_PP-OCRv4_det_server_infer.pth",
+          "bytes": 114030092,
+          "sha256": "283d716bdd93d011edca4563d218a767b273c47bf9c32cb3e8a0baf5b12c8242",
+          "upstream_blob_id": "75e81025b5683823ccddd26d6be7124f99141a32"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/ta_PP-OCRv5_rec_infer.pth",
+          "bytes": 23966667,
+          "sha256": "577d0530f55e3856064fb31e8bcd3ca4714151bacd93696a1f8dda9c06e4bdb3",
+          "upstream_blob_id": "954659e21822b91ae197ff825c58af9ff99886d0"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/te_PP-OCRv5_rec_infer.pth",
+          "bytes": 23977665,
+          "sha256": "85a7d6ce53591c288da965559dd1cebd12e26294554a6e72641d82070acdd5b9",
+          "upstream_blob_id": "325ed10361c1cd96e31bcd43753c88a4b277edd9"
+        },
+        {
+          "path": "models/OCR/paddleocr_torch/th_PP-OCRv5_rec_infer.pth",
+          "bytes": 23971991,
+          "sha256": "9830b0c1532620851b6cdcd6bb2f4abed7d84ea70112497cc7d1e86a5885fdc6",
+          "upstream_blob_id": "d8e65606a4b44d587bc13478923cb5506190ce2a"
+        },
+        {
+          "path": "models/TabCls/paddle_table_cls/PP-LCNet_x1_0_table_cls.onnx",
+          "bytes": 6776877,
+          "sha256": "c84bf1d79c1c74d534b5b12adb14dd12151c42f7ae3e4be4f1042b830f80b949",
+          "upstream_blob_id": "f10e1f63985c1610c5e7cbc75f86fed567dd7952"
+        },
+        {
+          "path": "models/TabRec/SlanetPlus/slanet-plus.onnx",
+          "bytes": 7758305,
+          "sha256": "d57a942af6a2f57d6a4a0372573c696a2379bf5857c45e2ac69993f3b334514b",
+          "upstream_blob_id": "0ba44aff759cf891c38f6b5c14c6918ba3a04bdb"
+        },
+        {
+          "path": "models/TabRec/UnetStructure/unet.onnx",
+          "bytes": 8335007,
+          "sha256": "0ea48d3a17e35ef5c2e498a5e799566073234d39b1079ca21d9f4fafe73c6d20",
+          "upstream_blob_id": "d6d7fb54aa43a862aeb7a7e419c35ad728efd687"
+        }
+      ],
+      "backend": "pipeline",
+      "runtime": {
+        "python": "3.12.14",
+        "packages": {
+          "torch": "2.8.0",
+          "mineru": "3.4.5",
+          "onnxruntime": "1.29.0",
+          "torchvision": "0.23.0",
+          "transformers": "4.57.6",
+          "huggingface-hub": "0.36.2"
+        }
+      },
+      "revision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "model_root": "/models/pipeline",
+      "repository": "opendatalab/PDF-Extract-Kit-1.0",
+      "config_path": "/models/mineru.json",
+      "config_sha256": "21964d1c46696e59d47ea5709207cedee9625271e5687413c922b9623abda979",
+      "allow_patterns": [
+        "models/Layout/PP-DocLayoutV2",
+        "models/Layout/PP-DocLayoutV2/*",
+        "models/MFR/unimernet_hf_small_2503",
+        "models/MFR/unimernet_hf_small_2503/*",
+        "models/OCR/paddleocr_torch",
+        "models/OCR/paddleocr_torch/*",
+        "models/TabRec/SlanetPlus/slanet-plus.onnx",
+        "models/TabRec/SlanetPlus/slanet-plus.onnx/*",
+        "models/TabRec/UnetStructure/unet.onnx",
+        "models/TabRec/UnetStructure/unet.onnx/*",
+        "models/TabCls/paddle_table_cls/PP-LCNet_x1_0_table_cls.onnx",
+        "models/TabCls/paddle_table_cls/PP-LCNet_x1_0_table_cls.onnx/*",
+        "models/MFR/pp_formulanet_plus_m",
+        "models/MFR/pp_formulanet_plus_m/*"
+      ],
+      "mineru_version": "3.4.5",
+      "schema_version": 1,
+      "required_environment": {
+        "MINERU_MODEL_SOURCE": "local",
+        "MINERU_TOOLS_CONFIG_JSON": "/models/mineru.json"
+      }
+    },
+    "adapter_version": "mineru-middle-v2",
+    "models_manifest_sha256": "6e4ab8545ac654440671e551346bd1865d6f12181c7d9f48bfef042c92046408"
+  },
+  "parser_reused_from": "01a0853c-03d8-72ff-be35-958d8dae8db5",
+  "transformation": {
+    "algorithm": "source-units-v1",
+    "schema_version": "source-information-v1"
+  },
+  "llm_calls": 0,
+  "groundings": 255,
+  "source_bundle_sha256": "945c28521b8babc56fa2bd4c141fe9068e87828b0e1fc3999c336ebbb4c3a967",
+  "proposal_set_sha256": "78fd23718653d7fdbfea1987593a8fcf764a6903fd059dff393371857e2564f5",
+  "database": {
+    "postgres": "18.6 (Debian 18.6-1.pgdg12+2)",
+    "pgvector": "0.8.6",
+    "migrations": [
+      {
+        "version": "0001_data",
+        "checksum": "1cf935510ad68def1fda2ff3d887c7c486198d39886db9e207d17dbb90332fd2"
+      },
+      {
+        "version": "0002_information",
+        "checksum": "a517e9ce44c8fd07b0dcce43690de08d3cf5851c65e72be732f8136197e5e402"
+      },
+      {
+        "version": "0003_source_information",
+        "checksum": "222ff22b74d3f69eb2db187525b31ee9ed0a9233b319aaf588b8b6b3ade3c4b0"
+      }
+    ],
+    "data": {
+      "data_id": "a2268b37570f41bb07189cf083376e5823fae364165d5e0e256f796a0814cffe",
+      "byte_size": 3890649
+    },
+    "all_information": 223,
+    "source_information": 189,
+    "candidates": 0,
+    "source_outbox": 189,
+    "all_outbox": 223
+  },
+  "qa": {
+    "raw_block_hashes_verified": 249,
+    "exact_content_fields_verified": 1173,
+    "raw_image_path_fields": 63,
+    "source_groundings_verified": 255,
+    "original_block_coverage": 249,
+    "synthetic_figure_primaries": 6,
+    "uncovered_original_blocks": 0,
+    "multiply_assigned_original_blocks": 0,
+    "restored_artifact_files_verified": 79,
+    "historical_snapshots_unchanged": 34,
+    "replay_same_job_ids_snapshots_and_events": true,
+    "provider_calls": 0,
+    "original_pdf_sha256_verified": true,
+    "source_fidelity_flags": [
+      {
+        "flag_id": "SF01",
+        "kind": "numeric_range_marker_changed",
+        "figure_number": 6,
+        "physical_page": 11,
+        "raw_locator": "/pdf_info/10/preproc_blocks/11/blocks/1",
+        "observed_source_excerpt": "n = 2-9 mice per group",
+        "observed_mineru_excerpt": "n = 2 \\cdot 9 mice per group",
+        "source_evidence": {
+          "figure_inventory_path": "progress/T03_figure_inventory.json",
+          "caption_fragment_raw_locator": "/pdf_info/10/preproc_blocks/11/blocks/1",
+          "native_caption_text_sha256": "d2efcaa6b2e8479fc565842e4676c7f353e9962c631b33015fc2adf2df2615fa",
+          "visually_verified_source_page": true
+        },
+        "observation": "The source PDF caption shows a range separator between 2 and 9; the MinerU inline-equation output uses a LaTeX multiplication dot.",
+        "handling": "Preserve exact parser output and source PDF provenance, expose source fidelity flag, and defer scientific interpretation or correction to later approved work.",
+        "semantic_consequence_assessed": false
+      },
+      {
+        "flag_id": "SF02",
+        "kind": "scientific_token_recognition_changed",
+        "figure_number": 3,
+        "physical_page": 6,
+        "raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/2",
+        "observed_source_excerpt": "IFN-γ",
+        "observed_mineru_excerpt": "\\Vdash \\ N - \\gamma",
+        "source_evidence": {
+          "figure_inventory_path": "progress/T03_figure_inventory.json",
+          "caption_fragment_raw_locator": "/pdf_info/5/preproc_blocks/6/blocks/2",
+          "native_caption_text_sha256": "78b54f1273e6a1034b7050a34b1f187df5c79e217c8e17391169405bf471b2bc",
+          "visually_verified_source_page": true
+        },
+        "observation": "The source caption token IFN-γ is represented by different letters/symbols in the MinerU math output.",
+        "handling": "Preserve exact parser output and source PDF provenance, expose source fidelity flag, and defer scientific interpretation or correction to later approved work.",
+        "semantic_consequence_assessed": false
+      },
+      {
+        "flag_id": "SF03",
+        "kind": "scientific_token_recognition_changed",
+        "figure_number": 5,
+        "physical_page": 9,
+        "raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/2",
+        "observed_source_excerpt": "IL-17A+ Th17, IFN-γ+ Th1",
+        "observed_mineru_excerpt": "1 L - 1 7 A ^ { + } + 7 h + 7 , 1 F N - \\gamma ^ { + } + 7 h 1",
+        "source_evidence": {
+          "figure_inventory_path": "progress/T03_figure_inventory.json",
+          "caption_fragment_raw_locator": "/pdf_info/8/preproc_blocks/7/blocks/2",
+          "native_caption_text_sha256": "60550a6a88d5a1173a6560fd73e54ca1430767fd6ebc2b4dc7bf5dc9ca82d841",
+          "visually_verified_source_page": true
+        },
+        "observation": "Letters and digits in the source cell-marker tokens differ in the MinerU math output.",
+        "handling": "Preserve exact parser output and source PDF provenance, expose source fidelity flag, and defer scientific interpretation or correction to later approved work.",
+        "semantic_consequence_assessed": false
+      },
+      {
+        "flag_id": "SF04",
+        "kind": "panel_label_recognition_changed",
+        "figure_number": 1,
+        "physical_page": 3,
+        "raw_locator": "/pdf_info/2/preproc_blocks/12/blocks/0",
+        "observed_source_excerpt": "I",
+        "observed_mineru_excerpt": "一",
+        "source_evidence": {
+          "source_crop_path": "output/t03/figures-source/Figure-1.png",
+          "source_crop_sha256": "e1118c5a81ca3709786cbb6c109ff92ff1cec7688e1c36fcf2c0414b21592b40",
+          "visually_verified_source_page": true
+        },
+        "observation": "The original panel letter I is returned as the character 一 in a chart_caption child.",
+        "handling": "Preserve original full-figure crop and parser label; do not infer panel ownership from this recognized character alone.",
+        "semantic_consequence_assessed": false
+      }
+    ]
+  },
+  "regression": {
+    "tests": 190,
+    "elapsed_seconds": 27.582,
+    "exit_code": 0,
+    "skipped": 0,
+    "command": "docker compose -p palimpsest-t03-verify run --rm --no-deps test",
+    "app_image_id": "sha256:4f6dc7e177db23d21344b5de24e7a8d64e4073fa163a1592bdcedbd851604cb6"
+  },
+  "history": {
+    "legacy_semantic_information": 34,
+    "first_job": "01a0853c-03d8-72ff-be35-958d8dae8db5",
+    "whole_figure_semantic_repair_job": "01a08559-efc3-7e86-b040-7fe566875d33",
+    "rewritten": false,
+    "automatically_superseded": false
+  },
+  "limits": [
+    "one native PDF; reviewed Figure inventory, no general automatic grouping guarantee",
+    "parser recognition errors preserved and flagged; no perfect OCR claim",
+    "I2K/K not implemented or executed; pending outbox remains",
+    "legacy/source runs are distinguished by profile/schema, no current-view/supersession consumer implemented",
+    "T03 full task gate remains in_progress"
+  ],
+  "evidence_paths": [
+    "output/t03-source/INFORMATION.md",
+    "output/t03-source/information.json",
+    "output/t03-source/qa.json",
+    "output/t03-source/job_with_parse.json",
+    "output/t03-source/application_tests.log",
+    "progress/T03_source_unit_expectations.json"
+  ],
+  "docker_cleanup": {
+    "command": "docker compose -p palimpsest-t03-verify down",
+    "exit_code": 0,
+    "removed_containers": [
+      "palimpsest-t03-verify-db-1",
+      "palimpsest-t03-verify-init-1"
+    ],
+    "removed_networks": [
+      "palimpsest-t03-verify_palimpsest"
+    ],
+    "remaining_palimpsest_containers": [
+      "palimpsest-dev-db-1"
+    ],
+    "kept_images": [
+      {
+        "repository": "palimpsest-t03",
+        "tag": "0.2.0",
+        "image_id": "sha256:4f6dc7e177db23d21344b5de24e7a8d64e4073fa163a1592bdcedbd851604cb6"
+      },
+      {
+        "repository": "palimpsest-mineru",
+        "tag": "3.4.5",
+        "image_id": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854"
+      },
+      {
+        "repository": "pgvector/pgvector",
+        "tag": "<none>",
+        "image_id": "sha256:2ba9ca5f2e7daa0f0e7723cba1ee9167bab54efd3640516a44ac1a928dd67e7a"
+      }
+    ],
+    "images_removed_this_pass": 0,
+    "obsolete_images": "No obsolete Palimpsest tag or untagged image was listed before this final pass; replacement IDs already absent are not counted as deleted.",
+    "all_volume_names_unchanged": true,
+    "unrelated_container_ids_unchanged": true,
+    "post_cleanup_data_verified": true
+  },
+  "documentation_validation": {
+    "bundle_status": "passed",
+    "bundle_errors": 0,
+    "current_canonical_lines": 2267,
+    "current_parts": 13,
+    "accepted_user_overrides": 11,
+    "unit_tests": 43,
+    "elapsed_seconds": 115.94,
+    "exit_code": 0,
+    "commands": [
+      "python -X utf8 -B tools/validate_bundle.py --json",
+      "python -X utf8 -B -m unittest discover -s tools -p test_*.py"
+    ]
+  },
+  "changes_report": "progress/T03_changes.json"
+}

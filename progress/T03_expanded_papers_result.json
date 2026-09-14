@@ -1,0 +1,1611 @@
+{
+  "schema_version": "t03-expanded-papers-result-v1",
+  "state": "evaluation_complete_with_observed_failures",
+  "created_at_utc": "2026-09-10T03:27:43.029106+00:00",
+  "scope": {
+    "new_documents": 17,
+    "all_pages": 243,
+    "fixed_sample_pages": 51,
+    "application_semantic_llm_calls": 0,
+    "canonical_writes": 0,
+    "production_code_changes": 0,
+    "new_images": 0,
+    "source_units_are_proposals_not_canonical_I": true,
+    "task": "T03",
+    "task_status": "in_progress",
+    "annotation": "Codex visual review, not independent human gold",
+    "cohort": "Biomedical reference PDFs; not a random sample of all PDFs"
+  },
+  "profile": {
+    "provider": "mineru",
+    "version": "3.4.5",
+    "backend": "hybrid-engine",
+    "effort": "high",
+    "engine": "transformers",
+    "model": "opendatalab/MinerU2.5-Pro-2605-1.2B",
+    "method": "auto",
+    "model_revision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+    "raw_ocr_enable_counts": {
+      "False": 16,
+      "True": 1
+    },
+    "profile_files": [
+      {
+        "path": "output/t03-expanded-papers/runtime/profiles/gpu0.json",
+        "sha256": "a8a70251c63196b80a82bf568a42cea2ac91c66f5245e502ff1ad7406d9affa9"
+      },
+      {
+        "path": "output/t03-expanded-papers/runtime/profiles/gpu1.json",
+        "sha256": "6949dacf2bcd553d1f5199b1c32ed26ceb59a1f613d618f4a6577cab3a21f3f7"
+      }
+    ]
+  },
+  "quality": {
+    "documents": 17,
+    "annotated_sample_pages": 51,
+    "operational": {
+      "parser": {
+        "matched": 17,
+        "total": 17,
+        "rate": 1.0,
+        "states": {
+          "complete": 17
+        }
+      },
+      "source_build_verify": {
+        "matched": 17,
+        "total": 17,
+        "rate": 1.0,
+        "states": {
+          "complete": 17
+        }
+      },
+      "evidence_package": {
+        "matched": 16,
+        "total": 17,
+        "rate": 0.9411764705882353,
+        "states": {
+          "complete": 16,
+          "failed": 1
+        }
+      },
+      "all_page_contexts": {
+        "matched": 16,
+        "total": 17,
+        "rate": 0.9411764705882353,
+        "states": {
+          "complete": 16,
+          "failed": 1
+        }
+      }
+    },
+    "headings": {
+      "clear_gold": 74,
+      "ambiguous_gold": 8,
+      "clear_by_kind": {
+        "document_title": 8,
+        "section": 26,
+        "subsection": 17,
+        "inline_subsection": 2,
+        "article_title": 10,
+        "article_subtitle": 2,
+        "abstract_label": 8,
+        "editorial_summary_heading": 1
+      },
+      "native": {
+        "exact": {
+          "matched": 25,
+          "total": 74,
+          "rate": 0.33783783783783783
+        },
+        "contains": {
+          "matched": 36,
+          "total": 74,
+          "rate": 0.4864864864864865
+        },
+        "by_heading_kind": {
+          "abstract_label": {
+            "exact": {
+              "matched": 0,
+              "total": 8,
+              "rate": 0.0
+            },
+            "contains": {
+              "matched": 3,
+              "total": 8,
+              "rate": 0.375
+            }
+          },
+          "article_subtitle": {
+            "exact": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            },
+            "contains": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            }
+          },
+          "article_title": {
+            "exact": {
+              "matched": 6,
+              "total": 10,
+              "rate": 0.6
+            },
+            "contains": {
+              "matched": 9,
+              "total": 10,
+              "rate": 0.9
+            }
+          },
+          "document_title": {
+            "exact": {
+              "matched": 2,
+              "total": 8,
+              "rate": 0.25
+            },
+            "contains": {
+              "matched": 5,
+              "total": 8,
+              "rate": 0.625
+            }
+          },
+          "editorial_summary_heading": {
+            "exact": {
+              "matched": 1,
+              "total": 1,
+              "rate": 1.0
+            },
+            "contains": {
+              "matched": 1,
+              "total": 1,
+              "rate": 1.0
+            }
+          },
+          "inline_subsection": {
+            "exact": {
+              "matched": 1,
+              "total": 2,
+              "rate": 0.5
+            },
+            "contains": {
+              "matched": 1,
+              "total": 2,
+              "rate": 0.5
+            }
+          },
+          "section": {
+            "exact": {
+              "matched": 14,
+              "total": 26,
+              "rate": 0.5384615384615384
+            },
+            "contains": {
+              "matched": 16,
+              "total": 26,
+              "rate": 0.6153846153846154
+            }
+          },
+          "subsection": {
+            "exact": {
+              "matched": 1,
+              "total": 17,
+              "rate": 0.058823529411764705
+            },
+            "contains": {
+              "matched": 1,
+              "total": 17,
+              "rate": 0.058823529411764705
+            }
+          }
+        }
+      },
+      "parser_title": {
+        "exact": {
+          "matched": 48,
+          "total": 74,
+          "rate": 0.6486486486486487
+        },
+        "contains": {
+          "matched": 50,
+          "total": 74,
+          "rate": 0.6756756756756757
+        },
+        "by_heading_kind": {
+          "abstract_label": {
+            "exact": {
+              "matched": 0,
+              "total": 8,
+              "rate": 0.0
+            },
+            "contains": {
+              "matched": 0,
+              "total": 8,
+              "rate": 0.0
+            }
+          },
+          "article_subtitle": {
+            "exact": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            },
+            "contains": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            }
+          },
+          "article_title": {
+            "exact": {
+              "matched": 10,
+              "total": 10,
+              "rate": 1.0
+            },
+            "contains": {
+              "matched": 10,
+              "total": 10,
+              "rate": 1.0
+            }
+          },
+          "document_title": {
+            "exact": {
+              "matched": 4,
+              "total": 8,
+              "rate": 0.5
+            },
+            "contains": {
+              "matched": 6,
+              "total": 8,
+              "rate": 0.75
+            }
+          },
+          "editorial_summary_heading": {
+            "exact": {
+              "matched": 1,
+              "total": 1,
+              "rate": 1.0
+            },
+            "contains": {
+              "matched": 1,
+              "total": 1,
+              "rate": 1.0
+            }
+          },
+          "inline_subsection": {
+            "exact": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            },
+            "contains": {
+              "matched": 0,
+              "total": 2,
+              "rate": 0.0
+            }
+          },
+          "section": {
+            "exact": {
+              "matched": 26,
+              "total": 26,
+              "rate": 1.0
+            },
+            "contains": {
+              "matched": 26,
+              "total": 26,
+              "rate": 1.0
+            }
+          },
+          "subsection": {
+            "exact": {
+              "matched": 7,
+              "total": 17,
+              "rate": 0.4117647058823529
+            },
+            "contains": {
+              "matched": 7,
+              "total": 17,
+              "rate": 0.4117647058823529
+            }
+          }
+        }
+      },
+      "native_sampled_precision": {
+        "matched": 25,
+        "total": 168,
+        "rate": 0.1488095238095238,
+        "ambiguous_exact_only": 3,
+        "any_ambiguous_match": 3,
+        "unmatched": 140
+      }
+    },
+    "figures": {
+      "clear_gold": 19,
+      "ambiguous_gold": 0,
+      "excluded_non_body_annotations": 1,
+      "proposal_presence": {
+        "matched": 16,
+        "total": 19,
+        "rate": 0.8421052631578947
+      },
+      "geometric_screen": {
+        "matched": 15,
+        "total": 19,
+        "rate": 0.7894736842105263
+      },
+      "visual_fidelity": "not_scored_requires_separate_crop_review"
+    },
+    "transcription": {
+      "native": {
+        "exact": {
+          "matched": 32,
+          "total": 51,
+          "rate": 0.6274509803921569
+        },
+        "missing_output_samples": 0,
+        "sum_minimum_edit_distance": 22,
+        "gold_characters": 7812,
+        "character_weighted_difference": 0.0028161802355350742,
+        "mean_sample_difference": 0.002999459855885626,
+        "channels": {
+          "evidence_native_chars": 48,
+          "source_review_native_evaluation_only": 3
+        },
+        "by_sample_kind": {
+          "abstract": {
+            "matched": 3,
+            "total": 6,
+            "rate": 0.5
+          },
+          "body": {
+            "matched": 10,
+            "total": 15,
+            "rate": 0.6666666666666666
+          },
+          "caption": {
+            "matched": 9,
+            "total": 14,
+            "rate": 0.6428571428571429
+          },
+          "editorial_summary": {
+            "matched": 1,
+            "total": 1,
+            "rate": 1.0
+          },
+          "reference": {
+            "matched": 6,
+            "total": 12,
+            "rate": 0.5
+          },
+          "title_only": {
+            "matched": 3,
+            "total": 3,
+            "rate": 1.0
+          }
+        },
+        "non_title_supplement": {
+          "matched": 29,
+          "total": 48,
+          "rate": 0.6041666666666666
+        }
+      },
+      "parser": {
+        "exact": {
+          "matched": 32,
+          "total": 51,
+          "rate": 0.6274509803921569
+        },
+        "missing_output_samples": 0,
+        "sum_minimum_edit_distance": 49,
+        "gold_characters": 7812,
+        "character_weighted_difference": 0.0062724014336917565,
+        "mean_sample_difference": 0.006417561419631837,
+        "channels": {
+          "verified_original_page_source_blocks": 51
+        },
+        "by_sample_kind": {
+          "abstract": {
+            "matched": 4,
+            "total": 6,
+            "rate": 0.6666666666666666
+          },
+          "body": {
+            "matched": 9,
+            "total": 15,
+            "rate": 0.6
+          },
+          "caption": {
+            "matched": 8,
+            "total": 14,
+            "rate": 0.5714285714285714
+          },
+          "editorial_summary": {
+            "matched": 1,
+            "total": 1,
+            "rate": 1.0
+          },
+          "reference": {
+            "matched": 7,
+            "total": 12,
+            "rate": 0.5833333333333334
+          },
+          "title_only": {
+            "matched": 3,
+            "total": 3,
+            "rate": 1.0
+          }
+        },
+        "non_title_supplement": {
+          "matched": 29,
+          "total": 48,
+          "rate": 0.6041666666666666
+        }
+      }
+    },
+    "sampled_page_companions": {
+      "matched": 48,
+      "total": 51,
+      "rate": 0.9411764705882353
+    },
+    "all_page_companions": {
+      "matched": 233,
+      "total": 243,
+      "rate": 0.9588477366255144
+    }
+  },
+  "quality_source": {
+    "path": "output/t03-expanded-papers/runtime/quality-final-a1.json",
+    "sha256": "ae0ed489e2e5bb0a7100da9d9d287131ec37c635398a740ae522de92f6d95f26"
+  },
+  "supplementary_heading_union": {
+    "note": "Post-hoc arithmetic union of frozen same-page exact/contains outcomes; no new inference, tuning, or hierarchy approval.",
+    "exact": {
+      "matched": 49,
+      "total": 74
+    },
+    "contains": {
+      "matched": 54,
+      "total": 74
+    }
+  },
+  "figure_visual_review": {
+    "total": 19,
+    "counts": {
+      "complete": 16,
+      "missing": 2,
+      "missing_evidence": 1
+    },
+    "complete_rate": 0.8421052631578947,
+    "rows": [
+      {
+        "id": "paper02",
+        "page_number": 29,
+        "figure_number": "6",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper03",
+        "page_number": 30,
+        "figure_number": "8",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper01",
+        "page_number": 6,
+        "figure_number": "5",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper04",
+        "page_number": 7,
+        "figure_number": "4",
+        "status": "missing",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper07",
+        "page_number": 6,
+        "figure_number": "2",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper05",
+        "page_number": 5,
+        "figure_number": "4",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper06",
+        "page_number": 5,
+        "figure_number": "4",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper06",
+        "page_number": 5,
+        "figure_number": "5",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper08",
+        "page_number": 4,
+        "figure_number": "2",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper08",
+        "page_number": 4,
+        "figure_number": "3",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+          "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+        }
+      },
+      {
+        "id": "paper09",
+        "page_number": 8,
+        "figure_number": "4",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper10",
+        "page_number": 8,
+        "figure_number": "5",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper12",
+        "page_number": 5,
+        "figure_number": "2",
+        "status": "missing_evidence",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper13",
+        "page_number": 25,
+        "figure_number": "8",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper15",
+        "page_number": 4,
+        "figure_number": "3",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper16",
+        "page_number": 5,
+        "figure_number": "1",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper17",
+        "page_number": 9,
+        "figure_number": "6",
+        "status": "missing",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper18",
+        "page_number": 5,
+        "figure_number": "4",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      },
+      {
+        "id": "paper20",
+        "page_number": 7,
+        "figure_number": "5",
+        "status": "complete",
+        "review": {
+          "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+          "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+        }
+      }
+    ]
+  },
+  "artifact_counts": {
+    "source_units": 2834,
+    "retained_files": 932,
+    "raw_nodes_checked": 38996,
+    "raw_leaf_nodes_checked": 18537,
+    "raw_payload_segments_checked": 18533,
+    "raw_blocks_checked": 2834,
+    "raw_page_references_checked": 243,
+    "evidence_pages": 233,
+    "evidence_headings": 663,
+    "evidence_discrepancies": 1391,
+    "evidence_compared_blocks": 2695,
+    "evidence_equivalent_blocks": 1304,
+    "evidence_figure_proposals": 103,
+    "evidence_parser_image_regions": 235,
+    "evidence_paragraphs": 1648,
+    "evidence_source_segments": 18214,
+    "evidence_matched_segments": 17054,
+    "evidence_segments_outside_paragraph_view": 1160
+  },
+  "source_unit_kinds": {
+    "text": 2599,
+    "image": 235
+  },
+  "timing": {
+    "parser_seconds_min": 126.38002294599937,
+    "parser_seconds_max": 336.4960537219995,
+    "parser_seconds_median": 210.66003097400062,
+    "parser_seconds_sum": 3611.006105073001,
+    "two_gpu_batch_span_seconds": 1827.242687,
+    "note": "Different documents per GPU; not a GPU head-to-head benchmark; excludes source annotation and visual QA time."
+  },
+  "invariance_and_cleanup_audit": {
+    "path": "output/t03-expanded-papers/runtime/final-audit.json",
+    "sha256": "b3625c7c4182b248e3dc122991a68d7f8d2bc73e875f00aa5097f16067947c10"
+  },
+  "geometry_failure": {
+    "path": "output/t03-expanded-papers/runtime/geometry-failure-paper12.json",
+    "sha256": "4bbad22f8075abbcdffe8cb3bc7a6997abe8288b5788190223a98a29cf2561eb"
+  },
+  "frozen_oracles": {
+    "path": "output/t03-expanded-papers/source-review/oracle-freeze.json",
+    "sha256": "1bc3274e680073a892ad4146485db76f5639b11ddff676346006e9ffb8e42bf2"
+  },
+  "scorer_sha256": "e3832e22cdf9f628ece60b0754adf08e9311466da4a9942f0da169cf2ce24bc6",
+  "documents": [
+    {
+      "id": "paper01",
+      "filename": "Campisi et al., Nature Immunology, 2016.pdf",
+      "data_id": "56609cb3d3f6bafc5c523da5728cbb3e6c5b29cbf4b563a8ec08d061825fd823",
+      "pages": 12,
+      "source_unit_count": 163,
+      "kinds": {
+        "text": 151,
+        "image": 12
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 208.68164643799992,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper01/verify/summary.json",
+        "sha256": "5d402f7266e87d004478adca71b2ca8669169b588dd5db4fdea1b423578329f5"
+      },
+      "evidence_counts": {
+        "pages": 12,
+        "headings": 61,
+        "discrepancies": 99,
+        "compared_blocks": 159,
+        "equivalent_blocks": 60,
+        "figure_proposals": 4,
+        "parser_image_regions": 12,
+        "paragraphs": 107,
+        "source_segments": 1437,
+        "matched_segments": 1380,
+        "segments_outside_paragraph_view": 57
+      },
+      "figures": [
+        {
+          "id": "paper01",
+          "page_number": 6,
+          "figure_number": "5",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper02",
+      "filename": "Chen et al., Journal of Immunology, 2009 (2).pdf",
+      "data_id": "99cd017e2ea2ac4451fef23231e8c98b9238c27f1694609c026872a589f65251",
+      "pages": 29,
+      "source_unit_count": 237,
+      "kinds": {
+        "text": 227,
+        "image": 10
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 226.93160290099968,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper02/verify/summary.json",
+        "sha256": "f575bc501a3fcf7f142c06bcfe91c813392a610d3fa2e47f599c80180c9dbf22"
+      },
+      "evidence_counts": {
+        "pages": 29,
+        "headings": 30,
+        "discrepancies": 97,
+        "compared_blocks": 236,
+        "equivalent_blocks": 139,
+        "figure_proposals": 6,
+        "parser_image_regions": 10,
+        "paragraphs": 114,
+        "source_segments": 1437,
+        "matched_segments": 1309,
+        "segments_outside_paragraph_view": 128
+      },
+      "figures": [
+        {
+          "id": "paper02",
+          "page_number": 29,
+          "figure_number": "6",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper03",
+      "filename": "Chen et al., Journal of Immunology, 2009.pdf",
+      "data_id": "45487d9cef00871db46354aa3370115f1cee8a18a9ce886c8da5661e3e5815a8",
+      "pages": 30,
+      "source_unit_count": 289,
+      "kinds": {
+        "text": 281,
+        "image": 8
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 236.24327455999992,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper03/verify/summary.json",
+        "sha256": "59ffe408ccbafa6736b05f02c59616f4da12aae3a55e539252cb058092a4496e"
+      },
+      "evidence_counts": {
+        "pages": 30,
+        "headings": 46,
+        "discrepancies": 111,
+        "compared_blocks": 287,
+        "equivalent_blocks": 176,
+        "figure_proposals": 8,
+        "parser_image_regions": 9,
+        "paragraphs": 128,
+        "source_segments": 1212,
+        "matched_segments": 1050,
+        "segments_outside_paragraph_view": 162
+      },
+      "figures": [
+        {
+          "id": "paper03",
+          "page_number": 30,
+          "figure_number": "8",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper04",
+      "filename": "Clarke et al., Journal of Leukocyte Biology, 2015.pdf",
+      "data_id": "be0564eeb21ab7c74d9fd51a9759d71d066438808eb20eea6f44970f046cd967",
+      "pages": 14,
+      "source_unit_count": 159,
+      "kinds": {
+        "text": 151,
+        "image": 8
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 210.66003097400062,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper04/verify/summary.json",
+        "sha256": "7582195165faf4c4182dd70f9d4d6abb0f58f0368ba94a6efbc2eada1d679901"
+      },
+      "evidence_counts": {
+        "pages": 14,
+        "headings": 34,
+        "discrepancies": 67,
+        "compared_blocks": 159,
+        "equivalent_blocks": 92,
+        "figure_proposals": 7,
+        "parser_image_regions": 8,
+        "paragraphs": 102,
+        "source_segments": 1314,
+        "matched_segments": 1257,
+        "segments_outside_paragraph_view": 57
+      },
+      "figures": [
+        {
+          "id": "paper04",
+          "page_number": 7,
+          "figure_number": "4",
+          "status": "missing",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper05",
+      "filename": "Dejani et al., PNAS, 2018.pdf",
+      "data_id": "59e86294dcd441f3b2332be14bc906ed3ac35afa4cfb4c45319bb68d53c75367",
+      "pages": 10,
+      "source_unit_count": 126,
+      "kinds": {
+        "text": 114,
+        "image": 12
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 197.56609814700005,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper05/verify/summary.json",
+        "sha256": "962e1270839be6927288f37c08be103bbd5163293e2af82a954ef9310c731d89"
+      },
+      "evidence_counts": {
+        "pages": 10,
+        "headings": 45,
+        "discrepancies": 86,
+        "compared_blocks": 124,
+        "equivalent_blocks": 38,
+        "figure_proposals": 7,
+        "parser_image_regions": 12,
+        "paragraphs": 82,
+        "source_segments": 1078,
+        "matched_segments": 1033,
+        "segments_outside_paragraph_view": 45
+      },
+      "figures": [
+        {
+          "id": "paper05",
+          "page_number": 5,
+          "figure_number": "4",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper06",
+      "filename": "Fadok et al., Journal of Clinical Investigation, 1998.pdf",
+      "data_id": "ae20942f584c11c074df96ba7c416b83ff64f91aa1007957cdf5b1009a2b9ad5",
+      "pages": 9,
+      "source_unit_count": 98,
+      "kinds": {
+        "text": 89,
+        "image": 9
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 158.28674120100004,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper06/verify/summary.json",
+        "sha256": "2db468fcb4f682c92d23f32781fa2d2c85b016b979b9fc786f0b9cabcf34a134"
+      },
+      "evidence_counts": {
+        "pages": 9,
+        "headings": 13,
+        "discrepancies": 57,
+        "compared_blocks": 98,
+        "equivalent_blocks": 41,
+        "figure_proposals": 9,
+        "parser_image_regions": 9,
+        "paragraphs": 74,
+        "source_segments": 903,
+        "matched_segments": 877,
+        "segments_outside_paragraph_view": 26
+      },
+      "figures": [
+        {
+          "id": "paper06",
+          "page_number": 5,
+          "figure_number": "4",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        },
+        {
+          "id": "paper06",
+          "page_number": 5,
+          "figure_number": "5",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper07",
+      "filename": "HMGB1.pdf",
+      "data_id": "aa070dc8726bc08311cd9308b092ed76056705b9d67cc8125afbcc8167a5bada",
+      "pages": 11,
+      "source_unit_count": 125,
+      "kinds": {
+        "text": 119,
+        "image": 6
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 233.13989373100048,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper07/verify/summary.json",
+        "sha256": "037def5648f24b6c5cd0464da82a8249064083a8d00e60ee5be10779091c412a"
+      },
+      "evidence_counts": {
+        "pages": 11,
+        "headings": 58,
+        "discrepancies": 55,
+        "compared_blocks": 125,
+        "equivalent_blocks": 70,
+        "figure_proposals": 5,
+        "parser_image_regions": 9,
+        "paragraphs": 88,
+        "source_segments": 836,
+        "matched_segments": 797,
+        "segments_outside_paragraph_view": 39
+      },
+      "figures": [
+        {
+          "id": "paper07",
+          "page_number": 6,
+          "figure_number": "2",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper08",
+      "filename": "Hart et al., Journal of Immunology, 2004.pdf",
+      "data_id": "671c345b967b1f7f96afb6fb6540307c0e4d95781ac1ce26182a22e6805cabe5",
+      "pages": 7,
+      "source_unit_count": 91,
+      "kinds": {
+        "text": 82,
+        "image": 9
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 136.65284027500002,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper08/verify/summary.json",
+        "sha256": "796dfdadd79fa7e04c502433481f6c3f9036eff09a905e3a37b6a64eed32c7ef"
+      },
+      "evidence_counts": {
+        "pages": 7,
+        "headings": 14,
+        "discrepancies": 53,
+        "compared_blocks": 89,
+        "equivalent_blocks": 36,
+        "figure_proposals": 5,
+        "parser_image_regions": 9,
+        "paragraphs": 65,
+        "source_segments": 661,
+        "matched_segments": 628,
+        "segments_outside_paragraph_view": 33
+      },
+      "figures": [
+        {
+          "id": "paper08",
+          "page_number": 4,
+          "figure_number": "2",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        },
+        {
+          "id": "paper08",
+          "page_number": 4,
+          "figure_number": "3",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-a3.json",
+            "sha256": "d17ce70a117567c1fa18368e44239ee2e6e3fd993ca3daeda555fd69f0679cba"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper09",
+      "filename": "Kool et al., Immunity, 2011.pdf",
+      "data_id": "ce2eeb4e5a8356d6f201ce08683b50c16728cb3d6403e86de61068b4999d6c25",
+      "pages": 15,
+      "source_unit_count": 255,
+      "kinds": {
+        "text": 188,
+        "image": 67
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 224.72906751200026,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper09/verify/summary.json",
+        "sha256": "4d590880d663b11da9a5452ffc8a1b0b4aa8947c398dc59feb8e372ebe503ad3"
+      },
+      "evidence_counts": {
+        "pages": 15,
+        "headings": 19,
+        "discrepancies": 144,
+        "compared_blocks": 244,
+        "equivalent_blocks": 100,
+        "figure_proposals": 7,
+        "parser_image_regions": 67,
+        "paragraphs": 160,
+        "source_segments": 1301,
+        "matched_segments": 1188,
+        "segments_outside_paragraph_view": 113
+      },
+      "figures": [
+        {
+          "id": "paper09",
+          "page_number": 8,
+          "figure_number": "4",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper10",
+      "filename": "Lee et al., J Leukoc Biol, 2017.pdf",
+      "data_id": "26233462e97947bc16e6d2de72776600c776829a3210e23f4efe09f8a0830810",
+      "pages": 15,
+      "source_unit_count": 228,
+      "kinds": {
+        "text": 201,
+        "image": 27
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 250.06872406900038,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper10/verify/summary.json",
+        "sha256": "bcd593cf0db0d348bf13c61d0f5ac4e634de4ace3345bc92f34c97c8e1cdb256"
+      },
+      "evidence_counts": {
+        "pages": 15,
+        "headings": 46,
+        "discrepancies": 114,
+        "compared_blocks": 219,
+        "equivalent_blocks": 105,
+        "figure_proposals": 9,
+        "parser_image_regions": 29,
+        "paragraphs": 150,
+        "source_segments": 1398,
+        "matched_segments": 1316,
+        "segments_outside_paragraph_view": 82
+      },
+      "figures": [
+        {
+          "id": "paper10",
+          "page_number": 8,
+          "figure_number": "5",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper12",
+      "filename": "Manfredi et al., Arthritis & Rheumatism, 1998.pdf",
+      "data_id": "3a3316391a73c20fb17fee8f09b8b84b2faf54c4867a3567853dd5abdcf41179",
+      "pages": 10,
+      "source_unit_count": 101,
+      "kinds": {
+        "text": 95,
+        "image": 6
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "failed",
+        "all_page_contexts": "failed"
+      },
+      "postprocess_state": "incomplete",
+      "parser_seconds": 336.4960537219995,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper12/verify/summary.json",
+        "sha256": "d90323915106200ef3c2dca9ea94e096100e902a535af31d02ef99061711f0df"
+      },
+      "evidence_counts": null,
+      "figures": [
+        {
+          "id": "paper12",
+          "page_number": 5,
+          "figure_number": "2",
+          "status": "missing_evidence",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper13",
+      "filename": "Matta et al., Journal of Immunology, 2014.pdf",
+      "data_id": "274d48a21ef3287cfb6d3855eb88debb072cf742fa05d38b79f2bbaf20544e1b",
+      "pages": 25,
+      "source_unit_count": 251,
+      "kinds": {
+        "text": 238,
+        "image": 13
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 248.38995764500032,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper13/verify/summary.json",
+        "sha256": "939efd3e2fc92fada9836cb5565de9f32e0f728da878c94c9a4939fddbeaec88"
+      },
+      "evidence_counts": {
+        "pages": 25,
+        "headings": 33,
+        "discrepancies": 123,
+        "compared_blocks": 250,
+        "equivalent_blocks": 127,
+        "figure_proposals": 8,
+        "parser_image_regions": 13,
+        "paragraphs": 116,
+        "source_segments": 1230,
+        "matched_segments": 1093,
+        "segments_outside_paragraph_view": 137
+      },
+      "figures": [
+        {
+          "id": "paper13",
+          "page_number": 25,
+          "figure_number": "8",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper15",
+      "filename": "Notley et al., Journal of Immunology, 2011.pdf",
+      "data_id": "35a48a9c6cb63a53059f34a852f1ab317763de0231ff8759e4192802ec3f32df",
+      "pages": 7,
+      "source_unit_count": 91,
+      "kinds": {
+        "text": 84,
+        "image": 7
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 126.38002294599937,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper15/verify/summary.json",
+        "sha256": "2dff598eec72fef7fded3417821ebcdd14d30e19aa6f0784d59e372154c28509"
+      },
+      "evidence_counts": {
+        "pages": 7,
+        "headings": 10,
+        "discrepancies": 52,
+        "compared_blocks": 90,
+        "equivalent_blocks": 38,
+        "figure_proposals": 6,
+        "parser_image_regions": 7,
+        "paragraphs": 65,
+        "source_segments": 764,
+        "matched_segments": 730,
+        "segments_outside_paragraph_view": 34
+      },
+      "figures": [
+        {
+          "id": "paper15",
+          "page_number": 4,
+          "figure_number": "3",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper16",
+      "filename": "Penteado et al., Immunology, 2017.pdf",
+      "data_id": "2d8531530e747f265153b4e666f2fe445cba28cfdb91a9f4c4cd8e1cadb5b975",
+      "pages": 10,
+      "source_unit_count": 143,
+      "kinds": {
+        "text": 133,
+        "image": 10
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 154.01300007999998,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper16/verify/summary.json",
+        "sha256": "7a774161bfcdb6b7961d67d2660b17b147a43b99acd432b4a7fc8922e55b48cc"
+      },
+      "evidence_counts": {
+        "pages": 10,
+        "headings": 23,
+        "discrepancies": 89,
+        "compared_blocks": 140,
+        "equivalent_blocks": 51,
+        "figure_proposals": 4,
+        "parser_image_regions": 10,
+        "paragraphs": 100,
+        "source_segments": 885,
+        "matched_segments": 838,
+        "segments_outside_paragraph_view": 47
+      },
+      "figures": [
+        {
+          "id": "paper16",
+          "page_number": 5,
+          "figure_number": "1",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper17",
+      "filename": "Piccinini et al., Immunology, 2016.pdf",
+      "data_id": "e19a32a96175521004febfe9f7ccd2f4473802d607c0be329c12d13617713bc7",
+      "pages": 17,
+      "source_unit_count": 211,
+      "kinds": {
+        "text": 192,
+        "image": 19
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 278.045076292,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper17/verify/summary.json",
+        "sha256": "fd5212b71464d4a490157e9b3f3aa5599f88f3150b0d78aaa6cd480f4d3410b4"
+      },
+      "evidence_counts": {
+        "pages": 17,
+        "headings": 128,
+        "discrepancies": 118,
+        "compared_blocks": 211,
+        "equivalent_blocks": 93,
+        "figure_proposals": 7,
+        "parser_image_regions": 19,
+        "paragraphs": 141,
+        "source_segments": 1595,
+        "matched_segments": 1521,
+        "segments_outside_paragraph_view": 74
+      },
+      "figures": [
+        {
+          "id": "paper17",
+          "page_number": 9,
+          "figure_number": "6",
+          "status": "missing",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper18",
+      "filename": "Rovere et al., Arthritis & Rheumatism, 1999.pdf",
+      "data_id": "a62b068a7e0514f3bb24f7d340a4cb07aadb9078ebbab871413989e5e1efdc7f",
+      "pages": 9,
+      "source_unit_count": 96,
+      "kinds": {
+        "text": 90,
+        "image": 6
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 181.56572538199998,
+      "gpu_index": 0,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper18/verify/summary.json",
+        "sha256": "106bc27ff94853c0a38026c18e8c25c6c91077a275bdf41e2c54a095f7769e17"
+      },
+      "evidence_counts": {
+        "pages": 9,
+        "headings": 45,
+        "discrepancies": 60,
+        "compared_blocks": 96,
+        "equivalent_blocks": 36,
+        "figure_proposals": 6,
+        "parser_image_regions": 6,
+        "paragraphs": 66,
+        "source_segments": 930,
+        "matched_segments": 885,
+        "segments_outside_paragraph_view": 45
+      },
+      "figures": [
+        {
+          "id": "paper18",
+          "page_number": 5,
+          "figure_number": "4",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper20",
+      "filename": "Valente et al., Eur J Immunol. 2014.pdf",
+      "data_id": "174c856514fbf95ac74fd3e2d3dbd4dd5d03ec91f8754e9d1f26eeb5e4b7d468",
+      "pages": 13,
+      "source_unit_count": 170,
+      "kinds": {
+        "text": 164,
+        "image": 6
+      },
+      "stages": {
+        "parser": "complete",
+        "source_build_verify": "complete",
+        "evidence_package": "complete",
+        "all_page_contexts": "complete"
+      },
+      "postprocess_state": "complete",
+      "parser_seconds": 203.1563491980005,
+      "gpu_index": 1,
+      "source_verification": {
+        "path": "output/t03-expanded-papers/runs/paper20/verify/summary.json",
+        "sha256": "2253a9cb20655f49812d0751382b1317a23bfc7d2b9a2142b2941ab38901326d"
+      },
+      "evidence_counts": {
+        "pages": 13,
+        "headings": 58,
+        "discrepancies": 66,
+        "compared_blocks": 168,
+        "equivalent_blocks": 102,
+        "figure_proposals": 5,
+        "parser_image_regions": 6,
+        "paragraphs": 90,
+        "source_segments": 1233,
+        "matched_segments": 1152,
+        "segments_outside_paragraph_view": 81
+      },
+      "figures": [
+        {
+          "id": "paper20",
+          "page_number": 7,
+          "figure_number": "5",
+          "status": "complete",
+          "review": {
+            "path": "output/t03-expanded-papers/source-review/visual-crops-b3.json",
+            "sha256": "e56bcf864c028f4c4170f35673c74f86c76d9a2131689220e9da3cb392be3f08"
+          }
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "batch_exit_code": 0,
+    "postprocessor_exit_code": 0,
+    "source_verifier_document_exit_codes": {
+      "0": 17
+    },
+    "evidence_cli_document_exit_codes": {
+      "0": 16,
+      "4": 1
+    },
+    "scorer_self_check": {
+      "substring_cases": 225,
+      "normalization_missing_geometry_cases": 6,
+      "state": "passed"
+    },
+    "final_scorer_exit_code": 0,
+    "final_audit_exit_code": 0,
+    "application_regression": "not rerun: production sources frozen and unchanged; prior application results remain historical evidence",
+    "document_validation": {
+      "state": "passed",
+      "exit_code": 0,
+      "command": [
+        "C:/Users/DaydreamBlend/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/validate_bundle.py"
+      ],
+      "recorded_at_utc": "2026-09-10T03:36:17.665211+00:00",
+      "scope": "Documentation integrity, not application/runtime/LLM tests",
+      "stdout": {
+        "path": "output/t03-expanded-papers/runtime/document-validation-final.log",
+        "sha256": "d4bddb4af6d00e4be508d6678a97e351403ddf6e30805a0714f1cb739a1d8f89"
+      }
+    },
+    "independent_report_review": "No actionable finding; fixed score summary, 17 per-document counts, 19 Figure reviews, timings and 61 referenced file hashes independently checked."
+  },
+  "transcription_difference_review": {
+    "path": "output/t03-expanded-papers/runtime/transcription-review-final.json",
+    "sha256": "6d0d8e8a7b24ddaa9d94fb0ad93f7591436a8f30d4a697e2909f2f899e287616",
+    "reviewed_samples": 19,
+    "classification_counts": {
+      "math_representation_and_alignment_artifact": 3,
+      "line_break_hyphen_and_control_character": 10,
+      "shared_native_glyph_substitution": 5,
+      "detached_diacritic_serialization_order": 1
+    },
+    "note": "Explanatory review; does not redefine exact-match or semantic success rates."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "S02",
+  "tests": [
+    "AT09",
+    "AT12",
+    "AT14",
+    "AT16"
+  ],
+  "type": "effective_relation",
+  "nodes": [
+    "A1",
+    "A2",
+    "B1",
+    "C1"
+  ],
+  "edge": {
+    "id": "E1",
+    "original_pair": [
+      "A1",
+      "B1"
+    ],
+    "effective_pair": [
+      "A2",
+      "B1"
+    ]
+  },
+  "events": [
+    "pending",
+    "applicable"
+  ],
+  "consumed_by_C": [
+    "E1",
+    "A1.value"
+  ],
+  "note": "실제 FK ID가 아닌 symbolic fixture labels. revision/현재 적용 상태를 구분."
+}

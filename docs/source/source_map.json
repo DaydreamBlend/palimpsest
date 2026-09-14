@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "source_path": "docs/source/PALIMPSEST_CANONICAL_MODEL_INTEGRATED.md",
+  "source_sha256": "2cd3e2a6111b713663f2655917a26aa07d0faee66510aeccbb7b5296d1a5cba9",
+  "source_lines": 2331,
+  "parts": [
+    {
+      "path": "docs/source/baseline_parts/00_foundation.md",
+      "start_line": 1,
+      "end_line": 134,
+      "label": "문서 권위·정의·책임 영역·계층 (§0–3)",
+      "sha256": "b5e8601a4748443593c8fdbae798ee447649384b619a10e50d2a4cf5354aafe6"
+    },
+    {
+      "path": "docs/source/baseline_parts/01_data_d2i.md",
+      "start_line": 135,
+      "end_line": 374,
+      "label": "Data·수집 이력·D2I (§4–5)",
+      "sha256": "d6430771a4176d9aeae3438cc025d7645df9d00aa21f496848c8e7e68d4c8523"
+    },
+    {
+      "path": "docs/source/baseline_parts/02_information.md",
+      "start_line": 375,
+      "end_line": 531,
+      "label": "Information·교정·재검증 (§6)",
+      "sha256": "824a055abe5f4c17baf2adcc5338c0f3d6b6f1fa2d380c0b85d2c88ef2c26757"
+    },
+    {
+      "path": "docs/source/baseline_parts/03_knowledge_graph.md",
+      "start_line": 532,
+      "end_line": 774,
+      "label": "KNode·KEdge·Revision·Applicability (§7)",
+      "sha256": "0aab6f8366e6367cb020c9f156625c76a0b61433919eb56576c8b235bdc01f0a"
+    },
+    {
+      "path": "docs/source/baseline_parts/04_compiler_records.md",
+      "start_line": 775,
+      "end_line": 1081,
+      "label": "Compiler·Record·Candidate (§8–10)",
+      "sha256": "bf512116b884f756592c78d44d7a8a16c085f7b859efdc4463ddd371ae1d6117"
+    },
+    {
+      "path": "docs/source/baseline_parts/05_identity_materiality.md",
+      "start_line": 1082,
+      "end_line": 1239,
+      "label": "Fingerprint·Material delta (§11–12)",
+      "sha256": "d7971ce9fe323fc6ae46407552a95320312f31749dc3fed044cd54a214311d2a"
+    },
+    {
+      "path": "docs/source/baseline_parts/06_knowledge_operations.md",
+      "start_line": 1240,
+      "end_line": 1469,
+      "label": "I2K·N2E·K2K·반박 (§13–16)",
+      "sha256": "f1cdcc83dc499fe758ea6be123df587ba0496172616c25528766a6e75df53e7c"
+    },
+    {
+      "path": "docs/source/baseline_parts/07_propagation.md",
+      "start_line": 1470,
+      "end_line": 1591,
+      "label": "Convergent propagation (§17)",
+      "sha256": "129acb85d4dd29dca014bfab2bca77a5f43f3dcccb223e579879347e05cb25f5"
+    },
+    {
+      "path": "docs/source/baseline_parts/08_wisdom_decisions.md",
+      "start_line": 1592,
+      "end_line": 1934,
+      "label": "Wisdom·Decision·W2K·Trace (§18–22)",
+      "sha256": "4b4b48c605bdac1020759039a7ab441f1e59cb0ad933ae8b06217f7621afc04e"
+    },
+    {
+      "path": "docs/source/baseline_parts/09_publication_retrieval.md",
+      "start_line": 1935,
+      "end_line": 2036,
+      "label": "Parchment·Book·RAG (§23–24)",
+      "sha256": "ff166852a73b1356d66e1e3d8c53f862914593ac76bdf7cea264b77a18b547f3"
+    },
+    {
+      "path": "docs/source/baseline_parts/10_relational_vocabulary.md",
+      "start_line": 2037,
+      "end_line": 2176,
+      "label": "Relational skeleton·용어 (§25–26)",
+      "sha256": "32a4cc2e2b0cb6ad6b83b5b8d32889b8de171b3074dbdc884a0b337965298106"
+    },
+    {
+      "path": "docs/source/baseline_parts/11_invariants_decisions.md",
+      "start_line": 2177,
+      "end_line": 2273,
+      "label": "불변조건 45개·A1–A40 (§27–28)",
+      "sha256": "3728fc90f0c917c24f14f1ab6cb50c3fc9a0a4fb3a12413ee34dc6ed5754fca5"
+    },
+    {
+      "path": "docs/source/baseline_parts/12_open_implementation.md",
+      "start_line": 2274,
+      "end_line": 2331,
+      "label": "미정값·구현 순서·결론 (§29–30)",
+      "sha256": "34269f92587dd0b8021e50db58076b4fc1036a17475a18b46ae184c5e40dc929"
+    }
+  ]
+}

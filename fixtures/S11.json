@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "S11",
+  "title": "MinerU failures and retry",
+  "synthetic_only": true,
+  "tests": [
+    "AT95",
+    "AT96",
+    "AT97",
+    "AT98",
+    "AT99",
+    "AT100",
+    "AT102",
+    "AT105"
+  ],
+  "payload": {
+    "scenario_kind": "synthetic_parser_execution_events",
+    "events": [
+      "missing_executable",
+      "partial_pages",
+      "retry_same_request",
+      "config_remote_endpoint_detected"
+    ],
+    "expectations": [
+      "no_silent_fallback",
+      "no_false_completed",
+      "no_unapproved_remote_transfer"
+    ]
+  }
+}

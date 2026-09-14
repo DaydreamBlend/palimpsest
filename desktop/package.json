@@ -1,0 +1,24 @@
+{
+  "name": "palimpsest-desktop",
+  "productName": "Palimpsest",
+  "version": "0.7.0",
+  "private": true,
+  "description": "Local Palimpsest Wiki and exact source evidence workspace",
+  "main": "main.cjs",
+  "scripts": {
+    "install:electron": "install-electron",
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "package": "node ../tools/package_desktop.cjs"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "pdfjs-dist": "6.3.289"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "electron": "44.3.0"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "desktop-stores-v1",
+  "stores": [
+    {
+      "store_id": "01a09dcd-bded-7916-bc53-2fb4dacfb86b",
+      "label": "논문 Wiki",
+      "connection": {
+        "project": "palimpsest-multi-checks",
+        "database": "palimpsest_wiki_pg",
+        "wikiId": "01a0941f-90b3-792b-bd4b-a3e83c18eaeb",
+        "artifactVolume": "palimpsest-knowledge_artifacts",
+        "queryDirectory": "output/t07-wiki-query-ui/query-store",
+        "image": "palimpsest-ui:0.23.0"
+      }
+    },
+    {
+      "store_id": "01a09dcd-bded-7c01-a86b-ed4aa1b8422e",
+      "label": "Palimpsest 코드",
+      "connection": {
+        "project": "palimpsest-multi-checks",
+        "database": "palimpsest_codebase_k2k",
+        "wikiId": "01a09a84-f980-7dde-97af-2c3f0944c28f",
+        "artifactVolume": "palimpsest-codebase_artifacts",
+        "queryDirectory": "output/t13-code-review-wiki/query-store",
+        "image": "palimpsest-ui:0.23.0",
+        "include_data_ids": [
+          "310a3f3384f2b5f9e75df950e5ba0dc589f30f80a5f53d70ffdd7a8e9c6de02c",
+          "dfbb33fbd8966f392582c8d72c32f7e1136ca212cdfcf5e5ae1e3d7cabb6859f",
+          "2820b8535702a0aa107b95338b8a82851187f4556d349741157da47a52f4e72f"
+        ]
+      }
+    },
+    {
+      "store_id": "01a09dcd-bded-7eae-bd80-3bae1b47a6fd",
+      "label": "원본 보존 이력",
+      "connection": {
+        "project": "palimpsest-knowledge",
+        "database": "palimpsest",
+        "wikiId": null,
+        "artifactVolume": "palimpsest-knowledge_artifacts",
+        "queryDirectory": null,
+        "image": "palimpsest-ui:0.23.0"
+      }
+    }
+  ]
+}

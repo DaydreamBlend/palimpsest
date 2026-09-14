@@ -1,0 +1,20 @@
+{
+  "id": "S04",
+  "tests": [
+    "AT35",
+    "AT36"
+  ],
+  "type": "atomic_replacement",
+  "old": [
+    "I1"
+  ],
+  "replacements": [
+    "I2",
+    "I3"
+  ],
+  "validation": {
+    "I2": "accepted_candidate",
+    "I3": "failed"
+  },
+  "expected": "I1 조기 retire 금지"
+}

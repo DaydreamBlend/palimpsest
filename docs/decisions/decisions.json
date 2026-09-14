@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "baseline_decisions": "A1–A40 in source snapshot",
+  "proposals": [
+    {
+      "id": "P01",
+      "title": "Identity/FP/materiality registry",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/01_identity_materiality.md",
+      "finding_ids": [
+        "F02",
+        "F09",
+        "F10",
+        "F16"
+      ],
+      "scope": "kind별 identity projection, rejection key scope, materiality 판정 필드와 domain-specific duplicate 순서. 수치 tolerance 값은 별도 평가."
+    },
+    {
+      "id": "P02",
+      "title": "Effective edge와 dependency contract",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/02_effective_relations_dependencies.md",
+      "finding_ids": [
+        "F03",
+        "F04",
+        "F05",
+        "F06"
+      ],
+      "scope": "EffectiveEdgeRef, 최신 negative 우선, pending/unknown, 실제 endpoint 소비 의존성. semantic EdgeRevision 없는 rebasing 유지."
+    },
+    {
+      "id": "P03",
+      "title": "Propagation completion receipt",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/03_propagation_completion.md",
+      "finding_ids": [
+        "F01"
+      ],
+      "scope": "의무 dependency revalidation과 discovery 구분, watermark/coverage/미완료 obligation 기준 quiescence. hard propagation cap 없음."
+    },
+    {
+      "id": "P04",
+      "title": "현재 support와 material evidence state",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/05_compiler_validation_evidence.md",
+      "finding_ids": [
+        "F07",
+        "F08"
+      ],
+      "scope": "creation provenance와 current support receipt 분리. no-material 재검증 후에도 새 support/dependency 보존."
+    },
+    {
+      "id": "P05",
+      "title": "Atomic commit/retry/publication barrier",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/04_transactions_execution.md",
+      "finding_ids": [
+        "F11",
+        "F12",
+        "F13"
+      ],
+      "scope": "read-set freshness, execution/proposal 분리, outbox/lease/fan-in, replacement-set publication, commit ordering."
+    },
+    {
+      "id": "P06",
+      "title": "Operation/effect/subtype registry",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/08_interfaces_schema_plan.md",
+      "finding_ids": [
+        "F14",
+        "F15"
+      ],
+      "scope": "정보 기반 K revalidation public subtype 이름, effect-only 승인 표현, N2E predicate 변경 처리, DAG 범위. 정확한 이름은 승인 과정에서 선택."
+    },
+    {
+      "id": "P07",
+      "title": "Evidence independence와 생성물 lineage",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/08_interfaces_schema_plan.md",
+      "finding_ids": [
+        "F17",
+        "F24"
+      ],
+      "scope": "source work/study/derived origin metadata, leaf support dedup, P/B 재수입의 authority/독립 근거 세탁 방지."
+    },
+    {
+      "id": "P08",
+      "title": "Decision command와 Wisdom retrieval 축",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/06_decision_wisdom_publication.md",
+      "finding_ids": [
+        "F18",
+        "F19",
+        "F20"
+      ],
+      "scope": "confirmation-event idempotency, payload binding, action mapping, temporal supersession, reported trace, evidence mode/strategy 분리."
+    },
+    {
+      "id": "P09",
+      "title": "Read snapshot/projection/replay",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/07_storage_retrieval_security.md",
+      "finding_ids": [
+        "F21"
+      ],
+      "scope": "effective state projection key, authoritative filtering, index watermark, historical read receipt와 재실행 한계."
+    },
+    {
+      "id": "P10",
+      "title": "Storage/security/operational controls",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/contracts/07_storage_retrieval_security.md",
+      "finding_ids": [
+        "F22",
+        "F23"
+      ],
+      "scope": "file/DB publish/reconciliation, trust boundary, secret/privacy/backup, 명시적 pause/resume/cancel과 partial 상태."
+    },
+    {
+      "id": "P11",
+      "title": "본문 편집 잔재 정정",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/review/ERRATA.md",
+      "finding_ids": [
+        "F25"
+      ],
+      "scope": "충돌 문장을 승인된 규칙에 맞춰 정정. 원본 archive는 그대로 보존하고 승인 overlay에 정확한 replacement를 기록."
+    },
+    {
+      "id": "P12",
+      "title": "실제 repository 기반 구현 profile",
+      "status": "proposed",
+      "approval_ref": null,
+      "selected_details": null,
+      "contract_path": "docs/implementation/ENVIRONMENT.md",
+      "finding_ids": [
+        "F26"
+      ],
+      "scope": "U01–U03(CLI-first/GUI-last, MinerU PDF, 영어 구성요소명)는 확정. 실제 repo 언어/toolchain/CLI library/MinerU version-backend/DB-test profile만 조사 후 확정. GUI framework는 T13 전까지 채택 금지."
+    }
+  ],
+  "effective_user_overrides_path": "docs/decisions/user_overrides.json"
+}

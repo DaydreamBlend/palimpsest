@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "S12",
+  "title": "English naming migration",
+  "synthetic_only": true,
+  "tests": [
+    "AT88",
+    "AT89"
+  ],
+  "payload": {
+    "scenario_kind": "synthetic_identity_preservation_contract",
+    "before": {
+      "data_id": "same-d",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "revision_id": "same-k-r1"
+    },
+    "after": {
+      "data_id": "same-d",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "revision_id": "same-k-r1"
+    },
+    "expectations": [
+      "labels_change_not_ids",
+      "legacy_history_kept",
+      "no_implicit_live_schema_rename"
+    ]
+  }
+}

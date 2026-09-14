@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "S10",
+  "title": "MinerU normalized adapter contract",
+  "synthetic_only": true,
+  "tests": [
+    "AT90",
+    "AT91",
+    "AT92",
+    "AT93",
+    "AT94",
+    "AT101"
+  ],
+  "payload": {
+    "scenario_kind": "synthetic_internal_normalized_view_NOT_real_MinerU_output",
+    "data_ref": "synthetic-data-1",
+    "parser": {
+      "name": "MinerU",
+      "version": "test-profile-not-a-real-version"
+    },
+    "blocks": [
+      {
+        "original_page_index": 2,
+        "coordinate_system": "synthetic_test_coordinates",
+        "region": [
+          10,
+          20,
+          100,
+          120
+        ],
+        "raw_output_locator": "/synthetic/blocks/0",
+        "type": "text",
+        "text": "합성 시험 문장"
+      }
+    ],
+    "expectations": [
+      "must_not_claim_real_parser_compatibility",
+      "grounding_requires_original_pdf_validation"
+    ]
+  }
+}

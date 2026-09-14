@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palimpsest — 지식의 근거를 읽다</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="문서 탐색">
+      <div class="brand"><svg class="brand-mark" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 10 11-6 11 6-11 6Z M3 15l11 6 11-6 M3 20l11 6 11-6"/></svg><div><strong>palimpsest</strong><span class="brand-caption">THOUGHTS, WITH ROOTS</span></div></div>
+      <div id="realm-controls" class="realm-controls" hidden><label for="realm-select">현재 Realm</label><select id="realm-select" aria-label="자료 Realm"><option value="all">모든 Realm</option></select><button id="realm-manage" type="button">Realm 관리 ↗</button></div>
+      <nav class="primary-nav" aria-label="작업 공간">
+        <button id="data-nav" class="nav-button" type="button"><span aria-hidden="true">▧</span>모든 자료<span id="data-count" class="nav-count"></span></button>
+        <button id="wiki-nav" class="nav-button active" type="button" aria-current="page" title="Parchment 문서 보기 · 기존 설명 구성 포함"><span aria-hidden="true">▤</span>위키 문서<span id="wiki-count" class="nav-count"></span></button>
+        <button id="knowledge-nav" class="nav-button" type="button"><span aria-hidden="true">◇</span>지식 K<span id="knowledge-count" class="nav-count"></span></button>
+        <button id="reviews-nav" class="nav-button" type="button"><span aria-hidden="true">◉</span>검토<span id="review-count" class="nav-count"></span></button>
+        <button id="queries-nav" class="nav-button" type="button"><span aria-hidden="true">◷</span>질문 기록<span id="query-count" class="nav-count"></span></button>
+      </nav>
+      <div class="sidebar-heading"><span id="library-label">라이브러리</span><span id="library-count"></span></div>
+      <label class="search-field"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="문서 제목 검색" aria-label="문서 제목 검색" autocomplete="off"><kbd>/</kbd></label>
+      <div id="filters" class="filter-row" aria-label="문서 종류"><button type="button" data-filter="all" class="active" aria-pressed="true">전체</button><button type="button" data-filter="parchment" aria-pressed="false">P</button><button type="button" data-filter="paper" aria-pressed="false">자료</button><button type="button" data-filter="topic" aria-pressed="false">주제</button></div>
+      <div id="data-filters" class="filter-row" aria-label="자료 형식" hidden><select id="data-type" aria-label="자료 형식 필터"><option value="all">모든 형식</option><option value="pdf">PDF</option><option value="code">코드</option><option value="markdown">Markdown</option><option value="web">웹</option><option value="text">텍스트</option><option value="image">이미지</option><option value="other">기타</option></select></div>
+      <div id="library" class="library" aria-live="polite"><p class="sidebar-message">저장된 문서를 불러오고 있습니다.</p></div>
+      <div class="sidebar-footer"><div class="connection-line"><span id="connection-dot" class="status-dot"></span><span id="connection-label">연결 확인 중</span><button id="reconnect" class="icon-button" type="button" aria-label="백엔드 다시 연결" title="다시 연결">↻</button></div><span class="local-note">원본 보존 · Realm 분류</span></div>
+    </aside>
+    <main id="main" class="main" tabindex="-1">
+      <header class="topbar"><div id="breadcrumb" class="breadcrumb">위키 <span>/</span> 라이브러리</div><div class="topbar-note"><span id="active-realm" class="context-chip">모든 Realm</span><span class="tiny-dot"></span>원문과 함께 읽기</div></header>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div id="content" class="content"><div class="empty-state"><div class="loading-ring" aria-hidden="true"></div><h1>라이브러리를 여는 중입니다</h1><p>저장된 문서와 원문 연결을 확인합니다.</p></div></div>
+    </main>
+    <aside id="source-panel" class="source-panel" aria-label="원문 근거" hidden>
+      <div class="source-header"><div><span class="eyebrow">SOURCE EVIDENCE</span><h2>원문 근거</h2></div><button id="close-source" class="icon-button" type="button" aria-label="원문 근거 패널 닫기">×</button></div>
+      <div id="source-label" class="source-label"></div>
+      <div class="source-tabs" role="tablist" aria-label="근거 보기"><button id="information-tab" type="button" role="tab" aria-selected="true" aria-controls="information-view" class="active">Information</button><button id="pdf-tab" type="button" role="tab" aria-selected="false" aria-controls="pdf-view">원본 PDF</button></div>
+      <div id="source-status" class="source-status" role="status" hidden></div>
+      <div id="information-view" class="information-view" role="tabpanel" aria-labelledby="information-tab"></div>
+      <div id="pdf-view" class="pdf-view" role="tabpanel" aria-labelledby="pdf-tab" hidden><div class="pdf-toolbar"><button id="pdf-previous" class="icon-button" type="button" aria-label="이전 PDF 페이지">‹</button><label><input id="pdf-page" type="number" value="1" min="1" aria-label="PDF 페이지 번호"> 페이지 <span id="pdf-total"></span></label><button id="pdf-next" class="icon-button" type="button" aria-label="다음 PDF 페이지">›</button><div class="pdf-tools"><button id="pdf-zoom-out" class="icon-button" type="button" aria-label="PDF 축소" title="축소">−</button><button id="pdf-zoom-in" class="icon-button" type="button" aria-label="PDF 확대" title="확대">+</button><button id="pdf-rotate" class="icon-button" type="button" aria-label="PDF 오른쪽으로 회전" title="오른쪽으로 회전">↻</button></div></div><p class="region-note">등록 원본 PDF · 강조 영역은 보존된 원문 블록 위치입니다.</p><div id="pdf-canvas" class="pdf-canvas"></div></div>
+    </aside>
+  </div>
+  <dialog id="realm-assignment" class="realm-assignment" aria-labelledby="assignment-heading" hidden><div class="assignment-header"><div><span class="eyebrow">REALM / SOURCE MEMBERSHIP</span><h2 id="assignment-heading">자료의 Realm 지정</h2></div><button id="close-assignment" class="icon-button" type="button" aria-label="Realm 지정 닫기">×</button></div><p id="assignment-title" class="assignment-title"></p><div id="assignment-body"></div></dialog>
+  <script type="module" src="./renderer.js"></script>
+</body>
+</html>

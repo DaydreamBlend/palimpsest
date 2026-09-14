@@ -1,0 +1,15 @@
+{
+  "id": "S01",
+  "tests": [
+    "AT01",
+    "AT02",
+    "AT03"
+  ],
+  "type": "generated_graph_recipe",
+  "parameters": {
+    "chain_length": 128,
+    "fanout_count": 100001,
+    "non_material_barrier_position": 7
+  },
+  "note": "크기는 테스트 데이터 생성용이며 production propagation cap이 아님. 모든 객체를 이 JSON에 펼치지 않음."
+}

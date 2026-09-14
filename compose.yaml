@@ -1,0 +1,72 @@
+x-app: &app
+  image: ${PALIMPSEST_APP_IMAGE:-palimpsest-selection:0.4.0}
+  platform: linux/amd64
+  build: .
+  environment:
+    PALIMPSEST_DATABASE_DSN_FILE: /run/app/runtime_dsn
+    PALIMPSEST_ARTIFACT_ROOT: /var/lib/palimpsest/artifacts
+  volumes:
+    - app_credentials:/run/app:ro
+    - artifacts:/var/lib/palimpsest/artifacts
+  networks: [palimpsest]
+
+services:
+  init:
+    <<: *app
+    user: "0:0"
+    entrypoint: ["python", "tools/container_init.py"]
+    command: []
+    volumes:
+      - db_credentials:/run/admin
+      - app_credentials:/run/app
+      - artifacts:/var/lib/palimpsest/artifacts
+  db:
+    image: pgvector/pgvector:0.8.6-pg18-bookworm@sha256:2ba9ca5f2e7daa0f0e7723cba1ee9167bab54efd3640516a44ac1a928dd67e7a
+    platform: linux/amd64
+    environment:
+      POSTGRES_DB: palimpsest
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/admin/postgres_password
+    volumes:
+      - postgres:/var/lib/postgresql
+      - db_credentials:/run/admin:ro
+    networks: [palimpsest]
+    depends_on:
+      init: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d palimpsest"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  migrate:
+    <<: *app
+    user: "0:0"
+    command: ["db", "migrate", "--json"]
+    environment:
+      PALIMPSEST_ADMIN_DSN_FILE: /run/admin/admin_dsn
+      PALIMPSEST_DB_PASSWORD_FILE: /run/admin/runtime_password
+    volumes:
+      - db_credentials:/run/admin:ro
+    depends_on:
+      db: {condition: service_healthy}
+  app:
+    <<: *app
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+  test:
+    <<: *app
+    profiles: [test]
+    entrypoint: ["python", "tools/run_app_tests.py"]
+    command: []
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+
+volumes:
+  postgres:
+  artifacts:
+  db_credentials:
+  app_credentials:
+
+networks:
+  palimpsest:
+    internal: true

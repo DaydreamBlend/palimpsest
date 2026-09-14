@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-09",
+  "scope": "read_only_page_and_adjacent_context_projection",
+  "user_choice": "페이지별 조회·LLM 입력부터 적용 (권고)",
+  "execution_id": "01a0856e-5610-70bd-9858-e03684a995b0",
+  "projection_sha256": "11760619a2407ada9d1ee6875a6883511887c9780cbbf5391adce2d25efb0932",
+  "page_count": 14,
+  "original_blocks": 249,
+  "information_owners": 189,
+  "images": 7,
+  "all_source_text_offsets_exact": true,
+  "mineru_index_order_verified": true,
+  "all_target_windows_complete": true,
+  "windows_with_missing_context_pages": {
+    "8": [
+      10
+    ],
+    "10": [
+      12
+    ],
+    "11": [
+      9
+    ],
+    "13": [
+      11
+    ]
+  },
+  "replay_identical": true,
+  "history_unchanged": 223,
+  "llm_calls": 0,
+  "new_canonical_rows": 0,
+  "regression": {
+    "tests": 202,
+    "elapsed_seconds": 24.832,
+    "exit_code": 0,
+    "skipped": 0,
+    "command": "docker compose -p palimpsest-t03-verify run --rm --no-deps test",
+    "app_image_id": "sha256:594c68dcf8b7ebab5461f45a041e78dce407b8c44368aabc645978c268ceb528"
+  },
+  "limitations": [
+    "MinerU index is preserved, not semantically corrected",
+    "±1 is a default window; missing context pages remain explicit",
+    "I2K/model calls and K deduplication are not implemented in this read-only slice",
+    "T03 full task gate stays in_progress"
+  ],
+  "changed_files": [
+    "src/palimpsest/page_projection.py",
+    "src/palimpsest/compiler_runtime.py",
+    "src/palimpsest/cli.py",
+    "tests/app/test_page_projection.py",
+    "docs/implementation/PAGE_CONTEXT.md",
+    "docs/interfaces/CLI_CONTRACT.md",
+    "README.md",
+    "docs/INDEX.md",
+    "docs/implementation/T03_RUNTIME.md",
+    "docs/implementation/MODULE_BOUNDARIES.md",
+    "docs/implementation/ENVIRONMENT.md",
+    "progress/STATUS.md",
+    "progress/repository_inventory.md",
+    "progress/T03_execplan.md",
+    "progress/T03_page_result.json",
+    "progress/T03_docker_cleanup.json",
+    "tests/specs/acceptance_catalog.json"
+  ],
+  "artifacts": [
+    "output/t03-pages/PAGES.md",
+    "output/t03-pages/pages.json",
+    "output/t03-pages/context-10.json",
+    "output/t03-source/page_application_tests.log"
+  ],
+  "documentation_check": {
+    "command": "python -X utf8 -B tools/validate_bundle.py --json",
+    "exit_code": 0,
+    "errors": 0
+  },
+  "cleanup": {
+    "removed_containers": [
+      "palimpsest-t03-verify-db-1",
+      "palimpsest-t03-verify-init-1"
+    ],
+    "removed_network": "palimpsest-t03-verify_palimpsest",
+    "remaining_palimpsest_containers": [
+      "palimpsest-dev-db-1"
+    ],
+    "kept_palimpsest_images": [
+      {
+        "repository": "palimpsest-t03",
+        "tag": "0.2.0",
+        "id": "sha256:594c68dcf8b7ebab5461f45a041e78dce407b8c44368aabc645978c268ceb528"
+      },
+      {
+        "repository": "palimpsest-mineru",
+        "tag": "3.4.5",
+        "id": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854"
+      }
+    ],
+    "all_volumes_unchanged": true,
+    "unrelated_containers_unchanged": true
+  }
+}

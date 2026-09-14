@@ -1,0 +1,31 @@
+test_broken_local_link (test_validate_bundle.BundleChecks.test_broken_local_link) ... ok
+test_cli_cannot_depend_on_gui (test_validate_bundle.BundleChecks.test_cli_cannot_depend_on_gui) ... ok
+test_component_name_drift (test_validate_bundle.BundleChecks.test_component_name_drift) ... ok
+test_current_bundle (test_validate_bundle.BundleChecks.test_current_bundle) ... ok
+test_current_differs_from_archived_only_as_versioned_source (test_validate_bundle.BundleChecks.test_current_differs_from_archived_only_as_versioned_source) ... ok
+test_current_reassemble_exact (test_validate_bundle.BundleChecks.test_current_reassemble_exact) ... ok
+test_gui_cannot_be_current_task (test_validate_bundle.BundleChecks.test_gui_cannot_be_current_task) ... ok
+test_missing_task_dependency (test_validate_bundle.BundleChecks.test_missing_task_dependency) ... ok
+test_parser_policy_drift (test_validate_bundle.BundleChecks.test_parser_policy_drift) ... ok
+test_reassemble_exact (test_validate_bundle.BundleChecks.test_reassemble_exact) ... ok
+test_silent_fallback_policy (test_validate_bundle.BundleChecks.test_silent_fallback_policy) ... ok
+test_tampered_baseline_slice (test_validate_bundle.BundleChecks.test_tampered_baseline_slice) ... ok
+test_tampered_current_full (test_validate_bundle.BundleChecks.test_tampered_current_full) ... ok
+test_tampered_slice (test_validate_bundle.BundleChecks.test_tampered_slice) ... ok
+test_tampered_source (test_validate_bundle.BundleChecks.test_tampered_source) ... ok
+test_task_cycle (test_validate_bundle.BundleChecks.test_task_cycle) ... ok
+test_unmapped_invariant (test_validate_bundle.BundleChecks.test_unmapped_invariant) ... ok
+test_unsupported_approval (test_validate_bundle.BundleChecks.test_unsupported_approval) ... ok
+test_user_override_missing_approval (test_validate_bundle.BundleChecks.test_user_override_missing_approval) ... ok
+test_column_mismatch (test_validate_bundle.MarkdownChecks.test_column_mismatch) ... ok
+test_empty_cell (test_validate_bundle.MarkdownChecks.test_empty_cell) ... ok
+test_escaped_pipe (test_validate_bundle.MarkdownChecks.test_escaped_pipe) ... ok
+test_ignore_code_block (test_validate_bundle.MarkdownChecks.test_ignore_code_block) ... ok
+test_missing_delimiter (test_validate_bundle.MarkdownChecks.test_missing_delimiter) ... ok
+test_unclosed_fence (test_validate_bundle.MarkdownChecks.test_unclosed_fence) ... ok
+test_valid_table (test_validate_bundle.MarkdownChecks.test_valid_table) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.017s
+
+OK

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "S09",
+  "title": "CLI headless contract",
+  "synthetic_only": true,
+  "tests": [
+    "AT82",
+    "AT83",
+    "AT84",
+    "AT85",
+    "AT87",
+    "AT103",
+    "AT104"
+  ],
+  "payload": {
+    "scenario_kind": "synthetic_cli_contract",
+    "environment": {
+      "tty": false,
+      "display": false
+    },
+    "expectations": [
+      "json_stdout_only",
+      "stderr_logs",
+      "no_auto_confirmation",
+      "no_gui_dependency"
+    ]
+  }
+}

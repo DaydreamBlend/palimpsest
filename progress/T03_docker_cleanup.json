@@ -1,0 +1,774 @@
+{
+  "date": "2026-09-09",
+  "containers_before": [
+    {
+      "Command": "\"python tools/contai…\"",
+      "CreatedAt": "2026-09-09 16:55:13 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "8f51ae03ec85",
+      "Image": "6ac8c7743983",
+      "Labels": "com.docker.compose.config-hash=102a91457fa7e9722016cf4f6f3fa22e9d34f8b1f82d9e630a013a9c90e08c21,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:2e52a01482f6939b37cca39f3225c4cb2cfbd65ca1b2ee8d0e2eadb4e017bcb9,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-dev,com.docker.compose.service=init,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "3",
+      "Mounts": "palimpsest-dev…,palimpsest-dev…,palimpsest-dev…",
+      "Names": "palimpsest-dev-init-1",
+      "Networks": "palimpsest-dev_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "31 minutes ago",
+      "Size": "36.9kB (virtual 172MB)",
+      "State": "exited",
+      "Status": "Exited (0) 31 minutes ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 16:52:42 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "e0099e831635",
+      "Image": "pgvector/pgvector:0.8.6-pg18-bookworm",
+      "Labels": "com.docker.compose.config-hash=061c5330047034094ef6631f03c7ed26954b5d0d793de095910fe8a99609a06d,com.docker.compose.container-number=1,com.docker.compose.depends_on=init:service_completed_successfully:false,com.docker.compose.image=sha256:1d50c689b0a6511b9ea0a15615281c81a59fd04a08eb35057ec8646fb3a2118a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t03-verify,com.docker.compose.service=db,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "2",
+      "Mounts": "palimpsest-t03…,palimpsest-t03…",
+      "Names": "palimpsest-t03-verify-db-1",
+      "Networks": "palimpsest-t03-verify_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "5432/tcp",
+      "RunningFor": "34 minutes ago",
+      "Size": "24.6kB (virtual 472MB)",
+      "State": "running",
+      "Status": "Up 34 minutes (healthy)"
+    },
+    {
+      "Command": "\"python tools/contai…\"",
+      "CreatedAt": "2026-09-09 16:52:42 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "8947d529e931",
+      "Image": "9cbd96ad4517",
+      "Labels": "com.docker.compose.config-hash=102a91457fa7e9722016cf4f6f3fa22e9d34f8b1f82d9e630a013a9c90e08c21,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:2e52a01482f6939b37cca39f3225c4cb2cfbd65ca1b2ee8d0e2eadb4e017bcb9,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t03-verify,com.docker.compose.service=init,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "3",
+      "Mounts": "palimpsest-t03…,palimpsest-t03…,palimpsest-t03…",
+      "Names": "palimpsest-t03-verify-init-1",
+      "Networks": "palimpsest-t03-verify_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "34 minutes ago",
+      "Size": "36.9kB (virtual 172MB)",
+      "State": "exited",
+      "Status": "Exited (0) 33 minutes ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 16:40:01 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "71497f9fdafc",
+      "Image": "pgvector/pgvector:0.8.6-pg18-bookworm",
+      "Labels": "com.docker.compose.config-hash=061c5330047034094ef6631f03c7ed26954b5d0d793de095910fe8a99609a06d,com.docker.compose.container-number=1,com.docker.compose.depends_on=init:service_completed_successfully:false,com.docker.compose.image=sha256:1d50c689b0a6511b9ea0a15615281c81a59fd04a08eb35057ec8646fb3a2118a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t03-test,com.docker.compose.service=db,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "2",
+      "Mounts": "palimpsest-t03…,palimpsest-t03…",
+      "Names": "palimpsest-t03-test-db-1",
+      "Networks": "palimpsest-t03-test_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "5432/tcp",
+      "RunningFor": "46 minutes ago",
+      "Size": "24.6kB (virtual 472MB)",
+      "State": "running",
+      "Status": "Up 46 minutes (healthy)"
+    },
+    {
+      "Command": "\"python tools/contai…\"",
+      "CreatedAt": "2026-09-09 16:40:01 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "cfe9afe38568",
+      "Image": "59d908bfb6f2",
+      "Labels": "com.docker.compose.config-hash=102a91457fa7e9722016cf4f6f3fa22e9d34f8b1f82d9e630a013a9c90e08c21,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:fce4f4074f96b7cf9f7db4d44e8b3276fe1a5e9fa93082348109f14f2d9b0fdf,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t03-test,com.docker.compose.service=init,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "3",
+      "Mounts": "palimpsest-t03…,palimpsest-t03…,palimpsest-t03…",
+      "Names": "palimpsest-t03-test-init-1",
+      "Networks": "palimpsest-t03-test_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "46 minutes ago",
+      "Size": "36.9kB (virtual 172MB)",
+      "State": "exited",
+      "Status": "Exited (0) 46 minutes ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 16:17:23 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "151b1b555b28",
+      "Image": "pgvector/pgvector:0.8.6-pg18-bookworm",
+      "Labels": "com.docker.compose.config-hash=061c5330047034094ef6631f03c7ed26954b5d0d793de095910fe8a99609a06d,com.docker.compose.container-number=1,com.docker.compose.depends_on=init:service_completed_successfully:false,com.docker.compose.image=sha256:1d50c689b0a6511b9ea0a15615281c81a59fd04a08eb35057ec8646fb3a2118a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-dev,com.docker.compose.service=db,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "2",
+      "Mounts": "palimpsest-dev…,palimpsest-dev…",
+      "Names": "palimpsest-dev-db-1",
+      "Networks": "palimpsest-dev_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "5432/tcp",
+      "RunningFor": "About an hour ago",
+      "Size": "24.6kB (virtual 472MB)",
+      "State": "running",
+      "Status": "Up About an hour (healthy)"
+    },
+    {
+      "Command": "\"python tools/contai…\"",
+      "CreatedAt": "2026-09-09 15:44:54 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "b0739e09af57",
+      "Image": "palimpsest-t02:0.1.0",
+      "Labels": "com.docker.compose.config-hash=a547de85687f93a22f49b4b1ec6726f8f1b332688f44d9dc095fb84964c710b5,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:774cd7c4aa6341b904d8623a0e13543cfaccc8aea71278ee5ebadab85044c898,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t02-test,com.docker.compose.service=init,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "3",
+      "Mounts": "palimpsest-t02…,palimpsest-t02…,palimpsest-t02…",
+      "Names": "palimpsest-t02-test-init-1",
+      "Networks": "palimpsest-t02-test_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "2 hours ago",
+      "Size": "36.9kB (virtual 171MB)",
+      "State": "exited",
+      "Status": "Exited (0) 2 hours ago"
+    },
+    {
+      "Command": "\"palim db migrate --…\"",
+      "CreatedAt": "2026-09-09 15:44:54 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "b79d7ed49c6b",
+      "Image": "palimpsest-t02:0.1.0",
+      "Labels": "com.docker.compose.config-hash=c76ec44576333719604ea4444b2977152ea5b270a2c34dd8601d20275ce2d3e4,com.docker.compose.container-number=1,com.docker.compose.depends_on=db:service_healthy:false,com.docker.compose.image=sha256:774cd7c4aa6341b904d8623a0e13543cfaccc8aea71278ee5ebadab85044c898,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t02-test,com.docker.compose.service=migrate,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "1",
+      "Mounts": "palimpsest-t02…",
+      "Names": "palimpsest-t02-test-migrate-1",
+      "Networks": "palimpsest-t02-test_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "2 hours ago",
+      "Size": "12.3kB (virtual 171MB)",
+      "State": "exited",
+      "Status": "Exited (0) 2 hours ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 15:35:44 +0900 KST",
+      "HealthStatus": "unhealthy",
+      "ID": "62dc108772a8",
+      "Image": "pgvector/pgvector:0.8.6-pg18-bookworm",
+      "Labels": "com.docker.compose.config-hash=061c5330047034094ef6631f03c7ed26954b5d0d793de095910fe8a99609a06d,com.docker.compose.container-number=1,com.docker.compose.depends_on=init:service_completed_successfully:false,com.docker.compose.image=sha256:1d50c689b0a6511b9ea0a15615281c81a59fd04a08eb35057ec8646fb3a2118a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-t02-test,com.docker.compose.service=db,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "2",
+      "Mounts": "palimpsest-t02…,palimpsest-t02…",
+      "Names": "palimpsest-t02-test-db-1",
+      "Networks": "palimpsest-t02-test_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "2 hours ago",
+      "Size": "20.5kB (virtual 472MB)",
+      "State": "exited",
+      "Status": "Exited (0) 2 hours ago"
+    },
+    {
+      "Command": "\"/app/.venv/bin/pyth…\"",
+      "CreatedAt": "2026-09-09 14:29:14 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "b8e626a82105",
+      "Image": "honcho-deriver",
+      "Labels": "com.docker.compose.config-hash=b9233ad71f6ac3ad261ac0b738e7e2c2f8346ada0f543f35da712cd96bc0b491,com.docker.compose.container-number=1,com.docker.compose.depends_on=redis:service_healthy:false,api:service_healthy:false,database:service_healthy:false,com.docker.compose.image=sha256:888b6de19cec0fa738dabc69d475e779919cfea77ea086ddf805b1a84fa7370f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=deriver-1,com.docker.compose.service=deriver,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "honcho-deriver-1",
+      "Networks": "honcho-codex-gateway,honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "8000/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "5.31MB (virtual 692MB)",
+      "State": "running",
+      "Status": "Up 3 hours"
+    },
+    {
+      "Command": "\"sh docker/entrypoin…\"",
+      "CreatedAt": "2026-09-09 14:29:13 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "972480e25b4c",
+      "Image": "honcho-api",
+      "Labels": "com.docker.compose.config-hash=84b8e1da2f969cb31c104da6bf4c1f4be3862982982af423eff440edf444c5dc,com.docker.compose.container-number=1,com.docker.compose.depends_on=database:service_healthy:false,redis:service_healthy:false,com.docker.compose.image=sha256:f4fdd74cbed1af891ca6781b4c1effa1d7038c0ec41ebf50e1196c3655a9a54f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=api-1,com.docker.compose.service=api,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "honcho-api-1",
+      "Networks": "honcho-codex-gateway,honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8000->8000/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "5.31MB (virtual 692MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 14:29:11 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "24ddb530a356",
+      "Image": "pgvector/pgvector:pg15",
+      "Labels": "com.docker.compose.config-hash=93c5bb3c7affeb9626d4061c91842c69d7dc581c8f70034e0dd52e257ece1add,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:de007ff8bef525f09a25a230eb80fe1392ad8109d27806aba3b21a2d9b83dae3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=database-1,com.docker.compose.service=database,com.docker.compose.version=5.5.1,desktop.docker.io/binds/1/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho\\database\\init.sql,desktop.docker.io/binds/1/SourceKind=hostFile,desktop.docker.io/binds/1/Target=/docker-entrypoint-initdb.d/init.sql,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/5432/tcp=127.0.0.1:5432",
+      "LocalVolumes": "1",
+      "Mounts": "/run/desktop/m…,honcho_pgdata",
+      "Names": "honcho-database-1",
+      "Networks": "honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:5432->5432/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "24.6kB (virtual 458MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 14:29:11 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "7dbc61fa963d",
+      "Image": "redis:8.2",
+      "Labels": "com.docker.compose.config-hash=adc4c30baefc22e715492510e237bdc90c5348985bd809ae455e371ae08d36d7,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:d9f0312a780ed4ad4c22c05790c20b3902498b563ba01f3f1134678b9bd2f311,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=redis-1,com.docker.compose.service=redis,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/6379/tcp=127.0.0.1:6379",
+      "LocalVolumes": "1",
+      "Mounts": "honcho_redis-d…",
+      "Names": "honcho-redis-1",
+      "Networks": "honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:6379->6379/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "4.1kB (virtual 149MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"/app/llama-server -…\"",
+      "CreatedAt": "2026-08-15 23:42:44 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "4cba1972e5d7",
+      "Image": "ghcr.io/ggml-org/llama.cpp:server-cuda",
+      "Labels": "com.docker.compose.config-hash=6c2f971a0f158a362fc2dd5191d5cd6269a3f285463f53d3d07bba32e163b2ba,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:a50b12bb92de0253d2737824ca1887f410e07b4dd3e3028f74a5a0a67c789e4b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway,com.docker.compose.project=honcho-codex-gateway,com.docker.compose.replace=embedding-server-1,com.docker.compose.service=embedding-server,com.docker.compose.version=5.3.1,desktop.docker.io/binds/0/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\models\\bge-m3-FP16.gguf,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/models/selected.gguf,desktop.docker.io/ports.scheme=v2,maintainer=NVIDIA CORPORATION <cudatools@nvidia.com>,org.opencontainers.image.created=2026-08-12T04:51:24Z,org.opencontainers.image.description=LLM inference in C/C++,org.opencontainers.image.ref.name=ubuntu,org.opencontainers.image.revision=0b1bad14ff204627636aeb1de22ddcd5acb859d4,org.opencontainers.image.source=https://github.com/ggml-org/llama.cpp,org.opencontainers.image.title=llama.cpp,org.opencontainers.image.url=https://github.com/ggml-org/llama.cpp,org.opencontainers.image.version=b10380",
+      "LocalVolumes": "0",
+      "Mounts": "/run/desktop/m…",
+      "Names": "honcho-codex-gateway-embedding-server-1",
+      "Networks": "honcho-codex-gateway",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "8080/tcp",
+      "RunningFor": "3 weeks ago",
+      "Size": "143kB (virtual 4.4GB)",
+      "State": "running",
+      "Status": "Up 44 hours (healthy)"
+    },
+    {
+      "Command": "\"uvicorn honcho_code…\"",
+      "CreatedAt": "2026-08-12 19:05:42 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "c1923a31e3d3",
+      "Image": "honcho-codex-gateway-codex-gateway",
+      "Labels": "com.docker.compose.config-hash=1b19723f8760002627ccb5b8d66ea4be1c379ad609fb29dfea78c36f64b508b7,com.docker.compose.container-number=1,com.docker.compose.depends_on=embedding-server:service_started:false,com.docker.compose.image=sha256:ef35b9294e20bd1a5929cf2306eb93edaaeec76aa7dbc8b58fdff569fe68548f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway,com.docker.compose.project=honcho-codex-gateway,com.docker.compose.service=codex-gateway,com.docker.compose.version=5.3.1,desktop.docker.io/binds/0/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\.auth,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/data/codex-auth,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8787/tcp=127.0.0.1:8787",
+      "LocalVolumes": "0",
+      "Mounts": "/run/desktop/m…",
+      "Names": "honcho-codex-gateway-codex-gateway-1",
+      "Networks": "honcho-codex-gateway",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8787->8787/tcp",
+      "RunningFor": "3 weeks ago",
+      "Size": "12.3kB (virtual 217MB)",
+      "State": "running",
+      "Status": "Up 44 hours"
+    }
+  ],
+  "volumes_before": [
+    "honcho_pgdata",
+    "honcho_redis-data",
+    "palimpsest-dev_app_credentials",
+    "palimpsest-dev_artifacts",
+    "palimpsest-dev_db_credentials",
+    "palimpsest-dev_postgres",
+    "palimpsest-t02-test_app_credentials",
+    "palimpsest-t02-test_artifacts",
+    "palimpsest-t02-test_db_credentials",
+    "palimpsest-t02-test_postgres",
+    "palimpsest-t03-mineru-models",
+    "palimpsest-t03-test_app_credentials",
+    "palimpsest-t03-test_artifacts",
+    "palimpsest-t03-test_db_credentials",
+    "palimpsest-t03-test_postgres",
+    "palimpsest-t03-verify_app_credentials",
+    "palimpsest-t03-verify_artifacts",
+    "palimpsest-t03-verify_db_credentials",
+    "palimpsest-t03-verify_postgres"
+  ],
+  "actions": [
+    {
+      "output": [
+        " Container palimpsest-t02-test-migrate-1 Stopping ",
+        " Container palimpsest-t02-test-migrate-1 Stopped ",
+        " Container palimpsest-t02-test-migrate-1 Removing ",
+        " Container palimpsest-t02-test-migrate-1 Removed ",
+        " Container palimpsest-t02-test-db-1 Stopping ",
+        " Container palimpsest-t02-test-db-1 Stopped ",
+        " Container palimpsest-t02-test-db-1 Removing ",
+        " Container palimpsest-t02-test-db-1 Removed ",
+        " Container palimpsest-t02-test-init-1 Stopping ",
+        " Container palimpsest-t02-test-init-1 Stopped ",
+        " Container palimpsest-t02-test-init-1 Removing ",
+        " Container palimpsest-t02-test-init-1 Removed ",
+        " Network palimpsest-t02-test_palimpsest Removing ",
+        " Network palimpsest-t02-test_palimpsest Removed "
+      ],
+      "exit_code": 0,
+      "command": "docker compose -p palimpsest-t02-test down"
+    },
+    {
+      "output": [
+        " Container palimpsest-t03-test-db-1 Stopping ",
+        " Container palimpsest-t03-test-db-1 Stopped ",
+        " Container palimpsest-t03-test-db-1 Removing ",
+        " Container palimpsest-t03-test-db-1 Removed ",
+        " Container palimpsest-t03-test-init-1 Stopping ",
+        " Container palimpsest-t03-test-init-1 Stopped ",
+        " Container palimpsest-t03-test-init-1 Removing ",
+        " Container palimpsest-t03-test-init-1 Removed ",
+        " Network palimpsest-t03-test_palimpsest Removing ",
+        " Network palimpsest-t03-test_palimpsest Removed "
+      ],
+      "exit_code": 0,
+      "command": "docker compose -p palimpsest-t03-test down"
+    },
+    {
+      "output": [
+        " Container palimpsest-t03-verify-db-1 Stopping ",
+        " Container palimpsest-t03-verify-db-1 Stopped ",
+        " Container palimpsest-t03-verify-db-1 Removing ",
+        " Container palimpsest-t03-verify-db-1 Removed ",
+        " Container palimpsest-t03-verify-init-1 Stopping ",
+        " Container palimpsest-t03-verify-init-1 Stopped ",
+        " Container palimpsest-t03-verify-init-1 Removing ",
+        " Container palimpsest-t03-verify-init-1 Removed ",
+        " Network palimpsest-t03-verify_palimpsest Removing ",
+        " Network palimpsest-t03-verify_palimpsest Removed "
+      ],
+      "exit_code": 0,
+      "command": "docker compose -p palimpsest-t03-verify down"
+    },
+    {
+      "output": [
+        "palimpsest-dev-init-1"
+      ],
+      "exit_code": 0,
+      "command": "docker rm palimpsest-dev-init-1"
+    },
+    {
+      "output": [
+        "Untagged: palimpsest-t02:0.1.0",
+        "Deleted: sha256:2e2f28a054ecbbd2585c683f305fb47abf478c15fa8dd69a24571ac8c701363d"
+      ],
+      "exit_code": 0,
+      "command": "docker image rm 2e2f28a054ecbbd2585c683f305fb47abf478c15fa8dd69a24571ac8c701363d"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "13eff553073c021a76f8cddeda5a5986c34a0573786dc3d8e1b2e4f4e59361c0"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "59d908bfb6f2ee519ad437731fc7bb200bb6b6b3440d33372ff922ecd5583be0"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "9cbd96ad451706d406ea8defcdfc750212bd44770e98e093d75d09c0743785e1"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "6ac8c7743983d51db4122b977187079383597163cf03405b3be6d5c1ea7fdf8d"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "e7034f46503febd9afdcee51eae1f05e7d6d186ba5a7040c0ee9c04e9dceb034"
+    },
+    {
+      "status": "already_absent",
+      "image_id": "30386b5a99a71013ff6bef475cbc706bbe7a78b9a58479861738957535f14d0b"
+    }
+  ],
+  "containers_after": [
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 16:17:23 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "151b1b555b28",
+      "Image": "pgvector/pgvector:0.8.6-pg18-bookworm",
+      "Labels": "com.docker.compose.config-hash=061c5330047034094ef6631f03c7ed26954b5d0d793de095910fe8a99609a06d,com.docker.compose.container-number=1,com.docker.compose.depends_on=init:service_completed_successfully:false,com.docker.compose.image=sha256:1d50c689b0a6511b9ea0a15615281c81a59fd04a08eb35057ec8646fb3a2118a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest\\compose.yaml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Documents\\Codex\\Palimpsest,com.docker.compose.project=palimpsest-dev,com.docker.compose.service=db,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "2",
+      "Mounts": "palimpsest-dev…,palimpsest-dev…",
+      "Names": "palimpsest-dev-db-1",
+      "Networks": "palimpsest-dev_palimpsest",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "5432/tcp",
+      "RunningFor": "About an hour ago",
+      "Size": "24.6kB (virtual 472MB)",
+      "State": "running",
+      "Status": "Up About an hour (healthy)"
+    },
+    {
+      "Command": "\"/app/.venv/bin/pyth…\"",
+      "CreatedAt": "2026-09-09 14:29:14 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "b8e626a82105",
+      "Image": "honcho-deriver",
+      "Labels": "com.docker.compose.config-hash=b9233ad71f6ac3ad261ac0b738e7e2c2f8346ada0f543f35da712cd96bc0b491,com.docker.compose.container-number=1,com.docker.compose.depends_on=redis:service_healthy:false,api:service_healthy:false,database:service_healthy:false,com.docker.compose.image=sha256:888b6de19cec0fa738dabc69d475e779919cfea77ea086ddf805b1a84fa7370f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=deriver-1,com.docker.compose.service=deriver,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "honcho-deriver-1",
+      "Networks": "honcho-codex-gateway,honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "8000/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "5.31MB (virtual 692MB)",
+      "State": "running",
+      "Status": "Up 3 hours"
+    },
+    {
+      "Command": "\"sh docker/entrypoin…\"",
+      "CreatedAt": "2026-09-09 14:29:13 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "972480e25b4c",
+      "Image": "honcho-api",
+      "Labels": "com.docker.compose.config-hash=84b8e1da2f969cb31c104da6bf4c1f4be3862982982af423eff440edf444c5dc,com.docker.compose.container-number=1,com.docker.compose.depends_on=database:service_healthy:false,redis:service_healthy:false,com.docker.compose.image=sha256:f4fdd74cbed1af891ca6781b4c1effa1d7038c0ec41ebf50e1196c3655a9a54f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=api-1,com.docker.compose.service=api,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8000/tcp=127.0.0.1:8000",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "honcho-api-1",
+      "Networks": "honcho-codex-gateway,honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8000->8000/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "5.31MB (virtual 692MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 14:29:11 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "24ddb530a356",
+      "Image": "pgvector/pgvector:pg15",
+      "Labels": "com.docker.compose.config-hash=93c5bb3c7affeb9626d4061c91842c69d7dc581c8f70034e0dd52e257ece1add,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:de007ff8bef525f09a25a230eb80fe1392ad8109d27806aba3b21a2d9b83dae3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=database-1,com.docker.compose.service=database,com.docker.compose.version=5.5.1,desktop.docker.io/binds/1/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho\\database\\init.sql,desktop.docker.io/binds/1/SourceKind=hostFile,desktop.docker.io/binds/1/Target=/docker-entrypoint-initdb.d/init.sql,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/5432/tcp=127.0.0.1:5432",
+      "LocalVolumes": "1",
+      "Mounts": "/run/desktop/m…,honcho_pgdata",
+      "Names": "honcho-database-1",
+      "Networks": "honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:5432->5432/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "24.6kB (virtual 458MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-09-09 14:29:11 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "7dbc61fa963d",
+      "Image": "redis:8.2",
+      "Labels": "com.docker.compose.config-hash=adc4c30baefc22e715492510e237bdc90c5348985bd809ae455e371ae08d36d7,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:d9f0312a780ed4ad4c22c05790c20b3902498b563ba01f3f1134678b9bd2f311,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho,com.docker.compose.project=honcho,com.docker.compose.replace=redis-1,com.docker.compose.service=redis,com.docker.compose.version=5.5.1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/6379/tcp=127.0.0.1:6379",
+      "LocalVolumes": "1",
+      "Mounts": "honcho_redis-d…",
+      "Names": "honcho-redis-1",
+      "Networks": "honcho_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:6379->6379/tcp",
+      "RunningFor": "3 hours ago",
+      "Size": "4.1kB (virtual 149MB)",
+      "State": "running",
+      "Status": "Up 3 hours (healthy)"
+    },
+    {
+      "Command": "\"/app/llama-server -…\"",
+      "CreatedAt": "2026-08-15 23:42:44 +0900 KST",
+      "HealthStatus": "healthy",
+      "ID": "4cba1972e5d7",
+      "Image": "ghcr.io/ggml-org/llama.cpp:server-cuda",
+      "Labels": "com.docker.compose.config-hash=6c2f971a0f158a362fc2dd5191d5cd6269a3f285463f53d3d07bba32e163b2ba,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:a50b12bb92de0253d2737824ca1887f410e07b4dd3e3028f74a5a0a67c789e4b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway,com.docker.compose.project=honcho-codex-gateway,com.docker.compose.replace=embedding-server-1,com.docker.compose.service=embedding-server,com.docker.compose.version=5.3.1,desktop.docker.io/binds/0/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\models\\bge-m3-FP16.gguf,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/models/selected.gguf,desktop.docker.io/ports.scheme=v2,maintainer=NVIDIA CORPORATION <cudatools@nvidia.com>,org.opencontainers.image.created=2026-08-12T04:51:24Z,org.opencontainers.image.description=LLM inference in C/C++,org.opencontainers.image.ref.name=ubuntu,org.opencontainers.image.revision=0b1bad14ff204627636aeb1de22ddcd5acb859d4,org.opencontainers.image.source=https://github.com/ggml-org/llama.cpp,org.opencontainers.image.title=llama.cpp,org.opencontainers.image.url=https://github.com/ggml-org/llama.cpp,org.opencontainers.image.version=b10380",
+      "LocalVolumes": "0",
+      "Mounts": "/run/desktop/m…",
+      "Names": "honcho-codex-gateway-embedding-server-1",
+      "Networks": "honcho-codex-gateway",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "8080/tcp",
+      "RunningFor": "3 weeks ago",
+      "Size": "143kB (virtual 4.4GB)",
+      "State": "running",
+      "Status": "Up 44 hours (healthy)"
+    },
+    {
+      "Command": "\"uvicorn honcho_code…\"",
+      "CreatedAt": "2026-08-12 19:05:42 +0900 KST",
+      "HealthStatus": "none",
+      "ID": "c1923a31e3d3",
+      "Image": "honcho-codex-gateway-codex-gateway",
+      "Labels": "com.docker.compose.config-hash=1b19723f8760002627ccb5b8d66ea4be1c379ad609fb29dfea78c36f64b508b7,com.docker.compose.container-number=1,com.docker.compose.depends_on=embedding-server:service_started:false,com.docker.compose.image=sha256:ef35b9294e20bd1a5929cf2306eb93edaaeec76aa7dbc8b58fdff569fe68548f,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway,com.docker.compose.project=honcho-codex-gateway,com.docker.compose.service=codex-gateway,com.docker.compose.version=5.3.1,desktop.docker.io/binds/0/Source=C:\\Users\\DaydreamBlend\\Agents\\honcho-codex-gateway\\.auth,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/data/codex-auth,desktop.docker.io/ports.scheme=v2,desktop.docker.io/ports/8787/tcp=127.0.0.1:8787",
+      "LocalVolumes": "0",
+      "Mounts": "/run/desktop/m…",
+      "Names": "honcho-codex-gateway-codex-gateway-1",
+      "Networks": "honcho-codex-gateway",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8787->8787/tcp",
+      "RunningFor": "3 weeks ago",
+      "Size": "12.3kB (virtual 217MB)",
+      "State": "running",
+      "Status": "Up 44 hours"
+    }
+  ],
+  "images_after": [
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-09-09 17:14:18 +0900 KST",
+      "CreatedSince": "12 minutes ago",
+      "Digest": "<none>",
+      "ID": "sha256:12c60b40b5b15d82d40dd009e4419fcdc87a8243c1edb84a716ec0c09f051a5a",
+      "Repository": "palimpsest-t03",
+      "SharedSize": "N/A",
+      "Size": "225MB",
+      "Tag": "0.2.0",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "0",
+      "CreatedAt": "2026-09-09 17:02:14 +0900 KST",
+      "CreatedSince": "24 minutes ago",
+      "Digest": "<none>",
+      "ID": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854",
+      "Repository": "palimpsest-mineru",
+      "SharedSize": "N/A",
+      "Size": "12.4GB",
+      "Tag": "3.4.5",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-09-09 14:28:56 +0900 KST",
+      "CreatedSince": "3 hours ago",
+      "Digest": "<none>",
+      "ID": "sha256:c5e134f95bc869c0d8bebb90b52090ade9d6229b4bd62c338f3e28ec4a07e6b9",
+      "Repository": "honcho-api",
+      "SharedSize": "N/A",
+      "Size": "885MB",
+      "Tag": "latest",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-09-09 14:28:56 +0900 KST",
+      "CreatedSince": "3 hours ago",
+      "Digest": "<none>",
+      "ID": "sha256:2f77c5c025b2af09153318589594046cc0610ee788823f3c1b5641ec928216f9",
+      "Repository": "honcho-deriver",
+      "SharedSize": "N/A",
+      "Size": "885MB",
+      "Tag": "latest",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-08-14 06:28:49 +0900 KST",
+      "CreatedSince": "3 weeks ago",
+      "Digest": "",
+      "ID": "sha256:2ba9ca5f2e7daa0f0e7723cba1ee9167bab54efd3640516a44ac1a928dd67e7a",
+      "Repository": "pgvector/pgvector",
+      "SharedSize": "N/A",
+      "Size": "631MB",
+      "Tag": "<none>",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-08-12 18:59:15 +0900 KST",
+      "CreatedSince": "3 weeks ago",
+      "Digest": "<none>",
+      "ID": "sha256:ef35b9294e20bd1a5929cf2306eb93edaaeec76aa7dbc8b58fdff569fe68548f",
+      "Repository": "honcho-codex-gateway-codex-gateway",
+      "SharedSize": "N/A",
+      "Size": "280MB",
+      "Tag": "latest",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-08-12 15:23:05 +0900 KST",
+      "CreatedSince": "4 weeks ago",
+      "Digest": "<none>",
+      "ID": "sha256:a50b12bb92de0253d2737824ca1887f410e07b4dd3e3028f74a5a0a67c789e4b",
+      "Repository": "ghcr.io/ggml-org/llama.cpp",
+      "SharedSize": "N/A",
+      "Size": "6.98GB",
+      "Tag": "server-cuda",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-08-05 09:44:52 +0900 KST",
+      "CreatedSince": "5 weeks ago",
+      "Digest": "<none>",
+      "ID": "sha256:2f7462b9e93e0a7ae2edf3a0a0babc8a4d29f8bfc50849b906b7caaef925edc1",
+      "Repository": "redis",
+      "SharedSize": "N/A",
+      "Size": "204MB",
+      "Tag": "8.2",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-07-30 03:56:48 +0900 KST",
+      "CreatedSince": "5 weeks ago",
+      "Digest": "<none>",
+      "ID": "sha256:a20a57d7aa5217a6af0a391ccf69f4a8512406d6c14be08132f801468cc3cc62",
+      "Repository": "pgvector/pgvector",
+      "SharedSize": "N/A",
+      "Size": "612MB",
+      "Tag": "pg15",
+      "UniqueSize": "N/A"
+    }
+  ],
+  "volumes_after": [
+    "honcho_pgdata",
+    "honcho_redis-data",
+    "palimpsest-dev_app_credentials",
+    "palimpsest-dev_artifacts",
+    "palimpsest-dev_db_credentials",
+    "palimpsest-dev_postgres",
+    "palimpsest-t02-test_app_credentials",
+    "palimpsest-t02-test_artifacts",
+    "palimpsest-t02-test_db_credentials",
+    "palimpsest-t02-test_postgres",
+    "palimpsest-t03-mineru-models",
+    "palimpsest-t03-test_app_credentials",
+    "palimpsest-t03-test_artifacts",
+    "palimpsest-t03-test_db_credentials",
+    "palimpsest-t03-test_postgres",
+    "palimpsest-t03-verify_app_credentials",
+    "palimpsest-t03-verify_artifacts",
+    "palimpsest-t03-verify_db_credentials",
+    "palimpsest-t03-verify_postgres"
+  ],
+  "u11_final_pass": {
+    "command": "docker compose -p palimpsest-t03-verify down",
+    "exit_code": 0,
+    "removed_containers": [
+      "palimpsest-t03-verify-db-1",
+      "palimpsest-t03-verify-init-1"
+    ],
+    "removed_networks": [
+      "palimpsest-t03-verify_palimpsest"
+    ],
+    "remaining_palimpsest_containers": [
+      "palimpsest-dev-db-1"
+    ],
+    "kept_images": [
+      {
+        "repository": "palimpsest-t03",
+        "tag": "0.2.0",
+        "image_id": "sha256:4f6dc7e177db23d21344b5de24e7a8d64e4073fa163a1592bdcedbd851604cb6"
+      },
+      {
+        "repository": "palimpsest-mineru",
+        "tag": "3.4.5",
+        "image_id": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854"
+      },
+      {
+        "repository": "pgvector/pgvector",
+        "tag": "<none>",
+        "image_id": "sha256:2ba9ca5f2e7daa0f0e7723cba1ee9167bab54efd3640516a44ac1a928dd67e7a"
+      }
+    ],
+    "images_removed_this_pass": 0,
+    "obsolete_images": "No obsolete Palimpsest tag or untagged image was listed before this final pass; replacement IDs already absent are not counted as deleted.",
+    "all_volume_names_unchanged": true,
+    "unrelated_container_ids_unchanged": true,
+    "post_cleanup_data_verified": true
+  },
+  "page_projection_followup": {
+    "removed_containers": [
+      "palimpsest-t03-verify-db-1",
+      "palimpsest-t03-verify-init-1"
+    ],
+    "removed_network": "palimpsest-t03-verify_palimpsest",
+    "remaining_palimpsest_containers": [
+      "palimpsest-dev-db-1"
+    ],
+    "kept_palimpsest_images": [
+      {
+        "repository": "palimpsest-t03",
+        "tag": "0.2.0",
+        "id": "sha256:594c68dcf8b7ebab5461f45a041e78dce407b8c44368aabc645978c268ceb528"
+      },
+      {
+        "repository": "palimpsest-mineru",
+        "tag": "3.4.5",
+        "id": "sha256:fdab78016483e1dbf0f416c9f74941a1242a91dae58fa2cc9617488ceb338854"
+      }
+    ],
+    "all_volumes_unchanged": true,
+    "unrelated_containers_unchanged": true
+  }
+}

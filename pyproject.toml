@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "palimpsest"
+version = "0.23.0"
+description = "Headless, provenance-preserving knowledge compiler"
+requires-python = ">=3.12,<3.13"
+dependencies = ["psycopg[binary]==3.3.5", "markdown-it-py==4.2.0"]
+
+[project.scripts]
+palim = "palimpsest.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+palimpsest = ["migrations/*.sql", "realm_catalog.sql"]
