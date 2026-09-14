@@ -5,13 +5,25 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
-from validate_bundle import inspect_markdown, validate
+from validate_bundle import inspect_markdown, validate, markdown_files, EXCLUDED_DIRS
 from reassemble_canonical import reassemble
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class MarkdownChecks(unittest.TestCase):
+    def test_scan_prunes_runtime_and_dependency_trees_but_keeps_source_docs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ('README.md', 'docs/current.md', 'docs/source/original.md',
+                         'desktop/node_modules/pkg/README.md', '.git/README.md',
+                         '.local/cache/README.md', 'output/run/source.md', 'tmp/README.md'):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('[test](missing.md)', encoding='utf-8')
+            self.assertEqual({p.relative_to(root).as_posix() for p in markdown_files(root)},
+                             {'README.md', 'docs/current.md', 'docs/source/original.md'})
+
     def test_valid_table(self):
         out = inspect_markdown('| A | B |\n|---|---|\n| x | y |\n')
         self.assertEqual(out['tables'], 1)
@@ -59,7 +71,7 @@ class BundleChecks(unittest.TestCase):
             return shutil.copy2(source, destination)
 
         shutil.copytree(ROOT, target, copy_function=copy_fixture_file,
-                        ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+                        ignore=shutil.ignore_patterns(*(EXCLUDED_DIRS - {'output'}), '*.pyc'))
         return target
 
     def assert_has_error(self, root: Path, phrase: str):

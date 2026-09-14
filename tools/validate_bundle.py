@@ -5,11 +5,26 @@ import argparse
 import ast
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import sys
 from urllib.parse import unquote
 from policy_checks import validate_release_policy
+
+EXCLUDED_DIRS = frozenset({'.git', '.local', '.venv', 'node_modules', '__pycache__', 'tmp', 'output', 'build', 'dist'})
+
+
+def markdown_files(root: Path):
+    """Check authored project docs, not dependency docs or generated source outputs."""
+    for directory, children, names in os.walk(root, followlinks=False):
+        children[:] = [name for name in children if name not in EXCLUDED_DIRS
+                       and not (Path(directory) / name).is_symlink()
+                       and not (Path(directory) / name).is_junction()]
+        for name in names:
+            path = Path(directory) / name
+            if path.suffix.lower() == '.md' and not path.is_symlink():
+                yield path
 
 
 def sha(data: bytes) -> str:
@@ -149,7 +164,7 @@ def validate(root: Path) -> dict:
         except (OSError, UnicodeError, KeyError, TypeError) as exc:
             errors.append(f'source validation: {exc}')
 
-    for p in sorted(root.rglob('*.md')):
+    for p in sorted(markdown_files(root)):
         counts['markdown_files'] += 1
         rel = p.relative_to(root).as_posix()
         try:

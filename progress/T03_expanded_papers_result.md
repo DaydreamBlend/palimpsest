@@ -106,7 +106,7 @@ Figure는 같은 원래 페이지의 번호와 독립 crop을 확인한다. 전�
 | `python output/t03-expanded-papers/runtime/score_quality.py --output output/t03-expanded-papers/runtime/quality-final-a1.json` | exit0;평가 complete, pending0, failed paper12, changing inputs0 |
 | `python output/t03-expanded-papers/runtime/final_audit.py` | exit0;54개 원본/코드/oracle hash 확인, 기존 Docker 자원 동일 |
 | `python output/t03-expanded-papers/runtime/review_transcription.py` | exit0;19개 불일치 전체와 paper12 native-only3개 부록, 입력87개 hash·raw block·excerpt 범위 확인 |
-| `python tools/validate_bundle.py` | PASSED / exit0; [최종 실행 로그](../output/t03-expanded-papers/runtime/document-validation-final.log). 앱/runtime/LLM 검증과 별도 |
+| `python tools/validate_bundle.py` | PASSED / exit0; [최종 실행 로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-expanded-papers/runtime/document-validation-final.log). 앱/runtime/LLM 검증과 별도 |
 
 [최종 audit](../output/t03-expanded-papers/runtime/final-audit.json)은 실험 전후 기존 컨테이너7개, 이미지13개, 볼륨27개의 ID/이름/상태 동일성을 확인한다. 새 이미지는 만들지 않았으며 `--rm` 실험 컨테이너는 남지 않았다. 사용자 개발DB와 다른 프로젝트 서비스, 기존 모델·볼륨·원문 이력을 유지했다.
 
@@ -115,3 +115,5 @@ Figure는 같은 원래 페이지의 번호와 독립 crop을 확인한다. 전�
 이 결과는 T03의 AT22/23/25/27/33/36/68/69/71/76/77/81/83/85/90–102/104/105/107/111/112 관련 제한된 실물 근거다. 이 acceptance들의 전체 조건을 일괄 passed로 바꾸지 않았다. Parser 인식의 완전성, 임의 스캔/다국어/수식 중심 문서의 일반화, 미지원 좌표, 전체 reconciliation/supersession·backup/restore·scheduler/fencing, 이후 I2K/K 단계의 의미 품질은 완료되지 않았다.
 
 현재 parser를 유지하면서 우선 보완할 곳은 **유효 page box의 명시적 좌표 변환, 옆 caption과 이미 존재하는 raw 그림의 연결, 소제목 후보 경계/coverage, 과학 단위·기호 검증**이다. 이번 평가는 현재 성능을 측정하기 위해 이 보완을 적용하지 않은 상태로 마무리했다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

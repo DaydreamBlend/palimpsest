@@ -67,7 +67,7 @@ sidecar bundle은 복사한 parser receipt hash를 profile에 연결하고, cano
 | `palim information evidence-context --directory /evidence --page 10 --json` | 최종 a3의 원문·문단·후보·차이·실제 이미지 연결, exit 0 |
 | `python output/t03-pdf-evidence/runtime/audit_final.py` | 12개 실물 검증 및 4편 43페이지 문맥 반복 일치, exit 0 |
 
-최종 `python tools/validate_bundle.py`는 exit 0, 문서 무결성 오류 0으로 통과했다. [앱 로그](../output/t03-pdf-evidence/runtime/app-tests-final-a2.log), [native PDF 로그](../output/t03-pdf-evidence/runtime/native-tests-final-a2.log), [문서 도구 로그](../output/t03-pdf-evidence/runtime/document-tests.log), [bundle 로그](../output/t03-pdf-evidence/runtime/bundle-validation-final.log)를 별도로 보존했다.
+최종 `python tools/validate_bundle.py`는 exit 0, 문서 무결성 오류 0으로 통과했다. [앱 로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-pdf-evidence/runtime/app-tests-final-a2.log), [native PDF 로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-pdf-evidence/runtime/native-tests-final-a2.log), [문서 도구 로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-pdf-evidence/runtime/document-tests.log), [bundle 로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-pdf-evidence/runtime/bundle-validation-final.log)를 별도로 보존했다.
 
 Docker 정리는 전용 컨테이너 3개와 network 1개만 제거했다. 기존 컨테이너 7개·기존 이미지 ID 12개·기존 볼륨 23개와 이번 시험 볼륨 4개가 모두 남아 있다. 최종 `palimpsest-t03-evidence:0.2.0` 이미지만 baseline에 추가됐고, 이전 중간 이미지 ID는 정리 전부터 존재하지 않아 추가 이미지 삭제는 0이다. [정리 검증](../output/t03-pdf-evidence/runtime/cleanup-verification.json).
 
@@ -84,3 +84,5 @@ Docker 정리는 전용 컨테이너 3개와 network 1개만 제거했다. 기�
 원문 페이지 복원은 정확하더라도 upstream의 문단 연결 의미는 미검증이다. Test_Paper의 p5/p8, Nassar의 p8/p10처럼 인접하지 않은 페이지 association은 경고와 원래 refs를 함께 남긴다. 표제 7개 미회복·후보 precision·scanned/mixed·일반 대형 문서·전체 reconciliation/supersession 및 후속 Knowledge 단계는 남아 있다.
 
 이번 보완 slice는 완료했지만 **T03 전체는 in_progress**다. AT22/23/25/27/33/36/68/69/71/76/77/81/83/85/90–102/104/105/107/111/112를 일괄 완료로 바꾸지 않는다. 승인 대기 결정은 없으며 T04 이후나 GUI를 시작하지 않았다. 상세 사용법은 [PDF_EVIDENCE](../docs/interfaces/PDF_EVIDENCE.md)를 따른다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

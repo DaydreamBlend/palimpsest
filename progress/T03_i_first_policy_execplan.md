@@ -24,6 +24,8 @@ I-only는 Image I 자체를 빼는 text-only 정책이 아니다. 초기 입력�
 
 독립 검토에서 실제 I2K/provider 전송 경로가 아직 없고 현재 source/page/paragraph/section 조립은 이미 application LLM0임을 확인했다. 따라서 source 변경이나 신규 payload/runtime scaffolding은 하지 않았다. 기존 section/document 조회에서 이미지 descriptor를 제거하지 않았다. 청킹의 알려진 불확실성이나 새로운 I2K 원본 필요 판단의 정확도를 이번 문서 변경으로 해결했다고 주장하지 않는다.
 
-검증 명령은 `python -X utf8 -B output/t03-i-first-policy/audit.py`다. 지정 host Python으로 실행해 exit0, 내부 `python -X utf8 -B tools/validate_bundle.py --json`은 기존12개 raw/과거 Markdown 표 오류로 exit1, 직전 오류 목록과 동일하며 추가 오류0이었다. 변경12문서와 직전 구현·테스트6파일의 SHA 불변을 확인했다. [검사 결과](../output/t03-i-first-policy/audit.json), [문서 validator](../output/t03-i-first-policy/document-validation.json). 원문·canonical/slice/map·기존 raw/I/ID/hash·이전 검사 결과는 수정하지 않았다.
+검증 명령은 `python -X utf8 -B output/t03-i-first-policy/audit.py`다. 지정 host Python으로 실행해 exit0, 내부 `python -X utf8 -B tools/validate_bundle.py --json`은 기존12개 raw/과거 Markdown 표 오류로 exit1, 직전 오류 목록과 동일하며 추가 오류0이었다. 변경12문서와 직전 구현·테스트6파일의 SHA 불변을 확인했다. [검사 결과](../output/t03-i-first-policy/audit.json), [문서 validator](../output/t23-ui-realm/build-test-logs.zip#output/t03-i-first-policy/document-validation.json). 원문·canonical/slice/map·기존 raw/I/ID/hash·이전 검사 결과는 수정하지 않았다.
 
 코드 변경이 없으므로 앱/PG/모델 테스트와 Docker build/run은 반복하지 않았다. 추가 컨테이너/이미지/모델 호출0. T03/T04 acceptance IDs의 완료 상태는 그대로이며 실제 I payload 선택, PDF 필요 판단·요청/제공·사용 검증, K provenance·identity/reuse·commit 테스트는 T04에서 남는다. 새 승인 질문이나 차단된 결정은 없다. 필요한 원본을 모델이 요청하지 않는 실패 사례와 요청했으나 읽지 못한 사례도 T04 평가에 포함한다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

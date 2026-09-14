@@ -1,5 +1,7 @@
 # Electron 작업 UI — 첫 구현
 
+이 문서는 첫 UI 구현의 이력이다. 현재 버전·통합 실행 경로는 [현재 상태](../../progress/STATUS.md)와 [통합 Desktop](UNIFIED_DESKTOP.md)을 따른다.
+
 **0.3 후속:** [I2K Information 오류](INFORMATION_ERRORS.md)를 기존 검토 화면에서 사용자 확인 필요 상태로 표시한다. 직접 D2K·D2I 재실행 작업은 추가하지 않았다. 실제 기본 연결·패키지별 버전과 결과는 해당 보고서를 따른다.
 
 **0.2 후속:** [코드·검토·Wiki 계약](CODE_REVIEW_WIKI.md)과 [실제 실행 결과](../../output/t13-code-review-wiki/REPORT.md)는 code 파일 위치, exact KRevision/추론/전제/자료 버전, 실행 당시 검토 상태, accepted-inference query 답변 읽기를 추가한다. 새 코드 연결은 [전용 launcher](../../output/t13-code-review-wiki/Open-Code-Wiki.ps1)를 사용한다. 아래0.1의 논문 연결·패키지는 이력으로 유지하며 새 자료/질문/판정 쓰기 UI 완료를 뜻하지 않는다.
@@ -8,7 +10,7 @@
 
 ## 실행
 
-현재 workspace의 [Palimpsest.cmd](../../Palimpsest.cmd)를 더블클릭하거나 생성된 [Palimpsest.exe](../../output/t09-electron/app/Palimpsest-win32-x64/Palimpsest.exe)를 실행한다. Docker Desktop과 기존 `palimpsest-multi-checks` DB가 준비돼 있어야 한다. 앱은 기존 source DB를 migration하거나 Docker 서비스를 임의로 초기화하지 않는다.
+현재 workspace의 [Palimpsest.cmd](../../Palimpsest.cmd)를 실행한다. 첫 버전의 독립 exe 패키지는 [T23 정리](../../output/t23-ui-realm/REPORT.md) 때 제거됐고 현재 런처는 공용 Electron 엔진을 사용한다. Docker Desktop과 기존 DB가 준비돼 있어야 한다. 앱은 기존 source DB를 migration하거나 Docker 서비스를 임의로 초기화하지 않는다.
 
 기본 연결은 `palimpsest_wiki_pg` / Wiki `01a0941f-90b3-792b-bd4b-a3e83c18eaeb`, Artifact volume `palimpsest-knowledge_artifacts`, 저장 질문 `output/t07-wiki-query-ui/query-store`다. DB 비밀번호와 provider 자격 증명은 UI 설정에 들어가지 않는다. 필요하면 [connection.example.json](../../desktop/connection.example.json)을 `.local/electron-ui/connection.json`에 복사해 같은 workspace의 준비된 읽기 대상에 맞춘다. UI에서 임의 파일·DB를 탐색하는 설정 기능은 없다.
 

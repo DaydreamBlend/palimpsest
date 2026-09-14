@@ -24,9 +24,9 @@
 ## 실행한 검사
 
 - 최종 앱 build: `docker compose -p palimpsest-t03-dual-verify build app`, exit0.
-- 최종 앱/PG 회귀: `docker compose -p palimpsest-t03-dual-verify run --rm --no-deps test`, **296tests /30.724초 /failure0 /skip16 /exit0**. [로그](../output/t03-dual-transcription/runtime/app-tests-final.log).
+- 최종 앱/PG 회귀: `docker compose -p palimpsest-t03-dual-verify run --rm --no-deps test`, **296tests /30.724초 /failure0 /skip16 /exit0**. [로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-dual-transcription/runtime/app-tests-final.log).
 - PDF 의존성 별도 실행: 기존 Hybrid image에서 `python -B -m unittest -v test_pdf_raster test_pdf_text_evidence test_pdf_visual_evidence`, **22tests /0.775초 /failure0 /skip0 /exit0**. [명령과 receipt](../output/t03-dual-transcription/runtime/native-tests.receipt.json).
-- Windows 문서 도구 suite: **44tests /352.372초 /failure1 /error70 /exit1**. 오류70은 clone 임시 경로275자에서의 Windows long-path 실패다. [로그](../output/t03-dual-transcription/runtime/bundle-tests.log). 원본 소실이 아니다.
+- Windows 문서 도구 suite: **44tests /352.372초 /failure1 /error70 /exit1**. 오류70은 clone 임시 경로275자에서의 Windows long-path 실패다. [로그](../output/t23-ui-realm/build-test-logs.zip#output/t03-dual-transcription/runtime/bundle-tests.log). 원본 소실이 아니다.
 - 문서 validator의 남은 오류는 보존된 MinerU Markdown의 단독 pipe를 표 구문 오류로 판단한 것이다. raw를 고치거나 검증 규칙을 완화해 통과시키지 않는다. 최종 개수와 authored 문서 검증은 아래 후속 기록에 명시한다.
 
 같은 200 DPI 입력에서의 Paddle 비교는 [별도 결과](T03_paddle200_result.md)를 따른다. 그 결과는 새 dual 선택의 전체 정확도 점수가 아니다.
@@ -47,3 +47,5 @@
 - `docker compose -p palimpsest-t03-dual-verify down --remove-orphans`는 exit 0이다. 임시 실험 컨테이너 잔여 0, 기존 7개 컨테이너·13개 이미지·27개 볼륨은 모두 보존했다. 이번에 추가로 남은 이미지는 검증한 `palimpsest-t03-pdf200:0.2.0` 하나다. 중간 앱 이미지는 이미 존재하지 않아 삭제 시도에서 No such image였으며 새로 삭제했다고 세지 않는다. 검증 Data/DB가 든 프로젝트 볼륨 4개는 유지했다. 전체 prune과 volume 삭제는 0이다. [최종 자원 대조](../output/t03-dual-transcription/runtime/final-resource-audit.json).
 
 승인 대기 결정은 없다. 이번 default/dual source/evidence slice를 완료했으며, T03의 전체 native/scanned/mixed QA와 AT22/23/25/27/33/36/68/69/71/76/77/81/83/85/90–102/104/105/107/111/112를 일괄 pass로 올리지 않는다. 각 AT의 기존 검증 범위를 유지하며 이번 실행만으로 전체 acceptance를 충족했다고 주장하지 않는다. I2K 이후 단계는 실행하지 않았다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

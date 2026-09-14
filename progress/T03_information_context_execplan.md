@@ -31,9 +31,11 @@ AGENTS/USER_OVERRIDES/INDEX/DECISION_REGISTER/PLANS/T04/CODE_REVIEW, source unit
 - 논문 구조를 source refs로 검토한 시안은18그룹이다. Abstract1,239자/150words; Introduction(title포함)2,888자/378words. Results는7소절을 명시적 main Figure 참조로 연결한6그룹이며 각각6,420/3,539/4,600/4,753/5,546/4,934자다. 원문간 구분자2개 개행을 명시적으로 포함한 길이다. Figure1에2소절이 속한다는 표본 관찰을 범용1:1 grouping 규칙으로 일반화하지 않는다.
 - Figure5(p9/10), Figure6(p11/12)는 Results 본문 범위(p2–8) 밖에도 걸쳐 있어 source refs 기반 추가 조회가 필요하다. Supplementary Figure 자료는 제공되지 않은 상태로 남겼고 main Figure로 잘못 연결하지 않았다. 그룹 text는 exact block concat이며 ambiguous 문단을 임의 복구하지 않는다. 문맥 완전성·semantic truth는 미평가다.
 - 새 [I2K_CONTEXT_POLICY](../docs/implementation/I2K_CONTEXT_POLICY.md)와 T04/INDEX/DIKW_CURRENT/RETRIEVAL_PROFILE/USER_OVERRIDES/DECISION_REGISTER를 연결했다. 원문 I/검색 index/모델 입력 그룹을 분리하고 same-D 우선은 문맥의 우선순위로 한정한다. 모든 원문/기존 I/IDs/hashes와 앱·schema·Docker 자원은 변경하지 않았다.
-- `python -X utf8 -B tools/validate_bundle.py --json`: exit1, 보존된 raw Markdown delimiter11건만 있으며 authored 문서/링크 추가 오류0이다. [검사 결과](../output/t03-information-context/document-validation.json). raw나 validator 규칙을 수정하지 않는다. production code·DB·model은 바꾸지 않아 전체 app/DB/GPU suite를 반복하지 않았다.
+- `python -X utf8 -B tools/validate_bundle.py --json`: exit1, 보존된 raw Markdown delimiter11건만 있으며 authored 문서/링크 추가 오류0이다. [검사 결과](../output/t23-ui-realm/build-test-logs.zip#output/t03-information-context/document-validation.json). raw나 validator 규칙을 수정하지 않는다. production code·DB·model은 바꾸지 않아 전체 app/DB/GPU suite를 반복하지 않았다.
 - 독립 재계산·읽기 검토: 전체/Text/Image/source-type 통계,229 I/18그룹의1회 배정, exact content/offset/ID/bbox/anchor/projection hash/PNG metadata와 입력8개·산출물3개 hash가 모두 일치했다. Main Results의 title/text22개, Image36개와 떨어진 caption continuation2개가6그룹에 정확히 연결된다. 검토자가 앞선 수기 요약의 Keywords14words를11words로 바로잡았으며 보고서의 실제 계산과 전체합계8,995words에는 영향이 없었다. 새로운 모델/DB 실행을 한 검증은 아니다.
 
 ## 결과와 후속 경계
 
 길이 측정·원문 기준 입력 시안·계약 구체화 범위를 완료했다. 새롭게 승인받아야 하는 결정은 없다. 실제 Markdown/범용 section projection, model별 tokenizer window, embedding/reranker adapter/index, same-D/corpus retrieval 및 I2K model/commit은 T04의 후속 구현·평가 범위다. 이번18그룹은 수작업 검토 source boundary에 대한 재현 가능한 예시이며 전체 문서 자동 grouping 성능은 아니다. 관련 AT와 T03/T04 상태를 일괄 pass로 올리지 않는다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

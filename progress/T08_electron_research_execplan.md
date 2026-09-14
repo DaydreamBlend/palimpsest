@@ -14,4 +14,6 @@ root는 프로젝트 적합성과 종합 보고를, 독립 조사자는 배포/b
 
 변경 파일은 이 계획, [종합 조사](../docs/implementation/ELECTRON_UI_ASSESSMENT.md), [배포 notes](../output/t08-electron-research/deployment-notes.md), [대안·부품 notes](../output/t08-electron-research/alternatives-notes.md), 기존 WIKI_UI_INTEGRATION의 날짜 명시 후속 설명, INDEX와 DECISION_REGISTER다. 앱 코드·schema·AGENTS·모델·원문은 바꾸지 않았다.
 
-실행한 문서 검사: bundled Python `-X utf8 -B tools/validate_bundle.py`, exit1. [로그](../output/t08-electron-research/document-validation.log)의 오류는 기존 parser/raw Markdown12개와 같으며 새 문서 오류는 없다. 전체 앱 tests와 문서 mutation suite, Electron/Tauri 설치·실행, PDF/한글/성능/서명·업데이트 실험은 수행하지 않았다. 조사 범위에 미해결 승인 요청은 없으며 T13/AT103 완료나 GUI 착수를 선언하지 않는다.
+실행한 문서 검사: bundled Python `-X utf8 -B tools/validate_bundle.py`, exit1. [로그](../output/t23-ui-realm/build-test-logs.zip#output/t08-electron-research/document-validation.log)의 오류는 기존 parser/raw Markdown12개와 같으며 새 문서 오류는 없다. 전체 앱 tests와 문서 mutation suite, Electron/Tauri 설치·실행, PDF/한글/성능/서명·업데이트 실험은 수행하지 않았다. 조사 범위에 미해결 승인 요청은 없으며 T13/AT103 완료나 GUI 착수를 선언하지 않는다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.

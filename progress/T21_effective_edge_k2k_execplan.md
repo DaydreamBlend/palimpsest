@@ -29,6 +29,8 @@ AT09의 실제 K2K EffectiveEdgeRef 소비/정확 replay, AT12의 endpoint 값 �
 
 실제Terra2회가가상의K3+qualifies1을사용해조건부상한2,048항목이라는inferredK1을생성·독립승인했다. 이는Palimpsest설정이나실제32GPT세션이아니며,그구분을사용자에게설명했다. 원본/typedrefs/정확전달/독립성/현재유효성11read-only확인pass. sourceK와N2E는표시된syntheticseeds이며새사용자자료전송0이다.
 
-앱0.20/schema0020이미지는palimpsest-effective-k2k:0.20.0/sha256:73a5d393571a1422edef213d6c76681f9f019dc9e187890d944e0cf79ae3013e. 앱·SQL108/test115파일및설치package의workspace일치를확인했다. [결과](../output/t21-effective-k2k/REPORT.md), [최종검사](../output/t21-effective-k2k/package-final.json).
+앱0.20/schema0020이미지는palimpsest-effective-k2k:0.20.0/sha256:73a5d393571a1422edef213d6c76681f9f019dc9e187890d944e0cf79ae3013e. 앱·SQL108/test115파일및설치package의workspace일치를확인했다. [결과](../output/t21-effective-k2k/REPORT.md), [최종검사](../output/t23-ui-realm/build-test-logs.zip#output/t21-effective-k2k/package-final.json).
 
 사용자는추가로단일Electron앱과RealmR을요청했고,RealmI2K정책은기본분리·명시적교차허용으로답했다. T22/REALM_SCOPE에기록했다. 현재K2K수직구현은완료하며,통합Electron+Realm후속작업은아직미완료다. 사용자가직접조작하므로기존Electron창은열기만했고자동클릭/조작하지않았다.
+
+로그 링크의 ZIP fragment는 T23 정리 때 보존한 원래 entry 경로다. 원문 내용은 archive와 cleanup manifest에서 확인한다.
