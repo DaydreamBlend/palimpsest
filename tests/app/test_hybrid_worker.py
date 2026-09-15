@@ -18,6 +18,21 @@ SPEC.loader.exec_module(worker_module)
 
 
 class HybridWorkerTests(unittest.TestCase):
+    def test_long_parse_has_no_deadline_and_cancellation_removes_its_container(self):
+        with TemporaryDirectory() as temporary, patch.object(worker_module, 'ROOT', Path(temporary).resolve()):
+            args = worker_module.parse_args(['--data-id', 'a' * 64, '--work-dir', str(Path(temporary) / 'work')])
+            worker = worker_module.Worker(args)
+            worker.job_id = 'test-job'
+            worker.app = lambda *args, **kwargs: {'state': 'prepared', 'attempt': 1}
+            worker.parser_command = lambda output, name: ['parser', name]
+            with patch.object(worker_module, 'command', side_effect=KeyboardInterrupt) as parse, \
+                    patch.object(worker_module.subprocess, 'run') as cleanup:
+                with self.assertRaises(KeyboardInterrupt):
+                    worker.continue_job()
+                self.assertIsNone(parse.call_args.kwargs['timeout'])
+                name = parse.call_args.args[0][1]
+                cleanup.assert_called_once_with(['docker', 'rm', '--force', name], capture_output=True, timeout=30)
+
     def test_default_is_explicit_hybrid_and_launch_binds_both_readonly_model_stores(self):
         with TemporaryDirectory() as temporary, patch.object(worker_module, 'ROOT', Path(temporary).resolve()):
             root = Path(temporary).resolve()

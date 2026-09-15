@@ -310,7 +310,8 @@ class Worker:
                 event('parsing_started',execution_id=self.job_id)
                 parser_name='palimpsest-parser-'+uuid4().hex
                 try:
-                    command(self.parser_command(parser_output,parser_name),timeout=1900)
+                    # Long documents may take hours; cancellation still cleans up below.
+                    command(self.parser_command(parser_output,parser_name),timeout=None)
                 finally:
                     # The daemon can outlive a timed-out Docker client. Only remove
                     # the unique container this invocation explicitly created.
