@@ -769,7 +769,10 @@ class KnowledgeRuntime:
 
     @staticmethod
     def _receipt(receipt, job, phase, output, *, validation_context=None):
+        from . import batched_i2k
+
         expected_input = job['input_digest'] if phase == 'generator' else job['validation_context_sha']
+        batched = receipt.get('delivery_mode') == batched_i2k.PROFILE if isinstance(receipt, dict) else False
         if (not isinstance(receipt, dict) or 'source_review_result' in receipt or 'revision_result' in receipt or 'revalidation_result' in receipt
                 or 'effective_validation_output' in receipt
                 or not isinstance(receipt.get('profile'), dict)
@@ -870,21 +873,29 @@ class KnowledgeRuntime:
             if (job['validator_receipt'] is None and job['profile'].get('source_review') is not None
                     and job['profile'].get('source_review_implementation_sha256') != _source_review_implementation()):
                 _fail('source_review_implementation_changed', 6)
-            snapshot = job['input_snapshot']
-            if phase == 'generator':
-                prompt, schema = generation_request(snapshot, attachments)
-                expected_prompt, expected_schema = sha256(prompt.encode('utf-8')).hexdigest(), digest(schema)
-            elif job['validator_receipt'] is not None:
-                expected_prompt = job['validator_receipt']['prompt_sha256']
-                expected_schema = job['validator_receipt']['schema_sha256']
+            if batched:
+                if job['operation'] != 'i2k' or not is_multi or job['profile'].get('source_review') != source_review_contract.PROFILE:
+                    _fail('invalid_batched_i2k', 2)
+                batched_i2k.verify_aggregate(receipt, output, job, phase,
+                                             validation_context=validation_context)
             else:
-                if validation_context is None:
-                    _fail('knowledge_validation_context_changed', 6)
-                context = {**validation_context, 'validation_context_sha': job['validation_context_sha']}
-                prompt, schema = validation_request(context, attachments)
-                expected_prompt, expected_schema = sha256(prompt.encode('utf-8')).hexdigest(), digest(schema)
-            if receipt.get('prompt_sha256') != expected_prompt or receipt.get('schema_sha256') != expected_schema:
-                _fail('knowledge_prompt_delivery_mismatch')
+                snapshot = job['input_snapshot']
+                if phase == 'generator':
+                    prompt, schema = generation_request(snapshot, attachments)
+                    expected_prompt, expected_schema = sha256(prompt.encode('utf-8')).hexdigest(), digest(schema)
+                elif job['validator_receipt'] is not None:
+                    expected_prompt = job['validator_receipt']['prompt_sha256']
+                    expected_schema = job['validator_receipt']['schema_sha256']
+                else:
+                    if validation_context is None:
+                        _fail('knowledge_validation_context_changed', 6)
+                    context = {**validation_context, 'validation_context_sha': job['validation_context_sha']}
+                    prompt, schema = validation_request(context, attachments)
+                    expected_prompt, expected_schema = sha256(prompt.encode('utf-8')).hexdigest(), digest(schema)
+                if receipt.get('prompt_sha256') != expected_prompt or receipt.get('schema_sha256') != expected_schema:
+                    _fail('knowledge_prompt_delivery_mismatch')
+        elif batched:
+            _fail('invalid_batched_i2k', 2)
         if job['operation'] == 'd2k':
             snapshot = job['input_snapshot']
             if receipt.get('delivered_data_view_ids') != d2k.check_input(snapshot['input']):

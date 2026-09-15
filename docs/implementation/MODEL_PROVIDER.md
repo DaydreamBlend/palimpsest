@@ -12,3 +12,12 @@ From 2026-09-15, every active Palimpsest Generator and Validator call uses the u
 `tools/run_knowledge_model.py` is the single host call path. It sends strict JSON Schema requests, carries I images as data URLs, records the server response ID as the independent provider reference, and preserves token usage. Historical Terra/Codex OAuth receipts and dated reports remain historical evidence; they are not rewritten.
 
 The endpoint has passed model-list, strict JSON Schema, and real 200 DPI PDF page-image smoke checks. Generator and Validator still run as separate requests with separate provider response IDs.
+
+Large full-source I2K jobs use `batched-i2k-delivery-v1`. The frozen source-review
+manifest is partitioned deterministically by source order, page, text range, and
+media count. `tools/prepare_batched_i2k.py` writes resumable strict-schema calls
+and merges them only after every range, media asset, Information, and review target
+is covered. Partial blocks cannot be cited as whole-block evidence. The Runtime
+recomputes the plan and every exchange before the ordinary source-review stage or
+decision path can affect canonical K. Generator and Validator batch response IDs
+must remain disjoint.

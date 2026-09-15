@@ -83,6 +83,9 @@ def main():
     }
     if 'delivered_information_ids' in request:
         receipt['delivered_information_ids'] = request['delivered_information_ids']
+    for field in ('delivered_source_target_ids', 'batch_id'):
+        if field in request:
+            receipt[field] = request[field]
     if 'delivered_knowledge_revision_ids' in request:
         receipt['delivered_knowledge_revision_ids'] = request['delivered_knowledge_revision_ids']
     if 'delivered_data_view_ids' in request:

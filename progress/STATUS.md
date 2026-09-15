@@ -2,7 +2,7 @@
 
 문서 갱신: **2026-09-15**. 기능·실행 결과의 기준은 **2026-09-14 T24**다. **2026-09-15 사용자 요청으로 Palimpsest Docker DB·아티팩트·자격증명 볼륨 43개, DB 컨테이너 3개와 앱·PG18 이미지를 삭제했다. 아래 기능·검증은 삭제 전 결과이며 현재 조회 가능한 DB를 뜻하지 않는다.** MinerU/BGE 이미지 3개와 MinerU 모델 볼륨, 호스트의 코드·원본·모델·실행 기록은 보존했다. 재사용에는 앱 이미지 빌드와 DB 생성·자료 등록/컴파일이 필요하며, 과거 DB 이력의 완전 복구는 보장하지 않는다. 이 파일을 현재 상태의 단일 진입점으로 유지한다. 상세 계약은 [문서 인덱스](../docs/INDEX.md), 실제 검증 근거는 [T24 보고서](../output/t24-wisdom-realm/REPORT.md)를 따른다.
 
-현재 새 실행 환경: 사용자 요청으로 단일 Compose project `palimpsest`와 앱 이미지 `palimpsest-ui:0.23.0`을 재생성했다. 새 PG18.6/pgvector0.8.6 source schema0023 및 별도 Realm catalog에 **약물치료학.pdf(37페이지)를 Realm ‘약사’로 등록 완료**했다. MinerU image200 D2I의 재시도는 37/37페이지를 처리해 2026-09-15 16:40 KST 완료됐고, 본문 203,496자와 page furniture 285자를 I 2개로 보존했다. I2K/N2E/K2K는 사용자 로컬 GLM으로 실행하도록 자동화가 ACTIVE다. 기존 삭제 DB는 복원하지 않았다. [새 자료 처리 기록](../output/t26-pharmacy/REPORT.md).
+현재 새 실행 환경: 사용자 요청으로 단일 Compose project `palimpsest`와 앱 이미지 `palimpsest-ui:0.23.0`을 재생성했다. 새 PG18.6/pgvector0.8.6 source schema0023 및 별도 Realm catalog에 **약물치료학.pdf(37페이지)를 Realm ‘약사’로 등록 완료**했다. MinerU image200 D2I는 37/37페이지를 처리했고, 완성된 D2I를 재실행하지 않은 채 원문 페이지 I를 보강해 현재 I2K 입력은 39개 I·112개 고정 source-review target이다. 단일 대형 로컬 GLM 호출은 폐기하고 **36개 중단·재개 가능한 분할 I2K**로 전환했다. 격리 PG에서 신규 2개와 기존 회귀 37개 검사가 통과했으며, 첫 live batch는 10분 내 응답이 없어 중단되어 성공 batch는 아직 0개다. Heartbeat가 첫 미완료 batch부터 계속 처리하도록 ACTIVE다. 기존 삭제 DB는 복원하지 않았다. [자료 처리 기록](../output/t26-pharmacy/REPORT.md), [분할 I2K 결과](../output/t27-batched-i2k/REPORT.md).
 
 확인된 후속 D2I 개선: 약물치료학 본문 203,496자가 단일 I로 묶인 것은 너무 거칠다. 완료된 실행은 재파싱하지 않고 현재 I2K 실험에 사용하되, 이후 PDF profile은 페이지별 원자 provenance와 전량 coverage를 유지하면서 장·절·주제 경계의 여러 I로 결정론적으로 묶어야 한다.
 
