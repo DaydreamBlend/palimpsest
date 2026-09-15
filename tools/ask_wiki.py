@@ -1,4 +1,4 @@
-"""Run the explicit local query CLI/embedding/OAuth worker loop and retain receipts.
+"""Run the explicit local query CLI/embedding/GLM worker loop and retain receipts.
 
 No database credentials enter this process: Docker uses its existing secret mount.
 The caller supplies the dedicated project, artifact volume, model and query IDs.
@@ -25,8 +25,7 @@ def main():
     parser.add_argument('--index-id', required=True)
     parser.add_argument('--request-id', required=True)
     parser.add_argument('--question', required=True)
-    parser.add_argument('--codex', required=True)
-    parser.add_argument('--allow-model-calls', action='store_true', help='Explicitly invoke the configured OAuth worker')
+    parser.add_argument('--allow-model-calls', action='store_true', help='Explicitly invoke the configured local GLM worker')
     parser.add_argument('--revise', action='store_true', help='Start one new review attempt, preserving the previous answer')
     parser.add_argument('--review-notes', type=Path, help='JSON string list inside --directory for a reviewed answer')
     args = parser.parse_args()
@@ -89,8 +88,7 @@ def main():
         payload = json.loads(path.read_text(encoding='utf-8'))
         response = path.parent / payload['output_file']
         if not response.exists():
-            run([sys.executable, '-X', 'utf8', '-B', str(repository / 'tools/run_knowledge_model.py'),
-                str(path), '--codex', args.codex], phase)
+            run([sys.executable, '-X', 'utf8', '-B', str(repository / 'tools/run_knowledge_model.py'), str(path)], phase)
         response_path = '/results/' + response.relative_to(root).as_posix()
         return cli('query-stage' if phase == 'generator' else 'query-decide', '--response', response_path)
 

@@ -57,7 +57,7 @@ palim knowledge prepare --operation i2k --selection --data-id DATA_SHA --request
 
 후속 실행은 같은 Data/source의 이전 review·오류를 동결 snapshot에 포함하고 전체 I를 다시 받는다. 구조 오류의 원문 excerpt는 실제 I의 위치에 결속하며 의미를 자동 교정하지 않는다. 과거 판정과 실패는 덮어쓰지 않는다. 실제 input/prompt/schema/media가 모두 같은 경우에만 기존 Generator 응답을 새 구현 profile에 재사용할 수 있다.
 
-`tools/prepare_selection_call.py`는 전체 source context에서 실제 요청을 구성한다. `tools/run_knowledge_model.py`는 기존 Codex OAuth를 호출하고 입력·출력·prompt·schema·전체 I ID·이미지 hash receipt를 남긴다. Runtime은 DB snapshot으로 기대 prompt/schema를 재구성해 실제 receipt와 비교한다. 원문 일부를 빼고 ID 목록만 유지한 요청도 거부한다.
+`tools/prepare_selection_call.py`는 전체 source context에서 실제 요청을 구성한다. `tools/run_knowledge_model.py`는 [현재 로컬 GLM provider](MODEL_PROVIDER.md)를 호출하고 입력·출력·prompt·schema·전체 I ID·이미지 hash receipt를 남긴다. Runtime은 DB snapshot으로 기대 prompt/schema를 재구성해 실제 receipt와 비교한다. 원문 일부를 빼고 ID 목록만 유지한 요청도 거부한다.
 
 Validator의 재사용 참조는 상호 배타적인 object schema다. 기존 Revision, batch candidate, non-reuse 중 하나만 선택할 수 있다. nested `anyOf` 지원은 [공식 Structured Outputs 문서](https://developers.openai.com/api/docs/guides/structured-outputs)와 실제 모델 호출로 확인했다. JSON schema의 준수와 의미의 정확성은 별개다.
 

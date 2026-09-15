@@ -31,10 +31,10 @@ from . import n2e_runtime, n2e_relations
 from . import k2k_effective, k2k_effective_runtime
 from . import knowledge_revision_runtime as revision_runtime
 from .data_versions import immutable_versions
+from .local_glm_provider import PROFILE as GLM_PROFILE
 
 
-MODEL = {'provider': 'codex_cli', 'model': 'gpt-5.6-terra',
-         'reasoning_effort': 'medium', 'auth': 'chatgpt_oauth', 'cli_version': '0.153.4'}
+MODEL = deepcopy(GLM_PROFILE)
 
 
 def _fail(code, exit_code=4):
@@ -435,8 +435,7 @@ class KnowledgeRuntime:
         if modern_n2e:
             profile_name = n2e_relations.PROFILE
         model = deepcopy(MODEL if model_profile is None else model_profile)
-        if (not isinstance(model, dict) or any(model.get(key) != value for key, value in MODEL.items()
-                if key != 'cli_version') or not isinstance(model.get('cli_version'), str)):
+        if not isinstance(model, dict) or model != MODEL:
             _fail('invalid_knowledge_profile', 2)
         supplied = _json(input_snapshot)
         request_payload = {'operation': operation, 'data_id': data_id, 'input': supplied,

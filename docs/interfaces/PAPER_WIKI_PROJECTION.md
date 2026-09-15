@@ -104,7 +104,7 @@ python -m palimpsest wiki request --directory <wiki-dir> --request-id <request-u
 `wiki request`는 호출 준비 명령이며 자체적으로 모델을 호출하지 않는다. 반환된 `request_file`에는 prompt/schema, input digest, 실제 첨부할 이미지 경로와 hash, output 파일 이름이 들어 있다. 호스트 worker가 이 요청을 읽어 승인된 모델 호출을 수행한다.
 
 ```text
-python tools/run_knowledge_model.py <host-visible-generator-request.json> --codex <codex-executable>
+python tools/run_knowledge_model.py <host-visible-generator-request.json>
 python -m palimpsest wiki stage --directory <wiki-dir> --request-id <request-uuidv7> --response <generator-response.json> --json --non-interactive
 ```
 
@@ -116,7 +116,7 @@ worker를 호스트에서 실행한다면 요청 JSON과 `../../media/...` 이�
 
 ```text
 python -m palimpsest wiki request --directory <wiki-dir> --request-id <request-uuidv7> --phase validator --json --non-interactive
-python tools/run_knowledge_model.py <host-visible-validator-request.json> --codex <codex-executable>
+python tools/run_knowledge_model.py <host-visible-validator-request.json>
 python -m palimpsest wiki decide --directory <wiki-dir> --request-id <request-uuidv7> --response <validator-response.json> --json --non-interactive
 ```
 

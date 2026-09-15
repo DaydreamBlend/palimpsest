@@ -71,13 +71,13 @@ CLI는 `query-source`를 원문 요청이 보류된 경우에만 허용한다. q
 
 ## 한 질문을 실행하는 host runner
 
-`tools/ask_wiki.py`가 위 CLI, 네트워크 없는 BGE Docker, 기존 `tools/run_knowledge_model.py`의 Terra Medium OAuth 호출을 순서대로 실행한다. 다음은 이미 색인된 실험 환경의 예시다. `--request-id`는 새로운 실제 UUIDv7를 넣는다.
+`tools/ask_wiki.py`가 위 CLI, 네트워크 없는 BGE Docker, `tools/run_knowledge_model.py`의 [사용자 로컬 GLM](../implementation/MODEL_PROVIDER.md) 호출을 순서대로 실행한다. 다음은 이미 색인된 실험 환경의 예시다. `--request-id`는 새로운 실제 UUIDv7를 넣는다.
 
 ```powershell
-python tools/ask_wiki.py --directory output/t07-wiki-query-ui --project palimpsest-multi-checks --database-name palimpsest_wiki_pg --artifact-volume palimpsest-knowledge_artifacts --model-directory .local/models/bge-m3-5617a9f61b028005a4858fdac845db406aefb181 --index-id 01a095c9-16b1-74ef-8660-7ac02483e46e --request-id <new-uuidv7> --question "SuperMApo 제조 방법은?" --codex <approved-codex-executable> --allow-model-calls
+python tools/ask_wiki.py --directory output/t07-wiki-query-ui --project palimpsest-multi-checks --database-name palimpsest_wiki_pg --artifact-volume palimpsest-knowledge_artifacts --model-directory .local/models/bge-m3-5617a9f61b028005a4858fdac845db406aefb181 --index-id 01a095c9-16b1-74ef-8660-7ac02483e46e --request-id <new-uuidv7> --question "SuperMApo 제조 방법은?" --allow-model-calls
 ```
 
-runner는 Docker 프로젝트·DB·Artifact volume·로컬 model·OAuth executable을 명시적으로 받는다. 새 key/provider를 만들지 않으며 일반 query 명령이 자동으로 모델을 실행하지도 않는다. 동일한 요청의 재실행은 이미 저장된 worker response를 재사용한다. 보류 답변의 후속 시도는 `--revise`, accepted 답변 재검토에는 `--revise --review-notes <file>`을 사용한다. controller 명령·exit/stdout/stderr는 query별 journal에 남긴다. worker 전송 실패나 반복 무진전은 정상 답변으로 위장하지 않는다. 완전한 T11 실패 재개·취소 운영 기능은 별도 범위다.
+runner는 Docker 프로젝트·DB·Artifact volume·로컬 embedding model을 명시적으로 받는다. Generator/Validator는 고정된 로컬 GLM profile을 사용하며 일반 query 명령이 자동으로 모델을 실행하지는 않는다. 동일한 요청의 재실행은 이미 저장된 worker response를 재사용한다. 보류 답변의 후속 시도는 `--revise`, accepted 답변 재검토에는 `--revise --review-notes <file>`을 사용한다. controller 명령·exit/stdout/stderr는 query별 journal에 남긴다. worker 전송 실패나 반복 무진전은 정상 답변으로 위장하지 않는다. 완전한 T11 실패 재개·취소 운영 기능은 별도 범위다.
 
 ## 모듈과 후속 경계
 

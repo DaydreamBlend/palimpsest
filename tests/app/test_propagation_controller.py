@@ -26,8 +26,7 @@ def fixture_request():
 def exchange(request):
     response = {'synthetic_test_only': True}
     return {'response': response, 'receipt': {'actual_delivery': True, 'original_pdf_delivered': False,
-        'provider_ref': 'synthetic-no-provider', 'profile': {'provider': 'codex_cli', 'cli_version': worker.CLI_VERSION,
-            'model': worker.MODEL, 'reasoning_effort': worker.REASONING_EFFORT, 'auth': 'chatgpt_oauth'},
+        'provider_ref': 'synthetic-no-provider', 'profile': deepcopy(worker.MODEL),
         'input_sha256': request['input_sha256'], 'prompt_sha256': sha256(request['prompt'].encode()).hexdigest(),
         'schema_sha256': worker.digest(request['schema']), 'output_sha256': worker.digest(response),
         'image_attachments': [], **{key: value for key, value in request.items() if key.startswith('delivered_')}}}
@@ -64,7 +63,7 @@ class PropagationControllerTests(unittest.TestCase):
         self.addCleanup(root_patch.stop)
         self.args = SimpleNamespace(directory=self.base / 'results', project='synthetic-project',
             database_name='synthetic-database', artifact_volume='synthetic-artifacts',
-            app_image='palimpsest-propagation:0.16.0', codex='synthetic-codex', docker='synthetic-docker',
+            app_image='palimpsest-propagation:0.16.0', docker='synthetic-docker',
             lease_seconds=180, allow_model_calls=False, once=False,
             run_id='019a5c1b-7f00-7000-8000-000000000001')
         self.controller = StubController(self.args)
@@ -117,7 +116,7 @@ class PropagationControllerTests(unittest.TestCase):
             result = self.controller.model_turn({**self.task, 'operation': 'wiki'})
         self.assertEqual(len(started), 1)
         self.assertIn(str(worker.ROOT / 'tools/run_knowledge_model.py'), started[0])
-        self.assertEqual(started[0][-2:], ['--codex', 'synthetic-codex'])
+        self.assertEqual(started[0][-1], str(self.path))
         self.assertEqual([call[0] for call in self.controller.calls], ['renew', 'renew', 'accept'])
         self.assertEqual(result['action'], 'task_completed')
 

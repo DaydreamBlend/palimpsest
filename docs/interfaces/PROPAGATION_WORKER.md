@@ -66,10 +66,10 @@ palim propagation start RUN_UUID --confirm SCOPE_FINGERPRINT --actor-ref ACTOR_R
 host controller는 repository의 `compose.yaml`과 기존 project credential mount를 사용한다. 매 CLI 호출은 `docker compose run --rm --no-deps`이며, 작업 폴더는 쓰기 가능하게, repository와 지정한 원본 Artifact Store는 읽기 전용으로 mount한다. host는 DB DSN/password 파일을 직접 읽지 않는다.
 
 ```text
-python -X utf8 -B tools/run_propagation.py --run-id RUN_UUID --directory HOST_WORK_DIRECTORY --project COMPOSE_PROJECT --database-name DATABASE_NAME --artifact-volume ARTIFACT_VOLUME --app-image palimpsest-propagation:0.18.0 --codex CODEX_EXECUTABLE --allow-model-calls
+python -X utf8 -B tools/run_propagation.py --run-id RUN_UUID --directory HOST_WORK_DIRECTORY --project COMPOSE_PROJECT --database-name DATABASE_NAME --artifact-volume ARTIFACT_VOLUME --app-image palimpsest-propagation:0.18.0 --allow-model-calls
 ```
 
-`python`과 `CODEX_EXECUTABLE`은 실제 설치 경로로 바꾼다. 현재 모델 adapter는 기존 OAuth의 **Codex CLI 0.153.4 / gpt-5.6-terra / medium**을 사용한다. host controller가 login이나 provider 설정을 새로 만들지 않는다.
+`python`은 실제 설치 경로로 바꾼다. 현재 모델 adapter는 [사용자 로컬 GLM](../implementation/MODEL_PROVIDER.md)을 사용하며 host controller는 인증정보를 읽지 않는다.
 
 `--allow-model-calls`가 없으면 새 provider 프로세스를 시작하지 않고 검토 가능한 요청에서 멈춘다. 정확한 기존 response가 있으면 요청·receipt 검증 후 재사용할 수 있다. 이 flag와 run 시작 확인은 별개이며, 실제 원문의 외부 전송에는 해당 범위의 사용자 승인이 필요하다.
 

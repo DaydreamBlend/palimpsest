@@ -14,7 +14,7 @@
 | 설명/추천 W·P·Wiki | [W/P 구분](decisions/WIKI_WISDOM_PARCHMENT.md), [K2W](interfaces/K2W.md), [W2P/Parchment](interfaces/PARCHMENT.md) |
 | Electron·store·Realm UI | [통합 Desktop](interfaces/UNIFIED_DESKTOP.md), [Realm IPC](interfaces/REALM_DESKTOP.md), [직접 소속 지정](interfaces/UI_REALM_ASSIGNMENT.md) |
 | 기존 Wiki projection·검색·답변 | [legacy I 기반 Wiki](interfaces/PAPER_WIKI_PROJECTION.md), [Wiki DB](interfaces/WIKI_DATABASE.md), [query](interfaces/WIKI_QUERY.md) |
-| CLI·공유 Runtime 구조 | [CLI](interfaces/CLI_CONTRACT.md), [모듈 경계](implementation/MODULE_BOUNDARIES.md), [저장·identity](decisions/STORAGE_IDENTITY.md) |
+| CLI·공유 Runtime 구조 | [CLI](interfaces/CLI_CONTRACT.md), [모듈 경계](implementation/MODULE_BOUNDARIES.md), [현재 모델 provider](implementation/MODEL_PROVIDER.md), [저장·identity](decisions/STORAGE_IDENTITY.md) |
 
 구체적인 승인 변경은 해당 계약에서 연결한 `decisions/` 기록을 확인한다. [USER_OVERRIDES](decisions/USER_OVERRIDES.md)는 초기 선택과 후속 변경의 이력이며, 모든 과거 기본값을 동시에 적용하는 지침이 아니다. 다음 제품 연결 작업은 [현재 backlog](../progress/IMPLEMENTATION_BACKLOG_2026_09_14.md)에 있다.
 

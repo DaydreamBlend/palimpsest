@@ -1,4 +1,4 @@
-"""One explicit OAuth model call for the I2K/N2E/K2K worker exchange.
+"""One explicit local GLM call for a structured knowledge worker exchange.
 
 This host worker has no database authority. Runtime stages and validates every
 response separately. It never claims a source descriptor was delivered.
@@ -12,7 +12,7 @@ import sys
 import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from palimpsest.codex_provider import CodexProvider
+from palimpsest.local_glm_provider import LocalGLMProvider
 from palimpsest.errors import PalimpsestError
 
 
@@ -24,7 +24,6 @@ def digest(value):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('request', type=Path)
-    parser.add_argument('--codex', required=True)
     args = parser.parse_args()
     request = json.loads(args.request.read_text(encoding='utf-8'))
     root = args.request.resolve().parent
@@ -49,7 +48,7 @@ def main():
         attachments.append({'sha256': item['sha256'], 'byte_size': len(raw)})
     start = time.monotonic()
     try:
-        result = CodexProvider(args.codex, timeout_seconds=1200).generate(
+        result = LocalGLMProvider(timeout_seconds=1200).generate(
             prompt=request['prompt'], schema=request['schema'], images=images, cwd=root)
     except PalimpsestError as exc:
         failure = {'error_code':exc.code,'diagnostic':exc.details,

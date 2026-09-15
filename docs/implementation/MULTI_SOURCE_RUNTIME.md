@@ -113,9 +113,9 @@ with Path('combined-input.json').open('x', encoding='utf-8') as output:
 
 ```text
 python tools/prepare_selection_call.py generator --context prepared.json --source-directory SOURCE_EXPORT --request generator-request.json --response-name generator.json
-python tools/run_knowledge_model.py generator-request.json --codex CODEX_EXECUTABLE
+python tools/run_knowledge_model.py generator-request.json
 python tools/prepare_selection_call.py validator --context validation-context.json --source-directory SOURCE_EXPORT --request validator-request.json --response-name validator.json
-python tools/run_knowledge_model.py validator-request.json --codex CODEX_EXECUTABLE
+python tools/run_knowledge_model.py validator-request.json
 ```
 
 실제 순서는 prepare → Generator 호출 → stage → 반환된 validation context 저장 → Validator 호출 → decide다. 각 worker 파일은 `response`와 실제 `receipt`를 포함한다. Runtime은 frozen 입력으로 prompt/schema hash를 재구성하고 전체 I ID·이미지 목록과 실제 receipt를 비교한다. ID 목록만 유지하고 본문을 지운 요청도 거부한다. 모델 호출은 원문 전송 권한이 있는 범위에서만 수행하며, 예시 명령 자체가 새 원문의 전송 승인은 아니다.

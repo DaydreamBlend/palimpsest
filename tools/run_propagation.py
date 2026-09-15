@@ -21,7 +21,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
-from palimpsest.codex_provider import CLI_VERSION, MODEL, REASONING_EFFORT
+from palimpsest.local_glm_provider import PROFILE as MODEL
 from palimpsest.data import request_id
 from palimpsest.errors import PalimpsestError
 
@@ -106,8 +106,7 @@ def cached_exchange(output, request, attachments):
     if not isinstance(value, dict) or set(value) != {'response', 'receipt'}:
         fail('propagation_cached_exchange_invalid')
     receipt = value['receipt']
-    expected_profile = {'provider': 'codex_cli', 'cli_version': CLI_VERSION, 'model': MODEL,
-        'reasoning_effort': REASONING_EFFORT, 'auth': 'chatgpt_oauth'}
+    expected_profile = MODEL
     if (not isinstance(receipt, dict) or not isinstance(receipt.get('profile'), dict)
             or receipt.get('actual_delivery') is not True
             or receipt.get('original_pdf_delivered') is not False or not receipt.get('provider_ref')
@@ -255,8 +254,7 @@ class Controller:
                 if not self.args.allow_model_calls:
                     return {'state': 'blocked', 'reason': 'model_calls_require_explicit_flag',
                         'request_file': str(path), 'task_id': task['task_id'], 'partial': True}
-                argv = [sys.executable, '-X', 'utf8', '-B', str(ROOT / 'tools/run_knowledge_model.py'),
-                        str(path), '--codex', self.args.codex]
+                argv = [sys.executable, '-X', 'utf8', '-B', str(ROOT / 'tools/run_knowledge_model.py'), str(path)]
                 record = self.journal.command(argv)
                 try:
                     with (record / 'stdout.txt').open('x', encoding='utf-8') as stdout, (record / 'stderr.txt').open('x', encoding='utf-8') as stderr:
@@ -344,7 +342,6 @@ def main(argv=None):
     parser.add_argument('--database-name', required=True)
     parser.add_argument('--artifact-volume', required=True)
     parser.add_argument('--app-image', default='palimpsest-effective-k2k:0.20.0')
-    parser.add_argument('--codex', default='codex')
     parser.add_argument('--docker', default='docker')
     parser.add_argument('--allow-model-calls', action='store_true')
     parser.add_argument('--once', action='store_true')

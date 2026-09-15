@@ -1,6 +1,8 @@
 # 현재 상태
 
-문서 갱신: **2026-09-15**. 기능·실행 결과의 기준은 **2026-09-14 T24**다. 이 파일을 현재 상태의 단일 진입점으로 유지하고, 과거 결과를 날짜별로 덧붙이지 않는다. 상세 계약은 [문서 인덱스](../docs/INDEX.md), 실제 검증 근거는 [T24 보고서](../output/t24-wisdom-realm/REPORT.md)를 따른다.
+문서 갱신: **2026-09-15**. 기능·실행 결과의 기준은 **2026-09-14 T24**다. **2026-09-15 사용자 요청으로 Palimpsest Docker DB·아티팩트·자격증명 볼륨 43개, DB 컨테이너 3개와 앱·PG18 이미지를 삭제했다. 아래 기능·검증은 삭제 전 결과이며 현재 조회 가능한 DB를 뜻하지 않는다.** MinerU/BGE 이미지 3개와 MinerU 모델 볼륨, 호스트의 코드·원본·모델·실행 기록은 보존했다. 재사용에는 앱 이미지 빌드와 DB 생성·자료 등록/컴파일이 필요하며, 과거 DB 이력의 완전 복구는 보장하지 않는다. 이 파일을 현재 상태의 단일 진입점으로 유지한다. 상세 계약은 [문서 인덱스](../docs/INDEX.md), 실제 검증 근거는 [T24 보고서](../output/t24-wisdom-realm/REPORT.md)를 따른다.
+
+현재 새 실행 환경: 사용자 요청으로 단일 Compose project `palimpsest`와 앱 이미지 `palimpsest-ui:0.23.0`을 재생성했다. 새 PG18.6/pgvector0.8.6 source schema0023 및 별도 Realm catalog에 **약물치료학.pdf(37페이지)를 Realm ‘약사’로 등록 완료**했다. MinerU image200 D2I의 재시도는 37/37페이지를 처리해 2026-09-15 16:40 KST 완료됐고, 본문 203,496자와 page furniture 285자를 I 2개로 보존했다. I2K/N2E/K2K는 사용자 로컬 GLM으로 실행하도록 자동화가 ACTIVE다. 기존 삭제 DB는 복원하지 않았다. [새 자료 처리 기록](../output/t26-pharmacy/REPORT.md).
 
 ## 구현과 실행 환경
 
@@ -8,10 +10,10 @@
 |---|---|
 | Backend / Electron UI | 0.23.0 / 0.7.0 ([Python](../pyproject.toml), [Electron](../desktop/package.json)) |
 | 현재 런처 | [Palimpsest.cmd](../Palimpsest.cmd): 공용 Electron 엔진 + `output/t24-wisdom-realm/release-final/app.asar` |
-| 현재 패키지 이미지 | `palimpsest-ui:0.23.0`; 정확한 패키지·이미지 hash는 T24 보고서 |
-| 새 W/P schema | 0021–0023은 격리 `palimpsest_wisdom_checks`에 적용 |
-| 기존 사용자 source DB | schema6/10/13 유지; 해당 DB를 새 schema로 migration한 결과가 아님 |
-| Realm 저장소 | source DB와 분리된 metadata; 검사에는 `palimpsest_realm_checks` 사용 |
+| 앱 이미지 | `palimpsest-ui:0.23.0` 재빌드 완료; 현재 Knowledge Runtime은 로컬 GLM profile 사용 |
+| W/P DB | 삭제됨. 삭제 전 격리 `palimpsest_wisdom_checks`에서 0021–0023 검증 |
+| 사용자 source DB | 새 `palimpsest` project에 PG18.6/pgvector0.8.6 및 source schema0023 생성 |
+| Realm 저장소 | 새 별도 Realm catalog에 약사 Realm과 자료 membership 저장 |
 | Git | 로컬 최초 기준점 `c10dc88`부터 변경 추적. 그 이전 개발 commit을 재구성하지 않음 |
 
 - **원문과 K:** immutable D·Data version, PDF/Markdown/Python D2I, source-only I2K와 독립 검증·검토·동일 의미 K 재사용이 있다. Production D2I는 application LLM을 호출하지 않으며 PDF의 선택된 MinerU 내부 OCR/layout VLM은 별도다. I2K의 I 부족/오류는 보고·보류한다. 별도 D2K는 정확한 자료에 대한 사용자 요청 범위에서만 실행한다.
@@ -46,3 +48,4 @@
 4. K 변경에 따른 정식 W/P 재생성·현재 P 선택/대체·검색 갱신을 연결한다.
 
 추가 native parser/URL importer, Decision/W2K, Book·게시, crawler, cross-store canonical compile과 대규모 paging/운영 검증도 남아 있다. 이 목록은 사용자 DB migration·새 자료 전송·provider 실행의 포괄적 승인이 아니다. 과거 계획과 결과는 [문서 인덱스의 역사 경로](../docs/INDEX.md#과거-기록)를 통해 필요한 때만 조회한다.
+2026-09-15 provider change: active Generator/Validator calls now use local `glm-5.3-flash-nvidia-nvfp4` at `http://172.30.1.11:8888/v1` with context `700160`; model-list, strict JSON Schema, real PDF page-image, and provider-code live smoke checks passed. Historical Terra receipts remain unchanged.

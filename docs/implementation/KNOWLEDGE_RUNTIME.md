@@ -30,7 +30,7 @@ Node grounding은 canonical I, 0-based half-open 문자 범위, exact quote, 선
 
 ## 모델 입력과 CLI
 
-승인된 기존 Codex OAuth를 `codex_provider.py`로 사용한다. 고정 요청 모델은 `gpt-5.6-terra`, reasoning `medium`, CLI `0.153.4`이며 매 호출은 독립적인 structured response다. 실행기가 보고하지 않은 backend 모델을 확인했다고 쓰지 않는다. API 키·OAuth token을 읽거나 복사하지 않는다.
+현재 Generator와 Validator는 [로컬 GLM provider](MODEL_PROVIDER.md)를 사용한다. 모델·endpoint·context·sampling 설정은 profile과 receipt에 고정하고, 매 호출은 별도 provider response ID를 가진 독립 structured response다.
 
 `tools/run_knowledge_model.py`는 준비한 prompt/schema와 hash가 검증된 I 이미지들을 실제 호출하고 metadata receipt를 만든다. 이 host worker에는 DB 권한이 없다. 최초 입력은 I text와 I media이며 원본 PDF/전체 페이지 이미지는 자동 첨부하지 않는다. 원문이 필요하면 정확한 I/page와 질문을 기록한다. 현재 CLI 이미지 입력은 원본 PDF 전달 기능이 아니므로 지원되지 않는 원본 요청을 처리했다고 기록하지 않는다.
 
