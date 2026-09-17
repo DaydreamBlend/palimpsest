@@ -39,6 +39,7 @@ and retrieval metadata not shown here are references, not additional evidence.
 Use concise visible rationale and explicit assumptions/limitations, not private
 chain-of-thought. If evidence is insufficient, use status=insufficient and explain
 the missing basis in unresolved without pretending an unsearched source is absent.
+Every claim text must be substantive; punctuation-only placeholders are invalid.
 Return only the provided strict JSON schema. Do not emit identifiers for W/K/Record
 or authority/confirmation fields. No content-based merging of distinct Wisdom.
 Write the visible answer in the query language, falling back to the primary

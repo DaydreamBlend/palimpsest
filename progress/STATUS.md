@@ -56,10 +56,13 @@
 
 2026-09-17 T29 current delivery: the fresh `palimpsest-pharmacy-full` PostgreSQL
 18/pgvector store contains the registered 37-page `약물치료학.pdf` in Realm
-`약사`, deterministic dual-path D2I, 712 accepted Korean source K, 262 typed N2E
-revisions, and one accepted K2K inference (713 current K total). BGE-M3 produced
-736 searchable chunks. A model-planned, independently reviewed K2W plan covers all
-713 K exactly once in 59 semantic groups. The 59 K2W jobs are prepared, but a
-local-GLM/vLLM structured-output incompatibility stopped the first Generator run;
-there are still zero committed W and P in this store. Exact checkpoint details are
-in [T29](T29_pharmacy_full_slice_execplan.md).
+`약사`, deterministic dual-path D2I with 77 complete I, 712 accepted Korean
+source K, 262 typed N2E revisions, and one accepted K2K inference (713 current K
+total). BGE-M3 produced 736 searchable chunks. Fifty-nine semantic K2W groups
+cover all current K exactly once and passed independent local-GLM validation. The
+corrected P `01a0af4b-f2da-7465-9ca2-35514bed464e` composes 59 Explanation W into
+59 sections and 702 substantive Korean claims. The replaced placeholder W and
+first P remain immutable audit history. A hidden packaged Electron check connected
+both configured stores and rendered the corrected P without renderer errors. Exact
+counts, token usage and validation evidence are in
+[T29](T29_pharmacy_full_slice_execplan.md).

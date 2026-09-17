@@ -155,6 +155,8 @@ def normalize_answer(response, packet):
             _fail('k2w_advisory_kind_required')
         keys.add(key)
         claim['text'] = _text(claim['text'], code='invalid_k2w_claim')
+        if not any(character.isalnum() for character in claim['text']):
+            _fail('invalid_k2w_claim')
         claim['k_revision_ids'] = _selected_refs(claim['k_revision_ids'], nodes, nonempty=True)
         selected = _selected_refs(claim['effective_edge_revision_ids'], edges)
         for revision in selected:

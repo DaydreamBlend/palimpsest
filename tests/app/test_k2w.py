@@ -98,6 +98,11 @@ class K2WTests(unittest.TestCase):
         value['claims'][0]['epistemic_basis'] = 'advisory_recommendation'
         self.rejects(lambda: k2w.normalize_answer(value, packet()), 'k2w_advisory_kind_required')
 
+    def test_claim_text_rejects_punctuation_only_placeholder(self):
+        value = answer()
+        value['claims'][0]['text'] = '...'
+        self.rejects(lambda: k2w.normalize_answer(value, packet()), 'invalid_k2w_claim')
+
     def test_recommendation_requires_closed_options_complete_comparison_and_exact_claims(self):
         source, value = packet(recommendation=True), answer(recommendation=True)
         self.assertEqual(k2w.normalize_answer(value, source), value)

@@ -34,7 +34,7 @@ its 448 English K revisions remain unchanged.
 - The task report records I sizes, model token usage, accepted/held counts, relation
   results, W/P IDs, tests and any remaining limitations.
 
-## 2026-09-17 checkpoint
+## 2026-09-17 completed slice
 
 - D2I completed 37/37 pages with native PDF extraction plus 200 DPI image OCR.
 - I2K accepted 712 Korean K; N2E committed 262 typed relation revisions; K2K
@@ -46,7 +46,43 @@ its 448 English K revisions remain unchanged.
   pneumonia/tuberculosis group; a targeted repair produced nine replacement
   groups. The final 59-group plan covers every current K exactly once and passed
   the retained and targeted independent validations.
-- Fifty-nine K2W executions are prepared, but no W or P has been committed. The
-  first grouped Generator attempt exposed a vLLM structured-output compatibility
-  failure and was stopped after two failed calls. Resume only after fixing that
-  shared schema boundary; do not treat the prepared jobs as completed work.
+- All 59 current K2W jobs passed independent GLM validation and committed 59
+  Explanation W. Deterministic W2P composed them without another model call.
+- A post-compose audit found one W whose two claim texts were punctuation-only
+  placeholders. The shared K2W runtime now rejects claim text without any
+  alphanumeric character, and the prompt states the same contract. Only that
+  group was regenerated and independently revalidated. Its replacement W has
+  four substantive Korean claims. The first P remains immutable audit history;
+  the corrected presentation is P `01a0af4b-f2da-7465-9ca2-35514bed464e`,
+  titled `약물치료학 (교정본)`.
+- Final read-only store counts are D 1, I 77, current K 713, typed Edge 262,
+  canonical W 60 (59 current composition inputs plus one replaced historical W),
+  P 2, and P-W links 118. The corrected P contains 59 sections and 702 substantive
+  Korean claims, and resolves back to the one registered source D.
+- The local Electron registry now contains both the retained store and the T29
+  store. A separate hidden packaged Electron instance connected 2/2 stores and
+  rendered the corrected P with 59 sections, 702 claim cards, and zero renderer
+  errors.
+- The current P schema does not yet encode a formal supersedes/current pointer.
+  Both P are visible in the catalog, while the retained correction receipt links
+  their IDs. Formal P revision currentness remains follow-up work.
+
+## Model usage
+
+All figures below are provider-reported successful-call token counts. They do not
+estimate tokens consumed by calls that failed before emitting a usable receipt.
+
+| Phase | Calls | Input tokens | Output tokens | Average input/call | Average output/call |
+|---|---:|---:|---:|---:|---:|
+| I2K Generator | 37 | 514,522 | 489,668 | 13,906 | 13,234 |
+| I2K Validator | 37 | 5,117,961 | 217,929 | 138,323 | 5,890 |
+| Current K2W Generator | 59 | 604,065 | 179,772 | 10,238 | 3,047 |
+| Current K2W Validator | 59 | 787,789 | 45,687 | 13,352 | 774 |
+
+I2K used 5,632,483 input and 707,597 output tokens in total, equivalent to
+152,229 input and 19,124 output tokens per source PDF page when divided by 37.
+The Validator dominates I2K input because each independent review carries the
+large frozen validation context. Current-composition K2W used 1,391,854 input and
+225,459 output tokens. Preserved successful K2W attempts including superseded
+repairs used 1,599,721 input and 276,705 output tokens; five failed receipts and
+one cancelled long call have no complete token accounting.
