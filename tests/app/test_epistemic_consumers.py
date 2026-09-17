@@ -60,7 +60,7 @@ class DesktopEpistemicTests(unittest.TestCase):
         return service
 
     def test_catalog_keeps_generic_status_but_not_other_source_node_details(self):
-        nodes, _ = fixture()
+        nodes, edges = fixture()
         nodes[0].update(source_data_ids=['a' * 64], epistemic_projection='contested',
                         opposing_statement='PRIVATE_OPPONENT_SENTINEL')
         nodes[1].update(source_data_ids=['b' * 64], epistemic_projection='contested')
@@ -68,13 +68,33 @@ class DesktopEpistemicTests(unittest.TestCase):
         with patch.object(desktop_read, 'KnowledgeRuntime') as runtime, \
                 patch.object(desktop_read, 'connection', return_value=conn), \
                 patch.object(desktop_read.version_provenance, 'load', return_value=None):
-            runtime.return_value.graph.return_value = {'nodes': nodes}
+            runtime.return_value.graph.return_value = {'nodes': nodes, 'edges': edges}
             result = self.service().knowledge_catalog()
         self.assertEqual(len(result['nodes']), 1)
+        self.assertEqual(result['edges'], [])
         self.assertEqual(result['nodes'][0]['epistemic_projection'], 'contested')
         self.assertNotIn('PRIVATE_OPPONENT_SENTINEL', json.dumps(result))
         self.assertNotIn(nodes[1]['statement'], json.dumps(result))
         self.assertNotIn(nodes[1]['knode_id'], json.dumps(result))
+
+    def test_catalog_lists_owned_n2e_edges_separately_from_nodes(self):
+        nodes, edges = fixture('supports')
+        for node in nodes:
+            node.update(source_data_ids=['a' * 64], generation_origin={'origin_operation': 'i2k', 'is_inferred': False})
+        edges[0].update(rationale='Recorded relation', qualifiers={'scope': 'fixture'},
+                        applicability_status='applicable', applicable=True, usable=True)
+        conn = MagicMock()
+        with patch.object(desktop_read, 'KnowledgeRuntime') as runtime, \
+                patch.object(desktop_read, 'connection', return_value=conn), \
+                patch.object(desktop_read.version_provenance, 'load', return_value=None):
+            runtime.return_value.graph.return_value = {'nodes': nodes, 'edges': edges}
+            result = self.service().knowledge_catalog()
+        self.assertEqual(len(result['nodes']), 2)
+        self.assertEqual(len(result['edges']), 1)
+        edge = result['edges'][0]
+        self.assertEqual(edge['generation_origin']['origin_operation'], 'n2e')
+        self.assertEqual((edge['from_statement'], edge['to_statement']),
+                         (nodes[0]['statement'], nodes[1]['statement']))
 
     def test_detail_derives_current_status_but_does_not_rewrite_historical_projection(self):
         nodes, edges = fixture()

@@ -66,3 +66,15 @@ first P remain immutable audit history. A hidden packaged Electron check connect
 both configured stores and rendered the corrected P without renderer errors. Exact
 counts, token usage and validation evidence are in
 [T29](T29_pharmacy_full_slice_execplan.md).
+
+2026-09-17 T30 desktop delivery: the Knowledge screen now selects between typed
+K Node and K Edge lists without changing the canonical model. Node badges expose
+I2K/K2K/D2K origin; Edge entries expose N2E origin, predicate, applicability,
+exact endpoints, rationale and qualifiers. Actual pharmacy-store verification
+returned 713 Nodes (712 I2K, one K2K) and 262 N2E Edges; the hidden packaged UI
+rendered both lists and an Edge detail with zero renderer errors. See
+[T30](T30_knowledge_edge_ui.md).
+
+2026-09-17 T30 follow-up: the K Node list now has `전체`, `I2K`, and `K2K`
+origin filters. The pharmacy Realm exposes its single K2K inference directly;
+K Edge remains a separate N2E list.

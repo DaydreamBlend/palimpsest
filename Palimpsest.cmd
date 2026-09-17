@@ -10,9 +10,9 @@ if not exist "%~dp0desktop\node_modules\electron\dist\electron.exe" (
   pause
   exit /b 1
 )
-if not exist "%~dp0output\t24-wisdom-realm\release-final\app.asar" (
+if not exist "%~dp0output\t30-knowledge-edge-ui\release-k2k\app.asar" (
   echo Palimpsest desktop package is missing. See docs\interfaces\DESKTOP_UI.md.
   pause
   exit /b 1
 )
-start "" "%~dp0desktop\node_modules\electron\dist\electron.exe" "%~dp0output\t24-wisdom-realm\release-final\app.asar"
+start "" "%~dp0desktop\node_modules\electron\dist\electron.exe" "%~dp0output\t30-knowledge-edge-ui\release-k2k\app.asar"

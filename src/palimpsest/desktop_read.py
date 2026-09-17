@@ -229,6 +229,20 @@ class DesktopReadService:
                   'epistemic_projection')
         summaries = [{**{key: node[key] for key in fields if key in node},
             'source_data_ids': node.get('source_data_ids', node.get('grounding_data_ids', []))} for node in nodes]
+        by_node = {node['knode_id']: node for node in summaries}
+        edge_fields = ('kedge_id', 'kedge_revision_id', 'predicate', 'from_knode_id', 'to_knode_id',
+                       'from_knode_revision_id', 'to_knode_revision_id', 'rationale', 'qualifiers',
+                       'effective_from_revision_id', 'effective_to_revision_id', 'applicability_status',
+                       'applicable', 'usable', 'origin_record_id')
+        edges = []
+        for edge in graph.get('edges', []):
+            source, target = by_node.get(edge['from_knode_id']), by_node.get(edge['to_knode_id'])
+            if source is None or target is None:
+                continue
+            edges.append({**{key: edge[key] for key in edge_fields if key in edge},
+                'generation_origin': {'origin_operation': 'n2e', 'origin_record_id': edge['origin_record_id']},
+                'from_statement': source['statement'], 'to_statement': target['statement'],
+                'source_data_ids': sorted(set(source['source_data_ids']) | set(target['source_data_ids']))})
         sources = [{'data_id': packet['data_id'], 'source_execution_id': packet['source_execution_id'],
                     'source_format': packet['model_input'].get('source_format', 'pdf')}
                    for packet in packets]
@@ -237,7 +251,8 @@ class DesktopReadService:
         data_versions = [] if versions is None else [{**version,
             'is_head': versions['heads'].get(version['series_id']) == version['version_id']}
             for version in versions['versions'].values() if version['data_id'] in owners]
-        return {'nodes': summaries, 'sources': sources, 'data_versions': data_versions, 'read_only': True}
+        return {'nodes': summaries, 'edges': edges, 'sources': sources,
+                'data_versions': data_versions, 'read_only': True}
 
     def knowledge_node(self, node_revision_id):
         revision = request_id(node_revision_id)

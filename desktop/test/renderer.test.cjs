@@ -53,6 +53,7 @@ function ui(responses, api = {}) {
 const REV = '01a0941f-90b3-792b-bd4b-a3e83c18eae1';
 const OLD = '01a0941f-90b3-792b-bd4b-a3e83c18eae2';
 const EXEC = '01a0941f-90b3-792b-bd4b-a3e83c18eae3';
+const EDGE = '01a0941f-90b3-792b-bd4b-a3e83c18eaf0';
 const I = '01a0941f-90b3-792b-bd4b-a3e83c18eae4';
 const D = 'a'.repeat(64);
 const origin = { is_inferred: true, origin_operation: 'k2k', origin_record_id: 'record',
@@ -80,6 +81,35 @@ test('knowledge navigation opens exact historical premise revisions and keeps or
   assert.deepEqual(app.requests.at(-1), { operation: 'knowledge_node', node_revision_id: OLD });
   assert.match(app.ids.content.textContent, /Exact old premise.*과거 Revision/);
   assert.equal(app.ids['knowledge-nav'].attributes['aria-current'], 'page');
+});
+
+test('knowledge view selects K Node or N2E K Edge without merging their types', async () => {
+  const source = { ...knowledge, statement: 'Source node' };
+  const target = { ...knowledge, knode_id: 'target', knode_revision_id: OLD, statement: 'Target node', generation_origin: { is_inferred: false, origin_operation: 'i2k', origin_record_id: 'i2k-record' } };
+  const edge = { kedge_id: EXEC, kedge_revision_id: EDGE, predicate: 'supports',
+    from_knode_revision_id: REV, to_knode_revision_id: OLD, from_statement: source.statement,
+    to_statement: target.statement, rationale: 'Exact N2E rationale', qualifiers: { scope: 'fixture' },
+    applicability_status: 'applicable', applicable: true, usable: true, origin_record_id: EXEC };
+  const app = ui({ knowledge_catalog: { nodes: [source, target], edges: [edge], sources: [], data_versions: [] },
+    knowledge_node: ({ node_revision_id }) => ({ node: node_revision_id === REV ? source : target, evidence: [] }) });
+  await app.ids['knowledge-nav'].click();
+  assert.equal(byClass(app.ids.content, 'knowledge-node-result').length, 2);
+  assert.equal(byClass(app.ids.content, 'knowledge-edge-result').length, 0);
+  const origins = byClass(app.ids.content, 'knowledge-origin-button');
+  assert.deepEqual(origins.map(value => value.textContent), ['전체 2', 'I2K 1', 'K2K 1']);
+  await origins[2].click();
+  assert.equal(byClass(app.ids.content, 'knowledge-node-result').length, 1);
+  assert.match(app.ids.content.textContent, /K2K 생성.*Source node/);
+  const choices = byClass(app.ids.content, 'knowledge-view-button');
+  assert.match(choices[0].textContent, /K Node 2/); assert.match(choices[1].textContent, /K Edge 1/);
+  await choices[1].click();
+  assert.equal(byClass(app.ids.content, 'knowledge-node-result').length, 0);
+  assert.equal(byClass(app.ids.content, 'knowledge-edge-result').length, 1);
+  assert.match(app.ids.content.textContent, /K Edge.*N2E.*supports.*Source node.*Target node/);
+  await byClass(app.ids.content, 'knowledge-edge-result')[0].click();
+  for (const value of ['EXACT KNOWLEDGE EDGE REVISION', 'Exact N2E rationale', 'fixture']) assert.ok(app.ids.content.textContent.includes(value));
+  assert.equal(byClass(app.ids.content, 'premise-link').length, 2);
+  assert.deepEqual(app.requests.map(row => row.operation), ['knowledge_catalog']);
 });
 
 test('native code evidence opens its owned source execution and renders hostile code as literal text', async () => {

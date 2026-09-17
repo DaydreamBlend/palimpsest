@@ -1,7 +1,7 @@
 import { PdfPanel } from './pdf-view.js';
 
 const $ = (id) => document.getElementById(id);
-const state = { mode: 'wiki', filter: 'all', search: '', pages: [], queries: [], knowledge: [], reviews: [], sources: [], versions: [], nodeRevisionId: null, reviewId: null, page: null, queryId: null, pageTicket: 0, sourceTicket: 0, pdfTicket: 0, evidence: null, information: null, sourceTab: 'information', pdfPage: 1, pdfCount: null, pdfOpened: false };
+const state = { mode: 'wiki', filter: 'all', search: '', pages: [], queries: [], knowledge: [], knowledgeEdges: [], knowledgeView: 'node', knowledgeNodeOrigin: 'all', reviews: [], sources: [], versions: [], nodeRevisionId: null, edgeRevisionId: null, reviewId: null, page: null, queryId: null, pageTicket: 0, sourceTicket: 0, pdfTicket: 0, evidence: null, information: null, sourceTab: 'information', pdfPage: 1, pdfCount: null, pdfOpened: false };
 Object.assign(state, { unified: false, stores: [], storeId: null, data: [], dataId: null, dataFilter: 'all', realmId: 'all', realms: [], storeErrors: [], parchments: [] });
 state.assignmentTicket = 0;
 const labels = { overview: '개요', methods: '연구 방법', findings: '주요 결과', results: '주요 결과', limitations: '한계와 해석', unresolved: '미해결 사항' };
@@ -32,7 +32,7 @@ function sourceName(dataId, storeId = state.storeId) { return sourcePage(dataId,
 function selectStore(storeId) {
   if (!state.unified || state.storeId === storeId) return;
   if (!state.stores.some(store => store.store_id === storeId)) throw new Error('unknown_desktop_store');
-  ++state.pageTicket; closeSource(); state.page = null; state.queryId = null; state.nodeRevisionId = null; state.reviewId = null;
+  ++state.pageTicket; closeSource(); state.page = null; state.queryId = null; state.nodeRevisionId = null; state.edgeRevisionId = null; state.reviewId = null;
   state.storeId = storeId;
 }
 function storeLabel(storeId) { return state.stores.find(store => store.store_id === storeId)?.label || ''; }
@@ -54,6 +54,11 @@ function rowInRealm(row) {
   return ids.some(id => { const source = state.data.find(value => value.store_id === row.store_id && value.data_id === id); return source && inRealm(source); });
 }
 function visibleRows(rows) { return rows.filter(rowInRealm); }
+function edgeTitle(edge) { return `${edge.from_statement} —[${edge.predicate}]→ ${edge.to_statement}`; }
+function visibleKnowledgeRows() {
+  const rows = visibleRows(state.knowledgeView === 'edge' ? state.knowledgeEdges : state.knowledge);
+  return state.knowledgeView === 'node' && state.knowledgeNodeOrigin !== 'all' ? rows.filter(row => row.generation_origin?.origin_operation === state.knowledgeNodeOrigin) : rows;
+}
 function wikiDocuments() { return [...state.pages, ...state.parchments]; }
 function documentId(page) { return page.kind === 'parchment' ? page.parchment_id : page.page_id; }
 function openWikiDocument(page) { return page.kind === 'parchment' ? openParchment(page.parchment_id, page.store_id) : openPage(page.page_id, undefined, page.store_id); }
@@ -443,11 +448,12 @@ function updateNavigation() {
   }
   $('wiki-count').textContent = visibleRows(wikiDocuments()).length || '';
   $('query-count').textContent = visibleRows(state.queries).length || '';
-  $('knowledge-count').textContent = visibleRows(state.knowledge).length || '';
+  const knowledgeCount = visibleRows(state.knowledge).length + visibleRows(state.knowledgeEdges).length;
+  $('knowledge-count').textContent = knowledgeCount || '';
   $('review-count').textContent = visibleRows(state.reviews).length || '';
   const dataCount = new Set(state.data.filter(inRealm).map(value => value.data_id)).size;
   if ($('data-count')) $('data-count').textContent = dataCount || '';
-  const navigation = { data: ['모든 자료', dataCount, '자료 이름 검색'], wiki: ['라이브러리', visibleRows(wikiDocuments()).length, '문서 제목 검색'], queries: ['저장된 질문', visibleRows(state.queries).length, '질문 검색'], knowledge: ['지식과 근거', visibleRows(state.knowledge).length, '지식 내용 검색'], reviews: ['원문 검토 기록', visibleRows(state.reviews).length, '자료·검토 상태 검색'] }[state.mode];
+  const navigation = { data: ['모든 자료', dataCount, '자료 이름 검색'], wiki: ['라이브러리', visibleRows(wikiDocuments()).length, '문서 제목 검색'], queries: ['저장된 질문', visibleRows(state.queries).length, '질문 검색'], knowledge: [state.knowledgeView === 'edge' ? 'K Edge' : 'K Node', visibleKnowledgeRows().length, state.knowledgeView === 'edge' ? '관계 내용 검색' : '지식 내용 검색'], reviews: ['원문 검토 기록', visibleRows(state.reviews).length, '자료·검토 상태 검색'] }[state.mode];
   $('library-label').textContent = navigation[0];
   $('library-count').textContent = `${navigation[1]} RECORDS`;
   $('filters').hidden = state.mode !== 'wiki';
@@ -495,13 +501,14 @@ function renderLibrary() {
     if (!queries.length) fragment.append(node('p', 'sidebar-message', '표시할 질문 기록이 없습니다.'));
   } else {
     const knowledge = state.mode === 'knowledge';
-    const rows = visibleRows(knowledge ? state.knowledge : state.reviews).filter((row) => (knowledge ? row.statement : `${sourceName(row.data_id, row.store_id)} ${reviewState(row.state)}`).toLocaleLowerCase().includes(query));
+    const rows = (knowledge ? visibleKnowledgeRows() : visibleRows(state.reviews)).filter((row) => (knowledge ? (state.knowledgeView === 'edge' ? edgeTitle(row) : row.statement) : `${sourceName(row.data_id, row.store_id)} ${reviewState(row.state)}`).toLocaleLowerCase().includes(query));
     for (const row of rows) {
-      const id = knowledge ? row.knode_revision_id : row.execution_id;
-      const title = knowledge ? row.statement : `${sourceName(row.data_id, row.store_id)} · ${reviewState(row.state)}`;
-      const selected = id === (knowledge ? state.nodeRevisionId : state.reviewId) && (!state.unified || state.storeId === row.store_id);
-      const item = button('', `page-link ${selected ? 'active' : ''}`, () => knowledge ? openKnowledge(id, row.store_id) : openReview(id, row.store_id), title);
-      append(item, node('span', 'page-icon', knowledge ? '◇' : '◉'), node('span', 'page-link-title', title));
+      const edge = knowledge && state.knowledgeView === 'edge';
+      const id = knowledge ? (edge ? row.kedge_revision_id : row.knode_revision_id) : row.execution_id;
+      const title = knowledge ? (edge ? edgeTitle(row) : row.statement) : `${sourceName(row.data_id, row.store_id)} · ${reviewState(row.state)}`;
+      const selected = id === (knowledge ? (edge ? state.edgeRevisionId : state.nodeRevisionId) : state.reviewId) && (!state.unified || state.storeId === row.store_id);
+      const item = button('', `page-link ${selected ? 'active' : ''}`, () => knowledge ? (edge ? openKnowledgeEdge(id, row.store_id) : openKnowledge(id, row.store_id)) : openReview(id, row.store_id), title);
+      append(item, node('span', 'page-icon', knowledge ? (edge ? '↗' : '◇') : '◉'), node('span', 'page-link-title', title));
       if (selected) item.setAttribute('aria-current', 'page');
       fragment.append(item);
     }
@@ -872,6 +879,7 @@ function reviewState(value) {
 function knowledgeFlags(knowledge) {
   const origin = knowledge.generation_origin;
   const flags = append(node('div', 'knowledge-flags'), tag(knowledge.kind === 'observation' ? '관찰' : knowledge.kind === 'proposition' ? '명제' : knowledge.kind), tag(origin?.is_inferred === true ? '추론으로 생성' : origin?.origin_operation === 'd2k' ? 'D2K · 원문 D에서 생성' : origin?.is_inferred === false ? '원문 I에서 생성' : '생성 기원 미기록'));
+  if (origin?.origin_operation) flags.append(tag(({ i2k: 'I2K 생성', k2k: 'K2K 생성', d2k: 'D2K 생성' })[origin.origin_operation] || origin.origin_operation));
   const current = knowledge.is_current_now ?? (knowledge.current_revision_id ? knowledge.current_revision_id === knowledge.knode_revision_id : null);
   flags.append(tag(current === true ? '현재 Revision' : current === false ? '과거 Revision' : '정확한 Revision'));
   if (knowledge.source_version_status) flags.append(tag(({ current: '현재 자료 버전 근거', historical: '과거 자료 버전 근거', untracked: '자료 버전 미연결' })[knowledge.source_version_status] || knowledge.source_version_status, knowledge.source_version_status === 'historical' ? 'held' : ''));
@@ -879,6 +887,12 @@ function knowledgeFlags(knowledge) {
   if (knowledge.epistemic_projection === 'contested') flags.append(tag('상충 주장 있음', 'held'));
   else if (knowledge.epistemic_projection === 'uncontested') flags.append(tag('활성 상충 관계 없음'));
   return flags;
+}
+function knowledgeEdgeFlags(edge) {
+  const status = { applicable: '적용 가능', inapplicable: '적용 안 됨', pending: '검토 대기',
+    endpoint_unusable: '끝점 재검증 필요', historical: '과거 Revision' }[edge.applicability_status] || edge.applicability_status || '적용성 미확인';
+  return append(node('div', 'knowledge-flags'), tag('K Edge'), tag('N2E 생성'), tag(edge.predicate),
+    tag(status, ['inapplicable', 'pending', 'endpoint_unusable'].includes(edge.applicability_status) ? 'held' : ''));
 }
 function versionList(versions = []) {
   const list = node('div', 'version-list');
@@ -891,28 +905,68 @@ function versionList(versions = []) {
   return list;
 }
 async function showKnowledge(cached = false) {
-  const ticket = ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = null;
-  closeSource(); notice(); updateNavigation(); loading('지식과 자료 버전을 읽는 중입니다');
+  const ticket = ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = null; state.edgeRevisionId = null;
+  closeSource(); notice(); updateNavigation(); loading('지식 K를 읽는 중입니다');
   try {
-    const data = cached === true ? { nodes: state.knowledge, sources: state.sources, data_versions: state.versions } : state.unified ? await acrossStores('knowledge_catalog', ['nodes', 'sources', 'data_versions'], null) : await request('knowledge_catalog');
+    const data = cached === true ? { nodes: state.knowledge, edges: state.knowledgeEdges, sources: state.sources, data_versions: state.versions } : state.unified ? await acrossStores('knowledge_catalog', ['nodes', 'edges', 'sources', 'data_versions'], null) : await request('knowledge_catalog');
     if (ticket !== state.pageTicket) return;
-    state.knowledge = data.nodes; state.sources = data.sources || []; state.versions = data.data_versions || []; updateNavigation();
-    setCrumb('지식', '생성 기원과 근거');
+    state.knowledge = data.nodes || []; state.knowledgeEdges = data.edges || []; state.sources = data.sources || []; state.versions = data.data_versions || []; updateNavigation();
+    setCrumb('지식', 'K Node와 K Edge');
     const fragment = document.createDocumentFragment();
-    append(fragment, node('span', 'eyebrow', 'KNOWLEDGE / ORIGIN & EVIDENCE'), node('h1', 'query-list-title', '지식 K'), node('p', 'query-intro', '저장된 K 문구와 정확한 Revision에서 생성 기원, 전제와 원문 근거를 읽습니다. 위키의 설명 문서와 구분하며, 자료 버전의 현재 여부와 지식의 검토 상태는 별도로 표시합니다.'));
-    const selectedVersions = visibleRows(state.versions), selectedKnowledge = visibleRows(state.knowledge).filter(row => row.statement.toLocaleLowerCase().includes(state.search.toLocaleLowerCase()));
+    append(fragment, node('span', 'eyebrow', 'KNOWLEDGE / NODES & EDGES'), node('h1', 'query-list-title', '지식 K'), node('p', 'query-intro', 'K Node는 명제를, K Edge는 Node 사이의 관계를 보존합니다. I2K·K2K가 만든 Node와 N2E가 만든 Edge를 분리해서 조회합니다.'));
+    const selector = node('div', 'knowledge-type-selector');
+    for (const [value, label, count] of [['node', 'K Node', visibleRows(state.knowledge).length], ['edge', 'K Edge', visibleRows(state.knowledgeEdges).length]]) {
+      const choice = button(`${label} ${count}`, `knowledge-type-button knowledge-view-button ${state.knowledgeView === value ? 'active' : ''}`, () => { state.knowledgeView = value; showKnowledge(true); });
+      choice.setAttribute('aria-pressed', String(state.knowledgeView === value)); selector.append(choice);
+    }
+    fragment.append(selector);
+    if (state.knowledgeView === 'node') {
+      const nodes = visibleRows(state.knowledge), origins = node('div', 'knowledge-type-selector knowledge-origin-selector');
+      const choices = [['all', '전체', nodes.length], ['i2k', 'I2K', nodes.filter(row => row.generation_origin?.origin_operation === 'i2k').length], ['k2k', 'K2K', nodes.filter(row => row.generation_origin?.origin_operation === 'k2k').length]];
+      if (nodes.some(row => row.generation_origin?.origin_operation === 'd2k')) choices.push(['d2k', 'D2K', nodes.filter(row => row.generation_origin?.origin_operation === 'd2k').length]);
+      for (const [value, label, count] of choices) {
+        const choice = button(`${label} ${count}`, `knowledge-type-button knowledge-origin-button ${state.knowledgeNodeOrigin === value ? 'active' : ''}`, () => { state.knowledgeNodeOrigin = value; showKnowledge(true); });
+        choice.setAttribute('aria-pressed', String(state.knowledgeNodeOrigin === value)); origins.append(choice);
+      }
+      fragment.append(origins);
+    }
+    const selectedVersions = visibleRows(state.versions), query = state.search.toLocaleLowerCase();
+    const selectedKnowledge = visibleKnowledgeRows().filter(row => (state.knowledgeView === 'edge' ? edgeTitle(row) : row.statement).toLocaleLowerCase().includes(query));
     if (selectedVersions.length) { const versions = details(`자료 버전 · ${selectedVersions.length}`); versions.append(versionList(selectedVersions)); fragment.append(versions); }
     for (const knowledge of selectedKnowledge) {
-      const card = button('', 'query-card knowledge-result', () => openKnowledge(knowledge.knode_revision_id, knowledge.store_id));
-      append(card, knowledgeFlags(knowledge), node('p', '', knowledge.statement), node('code', 'revision-id', knowledge.knode_revision_id)); fragment.append(card);
+      const edge = state.knowledgeView === 'edge';
+      const card = button('', `query-card knowledge-result ${edge ? 'knowledge-edge-result' : 'knowledge-node-result'}`, () => edge ? openKnowledgeEdge(knowledge.kedge_revision_id, knowledge.store_id) : openKnowledge(knowledge.knode_revision_id, knowledge.store_id));
+      append(card, edge ? knowledgeEdgeFlags(knowledge) : knowledgeFlags(knowledge), node('p', '', edge ? edgeTitle(knowledge) : knowledge.statement), node('code', 'revision-id', edge ? knowledge.kedge_revision_id : knowledge.knode_revision_id)); fragment.append(card);
     }
-    if (!selectedKnowledge.length) fragment.append(node('p', 'query-intro', '선택한 Realm과 검색 조건에 해당하는 지식이 없습니다.'));
+    if (!selectedKnowledge.length) fragment.append(node('p', 'query-intro', `선택한 Realm과 검색 조건에 해당하는 ${state.knowledgeView === 'edge' ? 'K Edge' : 'K Node'}가 없습니다.`));
     $('content').replaceChildren(fragment); $('main').scrollTop = 0;
-  } catch (error) { if (ticket === state.pageTicket) empty('지식을 읽지 못했습니다', errorText(error), showKnowledge); }
+  } catch (error) { if (ticket === state.pageTicket) empty('지식 K를 읽지 못했습니다', errorText(error), showKnowledge); }
+}
+function openKnowledgeEdge(revisionId, storeId = state.storeId) {
+  selectStore(storeId); ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = null; state.edgeRevisionId = revisionId;
+  closeSource(); notice(); updateNavigation();
+  const edge = state.knowledgeEdges.find(value => value.kedge_revision_id === revisionId && (!state.unified || value.store_id === storeId));
+  if (!edge) return empty('K Edge를 찾지 못했습니다', '현재 catalog에서 정확한 Edge Revision을 찾을 수 없습니다.', showKnowledge);
+  setCrumb('지식', 'K Edge · N2E');
+  const fragment = document.createDocumentFragment();
+  append(fragment, button('← K Edge 목록', 'back-button', () => showKnowledge(true)),
+    node('div', 'eyebrow', 'EXACT KNOWLEDGE EDGE REVISION'), node('h1', 'knowledge-title', edgeTitle(edge)),
+    knowledgeEdgeFlags(edge), keyValues([['K Edge', edge.kedge_id], ['Revision', edge.kedge_revision_id],
+      ['생성 작업', 'n2e'], ['생성 Record', edge.origin_record_id], ['Predicate', edge.predicate],
+      ['적용성', edge.applicability_status || '미확인']]));
+  const endpoints = node('section', 'review-block'); endpoints.append(node('h2', '', '연결된 K Node'));
+  for (const [label, revision, statement] of [['From', edge.effective_from_revision_id || edge.from_knode_revision_id, edge.from_statement], ['To', edge.effective_to_revision_id || edge.to_knode_revision_id, edge.to_statement]]) {
+    const card = button('', 'query-card premise-link', () => openKnowledge(revision, storeId));
+    append(card, tag(label), node('p', '', statement), node('code', 'revision-id', revision)); endpoints.append(card);
+  }
+  fragment.append(endpoints);
+  if (edge.rationale) fragment.append(append(node('section', 'review-block'), node('h2', '', '관계 근거'), node('p', 'article-text', edge.rationale)));
+  if (edge.qualifiers && Object.keys(edge.qualifiers).length) fragment.append(append(details('관계 한정 조건'), node('pre', 'code-text', JSON.stringify(edge.qualifiers, null, 2))));
+  $('content').replaceChildren(fragment); $('main').scrollTop = 0; renderLibrary();
 }
 async function openKnowledge(revisionId, storeId = state.storeId) {
   selectStore(storeId);
-  const ticket = ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = revisionId;
+  const ticket = ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = revisionId; state.edgeRevisionId = null;
   closeSource(); notice(); updateNavigation(); loading('정확한 지식 Revision을 읽는 중입니다');
   try {
     const data = await request('knowledge_node', { node_revision_id: revisionId });
@@ -1265,7 +1319,7 @@ $('realm-manage').addEventListener('click', showRealmManager);
 $('queries-nav').addEventListener('click', showQueries);
 $('knowledge-nav').addEventListener('click', showKnowledge);
 $('reviews-nav').addEventListener('click', showReviews);
-$('search').addEventListener('input', (event) => { state.search = event.target.value; if (state.mode === 'data' && !state.dataId) showData(); else if (state.mode === 'wiki' && !state.page) showWikiIndex(); else if (state.mode === 'knowledge' && !state.nodeRevisionId) showKnowledge(true); else if (state.mode === 'reviews' && !state.reviewId) showReviews(true); else if (state.mode === 'queries' && !state.queryId) showQueries(); else renderLibrary(); });
+$('search').addEventListener('input', (event) => { state.search = event.target.value; if (state.mode === 'data' && !state.dataId) showData(); else if (state.mode === 'wiki' && !state.page) showWikiIndex(); else if (state.mode === 'knowledge' && !state.nodeRevisionId && !state.edgeRevisionId) showKnowledge(true); else if (state.mode === 'reviews' && !state.reviewId) showReviews(true); else if (state.mode === 'queries' && !state.queryId) showQueries(); else renderLibrary(); });
 $('close-assignment').addEventListener('click', closeAssignment);
 $('realm-assignment').addEventListener('cancel', closeAssignment);
 for (const filter of document.querySelectorAll('[data-filter]')) filter.addEventListener('click', () => { state.filter = filter.dataset.filter; for (const other of document.querySelectorAll('[data-filter]')) { other.classList.toggle('active', other === filter); other.setAttribute('aria-pressed', String(other === filter)); } if (state.mode === 'wiki' && !state.page) showWikiIndex(); else renderLibrary(); });
