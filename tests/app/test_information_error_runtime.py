@@ -301,6 +301,10 @@ class InformationErrorRuntimeTests(unittest.TestCase):
             with self.assertRaises(PalimpsestError) as held:
                 service.prepare_resume(child['execution_id'], self.first.repo.allocate_id())
             self.assertEqual(held.exception.code, 'd2i_information_error_requires_review')
+            confirmed = service.prepare_resume(child['execution_id'], self.first.repo.allocate_id(),
+                                               retain_information_errors=True)
+            self.assertEqual(confirmed['job']['input_snapshot']['selection_feedback']['source_requests'],
+                             failed_response['source_requests'])
             status = service.status(child['execution_id'])
             original_replay = self.prepare(request=job['request_id'])
         self.assertEqual(child['execution_id'], replay['execution_id'])

@@ -16,6 +16,7 @@ from .data import request_id
 from .errors import PalimpsestError
 from .i2k import digest
 from .knowledge_runtime import KnowledgeRuntime, MODEL
+from .codex_provider import PROFILE as CODEX_PROFILE
 
 
 def _fail(code):
@@ -103,8 +104,7 @@ class WisdomRuntime:
         if not isinstance(revision_ids, (list, tuple)) or not isinstance(edge_revision_ids, (list, tuple)):
             _fail('invalid_wisdom_input')
         model = deepcopy(MODEL if model_profile is None else model_profile)
-        if (not isinstance(model, dict) or not model or any(not isinstance(k, str) or not isinstance(v, str)
-                or not v.strip() for k, v in model.items()) or not {'provider', 'model'} <= set(model)):
+        if not isinstance(model, dict) or model not in (MODEL, CODEX_PROFILE):
             _fail('invalid_wisdom_model_profile')
         requested = {'query': query, 'context_snapshot': context_snapshot, 'revision_ids': list(revision_ids),
             'edge_revision_ids': list(edge_revision_ids), 'wisdom_kind': wisdom_kind, 'model': model,

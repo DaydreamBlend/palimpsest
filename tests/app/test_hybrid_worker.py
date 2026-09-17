@@ -67,7 +67,7 @@ class HybridWorkerTests(unittest.TestCase):
                 self.assertNotIn(args.parser_image, call.args[0])
             self.assertEqual('mineru-hybrid-image200-v1', profile['parser']['adapter_version'])
             self.assertEqual('image200', profile['parser']['transcription_mode'])
-            self.assertEqual('source-groups-v1', profile['transformation']['algorithm'])
+            self.assertEqual('source-groups-v2', profile['transformation']['algorithm'])
             self.assertEqual('blocks', worker_module.parse_args([
                 '--data-id', 'a' * 64, '--work-dir', str(root / 'legacy'),
                 '--information-layout', 'blocks']).information_layout)

@@ -172,27 +172,33 @@ class KnowledgeReview:
         result['history'] = list(reversed(history))
         return result
 
-    def prepare_resume(self, execution_id, request_id_value):
+    def prepare_resume(self, execution_id, request_id_value, *, retain_information_errors=False,
+                       comparison_catalog=None):
         """Prepare one review round; a new request ID never means completion.
 
         The entire original packet and version scope enter Runtime again. Only
         current model/prompt implementation hashes are rebuilt there. Repeating
         the same explicit request is governed by Runtime's atomic replay check.
         """
+        if type(retain_information_errors) is not bool:
+            _fail('invalid_information_error_confirmation')
         identifier = request_id(str(request_id_value))
         job = self.runtime.show(execution_id)
         if job['input_snapshot'].get('revision_target') is not None:
             _fail('knowledge_revision_resume_requires_explicit_target')
         status = review_status(job)
-        if status.get('information_errors',{}).get('requires_user_review') or job.get('source_requests'):
+        if (status.get('information_errors',{}).get('requires_user_review') or job.get('source_requests')) and not retain_information_errors:
             _fail('d2i_information_error_requires_review')
         if status['next_action'] == 'no_work':
             return {'action': 'no_work', 'execution_id': job['execution_id'], 'review': status}
-        if status['next_action'] != 'resume_review':
+        if status['next_action'] != 'resume_review' and not (
+                retain_information_errors and status['next_action'] == 'review_d2i_error'):
             _fail('knowledge_review_resume_not_ready')
         packet, versions, mode = _scope(job)
         options = {'model_profile': deepcopy(job['profile']['model']), 'selection': True,
                    'feedback_execution_id': job['execution_id']}
+        if comparison_catalog is not None:
+            options['comparison_catalog'] = deepcopy(comparison_catalog)
         if versions:
             options.update(data_version_ids=[row['version_id'] for row in versions], data_version_mode=mode)
         prepared = self.runtime.prepare('i2k', job['data_id'], identifier, deepcopy(packet), **options)

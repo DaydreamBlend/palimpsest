@@ -21,7 +21,7 @@ from .canonical_store import connection, PostgresRepository
 from .data import data_id as validate_data_id, request_id
 from .errors import PalimpsestError
 from .information import validate_proposal, validate_decisions, fingerprints
-from .d2i import build_units, verify_units, assembly_payload, text_assemblies, SOURCE_ALGORITHMS, SOURCE_GROUPS_VERSION, SOURCE_PAGE_GROUPS_VERSION, MARKDOWN_ALGORITHM, CODE_ALGORITHM, TEXT_ALGORITHMS
+from .d2i import build_units, verify_units, assembly_payload, text_assemblies, SOURCE_ALGORITHMS, SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION, SOURCE_PAGE_GROUPS_VERSION, MARKDOWN_ALGORITHM, CODE_ALGORITHM, TEXT_ALGORITHMS
 from .mineru_adapter import normalize_middle
 from .paddle_adapter import normalize_paddle
 from .figure_adapter import attach_figures, INVENTORY_NAME
@@ -79,7 +79,7 @@ def validate_profile(profile):
         digest(profile)
         origin = profile['policy'].get('source_reassembly')
         if origin is not None:
-            if (profile['transformation']['algorithm'] != SOURCE_GROUPS_VERSION
+            if (profile['transformation']['algorithm'] not in (SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION)
                     or not isinstance(origin, dict) or set(origin) != {
                         'source_execution_id', 'source_profile_sha256', 'source_parse_manifest_sha256'}):
                 fail('invalid_compilation_profile', 2)
@@ -596,7 +596,7 @@ class CompilerRuntime:
                                         (parent['execution_id'],)).fetchone()
             if (parent['state'] != 'completed' or parent['data_id'] != job['data_id']
                     or parent['profile']['schema_version'] != SOURCE_PROFILE
-                    or parent['profile']['transformation']['algorithm'] not in (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION)
+                    or parent['profile']['transformation']['algorithm'] not in (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION)
                     or digest(parent['profile']) != page_origin['source_profile_sha256']
                     or original is None or original['manifest_hash'] != page_origin['source_parse_manifest_sha256']
                     or parent_bundle(parsed['bundle']) != original['bundle']
@@ -667,10 +667,10 @@ class CompilerRuntime:
     def regroup_source(self, execution_id, *, checkpoint=None):
         """Create grouped I from a verified completed source, retaining its parser history."""
         source, parsed, _ = self._source_snapshot(execution_id)
-        if source['profile']['transformation']['algorithm'] in (SOURCE_GROUPS_VERSION, SOURCE_PAGE_GROUPS_VERSION, *TEXT_ALGORITHMS):
+        if source['profile']['transformation']['algorithm'] in (SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION, SOURCE_PAGE_GROUPS_VERSION, *TEXT_ALGORITHMS):
             return self.materialize_source(execution_id)
         profile = deepcopy(source['profile'])
-        profile['transformation']['algorithm'] = SOURCE_GROUPS_VERSION
+        profile['transformation']['algorithm'] = SOURCE_GROUPS_V2_VERSION
         implementations = profile['policy'].setdefault('implementation_sha256', {})
         for name in ('source_groups.py', 'section_projection.py', 'figure_references.py', 'source_units.py',
                      'information.py', 'd2i.py', 'compiler_runtime.py'):
@@ -706,7 +706,7 @@ class CompilerRuntime:
         if result['state'] == 'completed' and 'information_ids' not in result:
             result['information_ids'] = self.show(target_id)['information_ids']
         result.update(source_execution_id=str(source['execution_id']), new_parser_calls=0,
-                      source_algorithm=SOURCE_GROUPS_VERSION)
+                      source_algorithm=SOURCE_GROUPS_V2_VERSION)
         return result
 
     def add_source_pages(self, execution_id, directory, *, checkpoint=None):
@@ -716,7 +716,7 @@ class CompilerRuntime:
         source, parsed, _ = self._source_snapshot(execution_id)
         if source['profile']['transformation']['algorithm'] == SOURCE_PAGE_GROUPS_VERSION:
             return self.materialize_source(execution_id)
-        if source['profile']['transformation']['algorithm'] not in (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION):
+        if source['profile']['transformation']['algorithm'] not in (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION):
             fail('pdf_source_required', 2)
         evidence = read_evidence(directory)
         if (evidence['source_bundle'] != parsed['bundle']

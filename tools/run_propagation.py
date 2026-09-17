@@ -21,6 +21,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
+from palimpsest.codex_provider import PROFILE as CODEX_MODEL
 from palimpsest.local_glm_provider import PROFILE as MODEL
 from palimpsest.data import request_id
 from palimpsest.errors import PalimpsestError
@@ -100,13 +101,12 @@ def checked_request(directory, container_path):
     return path, request, output, attachments
 
 
-def cached_exchange(output, request, attachments):
+def cached_exchange(output, request, attachments, expected_profile):
     """A response file is reusable only when its exact request/receipt binds it."""
     value = json.loads(output.read_text(encoding='utf-8'))
     if not isinstance(value, dict) or set(value) != {'response', 'receipt'}:
         fail('propagation_cached_exchange_invalid')
     receipt = value['receipt']
-    expected_profile = MODEL
     if (not isinstance(receipt, dict) or not isinstance(receipt.get('profile'), dict)
             or receipt.get('actual_delivery') is not True
             or receipt.get('original_pdf_delivered') is not False or not receipt.get('provider_ref')
@@ -254,7 +254,8 @@ class Controller:
                 if not self.args.allow_model_calls:
                     return {'state': 'blocked', 'reason': 'model_calls_require_explicit_flag',
                         'request_file': str(path), 'task_id': task['task_id'], 'partial': True}
-                argv = [sys.executable, '-X', 'utf8', '-B', str(ROOT / 'tools/run_knowledge_model.py'), str(path)]
+                argv = [sys.executable, '-X', 'utf8', '-B', str(ROOT / 'tools/run_knowledge_model.py'), str(path),
+                    '--provider', self.args.provider]
                 record = self.journal.command(argv)
                 try:
                     with (record / 'stdout.txt').open('x', encoding='utf-8') as stdout, (record / 'stderr.txt').open('x', encoding='utf-8') as stderr:
@@ -278,7 +279,8 @@ class Controller:
             lease.renew()
             lease.check()
             if output.exists():
-                cached_exchange(output, request, attachments)
+                cached_exchange(output, request, attachments,
+                    CODEX_MODEL if self.args.provider == 'codex-terra' else MODEL)
                 return self.app('accept', task['task_id'], '--lease-token', task['lease_token'],
                     '--phase', task['phase'], '--exchange', self.container_path(output))
             if failure_path.exists():
@@ -344,6 +346,7 @@ def main(argv=None):
     parser.add_argument('--app-image', default='palimpsest-effective-k2k:0.20.0')
     parser.add_argument('--docker', default='docker')
     parser.add_argument('--allow-model-calls', action='store_true')
+    parser.add_argument('--provider', choices=('local-glm', 'codex-terra'), default='local-glm')
     parser.add_argument('--once', action='store_true')
     parser.add_argument('--lease-seconds', type=int, default=180)
     args = parser.parse_args(argv)

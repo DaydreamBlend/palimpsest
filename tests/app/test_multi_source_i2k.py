@@ -276,6 +276,8 @@ class MultiSourceTests(unittest.TestCase):
                 self.assertIn(unit['data_id'], prompt)
                 self.assertIn(unit['content'], prompt)
             self.assertIn('each Data need NOT independently repeat the entire claim', prompt)
+            self.assertIn('Do not translate Korean source prose into English', prompt)
+            self.assertIn('reject gratuitous translation away from the cited source', prompt)
             self.assertNotIn('artifact_path', prompt)
 
     def test_validator_reads_full_source_without_repeating_block_quotes(self):

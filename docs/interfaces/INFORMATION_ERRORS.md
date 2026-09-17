@@ -37,6 +37,8 @@ palim knowledge review-status <execution-uuidv7> --json
 
 오류가 있는 새 검토는 `next_action=review_d2i_error`다. 일반 `review-resume`은 `d2i_information_error_requires_review`로 중단하고 사용자 확인을 요구한다. 새 I가 필요하면 별도로 승인된 D2I 유지보수에서 해결하며, 이 오류 처리기가 재파싱·새 I·원문 K 생성을 수행하지 않는다. 단순 K 선택 미완료는 기존 검토 재개 경로로 계속 진행한다.
 
+사용자가 오류를 확인하고 `review-resume --retain-information-errors`를 명시하면 이전 오류 요청을 새 실행의 frozen feedback에 누적해 전체 I를 다시 검토할 수 있다. 해당 페이지·block·media를 인용하는 K는 계속 보류하며, 오류 범위 밖의 K만 현재 K catalog와 중복 검증 후 반영한다. 이 선택은 D2I를 재실행하거나 오류를 해결됨으로 표시하지 않는다.
+
 Electron의 기존 검토 화면은 이 보고가 있을 때 “D2I 정보 오류 · 사용자 확인 필요”와 정확한 관련 I 링크를 표시한다. 원문에서 K를 생성하거나 D2I를 다시 돌리는 버튼은 없다. historical 검토의 숫자는 해당 실행 당시의 기록이다.
 
 ## 보존·검증
@@ -44,3 +46,7 @@ Electron의 기존 검토 화면은 이 보고가 있을 때 “D2I 정보 오�
 기존 raw D/I/K/Revision/profile/판정과 SQL0001–0013은 유지한다. 직접 D 구현 초안은 DB/provider 실행 전 철회했고 원래 source hash로 복원했다. 기존 request replay와 Generator/Validator prompt/schema는 과거 snapshot에 해당 policy가 없으면 동일하다. 새로운 정책 profile만 새 규칙을 적용한다.
 
 [순수 오류 검사](../../tests/app/test_information_errors.py), [실제 PG의 합성 모델 판정 검사](../../tests/app/test_information_error_runtime.py), 기존 multi-source/review/desktop 회귀 검사로 오류 코드·보류·무관한 K 반영·후보 정리·exact refs·재개 차단을 확인한다. 테스트는 source/D2I/provider 접근 trap을 두며 실제 LLM의 누락 감지 회수율 평가는 아니다.
+
+페이지 힌트와 `/pdf_info/<0-based-page>/...` block 근거가 함께 있으면 보류 범위는 그 페이지를 직접 인용한 후보로 제한한다. 하나의 큰 I에 여러 페이지가 들어 있어도 한 페이지의 전사 신고가 I 전체 후보를 보류하지 않는다. 페이지·block 범위를 확인할 수 없는 신고만 해당 I 전체를 보수적으로 보류한다. Validator의 target별 누락 판정은 source-review target binding으로 별도 제한한다.
+
+Page-scoped media citations use the retained I media SHA-256 to recover its page_index. A report for one page holds only candidates cited from that page; only citations whose page cannot be resolved remain conservatively held.

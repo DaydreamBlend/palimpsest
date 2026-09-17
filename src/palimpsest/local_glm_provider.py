@@ -15,16 +15,23 @@ from .errors import PalimpsestError
 
 BASE_URL = "http://172.30.1.11:8888/v1"
 MODEL = "glm-5.3-flash-nvidia-nvfp4"
-CONTEXT_WINDOW = 700160
-MAX_OUTPUT_TOKENS = 65536
+CONTEXT_WINDOW = 1048576
+MAX_OUTPUT_TOKENS = 262144
+THINKING = False
+TEMPERATURE = 0.1
+TOP_P = 0.95
+REPETITION_PENALTY = 1.05
 PROFILE = {
     "provider": "openai_compatible_chat",
     "base_url": BASE_URL,
     "model": MODEL,
     "context_window": CONTEXT_WINDOW,
-    "temperature": 0,
+    "temperature": TEMPERATURE,
+    "top_p": TOP_P,
+    "repetition_penalty": REPETITION_PENALTY,
     "seed": 0,
     "max_output_tokens": MAX_OUTPUT_TOKENS,
+    "thinking": THINKING,
     "auth": "none",
 }
 _INSTRUCTIONS = (
@@ -41,11 +48,13 @@ def _reject_nonfinite(value):
 
 
 class LocalGLMProvider:
-    def __init__(self, timeout_seconds=1200):
+    def __init__(self, timeout_seconds=1200, max_output_tokens=MAX_OUTPUT_TOKENS):
         if (type(timeout_seconds) not in (int, float) or not math.isfinite(timeout_seconds)
-                or timeout_seconds <= 0):
+                or timeout_seconds <= 0 or type(max_output_tokens) is not int
+                or not 1 <= max_output_tokens <= MAX_OUTPUT_TOKENS):
             raise PalimpsestError("local_glm_configuration_invalid", "로컬 GLM 설정을 확인해 주세요.", 2)
         self.timeout_seconds = timeout_seconds
+        self.max_output_tokens = max_output_tokens
 
     def generate(self, *, prompt: str, schema: dict, images: Sequence[Path] = (), cwd: Path) -> CodexResult:
         if not isinstance(prompt, str) or not prompt.strip() or not isinstance(schema, dict):
@@ -68,9 +77,14 @@ class LocalGLMProvider:
                     {"role": "system", "content": _INSTRUCTIONS},
                     {"role": "user", "content": content if attachments else prompt},
                 ],
-                "temperature": 0,
+                "temperature": TEMPERATURE,
+                "top_p": TOP_P,
+                "repetition_penalty": REPETITION_PENALTY,
                 "seed": 0,
-                "max_tokens": MAX_OUTPUT_TOKENS,
+                "max_tokens": self.max_output_tokens,
+                "stream": True,
+                "stream_options": {"include_usage": True},
+                "chat_template_kwargs": {"enable_thinking": THINKING},
                 "response_format": {"type": "json_schema", "json_schema": {
                     "name": "palimpsest_response", "strict": True, "schema": schema}},
             }
@@ -82,11 +96,16 @@ class LocalGLMProvider:
                           headers={"Content-Type": "application/json"}, method="POST")
         try:
             with urlopen(request, timeout=self.timeout_seconds) as response:
-                value = json.loads(response.read().decode("utf-8"), parse_constant=_reject_nonfinite)
+                value = self._read_stream(response)
         except HTTPError as error:
             category = "context_limit" if error.code == 400 else "rate_limit" if error.code == 429 else "transport"
+            try:
+                server_error = error.read(4097).decode("utf-8", errors="replace")[:4096]
+            except OSError:
+                server_error = ""
             raise PalimpsestError("local_glm_http_failed", "로컬 GLM 호출이 완료되지 않았습니다.", 4,
-                                  {"category": category, "status": error.code}) from None
+                                  {"category": category, "status": error.code,
+                                   **({"server_error": server_error} if server_error else {})}) from None
         except (URLError, TimeoutError, OSError):
             raise PalimpsestError("local_glm_unavailable", "로컬 GLM 서버에 연결할 수 없습니다.", 4,
                                   {"category": "transport"}) from None
@@ -121,4 +140,41 @@ class LocalGLMProvider:
             usage["reasoning_output_tokens"] = details["reasoning_tokens"]
         if any(type(item) is not int or item < 0 for item in usage.values()):
             usage = None
-        return CodexResult(output, usage, provider_ref, {**PROFILE, "requested_model": MODEL})
+        return CodexResult(output, usage, provider_ref, {**PROFILE, "requested_model": MODEL,
+            "effective_max_output_tokens": self.max_output_tokens})
+
+    @staticmethod
+    def _read_stream(response):
+        content, provider_ref, model, finish_reason, usage = [], None, None, None, None
+        for raw_line in response:
+            line = raw_line.decode("utf-8").strip()
+            if not line or line.startswith(":"):
+                continue
+            if not line.startswith("data:"):
+                raise ValueError
+            data = line[5:].strip()
+            if data == "[DONE]":
+                break
+            chunk = json.loads(data, parse_constant=_reject_nonfinite)
+            provider_ref = provider_ref or chunk.get("id")
+            model = model or chunk.get("model")
+            chunk_usage = chunk.get("usage")
+            if isinstance(chunk_usage, dict):
+                usage = chunk_usage
+            choices = chunk.get("choices", [])
+            if not choices:
+                continue
+            if len(choices) != 1:
+                raise ValueError
+            choice = choices[0]
+            delta = choice.get("delta", {}).get("content")
+            if delta is not None:
+                if not isinstance(delta, str):
+                    raise ValueError
+                content.append(delta)
+            if choice.get("finish_reason") is not None:
+                finish_reason = choice["finish_reason"]
+        return {"id": provider_ref, "model": model,
+                "choices": [{"finish_reason": finish_reason,
+                             "message": {"content": "".join(content)}}],
+                "usage": usage or {}}

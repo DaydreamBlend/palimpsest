@@ -71,7 +71,7 @@ def validate_profile(profile, source_hash, document, image_digest, runner_hash):
             or any(parser.get(k) != v or type(parser.get(k)) is not type(v) for k, v in expected.items())
             or profile.get('transformation') not in [
                 {'algorithm': algorithm, 'schema_version': 'source-information-v1'}
-                for algorithm in ('source-units-v1', 'source-groups-v1')]
+                for algorithm in ('source-units-v1', 'source-groups-v1', 'source-groups-v2')]
             or profile.get('policy', {}).get('llm_calls') != 0
             or profile['policy'].get('source_fidelity') != 'source_preserving'
             or profile['policy'].get('extraction_scope') != 'whole_document'):

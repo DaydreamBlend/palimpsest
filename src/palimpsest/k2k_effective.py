@@ -9,7 +9,7 @@ import json
 
 from . import k2k as legacy
 from .data import data_id as check_digest
-from .knowledge import _array, _enum, _fail, _keys, _uuid
+from .knowledge import _array, _enum, _fail, _keys, _object, _uuid
 from .n2e import _qualifiers
 from .n2e_relations import canonical_pair
 from .i2k import digest
@@ -109,7 +109,12 @@ def effective_refs(packet):
     return [deepcopy(edge['effective_edge_ref']) for edge in packet['effective_edges']]
 
 
-def generation_schema(packet):
+def _slot_keys(packet):
+    check_input(packet)
+    return [f'inference_{ordinal:04d}' for ordinal in range(1, len(packet['effective_edges']) + 1)]
+
+
+def generation_schema(packet, *, fixed_slots=False):
     schema = legacy.generation_schema(_legacy_input(packet))
     item = schema['properties']['nodes']['items']
     node_ids, edge_ids = check_input(packet), edge_revision_ids(packet)
@@ -117,11 +122,23 @@ def generation_schema(packet):
     item['properties']['premise_edge_revision_ids'] = {
         **_array(_enum(edge_ids)), 'minItems': len(edge_ids), 'maxItems': len(edge_ids)}
     item['required'].append('premise_edge_revision_ids')
+    if fixed_slots:
+        return _object({'candidate_slots': _object({
+            key: {'anyOf': [deepcopy(item), {'type': 'null'}]} for key in _slot_keys(packet)}),
+            'complete': {'type': 'boolean'},
+            'coverage_notes': deepcopy(schema['properties']['coverage_notes'])})
     return schema
 
 
 def normalize_proposals(response, packet):
     base = _legacy_input(packet)
+    if isinstance(response, dict) and 'candidate_slots' in response:
+        _keys(response, ('candidate_slots', 'complete', 'coverage_notes'), 'invalid_k2k_proposal')
+        keys = _slot_keys(packet)
+        _keys(response['candidate_slots'], keys, 'invalid_k2k_proposal')
+        response = {'nodes': [response['candidate_slots'][key] for key in keys
+                              if response['candidate_slots'][key] is not None],
+                    'complete': response['complete'], 'coverage_notes': response['coverage_notes']}
     _keys(response, ('nodes', 'complete', 'coverage_notes'), 'invalid_k2k_proposal')
     if not isinstance(response['nodes'], list):
         _fail('invalid_k2k_proposal')
@@ -173,7 +190,28 @@ def _checked_candidates(candidates, packet=None):
     return stripped
 
 
+def validation_schema(candidate_keys, existing_revision_ids, *, fixed_slots=False):
+    schema = legacy.validation_schema(candidate_keys, existing_revision_ids)
+    if not fixed_slots:
+        return schema
+    item = schema['properties']['decisions']['items']
+    slots = {}
+    for key in candidate_keys:
+        value = deepcopy(item)
+        branches = value.get('anyOf', [value])
+        for branch in branches:
+            branch['properties']['candidate_key'] = _enum((key,))
+        slots[key] = value
+    return _object({'decisions_by_key': _object(slots), 'complete': {'type': 'boolean'}})
+
+
 def validate_decisions(value, candidates, existing_revision_ids, packet=None):
+    if isinstance(value, dict) and 'decisions_by_key' in value:
+        _keys(value, ('decisions_by_key', 'complete'), 'invalid_k2k_decision')
+        keys = [candidate['candidate_key'] for candidate in candidates]
+        _keys(value['decisions_by_key'], keys, 'invalid_k2k_decision')
+        value = {'decisions': [value['decisions_by_key'][key] for key in keys],
+                 'complete': value['complete']}
     return legacy.validate_decisions(value, _checked_candidates(candidates, packet), existing_revision_ids)
 
 
@@ -216,7 +254,11 @@ def _snapshot(snapshot):
 def generation_request(snapshot, attachments=None):
     if attachments:
         _fail('k2k_direct_media_forbidden')
-    prompt = legacy.POLICY + POLICY + '''
+    fixed_slots = snapshot.get('comparison_catalog') is not None
+    prompt = legacy.POLICY + POLICY + ('''
+This bounded BGE comparison request has one nullable inference slot per effective
+Edge. Fill each slot with at most one strongest genuinely new conclusion or null.
+''' if fixed_slots else '') + '''
 TASK: Generator. Derive justified propositions using the complete frozen bundle.
 Return the supplied strict schema. Do not emit premise_effective_edge_refs:
 Runtime owns this exact reference binding. Empty discovery can be appropriate;
@@ -224,7 +266,7 @@ a mandatory existing-conclusion review still needs its explicit supported result
 PREMISES_AND_CATALOG_JSON:
 '''
     return (prompt + json.dumps(_snapshot(snapshot), ensure_ascii=False, sort_keys=True, allow_nan=False)
-            + prompt_suffix(snapshot), generation_schema(snapshot['input']))
+            + prompt_suffix(snapshot), generation_schema(snapshot['input'], fixed_slots=fixed_slots))
 
 
 def validation_request(context, attachments=None):
@@ -243,6 +285,7 @@ Keep endpoint conditions and relation qualifiers; disagreement is not a license
 to choose a winner. Return one decision per candidate, retaining uncertainty.
 VALIDATION_CONTEXT_JSON:
 '''
-    schema = legacy.validation_schema([candidate['candidate_key'] for candidate in context['candidates']],
-                                      [node['knode_revision_id'] for node in snapshot.get('existing_nodes', [])])
+    schema = validation_schema([candidate['candidate_key'] for candidate in context['candidates']],
+        [node['knode_revision_id'] for node in snapshot.get('existing_nodes', [])],
+        fixed_slots=snapshot.get('comparison_catalog') is not None)
     return prompt + json.dumps(projected, ensure_ascii=False, sort_keys=True, allow_nan=False) + prompt_suffix(snapshot), schema

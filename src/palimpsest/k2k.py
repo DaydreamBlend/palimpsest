@@ -211,7 +211,16 @@ Equivalent meaning reuses its exact revision without a semantic revision. Adding
 inference support never overwrites a source-created revision's actual origin.
 Do not force a candidate count. No useful justified inference is a valid empty
 result; unresolved work requires complete=false and explicit coverage notes.
+Write each conclusion and natural-language semantic field in the primary language
+of its premises. Do not translate Korean premises into English merely for output.
 '''
+
+
+def _policy(snapshot):
+    if snapshot.get('comparison_catalog') is None:
+        return POLICY
+    return POLICY + '''When comparison_catalog is present, BGE-M3 selected that duplicate-search window;
+similarity is not evidence for an inference or proof of global novelty.\n'''
 
 
 def _prompt_snapshot(snapshot):
@@ -237,7 +246,7 @@ def generation(snapshot, attachments=None):
     check_input(snapshot['input'])
     if attachments:
         _fail('k2k_direct_media_forbidden')
-    return POLICY + '''
+    return _policy(snapshot) + '''
 TASK: Generator. Derive useful propositions from the frozen exact K premises.
 Return only the supplied strict JSON schema, with no direct Information evidence.
 PREMISES_AND_CATALOG_JSON:
@@ -253,7 +262,7 @@ def validation(context, attachments=None):
     if attachments:
         _fail('k2k_direct_media_forbidden')
     projected = {**deepcopy(context), 'input_snapshot': _prompt_snapshot(context['input_snapshot'])}
-    return POLICY + '''
+    return _policy(context['input_snapshot']) + '''
 TASK: Independent Validator. Check each conclusion against its exact premises,
 inference type, assumptions and limits. Judge inference_valid, premises_sufficient,
 limits_preserved and novel_conclusion separately. Accepted new conclusions require

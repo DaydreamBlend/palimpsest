@@ -32,6 +32,7 @@ from . import k2k_effective, k2k_effective_runtime
 from . import knowledge_revision_runtime as revision_runtime
 from .data_versions import immutable_versions
 from .local_glm_provider import PROFILE as GLM_PROFILE
+from .codex_provider import PROFILE as CODEX_PROFILE
 
 
 MODEL = deepcopy(GLM_PROFILE)
@@ -349,7 +350,7 @@ class KnowledgeRuntime:
                 selection=False, feedback_execution_id=None, source_review=None,
                 data_version_ids=None, data_version_mode='current', authorization_id=None, retry_of_execution_id=None,
                 target_knode_id=None, expected_revision_id=None, revalidation_target=None, propagation_claim=None,
-                edge_review_target=None, n2e_policy=None, realm_scope=None):
+                edge_review_target=None, n2e_policy=None, realm_scope=None, comparison_catalog=None):
         validate_data_id(data_id)
         identifier = request_id(str(request_id_value))
         if data_version_mode not in ('current', 'pinned') or (data_version_ids is None and data_version_mode != 'current'):
@@ -362,6 +363,43 @@ class KnowledgeRuntime:
                 _fail('invalid_data_version_context', 2)
         if operation not in ('i2k', 'n2e', 'k2k', 'd2k'):
             _fail('invalid_knowledge_operation', 2)
+        if comparison_catalog is not None:
+            comparison_catalog = deepcopy(comparison_catalog)
+            if operation == 'k2k':
+                if (not isinstance(comparison_catalog, dict)
+                        or set(comparison_catalog) != {'schema_version', 'revision_ids',
+                            'embedding_profile_sha256', 'embedding_result_sha256'}
+                        or comparison_catalog.get('schema_version') != 'bge-m3-comparison-catalog-v1'
+                        or not isinstance(comparison_catalog.get('revision_ids'), list)
+                        or not comparison_catalog['revision_ids']):
+                    _fail('invalid_k2k_comparison_catalog', 2)
+                comparison_catalog['revision_ids'] = [request_id(value) for value in comparison_catalog['revision_ids']]
+                if len(comparison_catalog['revision_ids']) != len(set(comparison_catalog['revision_ids'])):
+                    _fail('invalid_k2k_comparison_catalog', 2)
+            elif operation == 'i2k':
+                if (not isinstance(comparison_catalog, dict)
+                        or set(comparison_catalog) != {'schema_version', 'batches',
+                            'embedding_profile_sha256', 'embedding_result_sha256'}
+                        or comparison_catalog.get('schema_version') != 'bge-m3-batch-comparison-catalog-v1'
+                        or not isinstance(comparison_catalog.get('batches'), list)
+                        or not comparison_catalog['batches']):
+                    _fail('invalid_i2k_comparison_catalog', 2)
+                batch_ids = []
+                for batch in comparison_catalog['batches']:
+                    if (not isinstance(batch, dict) or set(batch) != {'batch_id', 'revision_ids'}
+                            or not isinstance(batch.get('batch_id'), str)
+                            or not isinstance(batch.get('revision_ids'), list) or not batch['revision_ids']):
+                        _fail('invalid_i2k_comparison_catalog', 2)
+                    batch_ids.append(batch['batch_id'])
+                    batch['revision_ids'] = [request_id(value) for value in batch['revision_ids']]
+                    if len(batch['revision_ids']) != len(set(batch['revision_ids'])):
+                        _fail('invalid_i2k_comparison_catalog', 2)
+                if len(batch_ids) != len(set(batch_ids)):
+                    _fail('invalid_i2k_comparison_catalog', 2)
+            else:
+                _fail('invalid_comparison_catalog_operation', 2)
+            for field in ('embedding_profile_sha256', 'embedding_result_sha256'):
+                validate_data_id(comparison_catalog.get(field))
         if realm_scope is not None and operation != 'i2k':
             _fail('invalid_realm_operation', 2)
         if propagation_claim is not None and operation not in ('n2e', 'k2k'):
@@ -424,6 +462,8 @@ class KnowledgeRuntime:
                              if previous_profile else selection)
         if type(source_review) is not bool or (source_review and not selection):
             _fail('invalid_source_review_operation', 2)
+        if comparison_catalog is not None and operation == 'i2k' and not source_review:
+            _fail('invalid_i2k_comparison_catalog', 2)
         if feedback_execution_id is not None:
             if not selection:
                 _fail('invalid_selection_feedback', 2)
@@ -435,11 +475,13 @@ class KnowledgeRuntime:
         if modern_n2e:
             profile_name = n2e_relations.PROFILE
         model = deepcopy(MODEL if model_profile is None else model_profile)
-        if not isinstance(model, dict) or model != MODEL:
+        if not isinstance(model, dict) or model not in (MODEL, CODEX_PROFILE):
             _fail('invalid_knowledge_profile', 2)
         supplied = _json(input_snapshot)
         request_payload = {'operation': operation, 'data_id': data_id, 'input': supplied,
                            'profile': profile_name, 'model': model}
+        if comparison_catalog is not None:
+            request_payload['comparison_catalog'] = comparison_catalog
         if revalidation_target is not None:
             request_payload['revalidation_target'] = revalidation_target
         if edge_review_target is not None:
@@ -480,6 +522,12 @@ class KnowledgeRuntime:
                         WHERE execution_id=%s ORDER BY information_id''', (feedback_execution_id,)).fetchall(),
                     'validator_reviews': conn.execute('''SELECT information_id,verdict,reason_codes,reason FROM compiler_runtime.k_information_review_decisions
                         WHERE execution_id=%s ORDER BY information_id''', (feedback_execution_id,)).fetchall()})
+                retained_requests = list((prior['input_snapshot'].get('selection_feedback') or {}).get('source_requests', []))
+                for source_request in (prior['generator_receipt'] or {}).get('source_requests', []):
+                    if digest(source_request) not in {digest(value) for value in retained_requests}:
+                        retained_requests.append(deepcopy(source_request))
+                if retained_requests:
+                    feedback['source_requests'] = retained_requests
                 if prior['profile'].get('source_review') == source_review_contract.PROFILE:
                     feedback['source_review'] = {
                         'manifest': prior['input_snapshot']['source_review_manifest'],
@@ -587,6 +635,17 @@ class KnowledgeRuntime:
                 if allowed_data_ids is not None:
                     supplied = self._inference_input(conn, data_id, refs, allowed_data_ids=allowed_data_ids,
                         edge_revision_ids=edge_refs)
+                if comparison_catalog is not None:
+                    selected = set(comparison_catalog['revision_ids'])
+                    if not selected <= {node['knode_revision_id'] for node in nodes}:
+                        _fail('invalid_k2k_comparison_catalog', 6)
+                    selected -= set(refs)
+                    comparison_catalog = {**comparison_catalog,
+                        'revision_ids': [ref for ref in comparison_catalog['revision_ids'] if ref in selected]}
+                    nodes = [node for node in nodes if node['knode_revision_id'] in selected]
+                    selected_logical = {node['knode_id'] for node in nodes}
+                    edges = [edge for edge in edges if edge['from_knode_id'] in selected_logical
+                             and edge['to_knode_id'] in selected_logical]
             else:
                 if (not isinstance(supplied, dict) or supplied.get('schema_version') != 'n2e-input-v1'
                         or not isinstance(supplied.get('nodes'), list) or not supplied['nodes']):
@@ -613,9 +672,17 @@ class KnowledgeRuntime:
                     selected_ids = {node['knode_id'] for node in supplied['nodes']}
                     edges = [edge for edge in edges if edge['from_knode_id'] in selected_ids and edge['to_knode_id'] in selected_ids]
             snapshot = {'input': supplied, 'existing_nodes': nodes, 'existing_edges': edges}
+            if comparison_catalog is not None:
+                snapshot['comparison_catalog'] = comparison_catalog
             if bound_realm_scope is not None:
                 snapshot['realm_scope'] = deepcopy(bound_realm_scope)
                 snapshot['existing_nodes'], snapshot['existing_edges'] = realm_i2k.comparison_catalog(nodes, edges)
+            if comparison_catalog is not None and operation == 'i2k':
+                available = {node['knode_revision_id'] for node in snapshot['existing_nodes']}
+                selected = {revision for batch in comparison_catalog['batches']
+                            for revision in batch['revision_ids']}
+                if not selected <= available:
+                    _fail('invalid_i2k_comparison_catalog', 6)
             if modern_n2e:
                 snapshot['n2e_policy'] = n2e_relations.PROFILE
                 snapshot['n2e_request_input'] = _json(input_snapshot)
@@ -669,6 +736,12 @@ class KnowledgeRuntime:
                 snapshot.update(data_versions=versions, data_version_mode=data_version_mode)
             if source_review:
                 snapshot['source_review_manifest'] = source_review_contract.build_manifest(supplied)
+            if comparison_catalog is not None and operation == 'i2k':
+                from . import batched_i2k
+                expected_batches = [batch['batch_id'] for batch in
+                    batched_i2k._partition(supplied, snapshot['source_review_manifest'])]
+                if [batch['batch_id'] for batch in comparison_catalog['batches']] != expected_batches:
+                    _fail('invalid_i2k_comparison_catalog', 6)
             if feedback is not None:
                 snapshot['selection_feedback'] = feedback
             input_sha = digest(snapshot)
@@ -1541,6 +1614,10 @@ class KnowledgeRuntime:
             validator_complete = True
             manifest = job['input_snapshot'].get('source_review_manifest')
             raw_decisions = deepcopy(decisions)
+            source_requests = list(job['generator_receipt']['source_requests'])
+            for source_request in (job['input_snapshot'].get('selection_feedback') or {}).get('source_requests', []):
+                if digest(source_request) not in {digest(value) for value in source_requests}:
+                    source_requests.append(deepcopy(source_request))
             revision_target = job['input_snapshot'].get('revision_target')
             revision_review, revision_result = None, None
             revalidation_result = None
@@ -1596,19 +1673,24 @@ class KnowledgeRuntime:
                             (next(r['record_id'] for r in records if r['body']['candidate_key'] == candidate['candidate_key']),
                              candidate['identity_scope'], candidate['source_data_id'], decision['source_explicit'],
                              decision['no_novel_inference'], decision['source_identity_preserved']))
-                unresolved_i = {identifier for source_request in job['generator_receipt']['source_requests']
+                unresolved_i = {identifier for source_request in source_requests
                                 for identifier in source_request['information_ids']}
                 information_error_policy = job['profile'].get('information_error_policy') == information_errors.POLICY
                 if information_error_policy:
                     unresolved_i.update(information_errors.affected_information_ids(
-                        job['generator_receipt']['source_requests'],checked['reviews']))
+                        source_requests,checked['reviews']))
                     selection_pending.update(unresolved_i)
                 by_key = {candidate['candidate_key']: candidate for candidate in candidates}
                 for key, decision in validated.items():
                     # An unfinished I review can report other missing claims;
                     # it does not invalidate an independently accepted candidate.
                     # Unavailable requested original evidence is a separate hold.
-                    affected = any(citation['information_id'] in unresolved_i for citation in by_key[key]['evidence'])
+                    affected = (information_errors.candidate_has_reported_error(
+                                    by_key[key], source_requests,
+                                    job['input_snapshot']['input']['model_input']['information'])
+                                if information_error_policy and manifest is not None else
+                                any(citation['information_id'] in unresolved_i
+                                    for citation in by_key[key]['evidence']))
                     target = decision['equivalent_candidate_key']
                     if (decision['verdict'] in ('accepted', 'reused') and
                             (affected or (target is not None and validated[target]['verdict'] == 'needs_human'))):
@@ -1663,7 +1745,7 @@ class KnowledgeRuntime:
             current_records = self._records(conn, execution_id)
             unresolved = (not job['generator_receipt']['generation_complete']
                           or not validator_complete
-                          or bool(job['generator_receipt']['source_requests'])
+                          or bool(source_requests)
                           or bool(selection_pending)
                           or bool(revision_result and revision_result['requires_user_review'])
                           or bool(revalidation_result and revalidation_result['requires_user_review'])

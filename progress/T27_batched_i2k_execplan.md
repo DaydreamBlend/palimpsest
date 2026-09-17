@@ -53,8 +53,9 @@ unchanged.
 - Request size is 14,741-23,858 characters with 1-3 images per call.
 - Two batch/runtime checks and 37 existing source-review/selection checks pass in
   isolated PostgreSQL 18 + pgvector.
-- A first live batch was stopped after ten minutes without a response. No success
-  or failure receipt was written, so the durable resume point remains batch 1.
+- GLM batch 1 timed out at 1,200 seconds, then exhausted its 65,536-token output
+  limit after 1,975.516 seconds with a 3,600-second transport limit. Both failure
+  receipts remain; the user authorized a new Terra Medium execution as fallback.
 
 ## Verification result
 

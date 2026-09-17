@@ -178,7 +178,7 @@ async function openData(storeId, dataId) {
     if (!result.knowledge.length) knowledge.append(node('p', 'review-reason', '이 원본에 연결된 K는 아직 없습니다. I와 I2K 실행 상태를 아래에서 확인할 수 있습니다.'));
     for (const entry of result.knowledge) {
       const card = node('div', 'knowledge-card'); append(card, knowledgeFlags(entry), node('p', '', entry.statement), node('code', 'revision-id', entry.knode_revision_id));
-      if (state.stores.find(store => store.store_id === storeId)?.hasWiki) card.append(button('지식과 생성 근거 열기', 'exact-link', () => openKnowledge(entry.knode_revision_id, storeId)));
+      card.append(button('지식과 생성 근거 열기', 'exact-link', () => openKnowledge(entry.knode_revision_id, storeId)));
       for (const grounding of entry.groundings || []) card.append(button(`근거 I ${short(grounding.information_id)}`, 'evidence-link', () => openEvidence({ ...grounding, sourceOnly: true, store_id: storeId })));
       knowledge.append(card);
     }
@@ -568,9 +568,7 @@ function renderParchment(parchment, storeId = state.storeId) {
       for (const value of claim.limitations) item.append(node('p', 'review-reason', `한계: ${value}`));
       const citations = node('div', 'knowledge-flags');
       for (const revision of claim.k_revision_ids) {
-        citations.append(state.stores.find(store => store.store_id === storeId)?.hasWiki
-          ? button(`K Revision ${revision}`, 'exact-link', () => openKnowledge(revision, storeId))
-          : node('code', 'revision-id', `K Revision ${revision}`));
+        citations.append(button(`K Revision ${revision}`, 'exact-link', () => openKnowledge(revision, storeId)));
       }
       item.append(citations);
       const binding = parchment.citations.find(value => value.section_index === index)?.claims.find(value => value.claim_key === claim.claim_key);
@@ -896,7 +894,7 @@ async function showKnowledge(cached = false) {
   const ticket = ++state.pageTicket; state.mode = 'knowledge'; state.nodeRevisionId = null;
   closeSource(); notice(); updateNavigation(); loading('지식과 자료 버전을 읽는 중입니다');
   try {
-    const data = cached === true ? { nodes: state.knowledge, sources: state.sources, data_versions: state.versions } : state.unified ? await acrossStores('knowledge_catalog', ['nodes', 'sources', 'data_versions']) : await request('knowledge_catalog');
+    const data = cached === true ? { nodes: state.knowledge, sources: state.sources, data_versions: state.versions } : state.unified ? await acrossStores('knowledge_catalog', ['nodes', 'sources', 'data_versions'], null) : await request('knowledge_catalog');
     if (ticket !== state.pageTicket) return;
     state.knowledge = data.nodes; state.sources = data.sources || []; state.versions = data.data_versions || []; updateNavigation();
     setCrumb('지식', '생성 기원과 근거');

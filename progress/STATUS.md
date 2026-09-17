@@ -2,7 +2,7 @@
 
 문서 갱신: **2026-09-15**. 기능·실행 결과의 기준은 **2026-09-14 T24**다. **2026-09-15 사용자 요청으로 Palimpsest Docker DB·아티팩트·자격증명 볼륨 43개, DB 컨테이너 3개와 앱·PG18 이미지를 삭제했다. 아래 기능·검증은 삭제 전 결과이며 현재 조회 가능한 DB를 뜻하지 않는다.** MinerU/BGE 이미지 3개와 MinerU 모델 볼륨, 호스트의 코드·원본·모델·실행 기록은 보존했다. 재사용에는 앱 이미지 빌드와 DB 생성·자료 등록/컴파일이 필요하며, 과거 DB 이력의 완전 복구는 보장하지 않는다. 이 파일을 현재 상태의 단일 진입점으로 유지한다. 상세 계약은 [문서 인덱스](../docs/INDEX.md), 실제 검증 근거는 [T24 보고서](../output/t24-wisdom-realm/REPORT.md)를 따른다.
 
-현재 새 실행 환경: 사용자 요청으로 단일 Compose project `palimpsest`와 앱 이미지 `palimpsest-ui:0.23.0`을 재생성했다. 새 PG18.6/pgvector0.8.6 source schema0023 및 별도 Realm catalog에 **약물치료학.pdf(37페이지)를 Realm ‘약사’로 등록 완료**했다. MinerU image200 D2I는 37/37페이지를 처리했고, 완성된 D2I를 재실행하지 않은 채 원문 페이지 I를 보강해 현재 I2K 입력은 39개 I·112개 고정 source-review target이다. 단일 대형 로컬 GLM 호출은 폐기하고 **36개 중단·재개 가능한 분할 I2K**로 전환했다. 격리 PG에서 신규 2개와 기존 회귀 37개 검사가 통과했으며, 첫 live batch는 10분 내 응답이 없어 중단되어 성공 batch는 아직 0개다. Heartbeat가 첫 미완료 batch부터 계속 처리하도록 ACTIVE다. 기존 삭제 DB는 복원하지 않았다. [자료 처리 기록](../output/t26-pharmacy/REPORT.md), [분할 I2K 결과](../output/t27-batched-i2k/REPORT.md).
+현재 새 실행 환경: 사용자 요청으로 단일 Compose project `palimpsest`와 앱 이미지 `palimpsest-ui:0.23.0`을 재생성했다. 새 PG18.6/pgvector0.8.6 source schema0023 및 별도 Realm catalog에 **약물치료학.pdf(37페이지)를 Realm ‘약사’로 등록 완료**했다. MinerU image200 D2I는 37/37페이지를 처리했고, 완성된 D2I를 재실행하지 않은 채 원문 페이지 I를 보강해 현재 I2K 입력은 39개 I·112개 고정 source-review target이다. 단일 대형 호출은 폐기하고 **36개 중단·재개 가능한 분할 I2K**로 전환했다. 로컬 GLM 첫 batch는 1,200초 timeout 뒤 장시간 재시도에서 65,536 출력 token 한도를 소진해 valid response가 0개다. 두 실패를 보존하고, 사용자 승인에 따라 새 frozen execution부터 GPT-5.6 Terra Medium으로 전환한다. 격리 PG의 분할/기존 회귀 검사는 통과했다. 기존 삭제 DB는 복원하지 않았다. [자료 처리 기록](../output/t26-pharmacy/REPORT.md), [분할 I2K 결과](../output/t27-batched-i2k/REPORT.md).
 
 확인된 후속 D2I 개선: 약물치료학 본문 203,496자가 단일 I로 묶인 것은 너무 거칠다. 완료된 실행은 재파싱하지 않고 현재 I2K 실험에 사용하되, 이후 PDF profile은 페이지별 원자 provenance와 전량 coverage를 유지하면서 장·절·주제 경계의 여러 I로 결정론적으로 묶어야 한다.
 
@@ -51,3 +51,15 @@
 
 추가 native parser/URL importer, Decision/W2K, Book·게시, crawler, cross-store canonical compile과 대규모 paging/운영 검증도 남아 있다. 이 목록은 사용자 DB migration·새 자료 전송·provider 실행의 포괄적 승인이 아니다. 과거 계획과 결과는 [문서 인덱스의 역사 경로](../docs/INDEX.md#과거-기록)를 통해 필요한 때만 조회한다.
 2026-09-15 provider change: active Generator/Validator calls now use local `glm-5.3-flash-nvidia-nvfp4` at `http://172.30.1.11:8888/v1` with context `700160`; model-list, strict JSON Schema, real PDF page-image, and provider-code live smoke checks passed. Historical Terra receipts remain unchanged.
+
+2026-09-16 desktop recovery: `Palimpsest.cmd` now selects workspace-local store/Realm configuration for the live `palimpsest` project instead of the deleted historical example stores. A read-only bridge check returned `약물치료학.pdf`, 41 I, 448 K, five I2K executions, and Realm `약사`. The T28 reference preserves the shared fine-tuning discussion and measured GLM-5.3 deployment profile; it does not trigger model calls or change the active provider.
+
+2026-09-17 T29 current delivery: the fresh `palimpsest-pharmacy-full` PostgreSQL
+18/pgvector store contains the registered 37-page `약물치료학.pdf` in Realm
+`약사`, deterministic dual-path D2I, 712 accepted Korean source K, 262 typed N2E
+revisions, and one accepted K2K inference (713 current K total). BGE-M3 produced
+736 searchable chunks. A model-planned, independently reviewed K2W plan covers all
+713 K exactly once in 59 semantic groups. The 59 K2W jobs are prepared, but a
+local-GLM/vLLM structured-output incompatibility stopped the first Generator run;
+there are still zero committed W and P in this store. Exact checkpoint details are
+in [T29](T29_pharmacy_full_slice_execplan.md).

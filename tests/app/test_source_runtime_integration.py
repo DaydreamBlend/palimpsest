@@ -390,7 +390,7 @@ class SourceRuntimeIntegrationTests(unittest.TestCase):
         self.assertEqual(before, [self.runtime.information(information_id=i) for i in legacy['information_ids']])
         self.assertEqual(old_packet, self.runtime.prepare_input(execution_id))
         packet = self.runtime.prepare_input(grouped_id)
-        self.assertEqual('source-groups-v1', packet['source_assembly_algorithm'])
+        self.assertEqual('source-groups-v2', packet['source_assembly_algorithm'])
         self.assertEqual(2, len(packet['model_input']['information']))
         self.assertEqual(old_packet['media_assets'], packet['media_assets'])
         self.assertEqual(2, len(self.runtime.page_view(grouped_id)['pages'][0]['images']))

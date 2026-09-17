@@ -175,6 +175,25 @@ class EffectiveK2KTests(unittest.TestCase):
         self.assertIn('premise_edge_revision_ids', item['required'])
         self.assertNotIn('premise_effective_edge_refs', item['properties'])
 
+    def test_bge_bounded_fixed_slots_round_trip_without_array_repetition(self):
+        source = packet()
+        schema = effective.generation_schema(source, fixed_slots=True)
+        self.assertEqual(list(schema['properties']['candidate_slots']['properties']), ['inference_0001'])
+        raw = response(source)
+        fixed = {'candidate_slots': {'inference_0001': raw['nodes'][0]},
+                 'complete': True, 'coverage_notes': []}
+        candidates = effective.normalize_proposals(fixed, source)
+        decision = legacy.decision()
+        validation_schema = effective.validation_schema(
+            [candidate['candidate_key'] for candidate in candidates], [], fixed_slots=True)
+        self.assertIn('inference', validation_schema['properties']['decisions_by_key']['properties'])
+        checked = effective.validate_decisions(
+            {'decisions_by_key': {'inference': decision}, 'complete': True}, candidates, [], source)
+        self.assertEqual(checked['decisions']['inference']['verdict'], 'accepted')
+        empty = {'candidate_slots': {'inference_0001': None}, 'complete': True,
+                 'coverage_notes': ['No justified inference.']}
+        self.assertEqual(effective.normalize_proposals(empty, source), [])
+
     def test_prompt_preserves_relation_meaning_and_quote_metadata_without_hidden_edges(self):
         source = packet()
         quote = 'UNDISCLOSED SOURCE QUOTE 😀'

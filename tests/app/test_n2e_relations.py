@@ -155,6 +155,59 @@ class N2ERelationsTests(unittest.TestCase):
         self.assertIsNone(checked[modern.REVIEW_KEY]['material_change'])
         self.reject(lambda: modern.normalize_response({'edges': [], 'complete': True}, value))
 
+    def test_bge_semantic_discovery_limits_exact_revision_pairs_without_approving_them(self):
+        value = snapshot()
+        value['input']['semantic_discovery'] = {
+            'schema_version': modern.SEMANTIC_DISCOVERY_PROFILE,
+            'embedding_profile_sha256': 'a' * 64,
+            'embedding_result_sha256': 'b' * 64,
+            'pairs': [{'from_revision_id': uid(101), 'to_revision_id': uid(102), 'dense_score': 0.81}],
+        }
+        prompt, schema = modern.generation_request(value)
+        self.assertIn('BGE-M3 similarity selected candidates but proves no relation', prompt)
+        self.assertIn('Every proposed edge must have a different candidate_key', prompt)
+        self.assertIn('Never repeat the same predicate', prompt)
+        self.assertIn('emit exactly one edge per group', prompt)
+        self.assertIn('Build that grouped map before serializing JSON', prompt)
+        self.assertIn('Never connect a revision to itself', prompt)
+        slot = schema['properties']['pair_edges']['properties']['pair_0001']['properties']
+        branches = slot['supports']['anyOf'][1:]
+        self.assertEqual(len(branches), 1)
+        self.assertEqual({branch['properties']['from_revision_id']['enum'][0] for branch in branches},
+                         {uid(101)})
+        pair_edges = {'pair_0001': {predicate: None for predicate in modern.PREDICATES}}
+        pair_edges['pair_0001']['supports'] = proposal()
+        self.assertEqual(len(modern.normalize_response(
+            {'pair_edges': pair_edges, 'complete': True}, value)), 1)
+        candidates = modern.normalize_response({'pair_edges': pair_edges, 'complete': True}, value)
+        validator_prompt, validator_schema = modern.validation_request(
+            {'input_snapshot': value, 'candidates': candidates})
+        self.assertIn('decisions_by_key', validator_schema['properties'])
+        self.assertNotIn(uid(103), validator_prompt)
+        self.assertNotIn(uid(104), validator_prompt)
+        raw = decisions(candidates)
+        fixed = {'decisions_by_key': {item['candidate_key']: item for item in raw['decisions']},
+                 'complete': raw['complete']}
+        self.assertEqual(set(modern.validate_decisions(fixed, candidates, fixed_slots=True)),
+                         {candidates[0]['candidate_key']})
+        fixed['decisions_by_key']['duplicate'] = deepcopy(next(iter(fixed['decisions_by_key'].values())))
+        self.reject(lambda: modern.validate_decisions(fixed, candidates, fixed_slots=True),
+                    'n2e_decision_coverage_mismatch')
+        duplicate_slot = deepcopy(pair_edges)
+        duplicate_slot['pair_0002'] = duplicate_slot['pair_0001']
+        self.reject(lambda: modern.normalize_response(
+            {'pair_edges': duplicate_slot, 'complete': True}, value), 'invalid_n2e_response')
+        outside = {'pair_0001': {predicate: None for predicate in modern.PREDICATES}}
+        outside['pair_0001']['contradicts'] = proposal('contradicts', 1, 3)
+        self.reject(lambda: modern.normalize_response(
+            {'pair_edges': outside, 'complete': True}, value),
+            'n2e_relation_outside_semantic_discovery')
+
+        invalid = deepcopy(value)
+        invalid['input']['semantic_discovery']['pairs'].append(
+            {'from_revision_id': uid(102), 'to_revision_id': uid(101), 'dense_score': 0.81})
+        self.reject(lambda: modern.generation_request(invalid), 'invalid_n2e_semantic_discovery')
+
     def test_model_cannot_emit_reserved_role_fingerprints_or_assessment_key(self):
         for change in ({'candidate_key': modern.REVIEW_KEY}, {'role': 'target_assessment'},
                        {'comparison_base_revision_id': uid(301)}, {'identity_fingerprint': 'a' * 64}):

@@ -16,7 +16,7 @@ import sys
 from uuid import uuid4
 
 from palimpsest.source_units import SOURCE_UNITS_VERSION
-from palimpsest.d2i import SOURCE_GROUPS_VERSION
+from palimpsest.d2i import SOURCE_GROUPS_V2_VERSION
 from palimpsest.information import SOURCE_SCHEMA_VERSION
 from palimpsest.errors import PalimpsestError
 from palimpsest.hybrid_profile import (HYBRID_PARSER, DUAL_PARSER, IMAGE_PARSER,
@@ -101,7 +101,7 @@ class Worker:
             'model_manifest':model_manifest,'device':'cuda','gpu_uuid':self.args.gpu,
             'method':'auto','language':'ch','formula':True,'table':True,
             'network':'none','adapter_version':'mineru-middle-v2'},
-            'transformation':{'algorithm':(SOURCE_GROUPS_VERSION if self.args.information_layout == 'groups'
+            'transformation':{'algorithm':(SOURCE_GROUPS_V2_VERSION if self.args.information_layout == 'groups'
                                          else SOURCE_UNITS_VERSION),'schema_version':SOURCE_SCHEMA_VERSION},
             'policy':{'version':'source-d2i-v1','llm_calls':0,
                       'source_fidelity':'source_preserving','extraction_scope':'whole_document',

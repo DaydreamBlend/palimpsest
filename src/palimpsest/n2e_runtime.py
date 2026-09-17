@@ -93,7 +93,7 @@ def freeze(conn, edges, nodes, revision_id, packet, prior_pair=None):
 
 
 def prepare_review(runtime, revision_id, identifier, *, data_id=None, prior_pair=None,
-                   data_version_ids=None, data_version_mode='current', propagation_claim=None):
+                   data_version_ids=None, data_version_mode='current', propagation_claim=None, model_profile=None):
     revision_id, identifier = request_id(revision_id), request_id(identifier)
     # A retry uses the original frozen target, including its pre-fence basis.
     with connection(runtime.dsn) as conn, conn.transaction():
@@ -123,7 +123,8 @@ def prepare_review(runtime, revision_id, identifier, *, data_id=None, prior_pair
             packet = {'schema_version': 'n2e-input-v1', 'nodes': selected}
             target = freeze(conn, edges, nodes, revision_id, packet, prior_pair)
     return runtime.prepare('n2e', owner, identifier, packet, edge_review_target=target,
-        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim)
+        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim,
+        model_profile=model_profile)
 
 
 def open_fence(conn, execution_id, target):
@@ -178,7 +179,9 @@ def commit(runtime, conn, job, records, response, checkpoint=None):
     snapshot = job['input_snapshot']
     target = snapshot.get('edge_review_target')
     candidates = [record['body'] for record in records]
-    decisions = relations.validate_decisions(response, candidates, target)
+    decisions = relations.validate_decisions(
+        response, candidates, target,
+        fixed_slots=snapshot['input'].get('semantic_discovery') is not None)
     current_nodes = runtime._nodes(conn)
     nodes = {node['knode_revision_id']: node for node in current_nodes}
     selected = [nodes[node['knode_revision_id']] for node in snapshot['input']['nodes']]

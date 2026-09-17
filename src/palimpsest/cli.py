@@ -196,6 +196,14 @@ def _parser():
     prepare.add_argument('--data-id', type=data_id, required=True)
     prepare.add_argument('--request-id', type=request_id, required=True)
     prepare.add_argument('--input', type=Path, required=True)
+    prepare.add_argument('--provider', choices=('local-glm', 'codex-terra'),
+                         help='freeze the selected Generator/Validator provider; default is local-glm')
+    prepare.add_argument('--comparison-revision-id', type=request_id, action='append',
+                         help='K2K duplicate-comparison catalog selected by deterministic retrieval')
+    prepare.add_argument('--comparison-embedding-profile-sha256', type=data_id)
+    prepare.add_argument('--comparison-embedding-result-sha256', type=data_id)
+    prepare.add_argument('--comparison-catalog', type=Path,
+                         help='frozen BGE comparison catalog JSON; required for per-batch I2K retrieval')
     prepare.add_argument('--realm-id', type=request_id, action='append', help='새 I2K의 Realm; 여러 Realm은 명시적 교차 선택 필요')
     prepare.add_argument('--allow-cross-realm', action='store_true', help='선택한 여러 Realm의 이번 I2K 결합을 명시')
     prepare.add_argument('--realm-database', help='trusted 연결의 Realm catalog DB 이름; 기본 palimpsest_realms')
@@ -216,7 +224,9 @@ def _parser():
     inference_call.add_argument('--directory', type=Path, required=True)
     edge_input = actions.add_parser('edge-input', parents=[common], help='현재 accepted KRevision으로 N2E 입력 구성')
     edge_input.add_argument('--data-id', type=data_id, required=True)
-    edge_input.add_argument('--node-revision-id', type=request_id, action='append', required=True)
+    edge_input.add_argument('--node-revision-id', type=request_id, action='append', default=[])
+    edge_input.add_argument('--node-revision-file', type=Path,
+                            help='JSON array of K revision IDs; avoids operating-system command-line limits')
     edge_review = actions.add_parser('edge-revalidate', parents=[common], help='기존 Edge의 현재 적용성·관계 의미 재검토')
     edge_review.add_argument('--edge-revision-id', type=request_id, required=True)
     edge_review.add_argument('--request-id', type=request_id, required=True)
@@ -232,8 +242,12 @@ def _parser():
         child.add_argument('execution_id', type=request_id)
         if action == 'review-resume':
             child.add_argument('--request-id', type=request_id, required=True)
+            child.add_argument('--retain-information-errors', action='store_true',
+                               help='사용자가 확인한 기존 D2I 오류를 유지한 채 무관한 K 재검토')
             child.add_argument('--realm-id', type=request_id, action='append', help='기존 scope가 없는 새 I2K 검토의 Realm')
             child.add_argument('--allow-cross-realm', action='store_true')
+            child.add_argument('--comparison-catalog', type=Path,
+                               help='frozen per-batch BGE comparison catalog JSON')
             child.add_argument('--realm-database')
         if action in ('review-call', 'revision-call'):
             child.add_argument('--phase', choices=('generator', 'validator'), required=True)
@@ -433,7 +447,15 @@ def _knowledge(args, config):
     if args.action in ('edge-input', 'edge-revalidate', 'edge-call'):
         from . import n2e_runtime
         if args.action == 'edge-input':
-            return n2e_runtime.input_packet(runtime, args.data_id, args.node_revision_id)
+            identifiers = list(args.node_revision_id)
+            if args.node_revision_file is not None:
+                values = json.loads(args.node_revision_file.read_text(encoding='utf-8'))
+                if not isinstance(values, list):
+                    raise PalimpsestError('invalid_arguments', 'K revision ID file must be a JSON array.', 2)
+                identifiers.extend(request_id(value) for value in values)
+            if not identifiers:
+                raise PalimpsestError('invalid_arguments', 'At least one K revision ID is required.', 2)
+            return n2e_runtime.input_packet(runtime, args.data_id, identifiers)
         if args.action == 'edge-call':
             return n2e_runtime.prepare_call(runtime, args.execution_id, args.phase, args.directory)
         return n2e_runtime.prepare_review(runtime, args.edge_revision_id, args.request_id, data_id=args.data_id,
@@ -454,7 +476,10 @@ def _knowledge(args, config):
             return review.prepare_call(args.execution_id, args.phase, args.directory,
                                        ArtifactStore(config.artifact_root/'derived'))
         return (review.status(args.execution_id) if args.action == 'review-status'
-                else review.prepare_resume(args.execution_id, args.request_id))
+                else review.prepare_resume(args.execution_id, args.request_id,
+                    retain_information_errors=args.retain_information_errors,
+                    comparison_catalog=(json.loads(args.comparison_catalog.read_text(encoding='utf-8'))
+                                        if args.comparison_catalog is not None else None)))
     if args.action == 'inference-input':
         return runtime.inference_input(args.data_id, args.node_revision_id, edge_revision_ids=args.edge_revision_id)
     if args.action == 'prepare':
@@ -469,9 +494,30 @@ def _knowledge(args, config):
                     if args.data_version_id is not None or args.data_version_mode != 'current' else {})
         revision = ({'target_knode_id': args.target_knode_id, 'expected_revision_id': args.expected_revision_id}
                     if args.target_knode_id is not None or args.expected_revision_id is not None else {})
+        model_profile = None
+        if args.provider == 'codex-terra':
+            from .codex_provider import PROFILE as model_profile
+        comparison = None
+        comparison_fields = (args.comparison_revision_id,
+                             args.comparison_embedding_profile_sha256,
+                             args.comparison_embedding_result_sha256)
+        if args.comparison_catalog is not None:
+            if any(value is not None for value in comparison_fields):
+                raise PalimpsestError('invalid_comparison_catalog', 'Choose one comparison catalog input.', 2)
+            comparison = json.loads(args.comparison_catalog.read_text(encoding='utf-8'))
+        elif any(value is not None for value in comparison_fields):
+            if args.operation != 'k2k' or any(value is None for value in comparison_fields):
+                raise PalimpsestError('invalid_k2k_comparison_catalog', 'K2K comparison catalog 범위를 확인하세요.', 2)
+            comparison = {'schema_version': 'bge-m3-comparison-catalog-v1',
+                'revision_ids': args.comparison_revision_id,
+                'embedding_profile_sha256': args.comparison_embedding_profile_sha256,
+                'embedding_result_sha256': args.comparison_embedding_result_sha256}
+        provider = {'model_profile': model_profile} if model_profile is not None else {}
+        catalog = {'comparison_catalog': comparison} if comparison is not None else {}
         return runtime.prepare(args.operation, args.data_id, args.request_id,
                                packet, selection=True if args.selection else None,
-                               feedback_execution_id=args.feedback_execution_id, **versions, **revision)
+                               feedback_execution_id=args.feedback_execution_id,
+                               **provider, **catalog, **versions, **revision)
     if args.action == 'graph':
         return runtime.graph(args.data_id, **({'data_version_id': args.data_version_id} if args.data_version_id else {}))
     if args.action == 'show':

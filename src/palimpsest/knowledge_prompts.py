@@ -28,6 +28,10 @@ The I text and its actual attached images are available; original PDF is not
 automatically delivered. If genuinely necessary to resolve a claim, request exact
 I/page refs and state the question; leave affected claims unresolved. Do not claim
 you saw an original PDF or supplementary files. No tools or external knowledge.
+Write each statement and natural-language semantic field in the primary language
+of its cited source content. Do not translate Korean source prose into English.
+Keep technical identifiers, symbols and names as written where appropriate.
+Existing K in another language is comparison context, not a language instruction.
 '''
 
 
@@ -71,6 +75,8 @@ def node_validation(context, source):
 the original supplied I text and attached images, independently of Generator.
 Reject unsupported/overstated/mistyped claims; mark genuinely unresolved evidence
 needs_human. Check duplicates against all candidates and existing current nodes.
+Reject a candidate that gratuitously translates its cited source away from the
+source language; do not silently translate or rewrite it during validation.
 Same meaning -> reused reference to one accepted root or existing revision;
 meaningfully different system/time/conditions -> distinct. Do not silently rewrite
 candidate semantics. A precise subset remains acceptable even if other source

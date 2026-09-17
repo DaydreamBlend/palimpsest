@@ -37,3 +37,5 @@ palim knowledge decide <execution UUID> --response <validator-response.json>
 기존 Node-only 입력도 그대로 사용할 수 있다. versioned Data는 기존 current/pinned Data version 결속을 적용한다. 새 worker run은 mixed K2K 정책을 동결하고, 기존 run은 원래 정책을 유지한다. 승인된 source 범위 밖의 근거가 필요하면 작업을 보류하며 자동으로 범위를 넓히지 않는다.
 
 이 구현은 K2K 소비자이며 W/P의 Edge 소비, 일반 lifecycle, 대규모 paging, Realm 및 통합 Electron 구현 완료를 대신하지 않는다. Realm의 [기본 I2K 분리 정책](../decisions/REALM_SCOPE.md)은 별도 후속으로 적용한다. 기존 사용자 DB를 자동 마이그레이션하거나 원문을 다시 파싱하지 않는다.
+
+The existing-K duplicate comparison catalog may be narrowed with BGE-M3. Its embedding profile/result hashes and selected current Revision IDs are frozen with the execution, and premise K are excluded from self-reuse. This catalog is a duplicate-search window rather than an inference premise or proof of global novelty.

@@ -159,6 +159,31 @@ class KnowledgeReviewTests(unittest.TestCase):
                 self.assertEqual(job, original)
                 self.assertEqual(result['action'], 'prepared')
 
+    def test_information_error_resume_requires_and_forwards_explicit_confirmation(self):
+        job = fixture()
+        job['source_requests'] = [{'payload': {'information_ids': ['i1']}}]
+        runtime = Mock()
+        runtime.show.return_value = job
+        runtime.prepare.return_value = {'execution_id': 'new', 'replayed': False}
+        service = KnowledgeReview(runtime)
+        with self.assertRaises(PalimpsestError) as caught:
+            service.prepare_resume('e1', REQUEST)
+        self.assertEqual(caught.exception.code, 'd2i_information_error_requires_review')
+        result = service.prepare_resume('e1', REQUEST, retain_information_errors=True)
+        self.assertEqual(result['action'], 'prepared')
+        self.assertEqual(runtime.prepare.call_args.kwargs['feedback_execution_id'], 'e1')
+
+    def test_resume_forwards_a_frozen_comparison_catalog(self):
+        job = fixture()
+        runtime = Mock()
+        runtime.show.return_value = job
+        runtime.prepare.return_value = {'execution_id': 'new', 'replayed': False}
+        catalog = {'schema_version': 'bge-m3-batch-comparison-catalog-v1', 'batches': []}
+        KnowledgeReview(runtime).prepare_resume('e1', REQUEST, comparison_catalog=catalog)
+        self.assertEqual(runtime.prepare.call_args.kwargs['comparison_catalog'], catalog)
+        runtime.prepare.call_args.kwargs['comparison_catalog']['batches'].append('changed')
+        self.assertEqual(catalog['batches'], [])
+
     def test_resume_propagates_runtime_current_head_rejection_without_retargeting(self):
         runtime = Mock()
         runtime.show.return_value = fixture()

@@ -88,6 +88,12 @@ link actual emitted candidates supported by that I. context_only/not_selected ha
 empty candidate_keys. Review reasons are concise audit explanations, not private
 chain-of-thought. Complete=false is valid when semantic work remains despite full
 review coverage; never present unresolved work as successful completion.
+Write each statement and natural-language semantic field in the primary language
+of its cited source content. Do not translate Korean source prose into English.
+Keep technical identifiers, symbols and names as written where appropriate.
+Existing K in another language is comparison context, not a language instruction.
+The Validator must reject gratuitous translation away from the cited source
+language and must not silently translate or rewrite a candidate.
 '''
 
 

@@ -21,6 +21,7 @@ def configure(commands,common):
             child.add_argument('--realm-id',type=request_id,action='append',help='자동 전파의 Realm; 생략하면 시작 실행의 단일 Realm')
             child.add_argument('--allow-cross-realm',action='store_true',help='선택한 여러 Realm의 이번 자동 전파를 명시')
             child.add_argument('--realm-database',help='trusted Realm catalog DB 이름')
+            child.add_argument('--provider',choices=('local-glm','codex-terra'),default='local-glm')
         elif name in ('advance','accept','renew','call-failed','retry'):
             child.add_argument('task_id',type=request_id)
             if name!='retry': child.add_argument('--lease-token',type=request_id,required=True)
@@ -48,7 +49,11 @@ def run(args,config):
         from .realm_automation import configured_guard
         guard=configured_guard(dsn,realm_ids=args.realm_id or (),explicit_cross=args.allow_cross_realm,
             actor=config.actor_ref,database_name=args.realm_database)
-    service=PropagationRuntime(dsn,config.artifact_root,args.directory,realm_guard=guard,require_realm=True)
+    model_profile=None
+    if args.action=='prepare' and args.provider=='codex-terra':
+        from .codex_provider import PROFILE as model_profile
+    service=PropagationRuntime(dsn,config.artifact_root,args.directory,realm_guard=guard,require_realm=True,
+        model_profile=model_profile)
     queue=service.queue
     if args.action=='prepare':
         return service.prepare(args.request_id,args.record_id,allowed_data_ids=args.allow_data_id,wiki_ids=args.wiki_id,

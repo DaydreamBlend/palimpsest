@@ -54,7 +54,7 @@ def _signature(node):
 
 
 class PropagationRuntime:
-    def __init__(self,dsn,artifact_root,directory,*,realm_guard=None,require_realm=False):
+    def __init__(self,dsn,artifact_root,directory,*,realm_guard=None,require_realm=False,model_profile=None):
         self.dsn=dsn
         self.artifact_root=Path(artifact_root)
         self.directory=Path(directory)
@@ -62,6 +62,7 @@ class PropagationRuntime:
         self.knowledge=KnowledgeRuntime(dsn)
         self.store=ProjectionStore(self.directory)
         self.wiki=WikiRefreshRuntime(dsn,self.artifact_root,self.directory/'wiki-refresh')
+        self.model=deepcopy(MODEL if model_profile is None else model_profile)
         if type(require_realm) is not bool or (realm_guard is not None and realm_guard.source_dsn != dsn):
             _fail('realm_configuration_mismatch',3)
         self.realm_guard,self.require_realm=realm_guard,require_realm
@@ -125,7 +126,7 @@ class PropagationRuntime:
             'wiki_metadata_permission':'selected_wiki_topic_key_title_scope; full I only for allowed sources'}
         if realm_scope is not None:
             scope['realm_scope']=realm_scope
-        policy={'schema_version':PROFILE,'model':deepcopy(MODEL),'discovery':discovery,
+        policy={'schema_version':PROFILE,'model':deepcopy(self.model),'discovery':discovery,
             'discovery_context':'two_distinct_current_K_in_selected_source_scope',
             'mandatory_dependencies':'all_exact_active_consumers','d2i_allowed':False,'d2k_allowed':False,
             'semantic_completion_cap':None,'wiki_claim_basis':'complete_retained_I_source_only',
@@ -409,7 +410,8 @@ class PropagationRuntime:
             if any(not conn.execute('SELECT compiler_runtime.current_k2k_premise(%s) AS ok',(ref,)).fetchone()['ok'] for ref in refs):
                 _fail('revalidation_dependency_pending')
             owner=self._owner(conn,refs,run['scope']['allowed_data_ids'])
-        options={**self._versions(run,chosen),'propagation_claim':{'task_id':task['task_id'],'lease_token':task['lease_token']}}
+        options={**self._versions(run,chosen),'model_profile':deepcopy(run['policy']['model']),
+            'propagation_claim':{'task_id':task['task_id'],'lease_token':task['lease_token']}}
         if task['kind']=='node_revalidate':
             return revalidation.prepare_node(self.knowledge,target['knode_revision_id'],task['request_id'],data_id=owner,**options)
         if task['kind']=='edge_revalidate':

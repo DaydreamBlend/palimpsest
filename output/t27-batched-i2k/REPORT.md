@@ -34,17 +34,19 @@ original 39 I and 112 source-review targets in Realm `약사`. Its generated pla
 - 1-3 attached images per batch
 - plan SHA-256 `366ef463a74f5b6ec4b979caf974014afe0247057ac93a26e60523ce8cb60b02`
 
-The first live local-GLM batch was stopped after ten minutes without a response.
-The runner writes exchanges atomically at completion, so there is no partial or
-false success record and the resume point is still `b0001`. The active heartbeat
-continues from the first missing batch and does not rerun the cancelled monolithic
-request, D2I, or D2K.
+The first live local-GLM batch timed out at 1,200 seconds. A second attempt with a
+3,600-second transport limit ran for 1,975.516 seconds and then returned
+`local_glm_output_truncated`: the model exhausted its 65,536-token output limit.
+Both failures are retained and no partial or false success was recorded. The user
+then authorized GPT-5.6 Terra Medium as fallback. That provider uses a new frozen
+I2K execution rather than changing the provider identity of the failed GLM job.
 
 ## Checks
 
 - 2 focused batch/runtime checks: pass
 - 37 existing source-review and selection checks: pass
 - Environment: isolated PostgreSQL 18 / pgvector Compose project
-- Live semantic result: none yet; no batch response was received
+- Live semantic result: none yet; GLM batch 1 produced two retained failures and
+  no valid response
 
 D2I grouping size was intentionally left unchanged for the next task.

@@ -9,11 +9,12 @@ from .errors import PalimpsestError
 from copy import deepcopy
 
 SOURCE_GROUPS_VERSION = 'source-groups-v1'
+SOURCE_GROUPS_V2_VERSION = 'source-groups-v2'
 SOURCE_PAGE_GROUPS_VERSION = 'source-groups-pages-v1'
 MARKDOWN_ALGORITHM = 'markdown-groups-v1'
 CODE_ALGORITHM = 'python-code-groups-v1'
 TEXT_ALGORITHMS = (MARKDOWN_ALGORITHM, CODE_ALGORITHM)
-SOURCE_ALGORITHMS = (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION, SOURCE_PAGE_GROUPS_VERSION)
+SOURCE_ALGORITHMS = (SOURCE_UNITS_VERSION, SOURCE_GROUPS_VERSION, SOURCE_GROUPS_V2_VERSION, SOURCE_PAGE_GROUPS_VERSION)
 
 
 def build_units(bundle, algorithm):
@@ -31,6 +32,9 @@ def build_units(bundle, algorithm):
     if algorithm == SOURCE_GROUPS_VERSION:
         from .source_groups import build_source_groups
         return build_source_groups(bundle)
+    if algorithm == SOURCE_GROUPS_V2_VERSION:
+        from .source_groups import build_source_groups_v2
+        return build_source_groups_v2(bundle)
     raise PalimpsestError('unsupported_source_algorithm', '지원하는 원문 조립 알고리즘을 선택하세요.', 2)
 
 
@@ -49,6 +53,9 @@ def verify_units(bundle, proposals, algorithm):
     if algorithm == SOURCE_GROUPS_VERSION:
         from .source_groups import verify_source_groups
         return verify_source_groups(bundle, proposals)
+    if algorithm == SOURCE_GROUPS_V2_VERSION:
+        from .source_groups import verify_source_groups_v2
+        return verify_source_groups_v2(bundle, proposals)
     raise PalimpsestError('unsupported_source_algorithm', '지원하는 원문 조립 알고리즘을 선택하세요.', 2)
 
 
@@ -68,6 +75,10 @@ def assembly_payload(bundle, proposal, algorithm):
     if algorithm == SOURCE_UNITS_VERSION:
         return {}
     if algorithm == SOURCE_GROUPS_VERSION:
+        from .source_groups import group_content_segments
+        return {'source_assembly': {'algorithm': algorithm,
+                'content_segments': group_content_segments(bundle, proposal)}}
+    if algorithm == SOURCE_GROUPS_V2_VERSION:
         from .source_groups import group_content_segments
         return {'source_assembly': {'algorithm': algorithm,
                 'content_segments': group_content_segments(bundle, proposal)}}

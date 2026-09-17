@@ -64,7 +64,7 @@ class PropagationControllerTests(unittest.TestCase):
         self.args = SimpleNamespace(directory=self.base / 'results', project='synthetic-project',
             database_name='synthetic-database', artifact_volume='synthetic-artifacts',
             app_image='palimpsest-propagation:0.16.0', docker='synthetic-docker',
-            lease_seconds=180, allow_model_calls=False, once=False,
+            lease_seconds=180, allow_model_calls=False, once=False, provider='local-glm',
             run_id='019a5c1b-7f00-7000-8000-000000000001')
         self.controller = StubController(self.args)
         self.path = self.args.directory / 'call' / 'request.json'
@@ -116,7 +116,7 @@ class PropagationControllerTests(unittest.TestCase):
             result = self.controller.model_turn({**self.task, 'operation': 'wiki'})
         self.assertEqual(len(started), 1)
         self.assertIn(str(worker.ROOT / 'tools/run_knowledge_model.py'), started[0])
-        self.assertEqual(started[0][-1], str(self.path))
+        self.assertEqual(started[0][-3:], [str(self.path), '--provider', 'local-glm'])
         self.assertEqual([call[0] for call in self.controller.calls], ['renew', 'renew', 'accept'])
         self.assertEqual(result['action'], 'task_completed')
 

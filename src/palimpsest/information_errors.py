@@ -6,6 +6,7 @@ No source bytes, database, parser, storage, or provider are accessed here.
 """
 
 from copy import deepcopy
+import re
 
 from .data import data_id, request_id
 from .errors import PalimpsestError
@@ -102,6 +103,41 @@ blocking; the original verdict is never rewritten by this helper.
         if codes:
             affected.add(identifier)
     return affected
+
+
+def candidate_has_reported_error(candidate, source_requests, information=None):
+    """Limit page-scoped reports to evidence from that exact parser page."""
+    if (not isinstance(candidate, dict) or not isinstance(candidate.get('evidence'), list)
+            or information is not None and not isinstance(information, list)):
+        _fail()
+    media_pages = {}
+    for unit in information or []:
+        if not isinstance(unit, dict) or not isinstance(unit.get('media', []), list):
+            _fail()
+        identifier = _uuid(unit.get('information_id'))
+        for media in unit.get('media', []):
+            if (not isinstance(media, dict) or not isinstance(media.get('sha256'), str)
+                    or type(media.get('page_index')) is not int or media['page_index'] < 0):
+                _fail()
+            media_pages[(identifier, media['sha256'])] = media['page_index'] + 1
+    for value in source_requests:
+        payload = _payload(value)
+        identifiers = set(_ids(payload.get('information_ids')))
+        pages = payload.get('page_numbers', [])
+        if not isinstance(pages, list) or any(type(page) is not int or page < 1 for page in pages):
+            _fail()
+        for citation in candidate['evidence']:
+            if not isinstance(citation, dict) or citation.get('information_id') not in identifiers:
+                continue
+            if not pages:
+                return True
+            match = re.fullmatch(r'/pdf_info/([0-9]+)/.*', citation.get('source_block_id', ''))
+            if match is not None and int(match.group(1)) + 1 in pages:
+                return True
+            media_page = media_pages.get((citation['information_id'], citation.get('media_sha256')))
+            if match is None and (media_page is None or media_page in pages):
+                return True
+    return False
 
 
 def _source_information(job):

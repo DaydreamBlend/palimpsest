@@ -133,6 +133,21 @@ class K2KRuntimeTests(unittest.TestCase):
         self.assertEqual(self.source_state(), before)
         self.assertEqual(self.runtime.graph(self.data_id)['propagation_status'], 'outbox_pending_not_converged')
 
+    def test_bge_comparison_catalog_excludes_premises_from_reuse_candidates(self):
+        packet = self.runtime.inference_input(self.data_id, self.premises)
+        catalog = {'schema_version': 'bge-m3-comparison-catalog-v1',
+            'revision_ids': list(self.premises), 'embedding_profile_sha256': 'a' * 64,
+            'embedding_result_sha256': 'b' * 64}
+        job = self.runtime.prepare('k2k', self.data_id, self.helper.repo.allocate_id(), packet,
+                                   comparison_catalog=catalog)
+        self.assertEqual(job['input_snapshot']['comparison_catalog']['revision_ids'], [])
+        self.assertEqual(job['input_snapshot']['existing_nodes'], [])
+        invalid = {**catalog, 'revision_ids': ['019947e2-1234-7000-8000-000000000999']}
+        with self.assertRaises(PalimpsestError) as caught:
+            self.runtime.prepare('k2k', self.data_id, self.helper.repo.allocate_id(), packet,
+                                 comparison_catalog=invalid)
+        self.assertEqual(caught.exception.code, 'invalid_k2k_comparison_catalog')
+
     def test_same_meaning_reuse_preserves_origin_revision_and_appends_derivation(self):
         first_job = self.prepare()
         first = self.commit(first_job, self.response(first_job))

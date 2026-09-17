@@ -41,6 +41,8 @@ chain-of-thought. If evidence is insufficient, use status=insufficient and expla
 the missing basis in unresolved without pretending an unsearched source is absent.
 Return only the provided strict JSON schema. Do not emit identifiers for W/K/Record
 or authority/confirmation fields. No content-based merging of distinct Wisdom.
+Write the visible answer in the query language, falling back to the primary
+language of the cited K. Do not translate a Korean query and Korean K into English.
 '''
 
 

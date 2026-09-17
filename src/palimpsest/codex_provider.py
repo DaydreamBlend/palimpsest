@@ -23,6 +23,8 @@ from .errors import PalimpsestError
 MODEL = "gpt-5.6-terra"
 REASONING_EFFORT = "medium"
 CLI_VERSION = "0.153.4"
+PROFILE = {"provider": "codex_cli", "cli_version": CLI_VERSION, "model": MODEL,
+           "reasoning_effort": REASONING_EFFORT, "auth": "chatgpt_oauth"}
 _INSTRUCTIONS = (
     "You are a structured document-processing component of Palimpsest. "
     "Perform only the supplied generation or validation task and return its JSON result. "
@@ -134,10 +136,8 @@ class CodexProvider:
         except OSError:
             raise PalimpsestError("codex_workspace_failed", "Codex 임시 작업 폴더를 준비하거나 정리하지 못했습니다.", 4) from None
         output, usage, thread_ref, diagnostic_count, recovered_transport_errors = _parse_events(stream)
-        return CodexResult(output, usage, thread_ref, {
-            "provider": "codex_cli", "cli_version": CLI_VERSION, "model": MODEL,
+        return CodexResult(output, usage, thread_ref, {**PROFILE,
             "requested_model": MODEL,
-            "reasoning_effort": REASONING_EFFORT, "auth": "chatgpt_oauth",
             "nonfatal_diagnostic_count": diagnostic_count,
             "recovered_transport_error_count": recovered_transport_errors,
         })

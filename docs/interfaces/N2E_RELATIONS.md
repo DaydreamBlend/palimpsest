@@ -54,3 +54,5 @@ palim knowledge show <execution UUID>
 versioned Data에는 기존 `--data-version-id`/current 또는 명시적 pinned mode가 적용된다. 자동 전파 worker도 같은 N2E prepare/request/stage/decide를 사용한다. material semantic relation/적용성 변화는 outbox로 후속 전파를 만들고, nonmaterial 결과는 새 의미 branch를 만들지 않는다. 근거 재검증 의무·실패·보류는 성공 종료로 처리하지 않는다. T19의 반복 advisory 정책은 유지된다.
 
 현재 K2K는 Node를 전제로 사용한다. Edge를 직접 전제로 사용하는 K2K/W/P, Edge embedding 검색, 일반 lifecycle/suppression, authority-confirmed W2K `supersedes`는 별도 후속 범위다. 이 문서의 EffectiveEdgeRef 생산·읽기 검사를 해당 소비자 전체의 AT09–17 완료로 확대하지 않는다. Wiki 본문은 I 기반 기존 페이지 compiler를 유지하며 현재 관계 표시는 읽기 projection으로 제공한다.
+
+Optional relation discovery may use BGE-M3 dense similarity to retrieve nearby Node pairs. The frozen embedding profile/result hashes, exact Revision pairs and scores bind the request. Similarity is candidate selection rather than relation evidence; Generator and independent Validator still decide the predicate and validity. Mandatory relation revalidation and applicability maintenance are never truncated by this candidate window.

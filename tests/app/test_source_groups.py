@@ -11,7 +11,8 @@ import unittest
 
 from palimpsest.errors import PalimpsestError
 from palimpsest.information import fingerprints
-from palimpsest.source_groups import build_source_groups, group_content_segments, verify_source_groups
+from palimpsest.source_groups import (build_source_groups, build_source_groups_v2,
+    group_content_segments, verify_source_groups, verify_source_groups_v2)
 from palimpsest.source_units import build_source_units, verify_source_units
 
 
@@ -41,6 +42,21 @@ def bundle():
 
 
 class SourceGroupsTests(unittest.TestCase):
+    def test_v2_bounds_titleless_content_by_page_without_losing_blocks(self):
+        source = bundle()
+        for block in source["blocks"]:
+            if block["type"] == "title":
+                block["type"] = "table"
+        groups = build_source_groups_v2(source)
+        body = [group for group in groups if group["title"] != "Document page furniture"]
+        self.assertEqual([sorted({next(block for block in source["blocks"] if block["block_id"] == ref)["page_index"]
+                                  for ref in group["block_ids"]}) for group in body], [[0], [1]])
+        self.assertEqual(Counter(ref for group in groups for ref in group["block_ids"]),
+                         Counter(block["block_id"] for block in source["blocks"]))
+        ledger = verify_source_groups_v2(source, groups)
+        self.assertEqual(ledger["version"], "source-groups-v2")
+        self.assertEqual(ledger["grouping_policy"]["titleless_group_pages"], 1)
+
     def test_cross_page_sections_furniture_media_and_exact_unicode_offsets(self):
         source = bundle()
         source["blocks"].reverse()  # Parser reading indices, not input-array order.

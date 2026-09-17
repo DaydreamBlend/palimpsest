@@ -14,7 +14,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import MagicMock, patch
 
-from palimpsest import source_read
+from palimpsest import desktop_read, source_read
 from palimpsest.artifact_store import ArtifactStore
 from palimpsest.canonical_store import MIGRATIONS, migration_source
 from palimpsest.compiler_runtime import SOURCE_PROFILE
@@ -108,6 +108,14 @@ class FakeConnection:
 
 
 class UnifiedSourceReadTests(unittest.TestCase):
+    def test_source_only_knowledge_scope_uses_registered_data_without_a_wiki(self):
+        service = desktop_read.DesktopReadService.__new__(desktop_read.DesktopReadService)
+        service.dsn, service.wiki_id, service.include_data_ids = 'postgresql://unused', None, []
+        with patch.object(desktop_read, 'connection', side_effect=lambda dsn: nullcontext(self.conn)):
+            packets, owners = service._knowledge_scope()
+        self.assertEqual(packets, [])
+        self.assertEqual(owners, sorted(row['data_id'] for row in self.conn.data))
+
     def test_old_source_schema_has_no_canonical_parchments_and_is_not_migrated(self):
         result = self.service.dispatch({'operation': 'parchment_catalog'})
         self.assertEqual(result['parchments'], [])
@@ -370,25 +378,29 @@ class UnifiedSourceArtifactTests(unittest.TestCase):
 
 
 class UnifiedSourceBridgeTests(unittest.TestCase):
-    def test_source_only_bridge_routes_reads_and_rejects_wiki_or_write_calls(self):
+    def test_source_only_bridge_routes_source_and_knowledge_but_rejects_wiki_calls(self):
         path = Path(__file__).resolve().parents[2] / 'tools/desktop_bridge.py'
         spec = importlib.util.spec_from_file_location('unified_source_bridge_test', path)
         bridge = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(bridge)
         source = MagicMock()
         source.dispatch.return_value = {'schema_version': 'source-catalog-v1', 'data': [], 'read_only': True}
-        routed = bridge.DesktopServices(source)
+        knowledge = MagicMock()
+        knowledge.dispatch.return_value = {'nodes': [], 'sources': [], 'data_versions': [], 'read_only': True}
+        routed = bridge.DesktopServices(source, knowledge=knowledge)
         output = io.StringIO()
         bridge.serve(routed, io.StringIO('{"request_id":"source","operation":"source_catalog"}\n'
+            '{"request_id":"knowledge","operation":"knowledge_catalog"}\n'
             '{"request_id":"wiki","operation":"catalog"}\n'), output)
         values = [json.loads(line) for line in output.getvalue().splitlines()]
         self.assertEqual(values[0]['result']['schema_version'], 'source-catalog-v1')
-        self.assertEqual(values[1]['error']['code'], 'desktop_wiki_not_configured')
+        self.assertEqual(values[1]['result']['nodes'], [])
+        self.assertEqual(values[2]['error']['code'], 'desktop_wiki_not_configured')
         wiki = MagicMock()
         bridge.DesktopServices(source, wiki).dispatch({'operation': 'catalog'})
         wiki.dispatch.assert_called_once_with({'operation': 'catalog'})
 
-    def test_bridge_main_does_not_require_or_initialize_wiki_for_source_only_connection(self):
+    def test_bridge_main_initializes_store_knowledge_without_requiring_a_wiki(self):
         path = Path(__file__).resolve().parents[2] / 'tools/desktop_bridge.py'
         spec = importlib.util.spec_from_file_location('unified_source_bridge_main_test', path)
         bridge = importlib.util.module_from_spec(spec)
@@ -397,7 +409,9 @@ class UnifiedSourceBridgeTests(unittest.TestCase):
                 patch.object(bridge, 'SourceReadService') as sources, patch.object(bridge, 'DesktopReadService') as wiki, \
                 patch.object(bridge, 'serve') as serve, patch.object(sys, 'argv', ['desktop_bridge.py', '--database-name', 'registered_sources']):
             self.assertEqual(bridge.main(), 0)
-            wiki.assert_not_called()
+            wiki.assert_called_once_with('host=unused dbname=registered_sources', '/artifacts', None, '/query', include_data_ids=None)
+            self.assertIsNone(serve.call_args.args[0].wiki)
+            self.assertIs(serve.call_args.args[0].knowledge, wiki.return_value)
             self.assertIs(serve.call_args.args[0].sources, sources.return_value)
 
 

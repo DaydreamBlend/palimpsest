@@ -9,7 +9,11 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from palimpsest import batched_i2k
-from palimpsest.local_glm_provider import PROFILE as MODEL
+from palimpsest.codex_provider import PROFILE as CODEX_MODEL
+from palimpsest.local_glm_provider import PROFILE as GLM_MODEL
+
+
+MODELS = {"local-glm": GLM_MODEL, "codex-terra": CODEX_MODEL}
 
 
 def _read(path):
@@ -31,7 +35,7 @@ def _assets(directory):
     return result
 
 
-def prepare(context_path, attachments, directory, phase):
+def prepare(context_path, attachments, directory, phase, model):
     context = _read(context_path)
     plan = batched_i2k.requests(context, phase)
     assets = _assets(attachments)
@@ -55,6 +59,7 @@ def prepare(context_path, attachments, directory, phase):
                         "prompt_characters": len(request["prompt"]),
                         "response_exists": (batch_dir / "response.json").is_file()})
     manifest = {key: value for key, value in plan.items() if key != "batches"}
+    manifest["model_profile"] = model
     manifest["batches"] = [{key: batch[key] for key in
         ("batch_id", "information_ids", "target_ids", "image_sha256s")} for batch in plan["batches"]]
     manifest_path = directory / "manifest.json"
@@ -66,14 +71,14 @@ def prepare(context_path, attachments, directory, phase):
     return {"phase": phase, "batches": summary, "plan_sha256": plan["plan_sha256"]}
 
 
-def merge(context_path, directory, output, phase):
+def merge(context_path, directory, output, phase, model):
     context = _read(context_path)
     plan = batched_i2k.requests(context, phase)
     exchanges = []
     for batch in plan["batches"]:
         path = directory / batch["batch_id"] / "response.json"
         exchanges.append(json.loads(path.read_text(encoding="utf-8")))
-    result = batched_i2k.aggregate(context, phase, exchanges, MODEL)
+    result = batched_i2k.aggregate(context, phase, exchanges, model)
     encoded = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     if output.exists() and output.read_text(encoding="utf-8") != encoded:
         raise ValueError("Existing aggregate exchange changed")
@@ -93,15 +98,17 @@ def main():
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--attachments", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--provider", choices=tuple(MODELS), default="local-glm")
     args = parser.parse_args()
+    model = MODELS[args.provider]
     if args.action == "prepare":
         if args.attachments is None or args.output is not None:
             parser.error("prepare requires --attachments and no --output")
-        result = prepare(args.context, args.attachments, args.directory, args.phase)
+        result = prepare(args.context, args.attachments, args.directory, args.phase, model)
     else:
         if args.output is None or args.attachments is not None:
             parser.error("merge requires --output and no --attachments")
-        result = merge(args.context, args.directory, args.output, args.phase)
+        result = merge(args.context, args.directory, args.output, args.phase, model)
     print(json.dumps(result, ensure_ascii=False))
 
 

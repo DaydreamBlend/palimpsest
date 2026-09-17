@@ -30,12 +30,12 @@ def _fail(code='invalid_desktop_request'):
 class DesktopReadService:
     """No migrations, provider calls, lock files, or canonical write operations."""
 
-    def __init__(self, dsn, artifact_root, wiki_id, query_directory, *, include_data_ids=None):
+    def __init__(self, dsn, artifact_root, wiki_id=None, query_directory=None, *, include_data_ids=None):
         options = conninfo_to_dict(dsn).get('options', '')
         self.dsn = make_conninfo(dsn, options=options + ' -c default_transaction_read_only=on')
         self.database = WikiDatabase(self.dsn, artifact_root)
-        self.wiki_id = request_id(wiki_id)
-        self.query_root = _absolute(Path(query_directory))
+        self.wiki_id = request_id(wiki_id) if wiki_id is not None else None
+        self.query_root = _absolute(Path(query_directory)) if query_directory is not None else None
         self._archives = {}
         if include_data_ids is not None and not isinstance(include_data_ids, (list, tuple)):
             _fail('invalid_desktop_data_scope')
@@ -172,6 +172,16 @@ class DesktopReadService:
                              'byte_size': registered['byte_size']}}
 
     def _knowledge_scope(self):
+        if self.wiki_id is None:
+            with connection(self.dsn) as conn, conn.transaction():
+                conn.execute('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY')
+                owners = [row['data_id'] for row in conn.execute(
+                    ('SELECT data_id FROM canonical_store.data WHERE data_id=ANY(%s::text[]) ORDER BY data_id'
+                     if self.include_data_ids else 'SELECT data_id FROM canonical_store.data ORDER BY data_id'),
+                    (self.include_data_ids,) if self.include_data_ids else ()).fetchall()]
+                if self.include_data_ids and set(owners) != set(self.include_data_ids):
+                    _fail('desktop_data_not_registered')
+            return [], owners
         packets = list(self._packets())
         if self.include_data_ids:
             with connection(self.dsn) as conn:

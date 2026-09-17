@@ -683,6 +683,19 @@ test('the selected Realm persists across Wiki, K, review and saved question list
   assert.equal(inspect(app, 'state.realmId'), REALM);
 });
 
+test('global K includes a connected source-only store', async () => {
+  const app = ui({ knowledge_catalog: ({ store_id }) => ({ nodes: [{ ...knowledge, statement: store_id,
+    source_data_ids: [D] }], sources: [], data_versions: [] }) });
+  unifiedState(app, { realms: [realmFixture()], realmId: REALM });
+  await app.run('showKnowledge()');
+  assert.equal(byClass(app.ids.content, 'knowledge-result').length, 1);
+  assert.match(app.ids.content.textContent, new RegExp(STORE_A));
+  assert.deepEqual(app.requests.filter(row => row.operation === 'knowledge_catalog'), [
+    { operation: 'knowledge_catalog', store_id: STORE_A },
+    { operation: 'knowledge_catalog', store_id: STORE_B },
+  ]);
+});
+
 test('direct assignment binds every known copy of one Data and preserves unrelated membership', async () => {
   const sent = [], unrelated = { store_id: STORE_A, member_kind: 'data', member_id: 'b'.repeat(64) };
   const realm = realmFixture({ members: [unrelated] }), other = realmFixture({ realm_id: OLD, name: 'Other Realm' });
@@ -780,12 +793,14 @@ test('canonical P joins the Wiki catalog under its source Realm with exact W tex
 test('P in a source-only store shows exact K IDs and ignores a stale document response after navigation', async () => {
   let finish;
   const saved = parchmentFixture();
-  const app = ui({ parchment_get: { parchment: saved, source_data_ids: [D], read_only: true } });
+  const app = ui({ parchment_get: { parchment: saved, source_data_ids: [D], read_only: true },
+    knowledge_node: { node: knowledge, evidence: [] } });
   unifiedState(app);
   await app.run(`openParchment('${EXEC}','${STORE_A}')`);
-  assert.equal(byClass(app.ids.content, 'exact-link').length, 0);
+  assert.equal(byClass(app.ids.content, 'exact-link').length, 1);
   assert.match(app.ids.content.textContent, new RegExp(`K Revision ${REV}`));
-  assert.deepEqual(app.requests.map(row => row.operation), ['parchment_get']);
+  await byClass(app.ids.content, 'exact-link')[0].click();
+  assert.deepEqual(app.requests.map(row => row.operation), ['parchment_get', 'knowledge_node']);
   const later = ui({ parchment_get: () => new Promise(resolve => { finish = resolve; }) });
   unifiedState(later);
   const pending = later.run(`openParchment('${EXEC}','${STORE_A}')`);

@@ -8,6 +8,7 @@ Legacy n2e.py and its supports fingerprints remain unchanged.
 from copy import deepcopy
 from hashlib import sha256
 import json
+import math
 
 from . import n2e as legacy
 from .data import data_id as check_digest
@@ -16,6 +17,7 @@ from .knowledge import (KEY_PATTERN, REASON_PATTERN, _array, _decision_reason, _
 
 
 PROFILE = 'n2e-relations-v1'
+SEMANTIC_DISCOVERY_PROFILE = 'bge-m3-semantic-neighbors-v1'
 REVIEW_KEY = 'review_existing_relation'
 PREDICATES = ('supports', 'contradicts', 'qualifies', 'composes')
 NODE_KINDS = ('proposition', 'observation')
@@ -137,6 +139,30 @@ def _snapshot(snapshot):
             _fail('invalid_n2e_input')
         nodes[identifier] = node
         logical.add(owner)
+    discovery = packet.get('semantic_discovery')
+    if discovery is not None:
+        if (not isinstance(discovery, dict)
+                or set(discovery) != {'schema_version', 'embedding_profile_sha256',
+                                      'embedding_result_sha256', 'pairs'}
+                or discovery.get('schema_version') != SEMANTIC_DISCOVERY_PROFILE):
+            _fail('invalid_n2e_semantic_discovery')
+        check_digest(discovery.get('embedding_profile_sha256'))
+        check_digest(discovery.get('embedding_result_sha256'))
+        pairs = set()
+        for pair in discovery.get('pairs', []):
+            if (not isinstance(pair, dict)
+                    or set(pair) != {'from_revision_id', 'to_revision_id', 'dense_score'}
+                    or type(pair.get('dense_score')) not in (int, float)
+                    or not math.isfinite(pair['dense_score']) or not -1 <= pair['dense_score'] <= 1):
+                _fail('invalid_n2e_semantic_discovery')
+            source = _uuid(pair.get('from_revision_id'), 'invalid_n2e_semantic_discovery')
+            target = _uuid(pair.get('to_revision_id'), 'invalid_n2e_semantic_discovery')
+            key = tuple(sorted((source, target)))
+            if source == target or source not in nodes or target not in nodes or key in pairs:
+                _fail('invalid_n2e_semantic_discovery')
+            pairs.add(key)
+        if not pairs:
+            _fail('invalid_n2e_semantic_discovery')
     edges = snapshot.get('existing_edges', [])
     if not isinstance(edges, list):
         _fail('invalid_n2e_existing_edge')
@@ -189,12 +215,34 @@ def _assessment(value, validator=False):
 def generation_schema(snapshot):
     nodes, _, target = _snapshot(snapshot)
     reference = _enum(list(nodes)) if nodes else {'type': 'string'}
-    fields = {'edges': _array(_object({'candidate_key': {'type': 'string', 'pattern': KEY_PATTERN},
+    edge_fields = {'candidate_key': {'type': 'string', 'pattern': KEY_PATTERN},
         'from_revision_id': reference, 'to_revision_id': deepcopy(reference), 'predicate': _enum(PREDICATES),
         'qualifiers': _object({'scope': {'type': 'string'}, 'conditions': _array({'type': 'string', 'minLength': 1})}),
-        'rationale': {'type': 'string', 'minLength': 1}})), 'complete': {'type': 'boolean'}}
-    if len(nodes) < 2:
-        fields['edges']['maxItems'] = 0
+        'rationale': {'type': 'string', 'minLength': 1}}
+    discovery = snapshot['input'].get('semantic_discovery')
+    if discovery is not None:
+        slots = {}
+        for index, pair in enumerate(discovery['pairs'], 1):
+            predicates = {}
+            for predicate in PREDICATES:
+                branches = [{'type': 'null'}]
+                for source_id, destination_id in ((pair['from_revision_id'], pair['to_revision_id']),
+                                                  (pair['to_revision_id'], pair['from_revision_id'])):
+                    if predicate in ('supports', 'qualifies') and nodes[destination_id]['kind'] != 'proposition':
+                        continue
+                    branch = deepcopy(edge_fields)
+                    branch['candidate_key'] = _enum((f'pair_{index:04d}_{predicate}',))
+                    branch['from_revision_id'] = _enum((source_id,))
+                    branch['to_revision_id'] = _enum((destination_id,))
+                    branch['predicate'] = _enum((predicate,))
+                    branches.append(_object(branch))
+                predicates[predicate] = {'anyOf': branches}
+            slots[f'pair_{index:04d}'] = _object(predicates)
+        fields = {'pair_edges': _object(slots), 'complete': {'type': 'boolean'}}
+    else:
+        fields = {'edges': _array(_object(edge_fields)), 'complete': {'type': 'boolean'}}
+        if len(nodes) < 2:
+            fields['edges']['maxItems'] = 0
     if target is not None:
         fields['edges']['maxItems'] = 1
         fields['applicability'] = _assessment_schema()
@@ -203,10 +251,28 @@ def generation_schema(snapshot):
 
 def normalize_response(response, snapshot):
     nodes, existing, target = _snapshot(snapshot)
-    _keys(response, ('edges', 'complete') + (('applicability',) if target is not None else ()), 'invalid_n2e_response')
-    if type(response['complete']) is not bool or not isinstance(response['edges'], list):
+    discovery = snapshot['input'].get('semantic_discovery')
+    response_fields = ('pair_edges', 'complete') if discovery is not None else ('edges', 'complete')
+    _keys(response, response_fields + (('applicability',) if target is not None else ()), 'invalid_n2e_response')
+    if type(response['complete']) is not bool:
         _fail('invalid_n2e_response')
-    if target is not None and len(response['edges']) > 1:
+    if discovery is not None:
+        slots = response['pair_edges']
+        expected = tuple(f'pair_{index:04d}' for index in range(1, len(discovery['pairs']) + 1))
+        _keys(slots, expected, 'invalid_n2e_response')
+        edges = []
+        for name in expected:
+            _keys(slots[name], PREDICATES, 'invalid_n2e_response')
+            for predicate, item in slots[name].items():
+                if item is not None:
+                    if not isinstance(item, dict) or item.get('predicate') != predicate:
+                        _fail('invalid_n2e_response')
+                    edges.append(item)
+    elif not isinstance(response['edges'], list):
+        _fail('invalid_n2e_response')
+    else:
+        edges = response['edges']
+    if target is not None and len(edges) > 1:
         _fail('n2e_single_review_relation_required')
     result, keys, identities = [], set(), set()
     if target is not None:
@@ -218,7 +284,9 @@ def normalize_response(response, snapshot):
             'identity_fingerprint': edge['identity_fingerprint'], 'content_fingerprint': edge['content_fingerprint'],
             'comparison_base_revision_id': target['target_revision_id'],
             'applicability_proposal': _assessment(response['applicability'])})
-    for item in response['edges']:
+    selected_pairs = ({tuple(sorted((pair['from_revision_id'], pair['to_revision_id'])))
+                       for pair in discovery['pairs']} if discovery is not None else None)
+    for item in edges:
         _keys(item, EDGE_FIELDS, 'invalid_n2e_relation')
         key = _key(item['candidate_key'], 'invalid_n2e_relation')
         if key == REVIEW_KEY or key in keys:
@@ -229,6 +297,8 @@ def normalize_response(response, snapshot):
         source, destination = nodes.get(source_id), nodes.get(destination_id)
         if source is None or destination is None:
             _fail('invalid_n2e_endpoint_reference')
+        if selected_pairs is not None and tuple(sorted((source_id, destination_id))) not in selected_pairs:
+            _fail('n2e_relation_outside_semantic_discovery')
         source, destination = canonical_pair(item['predicate'], source, destination)
         qualifiers = legacy._qualifiers(item['qualifiers'])
         identity = (item['predicate'], source['knode_id'], destination['knode_id'])
@@ -263,14 +333,22 @@ def _decision_schema(candidate):
     return _object(fields)
 
 
-def validation_schema(candidates, target=None):
+def validation_schema(candidates, target=None, *, fixed_slots=False):
     if target is not None:
         check_target(target)
     _check_candidates(candidates, target)
-    branches = [_decision_schema(candidate) for candidate in candidates]
-    fields = {'decisions': _array({'anyOf': branches} if branches else _object({})), 'complete': {'type': 'boolean'}}
-    if not branches:
-        fields['decisions']['maxItems'] = 0
+    if fixed_slots:
+        if target is not None:
+            _fail('invalid_n2e_decision_targets')
+        fields = {'decisions_by_key': _object({candidate['candidate_key']: _decision_schema(candidate)
+                                               for candidate in candidates}),
+                  'complete': {'type': 'boolean'}}
+    else:
+        branches = [_decision_schema(candidate) for candidate in candidates]
+        fields = {'decisions': _array({'anyOf': branches} if branches else _object({})),
+                  'complete': {'type': 'boolean'}}
+        if not branches:
+            fields['decisions']['maxItems'] = 0
     if target is not None:
         fields['applicability'] = _assessment_schema(True)
     return _object(fields)
@@ -297,18 +375,29 @@ def _check_candidates(candidates, target):
         _fail('invalid_n2e_decision_targets')
 
 
-def validate_decisions(response, candidates, target=None):
+def validate_decisions(response, candidates, target=None, *, fixed_slots=False):
     if target is not None:
         check_target(target)
-    _keys(response, ('decisions', 'complete') + (('applicability',) if target is not None else ()), 'invalid_n2e_decisions')
-    if type(response['complete']) is not bool or not isinstance(response['decisions'], list):
+    decision_field = 'decisions_by_key' if fixed_slots else 'decisions'
+    _keys(response, (decision_field, 'complete') + (('applicability',) if target is not None else ()),
+          'invalid_n2e_decisions')
+    if type(response['complete']) is not bool:
         _fail('invalid_n2e_decisions')
     _check_candidates(candidates, target)
     indexed = {candidate['candidate_key']: candidate for candidate in candidates}
     if len(indexed) != len(candidates) or (target is not None) != (REVIEW_KEY in indexed):
         _fail('invalid_n2e_decision_targets')
+    if fixed_slots:
+        if target is not None:
+            _fail('invalid_n2e_decisions')
+        _keys(response[decision_field], indexed, 'n2e_decision_coverage_mismatch')
+        raw_decisions = list(response[decision_field].values())
+    elif isinstance(response[decision_field], list):
+        raw_decisions = response[decision_field]
+    else:
+        _fail('invalid_n2e_decisions')
     result = {}
-    for item in response['decisions']:
+    for item in raw_decisions:
         _keys(item, DECISION_FIELDS, 'invalid_n2e_decision')
         key = _key(item['candidate_key'], 'invalid_n2e_decision')
         if key not in indexed or key in result or item['verdict'] not in ('accepted', 'rejected', 'needs_human'):
@@ -376,6 +465,20 @@ Use the strict supplied schema and concise reasons. Use only the supplied endpoi
 revision IDs; invent no identities and emit no result IDs/FPs, role or comparison-base
 fields as a Generator. The reserved candidate key
 review_existing_relation belongs to the application and must never be generated.
+Every proposed edge must have a different candidate_key in the same response;
+use relation_001, relation_002, ... in array order.
+Never repeat the same predicate, from_revision_id and to_revision_id tuple.
+Before returning, group by that tuple and emit exactly one edge per group;
+combine distinct conditions in qualifiers.conditions and use one covering scope.
+Build that grouped map before serializing JSON. For example, two qualifies A->B
+items with different conditions are invalid: return one qualifies A->B item with
+both conditions. If the conditions cannot be represented together, omit the edge.
+Never connect a revision to itself; from_revision_id and to_revision_id must differ.
+When input.semantic_discovery is present, inspect only its exact Revision pairs.
+BGE-M3 similarity selected candidates but proves no relation. `complete` means all
+supplied pairs were considered; never emit an edge for another pair. Fill every
+pair_edges predicate slot with null when that exact relation is absent, otherwise
+with one edge. The fixed slots make duplicate pair/predicate outputs invalid.
 '''
 
 
@@ -404,7 +507,16 @@ def _prompt_snapshot(snapshot):
 
 def generation_request(snapshot):
     _, _, target = _snapshot(snapshot)
+    discovery = snapshot['input'].get('semantic_discovery')
     task = '\nGenerator: propose useful justified relations between the supplied endpoints; an empty discovery result is allowed.\n'
+    if discovery is not None:
+        task = '''
+Generator: assess every supplied semantic-discovery pair using the fixed
+pair_edges slots. Put null in each absent predicate slot. Put exactly one edge in
+a slot only when that predicate and direction are justified by the two K meanings.
+Do not turn topical similarity into a relation. Set complete=true only after every
+slot was assessed.
+'''
     if target is not None:
         task = '''
 Generator: this is a mandatory review of the exact retained relation. Always
@@ -437,10 +549,32 @@ object. confirmed=true requires a definite Generator/Validator agreement and an
 accepted, valid, scope-compatible assessment. Null or disagreement remains held.
 An accepted new/different relation never substitutes for assessing the old one.
 '''
-    projected = {'input_snapshot': _prompt_snapshot(snapshot), 'candidates': deepcopy(candidates)}
+    prompt_snapshot = _prompt_snapshot(snapshot)
+    fixed_slots = snapshot['input'].get('semantic_discovery') is not None
+    if fixed_slots:
+        referenced = {candidate[field] for candidate in candidates
+                      for field in ('from_revision_id', 'to_revision_id')}
+        discovery = prompt_snapshot['input'].pop('semantic_discovery')
+        prompt_snapshot['input']['nodes'] = [node for node in prompt_snapshot['input']['nodes']
+                                             if node['knode_revision_id'] in referenced]
+        prompt_snapshot['existing_edges'] = [edge for edge in prompt_snapshot['existing_edges']
+                                             if edge['from_knode_revision_id'] in referenced
+                                             and edge['to_knode_revision_id'] in referenced]
+        prompt_snapshot['semantic_discovery_receipt'] = {
+            key: discovery[key] for key in ('schema_version', 'embedding_profile_sha256',
+                                            'embedding_result_sha256')}
+        prompt_snapshot['semantic_discovery_receipt']['selected_pair_count'] = len(discovery['pairs'])
+    projected = {'input_snapshot': prompt_snapshot, 'candidates': deepcopy(candidates)}
     for field in ('generator_complete', 'profile', 'generator_output_sha256', 'validation_context_sha'):
         if field in context:
             projected[field] = deepcopy(context[field])
     from .knowledge_revision_runtime import materiality_guidance
+    if fixed_slots:
+        task += '''
+Return every verdict once in decisions_by_key using its fixed candidate key.
+The object slots make duplicate or omitted decisions invalid.
+'''
     prompt = POLICY + task + materiality_guidance(snapshot, 'n2e', 'validator')
-    return prompt + '\nVALIDATION_CONTEXT_JSON:\n' + json.dumps(_quote_metadata(projected), ensure_ascii=False, sort_keys=True), validation_schema(candidates, target)
+    return (prompt + '\nVALIDATION_CONTEXT_JSON:\n'
+            + json.dumps(_quote_metadata(projected), ensure_ascii=False, sort_keys=True),
+            validation_schema(candidates, target, fixed_slots=fixed_slots))

@@ -122,7 +122,7 @@ def freeze_edge(conn, edges, nodes, revision_id, packet, prior_pair=None):
 
 
 def prepare_node(runtime, target_revision_id, identifier, *, data_id=None, data_version_ids=None,
-                 data_version_mode='current', propagation_claim=None):
+                 data_version_mode='current', propagation_claim=None, model_profile=None):
     from .canonical_store import connection
     revision_id = request_id(target_revision_id)
     with connection(runtime.dsn) as conn, conn.transaction():
@@ -146,11 +146,12 @@ def prepare_node(runtime, target_revision_id, identifier, *, data_id=None, data_
         frozen = freeze_node(nodes, state, revision_id, packet)
     return runtime.prepare('k2k', owner, identifier, packet, target_knode_id=target['knode_id'],
         expected_revision_id=revision_id, revalidation_target=frozen,
-        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim)
+        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim,
+        model_profile=model_profile)
 
 
 def prepare_edge(runtime, edge_revision_id, identifier, *, data_id=None, prior_pair=None,
-                 data_version_ids=None, data_version_mode='current', propagation_claim=None):
+                 data_version_ids=None, data_version_mode='current', propagation_claim=None, model_profile=None):
     from .canonical_store import connection
     revision_id = request_id(edge_revision_id)
     with connection(runtime.dsn) as conn, conn.transaction():
@@ -171,7 +172,8 @@ def prepare_edge(runtime, edge_revision_id, identifier, *, data_id=None, prior_p
         packet = {'schema_version': 'n2e-input-v1', 'nodes': selected}
         frozen = freeze_edge(conn, edges, nodes, revision_id, packet, prior_pair)
     return runtime.prepare('n2e', owner, identifier, packet, revalidation_target=frozen,
-        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim)
+        data_version_ids=data_version_ids, data_version_mode=data_version_mode, propagation_claim=propagation_claim,
+        model_profile=model_profile)
 
 
 def _assessment_schema(*, validator):

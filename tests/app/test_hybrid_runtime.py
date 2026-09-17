@@ -137,6 +137,9 @@ class HybridRuntimeTests(unittest.TestCase):
         with patch.dict(sys.modules, {'palimpsest.d2i': None}):
             self.assertEqual(digest(profile), runner.validate_profile(profile, DATA_ID, DATA_ID,
                              HYBRID_PARSER['image_digest'], profile['parser']['runner_sha256']))
+            profile['transformation']['algorithm'] = 'source-groups-v2'
+            self.assertEqual(digest(profile), runner.validate_profile(profile, DATA_ID, DATA_ID,
+                             HYBRID_PARSER['image_digest'], profile['parser']['runner_sha256']))
         validate_hybrid_receipt(source_receipt(profile), profile=profile, data_id=DATA_ID,
                                 middle_name='source_middle.json', expected_pages=1)
         with self.assertRaises(PalimpsestError):

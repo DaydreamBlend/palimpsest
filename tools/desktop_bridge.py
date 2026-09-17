@@ -12,13 +12,15 @@ from palimpsest.source_read import SourceReadService
 
 class DesktopServices:
     """Route only typed read operations within the host-selected connection."""
-    def __init__(self, sources, wiki=None):
-        self.sources, self.wiki = sources, wiki
+    def __init__(self, sources, wiki=None, knowledge=None):
+        self.sources, self.wiki, self.knowledge = sources, wiki, knowledge or wiki
 
     def dispatch(self, request):
         operation = request.get('operation') if isinstance(request, dict) else None
         if isinstance(operation, str) and (operation.startswith('source_') or operation in ('parchment_catalog', 'parchment_get')):
             return self.sources.dispatch(request)
+        if operation in ('knowledge_catalog', 'knowledge_node', 'data_grounding') and self.knowledge is not None:
+            return self.knowledge.dispatch(request)
         if self.wiki is None:
             raise PalimpsestError('desktop_wiki_not_configured', '이 연결에는 Wiki가 설정되지 않았습니다.', 2)
         return self.wiki.dispatch(request)
@@ -59,9 +61,10 @@ def main():
         config = load_config()
         dsn = select_database(config.database_dsn, args.database_name)
         sources = SourceReadService(dsn, config.artifact_root)
-        wiki = (DesktopReadService(dsn, config.artifact_root, args.wiki_id, args.query_directory,
-                                  include_data_ids=args.include_data_id) if args.wiki_id else None)
-        service = DesktopServices(sources, wiki)
+        knowledge = DesktopReadService(dsn, config.artifact_root, args.wiki_id, args.query_directory,
+                                       include_data_ids=args.include_data_id)
+        wiki = knowledge if args.wiki_id else None
+        service = DesktopServices(sources, wiki, knowledge)
         serve(service, sys.stdin, sys.stdout)
     except Exception:
         print('Desktop read bridge initialization failed; verify local configuration.', file=sys.stderr)

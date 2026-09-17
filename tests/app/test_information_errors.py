@@ -7,7 +7,8 @@ import unittest
 from unittest.mock import patch
 
 from palimpsest.errors import PalimpsestError
-from palimpsest.information_errors import POLICY, REASON_CODES, RULES, affected_information_ids, report
+from palimpsest.information_errors import (POLICY, REASON_CODES, RULES, affected_information_ids,
+                                           candidate_has_reported_error, report)
 
 
 def uid(number):
@@ -52,6 +53,29 @@ def decision(owner=1, *, code='d2i_missing_information', verdict='needs_review')
 
 
 class InformationErrorTests(unittest.TestCase):
+    def test_page_scoped_error_only_holds_matching_parser_page(self):
+        value = {'information_ids': [uid(11)], 'page_numbers': [2],
+                 'data_id': '1' * 64, 'question': 'One page differs.'}
+        candidate = lambda block: {'evidence': [
+            {'information_id': uid(11), 'source_block_id': block}]}
+        self.assertTrue(candidate_has_reported_error(
+            candidate('/pdf_info/1/preproc_blocks/0'), [value]))
+        self.assertFalse(candidate_has_reported_error(
+            candidate('/pdf_info/2/preproc_blocks/0'), [value]))
+        self.assertTrue(candidate_has_reported_error(
+            {'evidence': [{'information_id': uid(11), 'quote': 'unscoped'}]}, [value]))
+
+    def test_page_scoped_error_uses_owned_media_page(self):
+        value = {'information_ids': [uid(11)], 'page_numbers': [2],
+                 'data_id': '1' * 64, 'question': 'One page differs.'}
+        information = [{'information_id': uid(11), 'media': [
+            {'sha256': 'a' * 64, 'page_index': 1}, {'sha256': 'b' * 64, 'page_index': 2}]}]
+        candidate = lambda digest: {'evidence': [
+            {'information_id': uid(11), 'media_sha256': digest}]}
+        self.assertTrue(candidate_has_reported_error(candidate('a' * 64), [value], information))
+        self.assertFalse(candidate_has_reported_error(candidate('b' * 64), [value], information))
+        self.assertTrue(candidate_has_reported_error(candidate('c' * 64), [value], information))
+
     def reject(self, call, code=None):
         with self.assertRaises(PalimpsestError) as caught:
             call()

@@ -6,7 +6,8 @@ import unittest
 from unittest.mock import patch
 
 from palimpsest.errors import PalimpsestError
-from palimpsest.local_glm_provider import LocalGLMProvider, MAX_OUTPUT_TOKENS, MODEL, PROFILE
+from palimpsest.local_glm_provider import (LocalGLMProvider, MAX_OUTPUT_TOKENS, MODEL, PROFILE,
+                                           REPETITION_PENALTY, TEMPERATURE, TOP_P)
 
 
 class Reply:
@@ -21,6 +22,16 @@ class Reply:
 
     def read(self):
         return self.value
+
+    def __iter__(self):
+        value = json.loads(self.value)
+        choice = value["choices"][0]
+        chunks = [
+            {"id": value["id"], "model": value["model"],
+             "choices": [{"delta": {"content": choice.get("message", {}).get("content")},
+                           "finish_reason": choice["finish_reason"]}], "usage": value.get("usage")},
+        ]
+        return iter((f"data: {json.dumps(chunk)}\n".encode() for chunk in chunks))
 
 
 class LocalGLMProviderTests(unittest.TestCase):
@@ -48,6 +59,11 @@ class LocalGLMProviderTests(unittest.TestCase):
             self.assertEqual({key: result.profile[key] for key in PROFILE}, PROFILE)
             self.assertEqual(payload["response_format"]["json_schema"]["schema"], schema)
             self.assertEqual(payload["max_tokens"], MAX_OUTPUT_TOKENS)
+            self.assertEqual((payload["temperature"], payload["top_p"], payload["repetition_penalty"]),
+                             (TEMPERATURE, TOP_P, REPETITION_PENALTY))
+            self.assertIs(payload["stream"], True)
+            self.assertEqual(payload["stream_options"], {"include_usage": True})
+            self.assertEqual(payload["chat_template_kwargs"], {"enable_thinking": False})
             self.assertEqual(payload["messages"][1]["content"][1]["image_url"]["url"],
                              "data:image/png;base64," + b64encode(b"synthetic-png").decode())
 
