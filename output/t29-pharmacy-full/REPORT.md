@@ -54,8 +54,10 @@ step on consumer GPUs, using frozen preserved artifacts only (no GLM/Terra API r
   not split a single fact into per-variant fragments, do not emit filler claims…").
 - g0024 A/B with the new clause: 124 → 26 claims (GLM baseline itself had 2 mega-claims
   covering 52 candidate items — that group's GLM baseline is the outlier, not Gemma).
-- g0041/g0042 reruns hit the 20-minute request timeout twice; retry batch running at
-  report time.
+- hint2 rerun finals: g0041 61 claims in 215.8s (GLM 9; anti-fragmentation clause did
+  not reduce this group, its GLM baseline also groups per-drug), g0024 26 claims
+  (124 before), g0042 timed out at 20 minutes twice (387s success in the main batch,
+  so the timeouts are scheduling/load artifacts, not model failure).
 
 ### Other pipelines (earlier in this task, same frozen policy)
 
