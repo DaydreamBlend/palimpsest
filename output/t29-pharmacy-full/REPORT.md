@@ -38,7 +38,7 @@ step on consumer GPUs, using frozen preserved artifacts only (no GLM/Terra API r
 
 ### Full 26B batch (59 groups, hint-enabled, resumable runner)
 
-- 65/66 records ok (g0029 transport failure remains; retry pending).
+- 66/66 records ok (g0029 retried: 67.3s, 19 claims vs GLM 12).
 - Citation validity: 1,242/1,242 (100%) against per-group candidate enums.
 - GLM total 678 claims (median 9/group) vs Gemma 1,192 (median 17/group).
 - Hint effect (groups g0015+ vs earlier records): max citations per claim dropped from
